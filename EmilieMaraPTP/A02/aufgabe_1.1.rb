@@ -21,4 +21,4 @@ puts ''
 puts "Eine letzte Frage zum Abschluss noch: Wie alt (oder eher jung) sind Sie?"
 einabe = gets.chomp
 puts ''
-puts "Alles klar! Ich danke Ihnen herzlichst für diese kleine Auskunft!"
+puts "Alles klar! Ich danke Ihnen herzlichst für diese kleine Auskunft!!!!"
