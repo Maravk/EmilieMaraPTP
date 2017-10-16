@@ -2,11 +2,7 @@
 #Fibonacci-Folge
   #Variante 2.1
 
-a = 1
-b = 0
-for n in 1..30 do
-c = a + b
-puts c
-a = b
-b = c
+
+def fibonacci (n)
+n < 2? print : print(fibo-1) + (fibo-2)
 end
