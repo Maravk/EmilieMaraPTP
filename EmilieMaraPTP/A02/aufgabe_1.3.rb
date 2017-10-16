@@ -1,8 +1,9 @@
 #Datei einlesen
 #Author:: Emilie Sarina Schuller, Mara von Kroge, 11. Oktober 2017
-
+puts Dir.pwd
+puts Dir.pwd
 elektrizitaet = []
-  f = File.open("aufgabe_1.3_text_elektrizitaet")
+  f = File.open('A02/aufgabe_1.3_text_elektrizitaet')
   
   while(elek = f.gets)
     elektrizitaet << elek
