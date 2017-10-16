@@ -7,6 +7,7 @@ elektrizitaet = []
     elektrizitaet << elek
 end
 
+elektrizitaet.delete("\n")
 elektrizitaet = elektrizitaet.to_s
 elektrizitaet.gsub!(/[?!,.:-]/, '')
 f.close
