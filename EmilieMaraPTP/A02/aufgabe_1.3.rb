@@ -17,8 +17,9 @@ puts "Guten Tag! F√ºr diese Aufgabe schreiben wir die Datei 'Was ist Elektrizit√
 
 total_characters = elektrizitaet.length
 word_count = elektrizitaet.split.length
+letters_count = elektrizitaet.scan(/[\p{L}]/).count
 sentence_count = elektrizitaet.split(/\.|\?|!/).length
-average_words_per_sentence = total_characters/word_count
+average_words_per_sentence = letters_count/word_count
 
 puts''
 
