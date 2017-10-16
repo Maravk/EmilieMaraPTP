@@ -1,4 +1,4 @@
-#Author: Emilie Sarina Schuller
+#Author: Emilie Sarina Schuller, Mara von Kroge
 #Fibonacci-Folge
   #Variante 2.3
 
