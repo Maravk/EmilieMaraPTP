@@ -18,7 +18,7 @@ total_characters = elektrizitaet.length
 word_count = elektrizitaet.split.length
 letters_count = elektrizitaet.scan(/[\p{L}]/).count
 sentence_count = elektrizitaet.split(/\.|\?|!/).length
-average_words_per_sentence = letters_count/word_count
+average_words_per_sentence = letters_count.to_f/word_count.to_f
 
 puts''
 
