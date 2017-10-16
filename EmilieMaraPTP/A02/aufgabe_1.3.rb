@@ -12,7 +12,7 @@ elektrizitaet = elektrizitaet.to_s
 elektrizitaet.gsub!(/[?!,.:-]/, '')
 f.close
 
-puts "Guten Tag! Für diese Aufgabe schreiben wir die Datei 'Was ist Elektrizität?' in diese hinein und zählen Ihre Wörter sowie ermitteln die durchschnittliche Anzahl an Buchstaben in einem Wort."
+puts "Guten Tag! Für diese Aufgabe schreiben wir die Datei 'Was ist Elektrizität?' in diese hinein\nund zählen Ihre Wörter sowie ermitteln die durchschnittliche Anzahl an Buchstaben in einem Wort."
 
 total_characters = elektrizitaet.length
 word_count = elektrizitaet.split.length
