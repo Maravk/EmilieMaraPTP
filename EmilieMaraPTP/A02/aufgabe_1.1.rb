@@ -1,5 +1,5 @@
-##Author:: Emilie Sarina Schuller, 11. Oktober 2017
-##Etwas von der Konsole einlesen und als String speichern
+#Author:: Emilie Sarina Schuller, Mara von Kroge 11. Oktober 2017
+#Etwas von der Konsole einlesen und als String speichern
 
 puts "Guten Tag! Bitte geben Sie Ihren Namen ein!"
 eingabe = gets.chomp
@@ -21,4 +21,4 @@ puts ''
 puts "Eine letzte Frage zum Abschluss noch: Wie alt (oder eher jung) sind Sie?"
 einabe = gets.chomp
 puts ''
-puts "Alles klar! Ich danke Ihnen herzlichst für diese kleine Auskunft!!!!"
+puts "Alles klar! Ich danke Ihnen herzlichst für diese kleine Auskunft!"
