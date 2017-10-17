@@ -19,7 +19,4 @@ class Aufgabe_2_1
         fibonacci(f-1)+fibonacci(f-2)
       end
     end
-
-
 end
-gets
