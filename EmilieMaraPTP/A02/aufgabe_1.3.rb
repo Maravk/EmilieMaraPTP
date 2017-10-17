@@ -3,7 +3,7 @@
 
 #Leeres Array 'elektrizitaet' wird erstellt und das File unter dem gespeicherten Namen 'aufgabe_1.3_text_elektrizitaet' wird geöffnet.
 elektrizitaet = []
-  f = File.open('A02/aufgabe_1.3_text_elektrizitaet')
+  f = File.open('aufgabe_1.3_text_elektrizitaet')
   
 #Solange das File keine neue Zeile aufweist, wird das File in das Array eingelesen.
   while(elek = f.gets)
