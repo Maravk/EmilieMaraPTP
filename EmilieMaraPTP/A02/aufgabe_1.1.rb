@@ -15,7 +15,6 @@ puts "Ich freue mich, Sie hier anzutreffen, " + eingabe + ", Ihr Name ist sehr s
 puts "Geht es Ihnen heute gut? Sofern sie glücklich sind, drücken sie die (1), und sofern heute nicht Ihr Tag ist, die (0)."
 eingabe = gets.chomp
 eingabe.to_s
-#puts eingabe
 
 #if-Schleife --> Je nach Eingabe des Nutzers wird auf der Konsole etwas Anderes ausgegeben.
 if eingabe == "0"
