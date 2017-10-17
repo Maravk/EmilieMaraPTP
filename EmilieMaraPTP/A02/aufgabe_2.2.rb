@@ -32,3 +32,4 @@ puts'' #Leerzeichen für die Formatierung.
   #Das Ergebnis soll auf der Konsole ausgegeben werden.
   puts total
 end
+gets

@@ -14,3 +14,4 @@ f = gets.to_i
 #Die f-te Zahl der Fibonacci-Folge wird ausgegeben.
 print "Die #{f}-te Zahl der Fibonacci-Folge lautet wie folgt: "
 puts fibonacci_object.fibonacci(f)
+gets

@@ -22,3 +22,4 @@ class Aufgabe_2_1
 
 
 end
+gets

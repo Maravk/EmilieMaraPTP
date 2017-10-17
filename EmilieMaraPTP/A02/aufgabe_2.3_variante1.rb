@@ -26,3 +26,4 @@ end
 
 #Das Programm gibt in einem String die jeweils letzte Fibonacci-Ziffer aus. 
 puts "\nDie " + eingabe.to_s + "te Zahl der Fibonacci Folge lautet: " + c.to_s
+gets

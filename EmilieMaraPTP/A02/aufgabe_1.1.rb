@@ -35,3 +35,4 @@ eingabe.to_s
 
 puts ''
 puts "Alles klar! Ich danke Ihnen herzlichst für diese kleine Auskunft!"
+gets

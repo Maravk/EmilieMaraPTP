@@ -32,6 +32,6 @@ puts word_count
 puts ''
 puts "Die durchschnittliche Buchstabenanzahl pro Wort in dem Gedicht von Robert Gerhard beträgt: " 
 puts average_letters_per_word
-
+gets 
 
 #Folgende Quelle haben wir für diese Aufgabe benutzt: https://leanonthefly.wordpress.com/2014/08/06/how-to-create-a-text-analyzer-in-ruby/

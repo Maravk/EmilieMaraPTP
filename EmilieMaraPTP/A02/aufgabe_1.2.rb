@@ -23,3 +23,4 @@ if eingabe == eingabe.reverse
     end
     
     puts ''
+gets

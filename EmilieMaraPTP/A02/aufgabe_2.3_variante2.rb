@@ -33,3 +33,4 @@ end
   puts "Die #{eingabe}-te Fibonacci-Zahl lautet:" 
   
   puts fibo(eingabe)
+  gets
