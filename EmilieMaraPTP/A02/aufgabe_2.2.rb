@@ -2,24 +2,32 @@
 #Fibonacci-Folge
   #Variante 2.2
 
-def fibo(n) #Neue Methode "fibo" wurde definiert
-e = 0 #Die Startwerte für die Folge werden mittels Variablen auf 0 und auf 1 gesetzt
+#Eine neue Methode "fibo" wurde definiert.
+#Die Startwerte für die Folge werden mittels Variablen auf 0 und auf 1 gesetzt.
+def fibo(n) 
+e = 0 
 f = 1
 
-n.times do #Eine Schleife mit einer n-ten Anzahl von Durchläufen wird generiert
-  c = e #e wird mit neuer Variable gleichgesetzt, damit sich die Zahlen immer weiter addieren
-  e = f #Definition der Fibonacci-Folge: Die je aufeinanderfolgenden Zahlen werden addiert
+#Eine Schleife mit einer n-ten Anzahl von Durchläufen wird generiert.
+n.times do 
+  
+  #e wird mit neuer Variable gleichgesetzt, damit sich die Zahlen immer weiter addieren.
+  #Die Definition der Fibonacci-Folge: Die je aufeinanderfolgenden Zahlen werden addiert.
+  c = e 
+  e = f 
   f = c + e
 end
 
-return e #e wird stets ausgegeben
+return e #Die Variable e wird stets ausgegeben.
 end 
 
-puts'' #Leerzeichen für die Formatierung
+puts'' #Leerzeichen für die Formatierung.
 
-10.times do |n| #Die Schleife soll 10-Mal ausgeführt werden
-  total = fibo(n) #Das Ergebnis stellt die Fibonacci-Folge dar
-  puts total #Das Ergebnis soll auf der Konsole ausgegeben werden
+
+#Die Schleife soll 10-Mal ausgeführt werden.
+#Das Ergebnis stellt die Fibonacci-Folge dar.
+10.times do |n| 
+  total = fibo(n)
+  #Das Ergebnis soll auf der Konsole ausgegeben werden.
+  puts total 
 end
-
-

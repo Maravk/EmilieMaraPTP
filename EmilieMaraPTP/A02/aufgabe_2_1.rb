@@ -2,21 +2,21 @@
 #Fibonacci-Folge
 #Variante 2.1
 
-#Neue Klasse wird geschrieben
+#Eine neue Klasse wird geschrieben.
 class Aufgabe_2_1
 
-    #Methode fibonacci wird definiert
+    #Die Methode "fibonacci" wird definiert.
     def fibonacci(f)
       
-      #Schleife wird generiert und die Startwerte werden auf 0 und 1 gesetzt
+      #Eine if-Schleife wird generiert und die Startwerte werden auf 0 und 1 gesetzt.
       if f == 1
         1
       elsif f == 0
         0
       else
         
-        #Definition der Fibonacci-Folge
-        fibonacci(f-2)+fibonacci(f-1)
+        #Die Definition der Fibonacci-Folge erfolgt hier.
+        fibonacci(f-1)+fibonacci(f-2)
       end
     end
 
