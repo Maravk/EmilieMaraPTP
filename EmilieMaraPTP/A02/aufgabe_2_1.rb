@@ -1,6 +1,6 @@
-#Author: Emilie Sarina Schuller, Mara von Kroge, 12. Oktober 2017
+#Author:: Emilie Sarina Schuller, Mara von Kroge, 12. Oktober 2017
 #Fibonacci-Folge
-#Variante 2.1
+  #Variante 2.1
 
 #Eine neue Klasse wird geschrieben.
 class Aufgabe_2_1

@@ -1,4 +1,4 @@
-#Author: Emilie Sarina Schuller, Mara von Kroge, 16. Oktober 2017
+#Author:: Emilie Sarina Schuller, Mara von Kroge, 16. Oktober 2017
 #Fibonacci-Folge
   #Variante 2.2
 

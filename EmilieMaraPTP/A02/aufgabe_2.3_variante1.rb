@@ -1,6 +1,6 @@
-#Author: Emilie Sarina Schuller, Mara von Kroge, 16. Oktober 2017
+#Author:: Emilie Sarina Schuller, Mara von Kroge, 16. Oktober 2017
 #Fibonacci-Folge
-#Variante 2.3.1
+  #Variante 2.3.1
 
 #Ein Text erscheint auf der Konsole und der Nutzer kann eine beliebige postive Zahl eingeben.
 puts "Guten Tag! Dieses Programm gibt Ihnen die n-te Anzahl an Fibonacci-Ziffern aus.\nGeben Sie nun ein, wie viele Fibonacci-Ziffern angezeigt werden sollen!"

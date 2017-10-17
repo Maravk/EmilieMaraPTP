@@ -1,5 +1,5 @@
-#Datei importieren
 #Author:: Emilie Sarina Schuller, Mara von Kroge, 11. Oktober 2017
+#Datei importieren
 
 #Leeres Array 'elektrizitaet' wird erstellt und das File unter dem gespeicherten Namen 'aufgabe_1.3_text_elektrizitaet' wird geöffnet.
 elektrizitaet = []

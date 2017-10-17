@@ -1,6 +1,6 @@
 #Author:: Emilie Sarina Schuller, Mara von Kroge, 17. Oktober 2017
 #Fibonacci-Folge
-#Variante 2.3.2
+  #Variante 2.3.2
 
 #Ausgabe auf der Konsole, welche den Nutzer dazu auffordert, eine beliebige positive Zahl einzugeben.
 puts "Guten Tag! Bitte geben Sie eine beliebige positive Zahl Ihrer Wahl\nein und Sie erhalten die jeweilige Stelle in der Fibonacci-Folge!"
