@@ -3,6 +3,10 @@
 
 puts "Hallo! Dieses Programm überprüft, ob Ihr eingegebnes Wort ein Palindrom ist!\nBitte geben Sie ein Wort Ihrer Wahl in die Konsole ein!"
 eingabe = gets.chomp
+if eingabe == " "
+  then puts "Bitte geben Sie ein Wort ein! "
+  break 
+end
 
 
 if eingabe == eingabe.reverse

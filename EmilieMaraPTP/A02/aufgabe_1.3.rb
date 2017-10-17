@@ -1,5 +1,6 @@
 #Datei einlesen
 #Author:: Emilie Sarina Schuller, Mara von Kroge, 11. Oktober 2017
+
 elektrizitaet = []
   f = File.open('A02/aufgabe_1.3_text_elektrizitaet')
   
@@ -23,10 +24,10 @@ average_words_per_sentence = letters_count.to_f/word_count.to_f
 
 puts''
 
-puts "Die insgesamte Wortanzahl beträgt: " 
-print word_count
+puts "Die insgesamte Wortanzahl in dem Gedicht von Robert Gerhard beträgt: " 
+puts word_count
 puts ''
 puts ''
-puts "Die durchschnittliche Wortanzahl pro Satz beträgt: " 
-print average_words_per_sentence
+puts "Die durchschnittliche Wortanzahl in dem Gedicht von Robert Gerhard pro Satz beträgt: " 
+puts average_words_per_sentence
 puts ''
