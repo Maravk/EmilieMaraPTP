@@ -13,12 +13,17 @@ if eingabe <= 0
 end
 
 #Eine neue Methode "fibo" wird definiert, welche für die Berechnung der Fibonacci-Zahlen zuständig ist.
+n = 0
 def fibo(n)
   
   #Sofern n < 2 ist, sollen die Werte, also 0 und 1, ausgegeben werden.
-  return n if n < 2
+  if n < 2
+    return n
+  else
   fibo(n-2)+fibo(n-1)
+  end
 end
+
 
 #Alle Fibonacci-Zahlen bis zu dem Wert der Eingabe werden augegeben.
 (1..eingabe).each {|n| puts fibo(n)}
@@ -26,4 +31,6 @@ end
   
 #Die Konsole gibt die Fibonacci-Zahl an der jeweiligen Stelle aus.
   puts "Die #{eingabe}-te Fibonacci-Zahl lautet:" 
-(eingabe..eingabe).each {|n| puts fibo(n)}
+#(eingabe..eingabe).each {|n| puts fibo(n)}
+  
+  puts fibo(eingabe)
