@@ -11,13 +11,13 @@ end
 
 elektrizitaet.delete("\n")
 elektrizitaet = elektrizitaet.to_s
-elektrizitaet.gsub!(/['?!,.:-]/, '')
+elektrizitaet.gsub!(/['?!,.:\-]/, '')
 f.close
 
 puts "Guten Tag! Für diese Aufgabe importieren wir die Datei 'Was ist Elektrizität?' \nund zählen Ihre Wörter und ermitteln die durchschnittliche Anzahl an Buchstaben in einem Wort."
 
 total_characters = elektrizitaet.length
-word_count = elektrizitaet.split.length
+p word_count = elektrizitaet.split.length
 letters_count = elektrizitaet.scan(/[\p{L}]/).count
 sentence_count = elektrizitaet.split(/\.|\?|!/).length
 average_words_per_sentence = letters_count.to_f/word_count.to_f
