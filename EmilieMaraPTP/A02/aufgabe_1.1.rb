@@ -3,10 +3,11 @@
 
 #Mit puts wird auf der Konsole immer der jeweilige Ausdrucke ausgegeben.
 #Durch "eingabe = gets.chomp" kann der Nutzer etwas eingeben und der Zeilenumbruch wird verhindert.
+#Durch jedes "eingabe.to_s" wird der vom Nutzer eingegebene Text als String gespeichert.
 
 puts "Guten Tag! Bitte geben Sie Ihren Namen ein!"
 eingabe = gets.chomp
-eingabe.to_i
+eingabe.to_s
 
 puts''
 
@@ -27,11 +28,11 @@ end
 
 puts "Wie lautet denn Ihre Lieblingsfarbe?"
 eingabe = gets.chomp
-eingabe.to_i
+eingabe.to_s
 
 puts "Oh, interessant! Meine Lieblingsfarbe ist pink! Eine letzte Frage zum Abschluss noch: Wie alt (oder eher jung) sind Sie?"
 eingabe = gets.chomp
-eingabe.to_i
+eingabe.to_s
 
 puts ''
 puts "Alles klar! Ich danke Ihnen herzlichst für diese kleine Auskunft!"
