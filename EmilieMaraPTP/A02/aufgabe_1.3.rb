@@ -5,7 +5,7 @@
 elektrizitaet = []
   f = File.open('A02/aufgabe_1.3_text_elektrizitaet')
   
-#Solange das File keine neue Zeile anzeigt, wird das File in das Array eingelesen.
+#Solange das File keine neue Zeile aufweist, wird das File in das Array eingelesen.
   while(elek = f.gets)
     elektrizitaet << elek
 end
@@ -18,18 +18,17 @@ f.close
 
 puts "Guten Tag! Für diese Aufgabe importieren wir die Datei 'Was ist Elektrizität?', zählen\nihre Wörter und ermitteln die durchschnittliche Anzahl an Buchstaben in einem Wort."
 
-#Mithilfer folgender Methoden wird die insgesamte Wortanzahl bestimmt, die Buchstaben gezählt und am Ende diese beiden Werte durcheinander geteilt, damit man auf den Buchstabendurchschnitt im Wort kommt.
-
+#Mithilfer folgender Methoden wird die insgesamte Wortanzahl bestimmt, die Buchstaben gezählt und am Ende diese beiden Werte durcheinander geteilt, damit man auf den Buchstabendurchschnitt in einem Wort kommt.
 word_count = elektrizitaet.split.length
 letters_count = elektrizitaet.scan(/[\p{L}]/).count
 average_letters_per_word = letters_count.to_f/word_count.to_f
 
 puts''
 
-#Ausgabe der Wortanzahl sowie der durchschnittlichen Buchstabenanzahl pro Wort
+#Ausgabe der Wortanzahl sowie der durchschnittlichen Buchstabenanzahl pro Wort.
+#Mittels "puts ''" werden stets neue Leerzeilen erzeugt.
 puts "Die insgesamte Wortanzahl in dem Gedicht von Robert Gerhard beträgt: " 
 puts word_count
-puts ''
 puts ''
 puts "Die durchschnittliche Buchstabenanzahl pro Wort in dem Gedicht von Robert Gerhard beträgt: " 
 puts average_letters_per_word
