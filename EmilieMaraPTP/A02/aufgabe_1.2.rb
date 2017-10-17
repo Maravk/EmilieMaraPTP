@@ -4,11 +4,11 @@
 puts "Hallo! Dieses Programm überprüft, ob Ihr eingegebnes Wort ein Palindrom ist!\nBitte geben Sie ein Wort Ihrer Wahl in die Konsole ein!"
 eingabe = gets.chomp
 if eingabe == " "
-  then puts "Bitte geben Sie ein Wort ein! "
-  break 
+  then puts "Bitte geben Sie ein Wort ein!" 
 end
 
-
+puts''
+ 
 if eingabe == eingabe.reverse
       then puts "Das Wort #{eingabe} ist ein Palindrom! Yay!"
     else 
