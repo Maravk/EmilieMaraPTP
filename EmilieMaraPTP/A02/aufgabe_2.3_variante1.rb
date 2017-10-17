@@ -1,4 +1,4 @@
-#Author: Emilie Sarina Schuller, Mara von Kroge
+#Author: Emilie Sarina Schuller, Mara von Kroge, 16. Oktober 2017
 #Fibonacci-Folge
 #Variante 2.3.1
 
@@ -11,11 +11,12 @@ if eingabe <=0
   then puts "Bitte geben Sie eine positive Zahl ein!"
 end
 
-#Definition der Fibonacci-Folge: Die je aufeinanderfolgenden Zahlen werden addiert.
+#Die Startwerte für die Fibonacci-Folge werden mit 0 und 1 festgelegt.
 a = 1
 b = 0
 
 #Eine for-Schleife bis zur n-ten Anzahl der Fibonacci-Folge wird generiert --> n hat der Nutzer am Anfang selbst gewählt.
+#Definition der Fibonacci-Folge: Die je aufeinanderfolgenden Zahlen werden addiert.
 for n in 1..eingabe do
   c = a + b
   puts c
@@ -23,13 +24,5 @@ for n in 1..eingabe do
   b = c
 end
 
-#Durch die folgenden zwei Codezeilen wir nur die jeweils zuletzt generierte Zahl der Fibonacci-Folge dargestellt.
-for n in eingabe..eingabe
-  puts c
-
-#Leerzeichen
-puts''
-
 #Das Programm gibt in einem String die jeweils letzte Fibonacci-Ziffer aus. 
-puts "Die " +eingabe.to_s+ "te Zahl der Fibonacci Folge lautet: "+c.to_s
-end 
+puts "\nDie " + eingabe.to_s + "te Zahl der Fibonacci Folge lautet: " + c.to_s

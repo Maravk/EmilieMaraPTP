@@ -18,7 +18,7 @@ f.close
 
 puts "Guten Tag! Für diese Aufgabe importieren wir die Datei 'Was ist Elektrizität?', zählen\nihre Wörter und ermitteln die durchschnittliche Anzahl an Buchstaben in einem Wort."
 
-#Mithilfer folgender Methoden wird die insgesamte Wortanzahl bestimmt, die Buchstaben gezählt und am Ende diese beiden Werte durcheinander geteilt, damit man auf den Buchstabendurchschnitt in einem Wort kommt.
+#Mithilfe folgender Methoden wird die insgesamte Wortanzahl bestimmt, werden die Buchstaben gezählt und am Ende diese beiden Werte durcheinander geteilt, damit man auf den Buchstabendurchschnitt in einem Wort kommt.
 word_count = elektrizitaet.split.length
 letters_count = elektrizitaet.scan(/[\p{L}]/).count
 average_letters_per_word = letters_count.to_f/word_count.to_f
@@ -32,4 +32,6 @@ puts word_count
 puts ''
 puts "Die durchschnittliche Buchstabenanzahl pro Wort in dem Gedicht von Robert Gerhard beträgt: " 
 puts average_letters_per_word
-puts ''
+
+
+#Folgende Quelle haben wir für diese Aufgabe benutzt: https://leanonthefly.wordpress.com/2014/08/06/how-to-create-a-text-analyzer-in-ruby/

@@ -24,7 +24,6 @@ end
 (1..eingabe).each {|n| puts fibo(n)}
   puts ''
   
-#Die Konsole gibt die FIbonacci-Zahl an der jeweiligen Stelle aus.
+#Die Konsole gibt die Fibonacci-Zahl an der jeweiligen Stelle aus.
   puts "Die #{eingabe}-te Fibonacci-Zahl lautet:" 
 (eingabe..eingabe).each {|n| puts fibo(n)}
-  

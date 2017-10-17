@@ -24,9 +24,9 @@ end
 puts'' #Leerzeichen für die Formatierung.
 
 
-#Die Schleife soll 10-Mal ausgeführt werden.
+#Die Schleife soll 15-Mal ausgeführt werden.
 #Das Ergebnis stellt die Fibonacci-Folge dar.
-10.times do |n|
+15.times do |n|
   total = fibo(n)
   
   #Das Ergebnis soll auf der Konsole ausgegeben werden.
