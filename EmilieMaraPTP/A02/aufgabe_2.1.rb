@@ -3,6 +3,4 @@
   #Variante 2.1
 
 
-def fibonacci (n)
-n < 2? print : print(fibo-1) + (fibo-2)
-end
+n = 10
