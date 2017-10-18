@@ -1,6 +1,6 @@
 #Author:: Emilie Sarina Schuller, Mara von Kroge, 11. Oktober 2017
 #Datei importieren
-
+Dir.pwd
 #Leeres Array 'elektrizitaet' wird erstellt und das File unter dem gespeicherten Namen 'aufgabe_1.3_text_elektrizitaet' wird geöffnet.
 elektrizitaet = []
   f = File.open('aufgabe_1.3_text_elektrizitaet')
