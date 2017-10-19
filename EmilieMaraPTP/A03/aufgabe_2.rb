@@ -3,15 +3,9 @@
 
 class Iban
   def initalize (laenderkennung,bankleitzahl,kontonummer)
-  @laenderkennung = laenderkennung
+  #@laenderkennung = laenderkennung
   @bankleitzahl = bankleitzahl
   @kontonummer = kontonummer
-
-
-iban1 = Iban1.new
-iban2 = Iban2.new
-iban3 = Iban3.new
-iban4 = Iban4.new
 
 
 def berechnung
@@ -56,17 +50,54 @@ puts "Ihre IBAN lautet wie folgt: #{k} #{b}"
   pruefziffer[15] = b[5]
   pruefziffer[16] = b[6]
   pruefziffer[17] = b[7]
+  pruefziffer[18] = 1
+  pruefziifer[19] = 3
+  pruefziifer[20] = 1
+  pruefziffer[21] = 4
+  pruefziifer[22] = 0
+  pruefziifer[23] = 0
+  
+  #puts pruefziffer[0..17].each + " 1314 00"
   
   
-  puts pruefziffer[0..17] + "1314 00"
-  
-  
-block 1 = pruefziffer[0..9]
-division = (block 1/97).to_i
+pruefziffer[0..8].to_i = pruefziffer1
+division = ((pruefziffer1/97)).to_i
+divsion2 = (division*97).to_i
+
+block1 = division2 + pruefziffer[0..9].each
 
 
 
+division3 + pruefziffer[9..15].to_i = pruefziffer2
+division3 = ((pruefiffer2/97)).to_i
+division4 = (division3*97).to_i
+
+block2 =  division4 + pruefziffer[9..15]
+
+
+
+divsision4 + pruefziffer[16..22].to_i = pruefziffer3
+division5 = ((pruefziffer3/97)).to_i
+division6 = (division5+97).to_i
+
+block3 = division6 + pruefziffer[16...22]
+
+
+division6 + pruefziffer[23].to_i = pruefziffer3
+division7 = ((pruefziifer3/97)).to_i
+division8 = (division7+97).to_i
+
+puts (89 - division8).to_i = fertige_pruefziffer
+
+if fertige_pruefziffer < 10
+  then puts "0" + fertige_pruefziffer
+
+puts "Ihre Prüfziffer lautet: #{fertige_pruefziffer} und Ihre IBAN lautet nun: DE + #{fertige_pruefziffer} + #{pruefziffer[0..17]}!"
+
+
+            end 
+          end 
+       end
+     end 
+   end 
 end 
-  end 
-end 
-
