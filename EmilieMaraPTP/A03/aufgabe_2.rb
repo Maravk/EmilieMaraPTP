@@ -11,26 +11,29 @@ class Iban
 def berechnung
   
   puts "Guten Tag! Dieses Programm berechnet für Sie ihre IBAN! Hierfür benötigt das Programm Ihr jeweiliges \nLand, Ihre Bankleitzahl sowie Ihre gültige Kontonummer, um aus diesen Werten die Prüfziffer zu berechnen!"
-puts "Bitte geben Sie hier Ihre Kontonummer ein: "
+
+  
+  puts "Bitte geben Sie hier Ihre Kontonummer ein: "
 eingabe = gets.chomp
 eingabe = k
-k.to_chars
+k.chars
 
 if k > 10
   puts "Bitte geben Sie eine 10-stellige Kontonummer ein!"
 
 
 puts "Bitte geben Sie hier Ihre Bankleitzahl ein: "
-eingabe = gets.chono
+eingabe = gets.chomp
 eingabe = b
-b.to_chars
+b.chars
 
 if b > 8
   puts "Bitte geben sie eine 8-stellige Bankleitzahl ein!"
-
-pruefziffer = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
   
-puts "Ihre IBAN lautet wie folgt: #{k} #{b}"
+
+  pruefziffer = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
+  
+puts "Ihre IBAN lautet wie folgt: #{k} + #{b}"
 
   pruefziffer[0] = k[0]
   pruefziffer[1] = k[1]
@@ -51,11 +54,11 @@ puts "Ihre IBAN lautet wie folgt: #{k} #{b}"
   pruefziffer[16] = b[6]
   pruefziffer[17] = b[7]
   pruefziffer[18] = 1
-  pruefziifer[19] = 3
-  pruefziifer[20] = 1
+  pruefziffer[19] = 3
+  pruefziffer[20] = 1
   pruefziffer[21] = 4
-  pruefziifer[22] = 0
-  pruefziifer[23] = 0
+  pruefziffer[22] = 0
+  pruefziffer[23] = 0
   
   #puts pruefziffer[0..17].each + " 1314 00"
   
