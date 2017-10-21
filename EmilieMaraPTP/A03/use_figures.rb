@@ -1,5 +1,5 @@
-require 'kreis'
-require 'v01_geometrie_a/punkt'
+require_relative 'kreis'
+require_relative 'punkt'
 # Simple examples that use some figures from the project
 # v01_geometrie.
 # Author:: Bernd Kahlbrandt
