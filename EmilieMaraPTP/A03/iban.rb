@@ -55,11 +55,12 @@ class Iban
     nummer -= 98
 
     # Neuer Parameter namens "pruefziffer_fertig" wird erstellt und ihm wird der Wert 0 zugewiesen
-    # Sofern der Wert der Variable "nummer" kleiner als 10 ist, soll der Wert absolute "nummer" an den Parameter "pruefziffer_fertig" gehängt werden.
+    # Ternärer Operator: Sofern der Wert der Variable "nummer" kleiner als 10 ist, soll der Wert absolute "nummer" an den Parameter "pruefziffer_fertig" gehängt werden.
     # Ist der Wert der Variable "nummer" nicht kleiner als 10, soll bloß der Wert der Variable "nummer" als absoluter Wert dargestellt werden. 
     @pruefziffer_fertig = '0'
     nummer < 10 ? @pruefziffer_fertig << nummer.abs.to_s : @pruefziffer_fertig = nummer.abs.to_s
   end
+  
   
   # Neue Methode "to_s" wird definiert.
   # Die Variable "fertige_kontonummer" wird als String gespeichert.
@@ -72,7 +73,7 @@ class Iban
     
     #Die Länderkennung, die Prüfziffer, die Bankleitzahl sowie die Kontonummer werden ausgegeben.
    puts "Ihre Prüfziffer lautet: #{@pruefziffer_fertig}"
-   puts "Ihre fertige IBAN lautet: #{@laenderkennung} #{@pruefziffer_fertig} #{@bankleitzahl.to_s} #{fertige_kontonummer}"
+   puts "Ihre fertige IBAN lautet: #{@laenderkennung}#{@pruefziffer_fertig} #{@bankleitzahl.to_s} #{fertige_kontonummer}"
     
   end
 end
