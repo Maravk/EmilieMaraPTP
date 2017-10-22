@@ -23,7 +23,7 @@ class Rechteck
   end
   
   def initialize(x,y,breite,hoehe,farbe)
-    @obere_linke_ecke = Point.new(x,y)
+    @obere_linke_ecke = Punkt.new(x,y)
     @breite = breite
     @hoehe = hoehe
     
