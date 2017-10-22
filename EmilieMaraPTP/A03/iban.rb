@@ -7,9 +7,9 @@ puts "Guten Tag! Dieses Programm wird Ihnen anhand Ihrer spezifischen Länderken
 # Leerzeichen für die Formatierung
 puts''
 
-#Eine Klasse namens "Iban" wird erstellt.
+# Eine Klasse namens "Iban" wird erstellt.
 # Folgende Parameter weren erstellt: "Länderkennung, Kontonummer, Bankleitzahl" und alle werden initialisert
-# Die Kontonummer wird stets großgeschrieben und die Kontoummer wird stets direkt zu einem String und dann zu einem Array gewandelt.
+# Die Länderkennung wird stets großgeschrieben und die Kontoummer wird stets direkt zu einem String und dann zu einem Array gewandelt.
 
 class Iban
   def initialize (laenderkennung, kontonummer, bankleitzahl)
@@ -35,7 +35,7 @@ class Iban
     }
 
     
-    # Die jeweilige zweistellige Länderkennung wird in Grpßbuchstaben geschrieben und in ein Array gewandelt.
+    # Die jeweilige zweistellige Länderkennung wird in Großbuchstaben geschrieben und in ein Array gewandelt.
     # Von diesem Array wird die Blockvariable "buchstabe" erstellt.
     # Der jeweilige Stelle des Buchstaben wird im ASCII-Code gesucht und davon wird die Stelle des Buchstaben 'A' im ASCII-Code abgezogen.
     # Hierdurch erhält man die Stelle des Buchstaben im Alphabet und man fügt die 10 hinzu.
@@ -45,7 +45,7 @@ class Iban
     }
 
     # Zwei Nullen sowie die Variable "zum_anhaengen" werden an die "bban" gehängt.
-    bban << zum_anhaengen << '00'
+    bban + zum_anhaengen + '00'
 
     # Unter der Varibale "nummer" wird nun die "bban" als String gespeichert.
     # Das Modulo von dem Wert der Variable "nummer" und der 97 wird berechnet.
@@ -55,10 +55,10 @@ class Iban
     nummer -= 98
 
     # Neuer Parameter namens "pruefziffer_fertig" wird erstellt und ihm wird der Wert 0 zugewiesen
-    # Ternärer Operator: Sofern der Wert der Variable "nummer" kleiner als 10 ist, soll der Wert absolute "nummer" an den Parameter "pruefziffer_fertig" gehängt werden.
+    # Ternärer Operator: Sofern der absolute Wert der Variable "nummer" kleiner als 10 ist, soll der Wert absolute "nummer" an den Parameter "pruefziffer_fertig" gehängt werden.
     # Ist der Wert der Variable "nummer" nicht kleiner als 10, soll bloß der Wert der Variable "nummer" als absoluter Wert dargestellt werden. 
     @pruefziffer_fertig = '0'
-    nummer < 10 ? @pruefziffer_fertig << nummer.abs.to_s : @pruefziffer_fertig = nummer.abs.to_s
+    nummer.abs < 10 ? @pruefziffer_fertig << nummer.abs.to_s : @pruefziffer_fertig = nummer.abs.to_s
   end
   
   
