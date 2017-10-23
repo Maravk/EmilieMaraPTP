@@ -30,7 +30,7 @@ $INSPECTOR = 'Inspektor'
 $FILEMENU = 'Datei'
 $CLASSMENU = 'Klassen'
 
-require 'v1_Geometrie/EinstellungenGeometrie'
+require_relative 'EinstellungenGeometrie'
 
 # DIE REIHENFOLGE DARF NICHT GEÄNDERT WERDEN
 # VARIABLE $CLASSES MUSS DEFINIERT SEIN
@@ -86,8 +86,8 @@ $CLASSES.each do |class_sym|
   })
 end
 
-require 'v1_Geometrie/Kreis'
-require 'v1_Geometrie/Dreieck'
-require 'v1_Geometrie/Rechteck'
+require_relative 'Kreis'
+require_relative 'Dreieck'
+require_relative 'Rechteck'
 
 

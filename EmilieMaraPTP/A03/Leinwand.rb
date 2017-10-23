@@ -1,5 +1,5 @@
 require 'tk'
-require 'v1_Geometrie/Einstellungen'
+require_relative 'einstellungen'
 
 class Leinwand < TkCanvas
 

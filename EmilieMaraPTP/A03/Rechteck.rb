@@ -1,6 +1,6 @@
-require 'v1_Geometrie/Point'
-require 'v1_Geometrie/Leinwand'
-require 'v1_Geometrie/Einstellungen'
+require_relative 'Point'
+require_relative 'Leinwand'
+require_relative 'Einstellungen'
 
 class Rechteck
   
