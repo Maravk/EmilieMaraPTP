@@ -1,12 +1,15 @@
 require 'tk'
 require_relative 'einstellungen'
 
+# Klasse, deren Objekte eine Zeichenfläche repräsentieren.
+# Author:: Birgit Wendholt
+# Author:: Bernd Kahlbrandt, an Ruby Style Guide angepasst.
 class Leinwand < TkCanvas
 
   private_class_method :new
   @@einzige_instanz = nil
  
-  def Leinwand.gib_einzige_instanz(parent=nil,*args,&block)
+ def Leinwand.gib_einzige_instanz(parent=nil,*args,&block)
     if @@einzige_instanz == nil 
       @@einzige_instanz = new(parent,*args,&block)
     end

@@ -1,14 +1,16 @@
-require_relative 'point'
-require_relative 'Leinwand'
-require_relative 'Einstellungen'
-
+require_relative 'punkt'
+require_relative 'leinwand'
+require_relative 'einstellungen'
+# Klasse, deren Objekte gleichschenklige Dreiecke repräsentieren.
+# Author:: Birgit Wendholt
+# Author:: Bernd Kahlbrandt, an Ruby Style Guide angepasst.
 class Dreieck
 
-  # Wir gehen von einem gleichschenkligen Dreick aus
-  # Siehe auch zeichne_dreieck in der Klasse Leinwand
+  # Wir gehen von einem gleichschenkligen Dreick aus.
+  # Siehe auch zeichne_dreieck in der Klasse Leinwand.
   def initialize()
-    # Alle Dreicke haben zu Beginn ihr Spitze im Punkt (100,100)
-    @spitze = Point.new(50,15)
+    # Alle Dreicke haben zu Beginn ihr Spitze im Punkt (100,100).
+    @spitze = Punkt.new(50,15)
     # eine Hoehe  von 40 und Breite von 30
     @hoehe = 30
     @breite = 40
@@ -18,7 +20,7 @@ class Dreieck
     @farbe = 'green'
   end
   
-  # Ist das Dreieck sichtbar
+  # Ist das Dreieck sichtbar?
   def sichtbar?
     return @sichtbar
   end
@@ -38,39 +40,39 @@ class Dreieck
   def breite()
       return @breite    
   end
-  # Mache das Dreieck sichtbar  
+  # Mache das Dreieck sichtbar!  
   def sichtbar_machen
       @sichtbar = true
       zeichnen()
       puts(self)      
   end
   
-  # und unsichtbar
+  # Mache das Dreieck unsichtbar!
   def unsichtbar_machen
      loeschen()
      @sichtbar = false    
   end
   
-  # Verschiebe das Dreieck im 10 Bildpunkte nach unten
+  # Verschiebe das Dreieck um 10 Bildpunkte nach unten!
   def nach_unten_bewegen
-    bewegen_um_punkt(Point.new(0,10))
+    bewegen_um_punkt(Punkt.new(0,10))
   end
   
-  # Verschiebe das Dreieck um anzahl Bildpunkte horizontal
+  # Verschiebe das Dreieck um anzahl Bildpunkte horizontal!
   def horizontal_bewegen(anzahl)
-     bewegen_um_punkt(Point.new(anzahl,0))        
+     bewegen_um_punkt(Punkt.new(anzahl,0))        
   end
   
-  # Verschiebe das Dreieck um anzahl Bildpunkte vertikal
+  # Verschiebe das Dreieck um anzahl Bildpunkte vertikal!
   def vertikal_bewegen(anzahl)
-    bewegen_um_punkt(Point.new(0,anzahl))
+    bewegen_um_punkt(Punkt.new(0,anzahl))
   end
   
   # Bewegt das Dreieck langsam vertikal um 
-  # entfernung Bildpunkte   
+  # entfernung Bildpunkte.   
   def langsam_vertikal_bewegen(entfernung)
       absolute_entfernung = entfernung
-      if( sichtbar?) 
+      if sichtbar? 
         delta  = 1
         if entfernung < 0 
           delta = -1
@@ -81,15 +83,15 @@ class Dreieck
         Leinwand.gib_einzige_instanz().
               bewege(self,absolute_entfernung,x_delta,y_delta)
       end 
-      @spitze = @spitze + Point.new(0,entfernung)
+      @spitze = @spitze + Punkt.new(0,entfernung)
   end
 
   
-  # Methode für das Bewegen eines Dreieck
+  # Methode für das Bewegen eines Dreieck.
   def bewegen_um_punkt(punkt)
     @spitze = @spitze + punkt
-    # Zeichne das verschobene Dreieck
-      if (sichtbar?)
+    # Zeichne das verschobene Dreieck.
+      if sichtbar?
         Leinwand.gib_einzige_instanz().verschiebe(self,punkt.x,punkt.y)      
       end
   end
@@ -115,7 +117,7 @@ class Dreieck
       if neue_farbe == "schwarz"
         @farbe = :black
       end
-      if (sichtbar?)
+      if sichtbar?
           Leinwand.gib_einzige_instanz().farbe_aendern(self)   
       end    
   end

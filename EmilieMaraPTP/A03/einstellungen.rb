@@ -1,3 +1,6 @@
+require_relative 'einstellungen_geometrie'
+#Author:: Birgit Wendholt
+#Author:: Bernd Kahlbrandt Auf Ruby-Stylguide angepasst.
 # generischer Instanzenzähler für alle Klassen
 # Dies zu verstehen wird Ihnen erst am Ende der Vorlesung möglich sein
 #class Object
@@ -30,17 +33,19 @@ $INSPECTOR = 'Inspektor'
 $FILEMENU = 'Datei'
 $CLASSMENU = 'Klassen'
 
-require_relative 'EinstellungenGeometrie'
 
 # DIE REIHENFOLGE DARF NICHT GEÄNDERT WERDEN
 # VARIABLE $CLASSES MUSS DEFINIERT SEIN
 # Metaprogrammierung: generischer Instancecount
+# @author Birgit Wendholt
+# @author Bernd Kahlbrandt, an Ruby Style Guide angepasst, yard verwendet
 
-class Object
-  def intern_to_s()
-    to_s()
-  end
-end
+alias intern_to_s to_s
+#class Object
+#  def intern_to_s()
+#    to_s()
+#  end
+#end
 
 class InstanceCounter
   class << self
@@ -86,8 +91,8 @@ $CLASSES.each do |class_sym|
   })
 end
 
-require_relative 'Kreis'
-require_relative 'Dreieck'
-require_relative 'Rechteck'
+require_relative 'kreis'
+require_relative 'dreieck'
+require_relative 'rechteck'
 
 

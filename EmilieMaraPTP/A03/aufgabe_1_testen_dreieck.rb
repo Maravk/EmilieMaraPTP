@@ -2,7 +2,7 @@
 # Testen
 
 require 'test/unit'
-require_relative 'v1_Geometrie/dreieck'
+require_relative 'dreieck'
 
 class TestDreieck < Test::Unit::TestCase
 

@@ -10,6 +10,9 @@ $CLASSES = [ :Kreis, :Dreieck, :Rechteck ]
 # Methoden mit variablen Argumentlisten
 # Methoden mit Parameter Defaults 
 # um nur einiges zu nennen
+# Author:: Birgit Wendholt
+# Author:: Bernd Kahlbrandt, an Ruby Style Guide angepasst.
+  
 
 $METHOD_CONFIG = {
    :Kreis => {
