@@ -1,17 +1,16 @@
-require_relative 'punkt'
-require_relative 'leinwand'
-require_relative 'einstellungen'
-# Author:: Birgit Wendholt
-# Author:: Bernd Kahlbrandt, an Ruby Style Guide angepasst.
+require 'v1_Geometrie/Point'
+require 'v1_Geometrie/Leinwand'
+require 'v1_Geometrie/Einstellungen'
+
 class Rechteck
   
   # initialize wird aufgerufen, wenn Instanzen der Klasse erzeugt werden
-  # '@xxxx' sind die Instanzvariablen der Instanzen
+  # @xxxx sind die Instanzvariablen der Instanzen
   def initialize()
      
       # Alle Rechtecke haben zu Beginn ihre obere linke Ecke im Punkt 100,100
       # breite und laenge sind 30
-      @obere_linke_ecke = Punkt.new(60,50)
+      @obere_linke_ecke = Point.new(60,50)
       @breite = 30
       @hoehe = 30
       
@@ -22,16 +21,16 @@ class Rechteck
       
   end
   
-  def initialize(x,y,breite,hoehe,farbe)
-    @obere_linke_ecke = Punkt.new(x,y)
-    @breite = breite
-    @hoehe = hoehe
-    
-    # und die Farbe blau
-    @farbe = farbe
-    # und sind unsichtbar
-    @sichtbar = false
-  end
+#  def initialize(x,y,breite,hoehe,farbe)
+#    @obere_linke_ecke = Point.new(x,y)
+#    @breite = breite
+#    @hoehe = hoehe
+#    
+#    # und die Farbe blau
+#    @farbe = farbe
+#    # und sind unsichtbar
+#    @sichtbar = false
+#  end
   
   def sichtbar?
     return @sichtbar
@@ -61,24 +60,24 @@ class Rechteck
   
   def nach_unten_bewegen()
     # Obere rechte Ecke um 10 Pixel nach unten verschieben
-    bewegen_um_punkt(Punkt.new(0,10))
+    bewegen_um_punkt(Point.new(0,10))
   end
   
   def horizontal_bewegen(anzahl)
     # Obere rechte Ecke um Anzahl Pixel horizontal verschieben
-    bewegen_um_punkt(Punkt.new(anzahl,0))
+    bewegen_um_punkt(Point.new(anzahl,0))
   end
   
   def vertikal_bewegen(anzahl)
     # Obere rechte Ecke um Anzahl Pixel vertikal verschieben
-    bewegen_um_punkt(Punkt.new(0,anzahl))
+    bewegen_um_punkt(Point.new(0,anzahl))
   end  
   
   # Bewegt das Rechteck langsam vertikal um 
   # entfernung Bildpunkte   
   def langsam_vertikal_bewegen(entfernung)
     absolute_entfernung = entfernung
-    if sichtbar? 
+    if( sichtbar?) 
       delta  = 1
       if entfernung < 0 
         delta = -1
@@ -89,7 +88,7 @@ class Rechteck
       Leinwand.gib_einzige_instanz().
             bewege(self,absolute_entfernung,x_delta,y_delta)
     end 
-    @obere_linke_ecke = @obere_linke_ecke + Punkt.new(0,entfernung)
+    @obere_linke_ecke = @obere_linke_ecke + Point.new(0,entfernung)
   end
 
   def farbe 
@@ -115,7 +114,7 @@ class Rechteck
       if neue_farbe == "schwarz"
         @farbe = :black
       end
-      if sichtbar?
+      if (sichtbar?)
           Leinwand.gib_einzige_instanz().farbe_aendern(self)   
       end    
   end

@@ -1,7 +1,5 @@
 require 'tk'
-require_relative 'einstellungen'
-# Author:: Birgit Wendholt
-# Author:: Bernd Kahlbrandt, an Ruby Style Guide angepasst.
+require 'v1_Geometrie/Einstellungen'
 class ObjectInspector < TkToplevel
 
   

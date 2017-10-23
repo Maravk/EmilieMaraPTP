@@ -1,16 +1,14 @@
-require_relative 'punkt'
-require_relative 'leinwand'
-require_relative 'einstellungen'
-# Author:: Birgit Wendholt
-# Author:: Bernd Kahlbrandt, an Ruby Style Guide angepasst.
+require 'v1_Geometrie/Point'
+require 'v1_Geometrie/Leinwand'
+require 'v1_Geometrie/Einstellungen'
 
 class Kreis
  
   # initialize wird aufgerufen, wenn Instanzen der Klasse erzeugt werden
-  # '@xxxx' sind die Instanzvariablen der Instanzen
+  # @xxxx sind die Instanzvariablen der Instanzen
   def initialize()
       # Alle Kreise haben ihren Mittelpunkt zu Beginn im Punkt 100,100
-      @mittelpunkt= Punkt.new(20,60); 
+      @mittelpunkt= Point.new(20,60); 
       # und einen Radius von 40
       @radius = 15  
       
@@ -50,24 +48,24 @@ class Kreis
   
   def nach_unten_bewegen()
     # Mittelpunkt um 10 Pixel nach unten verschieben
-    bewegen_um_punkt(Punkt.new(0,10))      
+    bewegen_um_punkt(Point.new(0,10))      
   end
  
   def horizontal_bewegen(anzahl)
     # Mittelpukt um anzahl Pixel horizontal verschieben
-    bewegen_um_punkt(Punkt.new(anzahl,0))
+    bewegen_um_punkt(Point.new(anzahl,0))
   end
   
 
   def vertikal_bewegen(anzahl)
-     bewegen_um_punkt(Punkt.new(0,anzahl))
+     bewegen_um_punkt(Point.new(0,anzahl))
   end  
   
   # Bewege einen Kreis langsam vertikal um 
   # entfernung Bildpunkte   
   def langsam_vertikal_bewegen(entfernung)
       absolute_entfernung = entfernung
-      if sichtbar? 
+      if( sichtbar?) 
         delta  = 1
         if entfernung < 0 
           delta = -1
@@ -78,7 +76,7 @@ class Kreis
         Leinwand.gib_einzige_instanz().
               bewege(self,absolute_entfernung,x_delta,y_delta)
       end 
-      @mittelpunkt = @mittelpunkt + Punkt.new(0,entfernung)
+      @mittelpunkt = @mittelpunkt + Point.new(0,entfernung)
   end
 
   def farbe_aendern(neue_farbe)
@@ -122,7 +120,7 @@ class Kreis
   # Methode für das Verschieben eines Kreis 
   def bewegen_um_punkt(punkt)  
     @mittelpunkt = @mittelpunkt + punkt
-    if sichtbar?
+    if (sichtbar?)
       Leinwand.gib_einzige_instanz().verschiebe(self,punkt.x,punkt.y)      
     end
   end

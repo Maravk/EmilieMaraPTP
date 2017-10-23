@@ -1,5 +1,3 @@
-# @author Birgit Wendholt
-# @author Bernd Kahlbrandt, an Ruby Style Guide angepasst, yard verwendet
 class Point
   def initialize(x,y)
     @x = x
@@ -14,9 +12,9 @@ class Point
   end
   def + (point)
     return Point.new(@x+point.x,@y+point.y)
-#    '@x = @x+point.x'
-#    '@y = @y+point.y'
-#    'return self'
+#    @x = @x+point.x
+#    @y = @y+point.y
+#    return self
   end
   
   def to_s()
