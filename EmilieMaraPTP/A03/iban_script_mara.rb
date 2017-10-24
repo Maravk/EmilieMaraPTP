@@ -16,5 +16,9 @@ iban = iban1.return_iban
 puts''
 puts "Fertige IBAN: " + iban
 iban1.check_this_iban(iban)
+<<<<<<< HEAD
 
 #puts "Fertige IBAN: " + iban
+=======
+puts "Fertige IBAN: " + iban
+>>>>>>> branch 'master' of https://github.com/Maravk/EmilieMaraPTP.git
