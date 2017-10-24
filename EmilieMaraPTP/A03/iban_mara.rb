@@ -90,14 +90,15 @@ class Iban
     char << char_to_ascii(@iban[0])
     char << char_to_ascii(@iban[1])
     char << @iban[2] << @iban[3]
-    puts char.to_s
     
     iban_temp[0..3] = ''
-    puts iban_temp
     iban_temp << char
-    puts iban_temp
     if iban_temp.to_i % 97 == 1
       puts "Die IBAN ist korrekt"
+      return 1
+    else
+      puts "Die IBAN ist nicht korrekt"
+      return 0
     end
   end
 end

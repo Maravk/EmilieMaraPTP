@@ -32,8 +32,13 @@ class Test_iban < Test::Unit::TestCase
   end
   
   
-  # Test - Umwandlung von Zahlen zu Buchstabn
+  # Test - Umwandlung von Buchstaben zu Zahlen
   def test_char_to_ascii
     assert_equal("101112", @meine_iban.char_to_ascii("abc"), "Char to Ascii - 65 ist falsch")
+  end
+  
+  # Test - IBAN Prüfziffer Check
+  def test_check_iban
+    assert_equal(true, @meine_iban.check_iban, "Der IBAN Test ist falsch")
   end
 end
