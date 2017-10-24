@@ -1,6 +1,7 @@
 require_relative 'punkt'
 require_relative 'leinwand'
 require_relative 'einstellungen'
+require_relative 'point'
 # Author:: Birgit Wendholt
 # Author:: Bernd Kahlbrandt, an Ruby Style Guide angepasst.
 class Rechteck

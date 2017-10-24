@@ -13,7 +13,7 @@ require_relative 'Rechteck'
     
     # Neues Objekt der Testklasse wird erstellt.
    def setup()
-     @rechteck=Rechteck.new
+     @rechteck=Rechteck.new(60,50,30,30, "blue")
    end
   
    
@@ -36,7 +36,7 @@ require_relative 'Rechteck'
     assert_equal(:red, @rechteck.farbe, 'Dies ist die falsche Farbe!')
     
     @rechteck.farbe_aendern('gelb')
-    assert_equa(:yellow, @rechteck.farbe, 'Dies ist die falsche Farbe!')
+    assert_equal(:yellow, @rechteck.farbe, 'Dies ist die falsche Farbe!')
     
     @rechteck.farbe_aendern('weiss')
     assert_equal(:white, @rechteck.farbe, 'Dies ist die falsche Farbe!')
