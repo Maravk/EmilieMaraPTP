@@ -1,5 +1,6 @@
 # Author:: Mara von Kroge, Emilie Sarina Schuller, 21. Oktober 2017
 # Testfälle für die IBAN-Aufgabe
+# TeamChallenger
 
 # Die benötigten Dateien werden angefordert.
 require 'test/unit'
