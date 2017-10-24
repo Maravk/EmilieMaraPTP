@@ -96,7 +96,7 @@ class Iban
     puts iban_temp
     iban_temp << char
     puts iban_temp
-    if iban_temp.to_i / 97 == 1
+    if iban_temp.to_i % 97 == 1
       puts "Die IBAN ist korrekt"
     end
   end
