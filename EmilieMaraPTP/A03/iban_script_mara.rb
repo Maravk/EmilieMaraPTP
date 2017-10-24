@@ -1,5 +1,6 @@
-#Author:: Emilie Sarina Schuller
-#Skript zur IBAN-Aufgabe
+# Author:: Emilie Sarina Schuller
+# Skript zur IBAN-Aufgabe
+# TeamChallenger
 
 require_relative 'iban_mara'
 
@@ -12,7 +13,8 @@ puts''
 iban = ""
 iban1 = Iban.new('DE', 54874843, 34543234)
 iban = iban1.return_iban
+puts''
 puts "Fertige IBAN: " + iban
 iban1.check_this_iban(iban)
 
-puts "Fertige IBAN: " + iban
+#puts "Fertige IBAN: " + iban
