@@ -1,53 +1,67 @@
 #Author: Emilie Schuller, 22. Oktober 2017
-# Testen
+# Testen - Kreis
 
+
+# Die Testklasse sowie der zum Testen benötigte Sourcode werden angefordert.
 require 'test/unit'
-require_relative 'kreis'
+require_relative 'Kreis'
 
+# Testklasse wird erstellt.
 class TestKreis < Test::Unit::TestCase
 
-  
+  # Neues Obejekt der Klasse wird erstellt.
     def setup()
-      @Kreis=Kreis.new
+      @kreis=Kreis.new
     end
     
     
+    # Initialize-Test ('Was rauskommen soll, 'Methode', 'Fehlermeldung')
+    def test_initialize
+      assert_equal(false,@kreis.sichtbar?(),'Die Sichtbarkeit ist nicht richtig!')
+      assert_equal('red',@kreis.farbe(), 'Die Farbe ist nicht richtig!')
+      assert_equal(15,@kreis.radius(), 'Der Radius nicht richtig!')
+    end
+    
+    
+    # Farben ändern Test
   def test_farbe_aendern
     
-    @Kreis.farbe_aendern('gruen')
-    assert_equal('green', @Kreis.farbe(), 'Diese Farbe ist nicht richtig!')
+    @kreis.farbe_aendern('gruen')
+    assert_equal(:green, @kreis.farbe(), 'Diese Farbe ist nicht richtig!')
     
-    @Kreis.farbe_aendern('rot')
-      assert_equal('red', @Kreis.farbe(), 'Diese Farbe ist nicht richtig!')
+    @kreis.farbe_aendern('rot')
+      assert_equal(:red, @kreis.farbe(), 'Diese Farbe ist nicht richtig!')
       
-    @Kreis.farbe_aendern('gelb')
-      assert_equal('yellow', @Kreis.farbe(), 'Diese Farbe ist nicht richtig!')
+    @kreis.farbe_aendern('gelb')
+      assert_equal(:yellow, @kreis.farbe(), 'Diese Farbe ist nicht richtig!')
       
-    @Kreis.farbe_aendern('weiss')
-    assert_equal('white', @Kreis.farbe(), 'Diese Farbe ist nicht richtig!')
+    @kreis.farbe_aendern('weiss')
+    assert_equal(:white, @kreis.farbe(), 'Diese Farbe ist nicht richtig!')
     
-    @Kreis.farbe_aendern('schwarz')
-    assert_equal('black', @Kreis.farbe(), 'Diese Farbe ist nicht richtig!')
+    @kreis.farbe_aendern('schwarz')
+    assert_equal(:black, @kreis.farbe(), 'Diese Farbe ist nicht richtig!')
   end 
   
   
-    
-    def test_nach_unten_bewegen
-        @Kreis.nach_unten_bewegen()
-        assert_equal('0,10', @Kreis.bewegen_um_punkt(Punkt.new(0,10)), 'Dieser Punkt ist nicht richtig')
-    end 
+    # Test - Nach unten bewegen
+    def test_nach_unten_bewegen(x,y)
+        @kreis.nach_unten_bewegen
+        assert_equal(20, @mittelpunkt.x, 'Dieser x-Punkt ist falsch')
+        assert_equal(70, @mittelpunkt.y, 'Dieser y-Punkt ist falsch!')
  
     
-    
-    def test_horzontal_bewegen
-      @Kreis.horzontal_bewegen(anzahl)
-      assert_equal('anzahl,0', @Kreis.bewegen_um_punkt(Punkt.new(anzahl,0)), 'Dieser Punkt ist nicht richtig!')
+    # Test - Horizontal bewegen
+    def test_horizontal_bewegen(x,y)
+      @kreis.horizontal_bewegen
+      assert_equal(20, @mittelpunkt.x, 'Dieser x-Punkt ist falsch!')
+      assert_equal(0, @mittelpunkt.y, 'Dieser y-Punkt ist falsch!')
     end 
    
-    
-    def test_vertikal_bewegen
-     @Kreis.vertiakl_bewegen(anzahl)
-     assert_equal('0,anzahl', @Kreis.bewegen_um_punkt(Punkt.new(0,anzahl)), 'Dieser Punkt ist nicht richtig!')
+    # Test - Vertikal bewegen
+    def test_vertikal_bewegen(x,y)
+     @kreis.vertiakl_bewegen
+     assert_equal(0, @mittelpunkt.x, 'Dieser x-Punkt ist falsch!')
+     assert_equal(60, @mittelpunkt.y, 'Dieser y-Punkt ist falsch!')
     end
-    
+    end 
 end 

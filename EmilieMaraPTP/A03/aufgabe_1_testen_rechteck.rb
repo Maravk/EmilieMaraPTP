@@ -1,53 +1,71 @@
 # Author:: Emilie Sarina Schuller, 23. Oktober 2017
 # Testen - Rechteck
 
-require 'test/unit'
-require_relative 'rechteck'
 
+# Die Testklasse sowie der zum Testen benötigte Sourcecode werden angefordert.
+require 'test/unit'
+require_relative 'Rechteck'
+
+
+# Neue Testklasse wird erstellt.
   class TestRechteck < Test::Unit::TestCase
     
     
+    # Neues Objekt der Testklasse wird erstellt.
    def setup()
-     @Rechteck=Rechteck.new
+     @rechteck=Rechteck.new
    end
   
    
+   # Initialize-Test
+   # ('Was rauskommen soll', 'Methode', 'Fehlermeldung')
+   def test_initalize()
+     assert_equal('blue', @rechteck.farbe, 'Die Farbe ist nicht richtig!')
+     assert_equal(false, @rechteck.sichtbar?, 'Die Sichtbarkeit ist falsch!')
+     assert_equal(30, @rechteck.breite, 'Die Breite ist falsch!')
+     assert_equal(30, @rechteck.hoehe, 'Die Höhe ist falsch!')
+   end
+   
+   # Test - Farbe ändern
   def test_farbe_aendern
     
-    @Rechteck.farbe_aendern('gruen')
-    assert_equal=('green', @Rechteck.farbe,'Dies ist die falsche Farbe!')
+    @rechteck.farbe_aendern('gruen')
+    assert_equal(:green, @rechteck.farbe, 'Dies ist die falsche Farbe!')
     
-    @Rechteck.farbe_aendern('rot')
-    assert_equal=('red', @Rechteck.farbe, 'Dies ist die falsche Farbe!')
+    @rechteck.farbe_aendern('rot')
+    assert_equal(:red, @rechteck.farbe, 'Dies ist die falsche Farbe!')
     
-    @Rechteck.farbe_aendern('gelb')
-    assert_equal=('yellow', @Rechteck.farbe, 'Dies ist die falsche Farbe!')
+    @rechteck.farbe_aendern('gelb')
+    assert_equa(:yellow, @rechteck.farbe, 'Dies ist die falsche Farbe!')
     
-    @Rechteck.farbe_aendern('weiss')
-    assert_equal=('white', @Rechteck.farbe, 'Dies ist die falsche Farbe!')
+    @rechteck.farbe_aendern('weiss')
+    assert_equal(:white, @rechteck.farbe, 'Dies ist die falsche Farbe!')
     
-    @Rechteck.farbe_aendern('schwarz')
-    assert_equal=('black', @Rechteck.farbe, 'Dies ist die falsche Farbe!')
+    @rechteck.farbe_aendern('schwarz')
+    assert_equal(:black, @rechteck.farbe, 'Dies ist die falsche Farbe!')
     
   
-  
+  # Test - Nach unten bewegen
     def test_nach_unten_bewegen
-        @Rechteck.nach_unten_bewegen()
-        assert_equal('0,10', @Rechteck.bewegen_um_punkt(Punkt.new(0,10)), 'Dieser Punkt ist nicht richtig')
-    end 
+        @rechteck.nach_unten_bewegen()
+        assert_equal(0, @obere_linke_ecke.x, 'Dieser x-Punkt ist falsch!')
+        assert_equal(60, @obere_linke_ecke.y, 'Dieser y-Punkt ist falsch!')
+    end
  
     
-    
-    def test_horzontal_bewegen
-      @Rechteck.horzontal_bewegen(anzahl)
-      assert_equal('anzahl,0', @Rechteck.bewegen_um_punkt(Punkt.new(anzahl,0)), 'Dieser Punkt ist nicht richtig!')
+    # Test - Horizontal bewegen
+    def test_horzontal_bewegen(anzahl)
+      @rechteck.horzontal_bewegen
+      assert_equal(60, @obere_linke_ecke.x, 'Dieser x-Punkt ist falsch!')
+      assert_equal(0, @obere_linke_ecke.y, 'Dieser y-Punkt ist falsch!')
     end 
    
-    
-    def test_vertikal_bewegen
-     @Rechteck.vertiakl_bewegen(anzahl)
-     assert_equal('0,anzahl', @Rechteck.bewegen_um_punkt(Punkt.new(0,anzahl)), 'Dieser Punkt ist nicht richtig!')
+    # Test - Vertikal bewegen
+    def test_vertikal_bewegen(anzahl)
+     @Rechteck.vertiakl_bewegen
+     assert_equal(0, @obere_linke_ecke.x,'Dieser x-Punkt ist falsch!')
+     assert_equal(50 , @obere_linke_ecke.y, 'Dieser y-Punkt ist falsch!')
     end
   end
   
-end
+end 
