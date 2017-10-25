@@ -13,6 +13,7 @@ class TestDreieck < Test::Unit::TestCase
   # Neues Objekt der Klasse wird erstellt. 
     def setup()
       @dreieck=Dreieck.new
+      
     end
     
     

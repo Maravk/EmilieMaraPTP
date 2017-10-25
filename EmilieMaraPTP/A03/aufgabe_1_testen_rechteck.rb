@@ -46,11 +46,11 @@ require_relative 'Rechteck'
     
   
   # Test - Nach unten bewegen
-    def test_nach_unten_bewegen
-        @rechteck.nach_unten_bewegen()
+    def test_nach_unten_bewegen(anzahl)
+        @rechteck.nach_unten_bewegen
         assert_equal(0, @obere_linke_ecke.x, 'Dieser x-Punkt ist falsch!')
         assert_equal(60, @obere_linke_ecke.y, 'Dieser y-Punkt ist falsch!')
-    end
+    end 
  
     
     # Test - Horizontal bewegen
