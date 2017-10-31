@@ -122,10 +122,10 @@ class Iban
     
     # Sofern das Modulo der IBAN und der Zahl 97 1 entspricht, ist die IBAN korrekt.
     if iban_temp.to_i % 97 == 1
-      puts "Die IBAN ist korrekt"
+      puts "Die IBAN ist korrekt!"
       return 1
     else
-      puts "Die IBAN ist nicht korrekt"
+      puts "Die IBAN ist nicht korrekt!"
       return 0
     end
   end

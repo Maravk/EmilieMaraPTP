@@ -10,7 +10,7 @@ class Rechteck
   # '@xxxx' sind die Instanzvariablen der Instanzen
   def initialize()
      
-      # Alle Rechtecke haben zu Beginn ihre obere linke Ecke im Punkt 100,100
+      # Alle Rechtecke haben zu Beginn ihre obere linke Ecke im Punkt 60,50
       # breite und laenge sind 30
       @obere_linke_ecke = Punkt.new(60,50)
       @breite = 30
@@ -23,16 +23,16 @@ class Rechteck
       
   end
   
-  def initialize(x,y,breite,hoehe,farbe)
-    @obere_linke_ecke = Point.new(x,y)
-    @breite = breite
-    @hoehe = hoehe
-    
-    # und die Farbe blau
-    @farbe = farbe
-    # und sind unsichtbar
-    @sichtbar = false
-  end
+#  def initialize(x,y,breite,hoehe,farbe)
+#    @obere_linke_ecke = Point.new(x,y)
+#    @breite = breite
+#    @hoehe = hoehe
+#    
+#    # und die Farbe blau
+#    @farbe = farbe
+#    # und sind unsichtbar
+#    @sichtbar = false
+#  end
   
   def sichtbar?
     return @sichtbar

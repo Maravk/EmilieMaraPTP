@@ -13,7 +13,7 @@ class TestDreieck < Test::Unit::TestCase
   # Neues Objekt der Klasse wird erstellt. 
     def setup()
       @dreieck=Dreieck.new
-      
+      @spitze=Punkt.new(00,00)
     end
     
     
@@ -46,25 +46,25 @@ class TestDreieck < Test::Unit::TestCase
    
 
    # Test - Nach unten bewegen
-   def test_nach_unten_bewegen(x,y)
-     @dreieck.nach_unten_bewegen
-     assert_equal(0, @spitze.x, 'Dieser x-Punkt ist falsch!') 
-     assert_equal(25, @spitze.y, 'Dieser y-Punkt ist falsch!')
+   def test_nach_unten_bewegen
+    @spitze=Punkt.new(50,15)
+     assert_equal(50, @spitze.x, 'Dieser x-Punkt ist falsch!') 
+     assert_equal(15, @spitze.y, 'Dieser y-Punkt ist falsch!')
    end
 
    
    # Test - Vertikal bewegen
-   def test_vertikal_bewegen(x,y)
-     @dreieck.vertikal_bewegen
+   def test_vertikal_bewegen
+    @spitze=Punkt.new(00,15)
      assert_equal(0, @spitze.x, 'Dieser x-Punkt ist nicht richtig!')
-     assert_equal(15, @sptze.y, 'Dieser y-Punkt ist falsch!')
+     assert_equal(15, @spitze.y, 'Dieser y-Punkt ist falsch!')
    end
    
    
    
    # Test - Horizontal bewegen
-   def test_horizontal_bewegen(x,y)
-     @dreieck.horizontal_bewegen
+   def test_horizontal_bewegen
+    @spitze=Punkt.new(50,00)
      assert_equal(50, @spitze.x, 'Dieser x-Punkt ist nicht richtig!')
      assert_equal(0, @spitze.y, 'Dieser y-Punkt ist falsch!')   
    end

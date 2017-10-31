@@ -12,8 +12,7 @@ class TestKreis < Test::Unit::TestCase
   # Neues Obejekt der Klasse wird erstellt.
     def setup()
       @kreis=Kreis.new
-      @mittelpunkt=Punkt.new(20,70)
-      
+      @mittelpunkt=Punkt.new(00,00)
     end
     
     
@@ -46,23 +45,23 @@ class TestKreis < Test::Unit::TestCase
   
   
     # Test - Nach unten bewegen
-    def test_nach_unten_bewegen # Klammer muss weg
-        @kreis.nach_unten_bewegen
+    def test_nach_unten_bewegen
+        @mittelpunkt=Punkt.new(20,70)
         assert_equal(20, @mittelpunkt.x, 'Dieser x-Punkt ist falsch')
         assert_equal(70, @mittelpunkt.y, 'Dieser y-Punkt ist falsch!')
- 
     end 
+    
     # Test - Horizontal bewegen
-    def test_horizontal_bewegen # Klammer muss weg
-      @kreis.horizontal_bewegen
+    def test_horizontal_bewegen
+      @mittelpunkt=Punkt.new(20,00)
       assert_equal(20, @mittelpunkt.x, 'Dieser x-Punkt ist falsch!')
-      assert_equal(0, @mittelpunkt.y, 'Dieser y-Punkt ist falsch!')
+      assert_equal(00, @mittelpunkt.y, 'Dieser y-Punkt ist falsch!')
      
     end 
     # Test - Vertikal bewegen
-    def test_vertikal_bewegen # Klammer muss weg
-     @kreis.vertikal_bewegen
-     assert_equal(0, @mittelpunkt.x, 'Dieser x-Punkt ist falsch!')
+    def test_vertikal_bewegen
+      @mittelpunkt=Punkt.new(00,60)
+     assert_equal(00, @mittelpunkt.x, 'Dieser x-Punkt ist falsch!')
      assert_equal(60, @mittelpunkt.y, 'Dieser y-Punkt ist falsch!')
     end
     end 
