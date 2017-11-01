@@ -8,7 +8,7 @@ require_relative 'iban'
 
 
 # Testklassse wird erstellt.
-class Test_iban < Test::Unit::TestCase
+class TestIban < Test::Unit::TestCase
   def setup()
     
     # Neues Objekt mit festegelegten Werten wird erstellt.
