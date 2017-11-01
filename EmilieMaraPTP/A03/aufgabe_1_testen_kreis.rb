@@ -1,4 +1,4 @@
-#Author: Emilie Schuller, 22. Oktober 2017
+# Author: Mara von Kroge, Emilie Schuller, 22. Oktober 2017
 # Testen - Kreis
 
 

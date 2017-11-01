@@ -1,4 +1,4 @@
-#Author: Emilie Schuller, Mara von Kroge, 22. Oktober 2017
+# Author: Emilie Schuller, Mara von Kroge, 22. Oktober 2017
 # Testen - Dreieck
 
 

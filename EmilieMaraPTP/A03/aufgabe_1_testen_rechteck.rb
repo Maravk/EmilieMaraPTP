@@ -1,4 +1,4 @@
-# Author:: Emilie Sarina Schuller, 23. Oktober 2017
+# Author:: Emilie Sarina Schuller, Mara von Kroge, 23. Oktober 2017
 # Testen - Rechteck
 
 
