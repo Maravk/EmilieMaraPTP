@@ -7,7 +7,7 @@ require_relative "aufgabe_1"
 # Neues Element "Half Baked" wird am Ende hinzugefügt.
 puts queue.push << "Half Baked"
 
-# Das erste Element "Cookie Dough" wird  zurückgegeben, aber es bleib in der Queue.
+# Das erste Element "Cookie Dough" wird zurückgegeben, aber es bleib in der Queue.
 puts queue.shift
 
 # Das letzte Element "Chocolate Fudge Brownie" wird entfernt.

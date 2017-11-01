@@ -42,7 +42,7 @@ class Iban
   # Char bezeichnet die jeweilige Länderkennung und schreibt diese stets groß.
   # Die jeweilige Stelle der Buchstaben werden im ASCII-Code gesucht und davon wird die Stelle des Buchstaben 'A' im ASCII-Code abgezogen.
   # Hierdurch erhält man die Stelle des Buchstaben im Alphabet und man fügt die 10 hinzu.
-  # Diese Zahlenwerte werden unter der Variable "ascii" gespeichert.
+  # Diese beiden Zahlenwerte werden unter der Variable "ascii" gespeichert.
   def char_to_ascii(charinput)
     chars = charinput
     ascii = ""
@@ -50,15 +50,17 @@ class Iban
       ascii << (buchstabe.ord - ('A'.ord)+10).to_s
     }
     return ascii
+    
   end
     
   
  # Methode "cal_pruefziffer()" wird erstellt. 
   def calc_pruefziffer()
 
+
     print "Länderkennung: "+ @laenderkennung
     
-    # Aufruf der Methode "char_to_ascii" mit dem Parameter @laenderkennung.
+    # 
     zum_anhaengen = char_to_ascii(@laenderkennung)
     puts ", konvertiert einzeln zu ascii integer + 10: " + zum_anhaengen
 
@@ -67,9 +69,9 @@ class Iban
     puts "Nummer zur Kalkulation der @pruefziffer: " + @pruefziffer
 
     
-    # Die Variable "@pruefziffer" wird zum Integer gemacht.
+    # Unter der Varibale "@pruefziffer" wird nun die "@bban" als String gespeichert.
     # Das Modulo von dem Wert der Variable "@pruefziffer" und der 97 wird berechnet.
-    # Der überschriebenen Variable "@pruefziffer" wird nun die Differenz aus der "@pruefziffer" und der 98 zugewiesen.
+    # Der überschriebenen Variable "@pruefziffer" wird nun die Differenz aus der 98 und der "@pruefziffer" zugewiesen.
     @pruefziffer = @pruefziffer.to_i
     @pruefziffer = @pruefziffer % 97
     puts "\"Nummer\" modulo 97: " + @pruefziffer.to_s
@@ -82,7 +84,7 @@ class Iban
       @pruefziffer.insert(0, '0')
     end
     puts "98 minus \"Nummer\" = Prüfziffer: " + @pruefziffer.to_s
-    return @pruefziffer.to_s
+    return @pruefziffer
   end
     
   
@@ -91,42 +93,55 @@ class Iban
     calc_bban
     calc_pruefziffer
     
-    # Unter der Variable "@iban" werden die "@laenderkennung", "pruefziffer.to_s" sowie die "@bban.to_s" zusammengefügt.
+    # Unter dem Attribut "@iban" werden die "@laenderkennung", "pruefziffer.to_s" sowie die "@bban.to_s" gespeichert.
     @iban << @laenderkennung << @pruefziffer.to_s << @bban.to_s
     return @iban
   end
   
   
   # Methode "check_this_iban(iban)" wird erstellt.
-  # Der Variable  "@iban" wird der Wert der Variable "iban" zugewiesen.
+  # Dem Attribut "@iban" wird der Wert der Variable "iban" zugewiesen.
   def check_this_iban(iban)
     @iban = iban
     check_iban
   end
   
   # Methode "check_iban" wird erstellt.
-  # Unter der Variable "char" wird ein leerer String gespeichert und unter "iban_temp" die Variable "@iban".
-  # In diesen leeren String werden die jeweiligen Buchstaben als Ziffern inklusive der Prüfziffer zusammengefasst.
+  # Unter der Variable "char" wird ein leerer String gespeichert und unter "iban_temp" das Attribut "@iban".
+  # In diesen leeren String werden die jeweiligen Buchstaben als Ziffern gespeichert, inklusive der Prüfziffer.
   def check_iban
     char = ""
     iban_temp = @iban
-    char << char_to_ascii(@laenderkennung[0])
-    char << char_to_ascii(@laenderkennung[1])
-    char << @laenderkennung[2] << @laenderkennung[3]
+    char << char_to_ascii(@iban[0])
+    char << char_to_ascii(@iban[1])
+    char << @iban[2] << @iban[3]
     
     
-    # Von der Variable "iban_temp" werden die ersten vier Zeichen entfernt...
+    # Von der Variable "iban_temp" werden die ersten vier Zeichen entfernt.
     iban_temp[0..3] = ''
-    # ...und diese hinten an die Zahl zur Berechnung angehängt. (nach Modulus 97-10 (ISO 7064))
-    iban_temp << char
+<<<<<<< HEAD
+    puts iban_temp
     
-    # Sofern das Modulo der IBAN und der Zahl 97 1 entspricht, ist die IBAN korrekt.
+    # Jeder Wert der Variable "char" wird an die Variable "iban_temp" gehängt.
+=======
+>>>>>>> branch 'master' of https://github.com/Maravk/EmilieMaraPTP.git
+    iban_temp << char
+<<<<<<< HEAD
+    puts iban_temp
+    
+    # Sofern das Modulo von der fertigen Iban und der Zahl 97 1 entspricht, ist die IBAN richtig.
+=======
+>>>>>>> branch 'master' of https://github.com/Maravk/EmilieMaraPTP.git
     if iban_temp.to_i % 97 == 1
+<<<<<<< HEAD
       puts "Die IBAN ist korrekt!"
+=======
+      puts "Die IBAN ist korrekt"
       return 1
     else
-      puts "Die IBAN ist nicht korrekt!"
+      puts "Die IBAN ist nicht korrekt"
       return 0
+>>>>>>> branch 'master' of https://github.com/Maravk/EmilieMaraPTP.git
     end
   end
 end
