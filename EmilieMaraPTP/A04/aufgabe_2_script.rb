@@ -12,3 +12,5 @@ puts stack.shift
 
 # Entfernen des Elements am Ende
 puts stack.pop
+puts''
+puts stack

@@ -112,13 +112,13 @@ class Iban
     iban_temp = @iban
     char << char_to_ascii(@laenderkennung[0])
     char << char_to_ascii(@laenderkennung[1])
-    char << @laenderkennung[2] << @laenderkennung[3]
+    char << @iban[2] << @iban[3]
     
     
     # Von der Variable "iban_temp" werden die ersten vier Zeichen entfernt...
     iban_temp[0..3] = ''
     # ...und diese hinten an die Zahl zur Berechnung angehängt. (nach Modulus 97-10 (ISO 7064))
-    iban_temp << char
+    iban_temp << char   
     
     # Sofern das Modulo der IBAN und der Zahl 97 1 entspricht, ist die IBAN korrekt.
     if iban_temp.to_i % 97 == 1
@@ -130,3 +130,5 @@ class Iban
     end
   end
 end
+
+    # Das wars!
