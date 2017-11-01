@@ -3,6 +3,7 @@
 
 puts "Hallo! Dieses Programm überprüft, ob Ihr eingegebenes Wort ein Palindrom ist!\nBitte geben Sie ein Wort Ihrer Wahl in die Konsole ein!"
 eingabe = gets.chomp
+eingabe.gsub!(/['?!,.:\-""]/, '')
 
 #Sofern der User nur ein Leerzeichen eingibt, fordert das Programm den Nutzer dazu auf, ein Wort einzugeben.
 if eingabe == " "
