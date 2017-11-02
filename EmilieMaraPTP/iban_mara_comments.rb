@@ -119,29 +119,28 @@ class Iban
     
     # Von der Variable "iban_temp" werden die ersten vier Zeichen entfernt.
     iban_temp[0..3] = ''
-<<<<<<< HEAD
+
     puts iban_temp
     
     # Jeder Wert der Variable "char" wird an die Variable "iban_temp" gehängt.
-=======
->>>>>>> branch 'master' of https://github.com/Maravk/EmilieMaraPTP.git
+
+
     iban_temp << char
-<<<<<<< HEAD
+
     puts iban_temp
     
     # Sofern das Modulo von der fertigen Iban und der Zahl 97 1 entspricht, ist die IBAN richtig.
-=======
->>>>>>> branch 'master' of https://github.com/Maravk/EmilieMaraPTP.git
+
+
     if iban_temp.to_i % 97 == 1
-<<<<<<< HEAD
+
       puts "Die IBAN ist korrekt!"
-=======
+
       puts "Die IBAN ist korrekt"
       return 1
     else
       puts "Die IBAN ist nicht korrekt"
       return 0
->>>>>>> branch 'master' of https://github.com/Maravk/EmilieMaraPTP.git
     end
   end
 end
