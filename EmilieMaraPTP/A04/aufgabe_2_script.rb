@@ -1,16 +1,29 @@
-# Author:: Mara von Kroge, Emilie Schuller, 29. Oktober 2071
-# Script zu Stack
+#Author:: Mara von Kroge, Emilie Schuller, 28. Oktober 2017
+# Script zum Stack
 
-# Datei wird angefordert
+# Date wird angefordert.
 require_relative "aufgabe_2"
 
-# Einfügen eines neuen Elements am Ende
-puts stack.push << "What-a-lotta Chocolate"
+# Neues Objekt der Klasse Stack wird erstellt.
+stack=Stack.new
 
-# Gibt das Element am Anfang zurück, belässt es aber im Stack
-puts stack.shift
 
-# Entfernen des Elements am Ende
-puts stack.pop
+# Methoden werden angewendet.
+puts "Erstes Element wird hinzugefügt: " 
+p stack.hinzufuegen_am_ende("Dame")
 puts''
-puts stack
+
+puts "Zweites Element wird hinzugefügt: " 
+p stack.hinzufuegen_am_ende("König")
+puts''
+
+puts "Drittes Element wird hinzugefügt: " 
+p stack.hinzufuegen_am_ende("Ass")
+puts''
+
+puts "Das letzte Element wird entfernt: " 
+p stack.entfernen_am_ende
+puts''
+
+puts "Das neue letzte Element wird ausgegeben: " 
+p stack.letztes_element_ausgeben

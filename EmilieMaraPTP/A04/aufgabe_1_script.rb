@@ -4,13 +4,26 @@
 # Date wird angefordert.
 require_relative "aufgabe_1"
 
-# Neues Element "Half Baked" wird am Ende hinzugefügt.
-puts queue.push << "Half Baked"
+# Neues Objekt der Klasse Queue wird erstellt.
+@queue=Queue.new
 
-# Das erste Element "Cookie Dough" wird zurückgegeben, aber es bleib in der Queue.
-puts queue.shift
 
-# Das letzte Element "Chocolate Fudge Brownie" wird entfernt.
-puts queue.pop
+# Methoden werden angewendet.
+puts "Erstes Element wird hinzugefügt: " 
+p queue.hinzufuegen_am_ende("Cookie Dough")
 puts''
-puts queue
+
+puts "Zweites Element wird hinzugefügt: " 
+p queue.hinzufuegen_am_ende("Karamel Sutra")
+puts''
+
+puts "Drittes Element wird hinzugefügt: " 
+p queue.hinzufuegen_am_ende("What-a-lotta Chocolate")
+puts''
+
+puts "Das erste Element wird entfernt: " 
+p queue.entfernen_am_anfang
+puts''
+
+puts "Das neue erste Element wird ausgegeben: " 
+p queue.erstes_element_ausgeben
