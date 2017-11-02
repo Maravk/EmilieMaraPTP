@@ -6,7 +6,7 @@ class Queue
   def initialize
     
     # Neues Array wird erstellt.
-    queue=Array.new()
+    @queue=Array.new
   end
   
   # Methode für das Hinzufügen am Ende.

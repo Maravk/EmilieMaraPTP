@@ -12,20 +12,17 @@ def setup()
 end
 
 def test_hinzufuegen_am_ende
-  @karte="Dame"
-  assert_equal("Dame", @stack << karte, "Diese Karte ist falsch!")
-  @karte="König"
-  assert_equal("König", @stack << karte, "Diese Karte ist falsch!")
-  @karte="Ass"
-  assert_equal("Ass", @stack << karte, "Diese Karte ist falsch!")
+  assert_equal("Dame", @stack.hinzufuegen_am_ende, "Diese Karte ist falsch!")
+  assert_equal("König", @stack.hinzufuegen_am_ende, "Diese Karte ist falsch!")
+  assert_equal("Ass", @stack.hinzufuegen_am_ende, "Diese Karte ist falsch!")
 end
 
 def test_entfernen_am_ende
-  assert_equal("Ass", @stack.pop, "Diese Karte ist falsch!")
+  assert_equal("Ass", @stack.entfernen_am_ende, "Diese Karte ist falsch!")
 end
 
 def test_letztes_element_ausgeben
-  assert_equal("König", @stack.last, "Diese Karte ist falsch!")
+  assert_equal("König", @stack.letztes_element_ausgeben, "Diese Karte ist falsch!")
 end
 
 
