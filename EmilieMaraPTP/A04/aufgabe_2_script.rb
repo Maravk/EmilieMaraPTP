@@ -9,21 +9,25 @@ stack=Stack.new
 
 
 # Methoden werden angewendet.
-puts "Erstes Element wird hinzugefügt: " 
-puts stack.hinzufuegen_am_ende("Dame")
+puts "Das erste Element wird hinzugefügt:" 
+puts stack.hinzufuegen_am_ende("Dame").to_s
 puts''
 
-puts "Zweites Element wird hinzugefügt: " 
-puts stack.hinzufuegen_am_ende("König")
+puts "Das zweite Element wird hinzugefügt:" 
+puts stack.hinzufuegen_am_ende("König").to_s
 puts''
 
-puts "Drittes Element wird hinzugefügt: " 
-puts stack.hinzufuegen_am_ende("Ass")
+puts "Das dritte Element wird hinzugefügt:" 
+puts stack.hinzufuegen_am_ende("Ass").to_s
 puts''
 
-puts "Das letzte Element wird entfernt: " 
-puts stack.entfernen_am_ende
+puts "Das letzte Element wird entfernt:" 
+puts stack.entfernen_am_ende.to_s
 puts''
 
-puts "Das neue letzte Element wird ausgegeben: " 
-puts stack.letztes_element_ausgeben
+puts "Das neue letzte Element wird ausgegeben:" 
+puts stack.letztes_element_ausgeben.to_s
+puts''
+
+puts "Das neue Array wird ausgegeben:"
+puts stack.to_s

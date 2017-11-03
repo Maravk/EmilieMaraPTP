@@ -1,4 +1,4 @@
-# Author:: MAra von Kroge, Emilie Schuller, 28. Oktober 2017
+# Author:: Mara von Kroge, Emilie Schuller, 28. Oktober 2017
 # Queue
 
 # Klasse Queue wird erstellt und initialisiert.
@@ -10,7 +10,7 @@ class Queue
   end
   
   # Methode für das Hinzufügen am Ende.
-  def hinzufuegen_am_ende (eis)
+  def hinzufuegen_am_ende(eis)
     @queue << eis
   end
   
@@ -19,9 +19,15 @@ class Queue
     @queue.shift
   end
   
-  # Methode für das Ausgeben des esten Elementes.
+  # Methode für das Ausgeben des ersten Elementes.
   def erstes_element_ausgeben
     @queue.first
+  end
+  
+  
+ # Fertige Queue als Array ausgeben.
+  def to_s
+    @queue.to_s
   end
   
 end 

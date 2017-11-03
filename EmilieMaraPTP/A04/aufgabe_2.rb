@@ -19,9 +19,13 @@ class Stack
     @stack.pop
   end
   
-  # Methode für das Ausgeben des esten Elementes.
+  # Methode für das Ausgeben des obersten Elementes.
   def letztes_element_ausgeben
     @stack.last
   end
   
+  # Fertigen Stack als Array ausgeben.
+  def to_s
+    @stack.to_s
+  end
 end 
