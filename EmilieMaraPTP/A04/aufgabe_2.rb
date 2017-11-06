@@ -10,22 +10,18 @@ class Stack
   end
   
   # Methode für das Hinzufügen am Ende.
-  def hinzufuegen_am_ende(karte)
+  def push(karte)
     @stack << karte
   end
   
   # Methode für das Entfernen am Anfang.
-  def entfernen_am_ende
+  def pop
     @stack.pop
   end
   
   # Methode für das Ausgeben des obersten Elementes.
-  def letztes_element_ausgeben
+  def peek
     @stack.last
   end
-  
-  # Fertigen Stack als Array ausgeben.
-  def to_s
-    @stack.to_s
-  end
+
 end 

@@ -7,27 +7,21 @@ class Queue
     
     # Neues Array wird erstellt.
     @queue=Array.new
+    @queue=["Karamel Sutra", "Half Baked"]
   end
   
   # Methode für das Hinzufügen am Ende.
-  def hinzufuegen_am_ende(eis)
-    @queue << eis
+  def enqueue
+    @queue << "Cookie Dough"
   end
   
   # Methode für das Entfernen am Anfang.
-  def entfernen_am_anfang
+  def dequeue
     @queue.shift
   end
   
   # Methode für das Ausgeben des ersten Elementes.
-  def erstes_element_ausgeben
+  def peek
     @queue.first
   end
-  
-  
- # Fertige Queue als Array ausgeben.
-  def to_s
-    @queue.to_s
-  end
-  
-end 
+end

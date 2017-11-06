@@ -10,25 +10,18 @@ def setup()
   @queue=Queue.new
 end
 
-def test_hinzufuegen_am_ende
-  @queue.hinzufuegen_am_ende("Cookie Dough")
-  assert_equal(:CookieDough, @queue.eis, "Diese Eissorte ist falsch!")
-  
-  @queue.hinzufuegen_am_ende("Karamel Sutra")
-  assert_equal(:KaramelSutra, @queue.eis, "Diese Eissorte ist falsch!")
- 
-  @queue.hinzufuegen_am_ende("What-a-lotta Chocolate")
-  assert_equal(:WhatALottaChocolate, @queue.eis, "Diese Eissorte ist falsch!")
+def test_enqueue
+  @queue.enqueue
+  assert_equal("Karamel Sutra""Half Baked""Cookie Dough", @queue.enqueue, "Diese Eissorte ist falsch!")
 end
 
 
-def test_entfernen_am_anfang
-  assert_equal(nil, @queue.entfernen_am_anfang, "Diese Eissorte ist falsch!")
+def test_dequeue
+  assert_equal("Karamel Sutra", @queue.dequeue, "Diese Eissorte ist falsch!")
 end
 
 
-def test_erstes_element_ausgeben
-  assert_equal(nil, @queue.erstes_element_ausgeben, "Diese Eissorte ist falsch!")
+def test_peek
+  assert_equal("Half Baked", @queue.peek, "Diese Eissorte ist falsch!")
 end
-
 end
