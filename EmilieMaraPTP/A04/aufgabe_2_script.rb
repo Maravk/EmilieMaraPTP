@@ -1,7 +1,7 @@
 #Author:: Mara von Kroge, Emilie Schuller, 28. Oktober 2017
 # Script zum Stack
 
-# Date wird angefordert.
+# Datei wird angefordert.
 require_relative "aufgabe_2"
 
 # Neues Objekt der Klasse Stack wird erstellt.
@@ -29,4 +29,4 @@ puts stack.peek
 puts''
 
 puts "Die Länge des Arrays lautet:"
-puts stack.size
+puts stack.length

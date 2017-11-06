@@ -1,7 +1,7 @@
 # Author:: Mara von Kroge, Emilie Schuller, 28. Oktober 2017
 # Queue
 
-# Klasse Queue wird erstellt und initialisiert.
+# Klasse Queue wird erstellt.
 class Queue
   def initialize
     
@@ -9,7 +9,7 @@ class Queue
     @queue=Array.new
   end
   
-  # Methode für das Hinzufügen am Ende.
+  # Methode für das Hinzufuegen am Ende.
   def enqueue (element)
     @queue.push(element)
   end
@@ -24,7 +24,7 @@ class Queue
     @queue.first
   end
   
-  # Methode für die Länge der Queue.
+  # Methode für die Laenge der Queue.
   def size
     @queue.size
   end
