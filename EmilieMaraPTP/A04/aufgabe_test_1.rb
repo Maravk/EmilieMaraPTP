@@ -8,20 +8,27 @@ class TestQueue < Test::Unit::TestCase
 
 def setup()
   @queue=Queue.new
+  @queue=[]
+end
+
+def test_initialize
+  assert_equal([], @queue, "Dies ist kein leeres Array!")
 end
 
 def test_enqueue
-  @queue.enqueue
-  assert_equal("Karamel Sutra""Half Baked""Cookie Dough", @queue.enqueue, "Diese Eissorte ist falsch!")
+  assert_equal(["Cookie Dough"], @queue.push("Cookie Dough"), "Diese Eissorte ist falsch!")
 end
 
+def test_size
+  assert_equal(0, @queue.size, "Die Länge ist falsch!")
+end
 
 def test_dequeue
-  assert_equal("Karamel Sutra", @queue.dequeue, "Diese Eissorte ist falsch!")
+  assert_equal(nil, @queue.shift, "Diese Eissorte ist falsch!")
 end
 
 
 def test_peek
-  assert_equal("Half Baked", @queue.peek, "Diese Eissorte ist falsch!")
+  assert_equal(nil, @queue.first, "Diese Eissorte ist falsch!")
 end
 end

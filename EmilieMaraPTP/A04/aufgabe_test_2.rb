@@ -9,24 +9,25 @@ class TestStack < Test::Unit::TestCase
 def setup()
   @stack=Stack.new
   @stack=[]
-  
+end
+
+def test_initialize
+  assert_equal([], @stack, "Dies ist kein leeres Array!")
 end
 
 def test_push
-  @stack.push("Dame")
-  assert_equal("Dame", @stack, "Diese Karte ist falsch!")
-#  @stack=Stack.new("König")
-#  assert_equal("König", @stack.hinzufuegen_am_ende, "Diese Karte ist falsch!")
-#  @stack=Stack.new("Ass")
-#  assert_equal("Ass", @stack.hinzufuegen_am_ende, "Diese Karte ist falsch!")
+  assert_equal(["Dame"], @stack.push("Dame"), "Diese Karte ist falsch!")
+end
+
+def test_size
+  assert_equal(0, @stack.size, "Die Länge ist falsch!")
 end
 
 def test_pop
-  assert_equal(nil, @stack.pop, "Diese Karte ist falsch!")
+  assert_equal(nil, @stack.shift, "Diese Karte ist falsch!")
 end
 
 def test_peek
-  assert_equal(nil, @stack.peek, "Diese Karte ist falsch!")
+  assert_equal(nil, @stack.first, "Diese Karte ist falsch!")
 end
-
 end

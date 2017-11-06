@@ -7,12 +7,11 @@ class Queue
     
     # Neues Array wird erstellt.
     @queue=Array.new
-    @queue=["Karamel Sutra", "Half Baked"]
   end
   
   # Methode für das Hinzufügen am Ende.
-  def enqueue
-    @queue << "Cookie Dough"
+  def enqueue (element)
+    @queue.push(element)
   end
   
   # Methode für das Entfernen am Anfang.
@@ -23,5 +22,10 @@ class Queue
   # Methode für das Ausgeben des ersten Elementes.
   def peek
     @queue.first
+  end
+  
+  # Methode für die Länge der Queue.
+  def size
+    @queue.size
   end
 end

@@ -7,7 +7,6 @@ require_relative "aufgabe_2"
 # Neues Objekt der Klasse Stack wird erstellt.
 stack=Stack.new
 
-
 # Methoden werden angewendet.
 puts "Das erste Element wird hinzugefügt:" 
 puts stack.push("Dame")
@@ -28,3 +27,6 @@ puts''
 puts "Das neue letzte Element wird ausgegeben:" 
 puts stack.peek
 puts''
+
+puts "Die Länge des Arrays lautet:"
+puts stack.size
