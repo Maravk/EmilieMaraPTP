@@ -30,3 +30,8 @@ puts ''
 
 puts "Die Länge des Arrays lautet:"
 puts queue.size
+puts ''
+
+puts "Das fertige Array sieht folgendermaßen aus:"
+puts queue.to_s
+puts ''

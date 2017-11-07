@@ -30,3 +30,7 @@ puts''
 
 puts "Die Länge des Arrays lautet:"
 puts stack.length
+puts''
+
+puts "Das fertige Array sieht folgendermaßen aus:"
+puts stack.to_s

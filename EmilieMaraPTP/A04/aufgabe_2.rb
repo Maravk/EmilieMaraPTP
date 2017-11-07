@@ -24,8 +24,13 @@ class Stack
     @stack.last
   end
   
-  # Methode für die Laenge des Arrays
+  # Methode für die Laenge des Arrays.
   def length
     @stack.length
+  end
+  
+  # Methode für das ausgeben des Arrays.
+  def to_s
+    @stack.to_s
   end
 end 

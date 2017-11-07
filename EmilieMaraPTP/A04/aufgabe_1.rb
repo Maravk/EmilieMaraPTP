@@ -28,4 +28,9 @@ class Queue
   def size
     @queue.size
   end
+  
+  # Methode für das ausgeben des Arrays.
+  def to_s
+    @queue.to_s
+  end
 end

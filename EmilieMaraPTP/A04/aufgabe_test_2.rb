@@ -11,31 +11,31 @@ class TestStack < Test::Unit::TestCase
   # Neues Array wird erstellt.
 def setup()
   @stack=Stack.new
-  @stack=[]
+  @stack=["Dame", "König"]
 end
 
 # Test - Initialize
 def test_initialize
-  assert_equal([], @stack, "Dies ist kein leeres Array!")
+  assert_equal(["Dame", "König"], @stack, "Dies ist kein leeres Array!")
 end
 
 # Test - Neues Element hinzufuegen
 def test_push
-  assert_equal(["Dame"], @stack.push("Dame"), "Diese Karte ist falsch!")
+  assert_equal(["Dame", "König", "Ass"], @stack.push("Ass"), "Diese Karte ist falsch!")
 end
 
 # Test - Laenge
 def test_size
-  assert_equal(0, @stack.size, "Die Länge ist falsch!")
+  assert_equal(2, @stack.size, "Die Länge ist falsch!")
 end
 
 # Test - Letzes Element wird entfernt
 def test_pop
-  assert_equal(nil, @stack.shift, "Diese Karte ist falsch!")
+  assert_equal("Dame", @stack.shift, "Diese Karte ist falsch!")
 end
 
 # Test - Oberstes Element wird ausgegeben
 def test_peek
-  assert_equal(nil, @stack.first, "Diese Karte ist falsch!")
+  assert_equal("Dame", @stack.first, "Diese Karte ist falsch!")
 end
 end
