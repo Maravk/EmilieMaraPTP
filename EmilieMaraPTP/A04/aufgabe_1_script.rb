@@ -1,7 +1,7 @@
 # Author:: Mara von Kroge, Emilie Schuller, 28. Oktober 2017
 # Script zur Queue
 
-# Date wird angefordert.
+# Datei wird angefordert.
 require_relative "aufgabe_1"
 
 # Neues Objekt der Klasse Queue wird erstellt.
@@ -32,6 +32,9 @@ puts "Die Länge des Arrays lautet:"
 puts queue.size
 puts ''
 
+puts "Ist das folgende Array leer?"
+puts queue.empty
+puts ''
+
 puts "Das fertige Array sieht folgendermaßen aus:"
 puts queue.to_s
-puts ''

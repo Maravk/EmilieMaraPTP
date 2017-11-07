@@ -1,4 +1,4 @@
-# Author:: Emilie Schuller, Mara von Kroge, 29. Oktober 2017
+# Author:: Emilie Schuller, Ralf Hermann, Mara von Kroge, 29. Oktober 2017
 # Testfälle für die Klasse Queue
 
 # Dateien werden angefordert.
@@ -11,31 +11,36 @@ class TestQueue < Test::Unit::TestCase
   # Neues Array wird erstellt.
 def setup()
   @queue=Queue.new
-  @queue=["Cookie Dough", "Karamel Sutra"]
 end
 
 # Test - Initialize 
 def test_initialize
-  assert_equal(["Cookie Dough", "Karamel Sutra"], @queue, "Dies ist kein leeres Array!")
+  assert_not_equal(nil, @queue, "Dies ist kein leeres Array!")
 end
 
-# Test - Element hinzufuegen
+# Test - Element hinzufügen
 def test_enqueue
-  assert_equal(["Cookie Dough", "Karamel Sutra", "Half Baked"], @queue.push("Half Baked"), "Diese Eissorte ist falsch!")
+  @queue.enqueue("Cookie Dough")
+  assert_equal("Cookie Dough", @queue.dequeue, "Diese Eissorte ist falsch!")
 end
 
-# Test - Laenge
+# Test - Länge
 def test_size
-  assert_equal(2, @queue.size, "Die Länge ist falsch!")
+  assert_equal(0, @queue.size, "Die Länge ist falsch!")
 end
 
 # Test - Element entfernen
 def test_dequeue
-  assert_equal("Cookie Dough", @queue.shift, "Diese Eissorte ist falsch!")
+  assert_equal(nil, @queue.dequeue, "Diese Eissorte ist falsch!")
 end
 
 # Test - Erstes Element ausgeben
 def test_peek
-  assert_equal("Cookie Dough", @queue.first, "Diese Eissorte ist falsch!")
+  assert_equal(nil, @queue.peek, "Diese Eissorte ist falsch!")
+end
+
+# Test - Empty
+def test_empty
+  assert_equal(true, @queue.empty, "Fehler!")
 end
 end

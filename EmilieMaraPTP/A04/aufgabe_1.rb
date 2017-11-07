@@ -9,9 +9,10 @@ class Queue
     @queue=Array.new
   end
   
-  # Methode für das Hinzufuegen am Ende.
-  def enqueue (element)
+  # Methode für das Hinzufügen am Ende.
+  def enqueue(element)
     @queue.push(element)
+    return self
   end
   
   # Methode für das Entfernen am Anfang.
@@ -24,13 +25,25 @@ class Queue
     @queue.first
   end
   
-  # Methode für die Laenge der Queue.
+  # Methode für die Länge der Queue.
   def size
     @queue.size
   end
   
-  # Methode für das ausgeben des Arrays.
+  # Methode für das Ausgeben des Arrays.
   def to_s
     @queue.to_s
   end
-end
+  
+  # Methode für Empty
+  def empty
+    @queue.empty?
+    if true
+     puts "Dieses Array ist leer, das erste Element wurde entfernt!"
+     return true
+    else
+      puts "Dieses Array ist nicht leer!"
+      return false
+    end
+  end
+end 
