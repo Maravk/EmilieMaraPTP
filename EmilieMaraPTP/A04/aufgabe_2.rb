@@ -16,12 +16,20 @@ class Stack
   
   # Methode für das Entfernen am Anfang.
   def pop
-    @stack.pop
+    if @stack.empty?
+      puts "Fehler, der Stack ist leer"
+    else
+      @stack.pop  
+    end 
   end
   
   # Methode für das Ausgeben des obersten Elementes.
   def peek
-    @stack.last
+    if @stack.empty?
+      puts "Fehler, der Stack ist leer"
+    else
+      @stack.last
+    end
   end
   
   # Methode für die Laenge des Arrays.
