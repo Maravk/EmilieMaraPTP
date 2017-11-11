@@ -20,11 +20,10 @@ autoteile.each {|a, b| puts "Stück: #{a};  Masse in Kilogramm: #{b}"}
 puts''
 puts''
 puts''
-#puts "Das Gesamtgewicht der Stückliste beträgt #{
 autoteile.each_value {|value| puts value}
+ value_total = value[0] + value[1] + value[2] + value[3] + value[4] + value[5] + value[6] + value[7]
    
-#Kilogramm!
-puts''
+puts "Das Gesamtgewicht der Stückliste beträgt #{value_total} Kilogramm!"
 puts''
 puts''
 puts "Die Stückliste namens Autoteile besitzt insgesamt #{autoteile.length} Elemente!"
