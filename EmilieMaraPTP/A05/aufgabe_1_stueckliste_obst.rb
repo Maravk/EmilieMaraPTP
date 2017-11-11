@@ -2,16 +2,15 @@
 # TeamChallenger
 # Stückliste
 
-require "aufgabe_1"
-include Enumerable 
-
-#obst = []
-#  f=File.open('A05/stueckliste_obst')
-#  while (teile = f.gets)
-#    obst << teile
-#  end
-#  
-#  puts obst.each
-#  
+#require "aufgabe_1"
+#include Enumerable 
 
 obst = {"Äpfel" => 0.5, "Bananen" => 0.3, "Kiwis" => 0.2, "Ananas" => 0.6, "Wassermelone" => 1} 
+puts ""
+puts "Ausgabe der kompletten Stückliste Obst:"
+puts ''
+obst.each {|a, b| puts "Stück: #{a};  Masse in Kilogramm: #{b}"}
+puts''
+puts "Das Gesamtgewicht der Stückliste beträgt #{obst.values.map.reduce(:+) } Kilogramm!"
+puts''
+puts "Die Stückliste besitzt insgesamt #{obst.length} Elemente!"
