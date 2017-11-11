@@ -5,10 +5,10 @@
 
 class Ganzes
   @ganzes=Array.new
-  include Enumerable
 end
 
 class Teil < class Ganzes
+  include Enumerable
   @teil=Array.new
   attr_reader :beschreibung; :menge
   end
