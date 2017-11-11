@@ -17,13 +17,14 @@ autoteile = {"Karosserie" => 254, "Motor" => 200, "Auspuff" => 16, "Reifen" => 4
 puts "Ausgabe der kompletten Stückliste Autoteile:"
 puts ''
 autoteile.each {|a, b| puts "Stück: #{a};  Masse in Kilogramm: #{b}"}
-puts ''
 puts''
 puts''
-gesamtgewicht = autoteile.each
-puts "Das Gesamtgewicht der Stückliste beträgt #{autoteile.each {|a,b| b{:+}}}Kilogramm!"
-puts ''
+puts''
+#puts "Das Gesamtgewicht der Stückliste beträgt #{
+autoteile.each_value {|value| puts value}
+   
+#Kilogramm!
 puts''
 puts''
-puts "Die Stückliste namens Autoteile besitzt insgesamt #{autoteile.length} Elemente!" 
-puts autoteile.size
+puts''
+puts "Die Stückliste namens Autoteile besitzt insgesamt #{autoteile.length} Elemente!"
