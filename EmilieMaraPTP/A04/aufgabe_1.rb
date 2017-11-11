@@ -17,12 +17,20 @@ class Queue
   
   # Methode für das Entfernen am Anfang.
   def dequeue
+    if @queue.empty?
+      puts "Fehler, die Queue ist leer"
+    else
     @queue.shift
+    end
   end
   
   # Methode für das Ausgeben des ersten Elementes.
   def peek
-    @queue.first
+    if @queue.empty?
+      puts "Fehler, die Queue ist leer"
+    else
+      @queue.first
+    end
   end
   
   # Methode für die Länge der Queue.
