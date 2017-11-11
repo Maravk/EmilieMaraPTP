@@ -37,10 +37,12 @@ class Teil < class Ganzes
   end
   
   def get_top
-   puts @teil.[0] 
+   puts @teil.first 
   end
 end
 
 class Teile < class Teil
   @teile=Array.new
+end
+end 
 end

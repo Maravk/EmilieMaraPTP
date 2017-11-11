@@ -21,7 +21,7 @@ puts''
 puts''
 puts''
 autoteile.each_value {|value| puts value}
- value_total = value[0] + value[1] + value[2] + value[3] + value[4] + value[5] + value[6] + value[7]
+ value_total = value + value + value + value + value + value + value + value
    
 puts "Das Gesamtgewicht der Stückliste beträgt #{value_total} Kilogramm!"
 puts''
