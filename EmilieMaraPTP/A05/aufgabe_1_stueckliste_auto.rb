@@ -12,9 +12,9 @@ autoteile = {"Karosserie" => 254, "Motor" => 200, "Auspuff" => 16,
   puts ""
 puts "Ausgabe der kompletten Stückliste Autoteile:"
 puts ''
-puts "____________________________________________________"
+puts "_____________________________________________________"
 autoteile.each {|a, b| 
-  printf("Stück: %s  |  Masse in Kilogramm: %s\n", sprintf("%15s", a), sprintf("%5s", b))
+  printf("|Stück: %s  |  Masse in Kilogramm: %s|\n", sprintf("%15s", a), sprintf("%5s", b))
 }
 puts''
 puts "Das Gesamtgewicht der Stückliste beträgt #{autoteile.values.map.reduce(:+) } Kilogramm!"

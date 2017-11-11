@@ -9,7 +9,10 @@ obst = {"Äpfel" => 0.5, "Bananen" => 0.3, "Kiwis" => 0.2, "Ananas" => 0.6, "Was
 puts ""
 puts "Ausgabe der kompletten Stückliste Obst:"
 puts ''
-obst.each {|a, b| puts "Stück: #{a};  Masse in Kilogramm: #{b}"}
+puts "_____________________________________________________"
+obst.each {|a, b|
+  printf("|Stück: %s  |  Masse in Kilogramm: %s|\n", sprintf("%15s", a), sprintf("%5s", b))
+}
 puts''
 puts "Das Gesamtgewicht der Stückliste beträgt #{obst.values.map.reduce(:+) } Kilogramm!"
 puts''

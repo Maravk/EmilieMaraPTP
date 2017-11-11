@@ -10,7 +10,10 @@ computer = {"Prozessor" => 0.01, "Grafikkarte" => 1.3, "Gehäuse" => 7, "Kühler
 puts ""
 puts "Ausgabe der kompletten Stückliste Autoteile:"
 puts ''
-computer.each {|a, b| puts "Stück: #{a};  Masse in Kilogramm: #{b}"}
+puts "_____________________________________________________"
+computer.each {|a, b|
+  printf("|Stück: %s  |  Masse in Kilogramm: %s|\n", sprintf("%15s", a), sprintf("%5s", b))
+}
 puts''
 puts "Das Gesamtgewicht der Stückliste beträgt #{computer.values.map.reduce(:+) } Kilogramm!"
 puts''
