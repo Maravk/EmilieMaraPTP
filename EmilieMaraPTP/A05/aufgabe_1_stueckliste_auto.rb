@@ -12,18 +12,16 @@
 #  end
 #  
 
-autoteile = {"Karosserie" => 254, "Motor" => 200, "Auspuff" => 16, "Reifen" => 40, "Kühler" => 1, "Lenkrad" => 2, "Scheinwerfer" => 8, "Radio" => 1}
+autoteile = {"Karosserie" => 254, "Motor" => 200, "Auspuff" => 16, 
+  "Reifen" => 40, "Kühler" => 1, "Lenkrad" => 2, "Scheinwerfer" => 8, 
+  "Radio" => 1}
 
 puts "Ausgabe der kompletten Stückliste Autoteile:"
 puts ''
 autoteile.each {|a, b| puts "Stück: #{a};  Masse in Kilogramm: #{b}"}
 puts''
-puts''
-puts''
-autoteile.each_value {|value| puts value}
- value_total = value + value + value + value + value + value + value + value
-   
-puts "Das Gesamtgewicht der Stückliste beträgt #{value_total} Kilogramm!"
+puts''   
+puts "Das Gesamtgewicht der Stückliste beträgt #{autoteile.values.map.reduce(:+) } Kilogramm!"
 puts''
 puts''
 puts "Die Stückliste namens Autoteile besitzt insgesamt #{autoteile.length} Elemente!"

@@ -4,16 +4,16 @@
 # Klasse Teil
 
 class Ganzes
-  @ganzes=Array.new
-end
+  @ganzes=Hash.new
+end 
 
 class Teil < class Ganzes
   include Enumerable
-  @teil=Array.new
+  @teil=Hash.new
   
-  def initialize (beschreibung, menge)
+  def initialize (beschreibung, masse)
     @beschreibung = beschreibung.to_s
-    @menge = menge.to_i
+    @masse = masse.to_i
   end
   
   def add_teil(teil)
@@ -32,17 +32,16 @@ class Teil < class Ganzes
     @ganzes.delete(ganzes)
   end
   
-  def ganzes
-    
+  def to_s
+    @teil.to_s
   end
   
   def get_top
    puts @teil.first 
   end
-end
-
+end 
+end 
 class Teile < class Teil
   @teile=Array.new
 end
-end 
 end
