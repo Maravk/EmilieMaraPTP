@@ -10,7 +10,10 @@ end
 class Teil < class Ganzes
   include Enumerable
   @teil=Array.new
-  attr_reader :beschreibung; :menge
+  
+  def initialize (beschreibung, menge)
+    @beschreibung = beschreibung.to_s
+    @menge = menge.to_i
   end
   
   def add_teil(teil)
@@ -34,7 +37,7 @@ class Teil < class Ganzes
   end
   
   def get_top
-    
+   puts @teil.[0] 
   end
 end
 
