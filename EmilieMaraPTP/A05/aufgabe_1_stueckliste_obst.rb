@@ -14,6 +14,6 @@ obst.each {|a, b|
   printf("|Stück: %s  |  Masse in Kilogramm: %s|\n", sprintf("%15s", a), sprintf("%5s", b))
 }
 puts''
-puts "Das Gesamtgewicht der Stückliste beträgt #{obst.values.map.reduce(:+) } Kilogramm!"
+puts "Das Gesamtgewicht der Stückliste beträgt #{obst.values.map.reduce(:+) } Kilogramm."
 puts''
-puts "Die Stückliste besitzt insgesamt #{obst.length} Elemente!"
+puts "Die Stückliste besitzt insgesamt #{obst.length} Elemente."
