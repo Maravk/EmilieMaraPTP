@@ -45,8 +45,7 @@ class Stack
   
   # Methode für Empty
   def empty
-    @stack.empty?
-    if true
+   if @stack.empty?
       puts "Dieses Array ist leer, das erste Element wurde entfernt!"
       return true
     else
