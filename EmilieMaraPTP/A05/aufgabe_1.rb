@@ -3,21 +3,31 @@
 # Modellierung
 # Klasse Teil
 
-class Ganzes
-  @ganzes=Hash.new
-end 
+#class Ganzes
+#  @ganzes=Hash.new
+#end 
 
-class Teil < class Ganzes
+class Teil
   include Enumerable
+  include Comparable 
   @teil=Hash.new
   
-  def initialize (beschreibung, masse)
+  def initialize (teil, ganzes, beschreibung, masse)
+    @teil = teil.to_a
+    @ganzes = ganzes.to_a
     @beschreibung = beschreibung.to_s
     @masse = masse.to_i
   end
   
   def add_teil(teil)
+    if !@teil.include?(teil)
     @teil << teil
+  end
+  
+  def add_teile(teile)
+    if !@teile.include?(teile)
+      @teile << teile 
+    end
   end
   
   def remove_teil(teil)
@@ -25,8 +35,10 @@ class Teil < class Ganzes
   end
   
   def add_to_ganzes(ganzes)
+    if !@ganzes.include?(ganzes)
     @ganzes << ganzes
   end
+  end 
   
   def remove_from_ganzes(ganzes)
     @ganzes.delete(ganzes)
@@ -41,7 +53,6 @@ class Teil < class Ganzes
   end
 end 
 end 
-class Teile < class Teil
-  @teile=Array.new
-end
-end
+#class Teile < class Teil
+#  @teile=Array.new
+#end 
