@@ -3,15 +3,10 @@
 # Modellierung
 # Klasse Teil
 
-#class Ganzes
-#  @ganzes=Hash.new
-#end 
-
 class Teil
   include Enumerable
   include Comparable 
-  @teil=Hash.new
-  
+  @teil=Array.new
   
   # Initialize
   # Teile und Ganzes immer zu einem Array.
@@ -54,9 +49,12 @@ class Teil
     @ganzes.delete(ganzes)
   end
   
+  # Methode to_s überschreiben 
+  # Elemente werden nicht im Array als String ausgegeben, 
+  # sondern als Strings.
   # Teil als String ausgeben.
   def to_s
-    @teil.to_s
+    @teil.map(&:to_s)
   end
   
   # Erstes Teil von Teil ausgeben.
@@ -65,6 +63,3 @@ class Teil
   end
 end 
 end 
-#class Teile < class Teil
-#  @teile=Array.new
-#end 

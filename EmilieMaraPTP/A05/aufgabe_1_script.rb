@@ -18,6 +18,7 @@ include Comparable
 # Hardware und Software als Teile hinzufügen.
 @teil << "Hardware"
 @teil << "Software"
+puts "Die Klasse Teil besitzt zwei Teile:"
 puts @teil
 puts''
 
@@ -25,9 +26,35 @@ puts''
 @teile << "Prozessor"
 @teile << "Grafikkarte"
 @teile << "Mainboard"
+puts "Folgende Einzelteile wurden zum Teil hinzugefügt:"
 puts @teile
 puts ''
 
 # Computer als Ganzes hinzufügen.
-@ganzes << "Computer"
+if !@ganzes.include?("Computer")
+puts "Der Computer wird als Ganzes hinzugefügt:"
+puts @ganzes << "Computer"
+puts ''
+end 
+
+# Tastatur als Ganzes hinzufügen.
+if !@ganzes.include?("Tastatur")
+puts "Die Tastatur wird als Ganzes hinzugefügt:"
 puts @ganzes
+end
+puts ''
+
+# Tastatur vom Ganzen entfernen.
+@ganzes.delete("Tastatur")
+puts "Die Tastatur wurde vom Ganzen entfernt, das Ganze besteht nur noch aus einem Element:"
+puts @ganzes
+puts ''
+
+# Teil-Array als String ausgeben.
+puts "Die beiden Teile werden ausgegeben:"
+puts @teil.map(&:to_s)
+puts ''
+
+# Erstes Teil von Teil ausgeben.
+puts "Das erste Element von Teil wird ausgegeben:"
+puts @teil.first
