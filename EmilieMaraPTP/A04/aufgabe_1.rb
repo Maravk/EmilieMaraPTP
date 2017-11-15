@@ -12,6 +12,8 @@ class Queue
   # Methode für das Hinzufügen am Ende.
   def enqueue(element)
     @queue.push(element)
+    # Return self: Referenz des Objektes wird zurückgegeben, damit niemand 
+    # die Queue kaputt machen kann.
     return self
   end
   
