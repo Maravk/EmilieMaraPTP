@@ -21,7 +21,7 @@ end
 # Test - Neues Element hinzufügen
 def test_push
   @stack.push("Dame")
-  assert_equal("Dame", @stack.pop, "Diese Karte ist falsch!")
+  assert_equal("Dame", @stack.peek, "Diese Karte ist falsch!")
 end
 
 # Test - Länge
@@ -31,7 +31,7 @@ end
 
 # Test - Letztes Element wird entfernt
 def test_pop
-  assert_equal(nil, @stack.pop, "Diese Karte ist falsch!")
+  assert_equal(@stack, @stack.pop, "Diese Karte ist falsch!")
 end
 
 # Test - Oberstes Element wird ausgegeben
@@ -41,6 +41,6 @@ end
 
 # Test - Empty
 def test_empty
-  assert_equal(true, @stack.empty, "Fehler!")
+  assert_equal(true, @stack.empty?, "Fehler!")
 end
 end

@@ -21,7 +21,7 @@ end
 # Test - Element hinzufügen
 def test_enqueue
   @queue.enqueue("Cookie Dough")
-  assert_equal("Cookie Dough", @queue.dequeue, "Diese Eissorte ist falsch!")
+  assert_equal("Cookie Dough", @queue.peek, "Diese Eissorte ist falsch!")
 end
 
 # Test - Länge
@@ -31,7 +31,7 @@ end
 
 # Test - Element entfernen
 def test_dequeue
-  assert_equal(nil, @queue.dequeue, "Diese Eissorte ist falsch!")
+  assert_equal(@queue, @queue.dequeue, "Diese Eissorte ist falsch!")
 end
 
 # Test - Erstes Element ausgeben
@@ -41,6 +41,6 @@ end
 
 # Test - Empty
 def test_empty
-  assert_equal(true, @queue.empty, "Fehler!")
+  assert_equal(true, @queue.empty?, "Fehler!")
 end
 end

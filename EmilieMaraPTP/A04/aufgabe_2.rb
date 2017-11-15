@@ -22,6 +22,7 @@ class Stack
     else
       @stack.pop  
     end 
+    return self
   end
   
   # Methode für das Ausgeben des obersten Elementes.
@@ -44,7 +45,7 @@ class Stack
   end
   
   # Methode für Empty
-  def empty
+  def empty?
    if @stack.empty?
       puts "Dieses Array ist leer, das erste Element wurde entfernt!"
       return true

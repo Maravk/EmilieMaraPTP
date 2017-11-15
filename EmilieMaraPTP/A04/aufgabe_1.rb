@@ -15,19 +15,20 @@ class Queue
     return self
   end
   
-  # Methode für das Entfernen am Anfang.
+  # Methode für das Entfernen am Anfang.y 
   def dequeue
     if @queue.empty?
-      puts "Fehler, die Queue ist leer"
+      puts "Fehler, die Queue ist leer!"
     else
     @queue.shift
     end
+    return self
   end
   
   # Methode für das Ausgeben des ersten Elementes.
   def peek
     if @queue.empty?
-      puts "Fehler, die Queue ist leer"
+      puts "Fehler, die Queue ist leer!"
     else
       @queue.first
     end
@@ -43,14 +44,8 @@ class Queue
     @queue.to_s
   end
   
-  # Methode für Empty
-  def empty
-    if @queue.empty?
-     puts "Dieses Array ist leer, das erste Element wurde entfernt!"
-     return true
-    else
-      puts "Dieses Array ist nicht leer!"
-      return false
-    end
+  # Methode für Empty.
+  def empty?
+    @queue.empty?
   end
 end 
