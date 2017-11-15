@@ -3,6 +3,8 @@
 # Modellierung
 # Klasse Teil
 
+#https://www.ruby-forum.com/topic/60329 
+
 class Teil
   include Enumerable
   include Comparable 
