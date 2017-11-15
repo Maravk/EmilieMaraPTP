@@ -8,9 +8,12 @@ include Comparable
 class Teile
 #  @myset = {}
     
-  @myset = {"Auto" => {"Autoteile" => {"Reifen" => 40}}}.update({"Auto" => {"Autoteile" => {"Frontscheibe" => 20}}})
-    
-@myset.each {|x, y| puts x, y}  #[""] << ["Frontscheibe"]
+  @myset = {"Auto" => {"Autoteile" => {"Reifen" => 40}}}
+  @myset2 = {"Auto" => {"Autoteile" => {"Frontscheibe" => 20}}}
+ 
+    p @myset   
+ p   @myset.merge!(@myset2)
+#@myset.each {|x, y| puts x, y}  #[""] << ["Frontscheibe"]
 #    puts @myset["Auto"]["Reifen"]
   
   
