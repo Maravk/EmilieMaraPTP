@@ -2,28 +2,28 @@
 # TeamChallenger
 # Stückliste
 
-
-# Textdatei - Computer-Beschreibung - wird eingelesen, bis es keine weitere Zeile gibt.
-computer_beschreibung = []
-  f = File.open('A05/stueckliste_computer_beschreibung')
-  
-  while(comp = f.gets)
-        computer_beschreibung << comp
-  end
-  
-  # Textdatei - Computer-Masse - wird eingelesen, bis es keine weitere Zeile gibt.
-  computer_masse = []
-    f = File.open('A05/stueckliste_computer_masse')
-    
-    while (comp = f.gets)
-      computer_masse << comp
-    end
+#
+## Textdatei - Computer-Beschreibung - wird eingelesen, bis es keine weitere Zeile gibt.
+#stueckliste_computer = []
+#  f = File.open('A05/stueckliste_computer')
+#  
+#  while(comp = f.gets)
+#        stueckliste_computer << comp
+#  end
+#  
+#  # Textdatei - Computer-Masse - wird eingelesen, bis es keine weitere Zeile gibt.
+#  computer_masse = []
+#    f = File.open('A05/stueckliste_computer_masse')
+#    
+#    while (comp = f.gets)
+#      computer_masse << comp
+#    end
       
-computer = {}
-     f=File.open('stueckliste_computer')
+computer = []
+     f=File.open('stueckliste_computer2')
      
      while (comp = f.gets)
-       computer < comp
+       computer << comp
      end
      
      

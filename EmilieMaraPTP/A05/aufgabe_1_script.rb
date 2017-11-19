@@ -11,7 +11,7 @@ include Comparable
 @teil = {"Hardware" => @teile.to_s, "Programmierer" => {"Student" => @masse[3]}}
 @ganzes = {"Computer" => @teil}
 
-
+# Welche Teile die Klasse Teil besitzt.
 puts "Die Klasse Teil besitzt folgende Teile:"
 @teil.each_key {|key| puts key}
 puts ''
@@ -71,10 +71,8 @@ puts @teil.first
 puts ''
 
 # Die Masse von Teil Hardware ausgeben
-#puts "Die Masse von Teil Hardware beträgt insgesamt #{@teile.values.map.reduce(:+)} Kilogramm!"
-#puts @masse.to_i 
-#each { |x| printf("%0.02f\n",x)}
-  
+puts "Die Masse von Teil Hardware beträgt insgesamt #{@teile.values.map.reduce(:+)} Kilogramm!"
+puts ''
 
 # Das Oberste von Teil.
 puts "Das erste Teil von Teile ist:"

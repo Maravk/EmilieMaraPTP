@@ -60,7 +60,7 @@ class Teil
     @ganzes.delete(ganzes)
   end
   
-  # Methode to_s überschreiben 
+  # Methode to_s überschreiben. 
   # Elemente werden nicht im Array als String ausgegeben, 
   # sondern als Strings.
   # Teil als String ausgeben.
