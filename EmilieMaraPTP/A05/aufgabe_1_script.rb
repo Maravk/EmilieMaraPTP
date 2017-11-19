@@ -1,46 +1,56 @@
 # Author: Emilie Schuller, Mara von Kroge, 14. November 2017
 # TeamChallenger
 # Skript zur Klasse "Teil"
-
+#
 require_relative "aufgabe_1"
 include Enumerable
 include Comparable 
   
+@masse = [0.01, 1.3, 1, 50]
+@teile = {"Prozessor" => @masse[0], "Grafikkarte" => @masse[1], "Mainboard" => @masse[2]}
+@teil = {"Hardware" => @teile.to_s, "Programmierer" => {"Student" => @masse[3]}}
+@ganzes = {"Computer" => @teil}
 
-@teil = []
-@ganzes = []
-@teile = []
 
-#@prozessor = [].to_a
-#@grafikkarte = [].to_a
-#@mainboard = [].to_a
+puts "Die Klasse Teil besitzt folgende Teile:"
+@teil.each_key {|key| puts key}
+puts ''
 
-# Hardware und Software als Teile hinzufügen.
-@teil << "Hardware"
-@teil << "Software"
-puts "Die Klasse Teil besitzt zwei Teile:"
-puts @teil
+# Teil zu Teil hinzufügen.
+puts "Das Teil Software wurde zu Teile hinzugefügt."
+@teil < {"Windows" => @masse << 0}
 puts''
 
-# Prozessor, Grafikkarte und Mainboard als Teile von Hardware hinzufügen.
-@teile << "Prozessor"
-@teile << "Grafikkarte"
-@teile << "Mainboard"
-puts "Folgende Einzelteile wurden zum Teil hinzugefügt:"
-puts @teile
+# Teile Kühler, Netzeil sowie SSD zu Hardware hinzugefügen.
+puts "Die Teile Kühler, Netzeil sowie SSD werden zu Hardware hinzugefügt."
+@teile["Kühler"] = 0.7
+@teile["Netzteil"] = 1.5
+@teile["SSD"] = 1.0
+puts ''
+
+# Teil "Software" entfernen.
+puts "Das Teil Software wird entfernt."
+@teil.delete("Windows")
 puts ''
 
 # Computer als Ganzes hinzufügen.
-if !@ganzes.include?("Computer")
 puts "Der Computer wird als Ganzes hinzugefügt:"
-puts @ganzes << "Computer"
+if !@ganzes.include?(11.61)
+puts @ganzes[11.61] = "Computer"
+puts '' 
+end
+
+# Tastatur als Ganzes hinzufügen.
+if !@ganzes.include?("Kabel")
+puts "Die Tastatur wird als Ganzes hinzugefügt:"
+  puts @ganzes["Kabel"] ="Tastatur"
 puts ''
 end 
 
-# Tastatur als Ganzes hinzufügen.
-if !@ganzes.include?("Tastatur")
-puts "Die Tastatur wird als Ganzes hinzugefügt:"
-puts @ganzes
+# Tastatur mit Maus austauschen.
+if !@ganzes.include?("Maus")
+  puts "Die Tastatur wurde mit der Maus als Ganzes ausgetauscht:"
+  puts @ganzes.replace({"Maus" => "Kabel"})
 end
 puts ''
 
@@ -51,10 +61,21 @@ puts @ganzes
 puts ''
 
 # Teil-Array als String ausgeben.
-puts "Die beiden Teile werden ausgegeben:"
-puts @teil.map(&:to_s)
+puts "Jedes vorhandene Teil wird ausgegeben:"
+@teil.each_key {|key| puts key}
 puts ''
 
 # Erstes Teil von Teil ausgeben.
-puts "Das erste Element von Teil wird ausgegeben:"
+puts "Das erste Element von Teil lautet:"
 puts @teil.first
+puts ''
+
+# Die Masse von Teil Hardware ausgeben
+#puts "Die Masse von Teil Hardware beträgt insgesamt #{@teile.values.map.reduce(:+)} Kilogramm!"
+#puts @masse.to_i 
+#each { |x| printf("%0.02f\n",x)}
+  
+
+# Das Oberste von Teil.
+puts "Das erste Teil von Teile ist:"
+puts @teile.first.to_s

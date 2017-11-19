@@ -8,43 +8,52 @@
 class Teil
   include Enumerable
   include Comparable 
-  @teil=Array.new
   
   # Initialize
   # Teile und Ganzes immer zu einem Array.
-  # Beschreibung immer zu einem String.
+  # Teil immer zu einem Hash.
   # Masse immer zu einer Zahl. 
-  def initialize (teil, ganzes, beschreibung, masse)
-    @teil = teil.to_a
-    @ganzes = ganzes.to_a
-    @beschreibung = beschreibung.to_s
-    @masse = masse.to_i
+  def initialize (ganzes, teil, teile, masse)
+    @ganzes = ganzes.to_h
+    @teil = teil.to_h
+    @teile = teile.to_h
+    @masse = masse.to_a
   end
+
+  @myhash = {@ganzes => {{@teil => @masse} => @teile}}
   
   # Teil zu Teil hinzufügen.
   def add_teil(teil)
     if !@teil.include?(teil)
     @teil << teil
   end
+  end 
   
   # Teile zu Teile hinzufügen.
   def add_teile(teile)
     if !@teile.include?(teile)
       @teile << teile 
     end
-  end
+    end
   
   # Teil entfernen.
-  def remove_teil(teil)
-    @teil.delete(teil)
+  def remove_teil(key)
+    @teil.delete(key)
   end
   
   # Etwas zum Ganzen hinzufügen.
   def add_to_ganzes(ganzes)
     if !@ganzes.include?(ganzes)
     @ganzes << ganzes
-  end
+    end
   end 
+  
+  # Etwas vom Ganzen mit einem Anderen austauschen.
+  def replace_ganzes(ganzes)
+    if !@ganzes.include?(ganzes)
+      @ganzes.replace(ganzes)
+    end
+  end
   
   # Etwas vom Ganzen entfernen.
   def remove_from_ganzes(ganzes)
@@ -61,7 +70,12 @@ class Teil
   
   # Erstes Teil von Teil ausgeben.
   def get_top
-   puts @teil.first 
+    @teil.first.each_key {|key| puts key}
   end
-end 
+  
+  # Masse von einem Teil ausgeben.
+  def mass_teil
+    @mass.reduce(:+)
+   # @teile.values.map.reduce(:+)
+  end 
 end 

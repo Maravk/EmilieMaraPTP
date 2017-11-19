@@ -9,7 +9,7 @@ obst = {"Äpfel" => 0.5, "Bananen" => 0.3, "Kiwis" => 0.2, "Ananas" => 0.6, "Was
 puts ""
 puts "Ausgabe der kompletten Stückliste Obst:"
 puts ''
-puts "_____________________________________________________"
+puts "______________________________________________________"
 obst.each {|a, b|
   printf("|Stück: %s  |  Masse in Kilogramm: %s|\n", sprintf("%15s", a), sprintf("%5s", b))
 }
