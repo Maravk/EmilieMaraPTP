@@ -20,7 +20,7 @@ class Teil
     @masse = masse.to_a
   end
 
-  @myhash = {@ganzes => {{@teil => @masse} => @teile}}
+#  @myhash = {@ganzes => {{@teil => @masse} => @teile}}
   
   # Teil zu Teil hinzufügen.
   def add_teil(teil)

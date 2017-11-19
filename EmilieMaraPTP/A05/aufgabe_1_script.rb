@@ -77,3 +77,5 @@ puts ''
 # Das Oberste von Teil.
 puts "Das erste Teil von Teile ist:"
 puts @teile.first.to_s
+
+puts @myhash
