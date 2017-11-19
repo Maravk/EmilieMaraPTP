@@ -70,8 +70,8 @@ puts "Das erste Element von Teil lautet:"
 puts @teil.first
 puts ''
 
-# Die Masse von Teil Hardware ausgeben
-puts "Die Masse von Teil Hardware beträgt insgesamt #{@teile.values.map.reduce(:+)} Kilogramm!"
+# Die Masse von Teil Hardware ausgeben.
+puts "Die Masse von Teil Hardware beträgt insgesamt #{@masse.reduce(:+)} Kilogramm!"
 puts ''
 
 # Das Oberste von Teil.
