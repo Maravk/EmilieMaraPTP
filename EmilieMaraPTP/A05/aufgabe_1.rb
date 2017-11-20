@@ -3,8 +3,6 @@
 # Modellierung
 # Klasse Teil
 
-#https://www.ruby-forum.com/topic/60329 
-
 class Teil
   include Enumerable
   include Comparable 
@@ -61,8 +59,7 @@ class Teil
   end
   
   # Methode to_s überschreiben. 
-  # Elemente werden nicht im Array als String ausgegeben, 
-  # sondern als Strings.
+  # Elemente werden nicht im Array als String ausgegeben, sondern als Strings.
   # Teil als String ausgeben.
   def to_s
     @teil.map(&:to_s)
@@ -75,7 +72,19 @@ class Teil
   
   # Masse von einem Teil ausgeben.
   def mass_teil
-    @mass.reduce(:+)
-   # @teile.values.map.reduce(:+)
+    @masse.reduce(:+)
   end 
+  
+  # Each-Methode
+  def each
+  end 
+  
+  # Gleich-gleich-Methode
+  def == (ganzes, teil)
+    if(@teil[0] == @ganzes[0] && @masse[0] == @ganzes)
+      return true
+    else
+  return false
+    end
+  end
 end 
