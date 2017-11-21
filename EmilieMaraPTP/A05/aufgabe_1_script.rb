@@ -28,7 +28,8 @@ puts "Die Teile Kühler, Netzeil sowie SSD werden zu Hardware hinzugefügt."
 @teile < {"SSD" => 1.0}
 puts ''
 
-## Teil "Software" entfernen.
+
+# Teil "Software" entfernen.
 puts "Das Teil Software wird entfernt."
 @teil.delete("Windows")
 puts ''
