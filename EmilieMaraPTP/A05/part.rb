@@ -1,5 +1,8 @@
-# Author: Emilie Schuller, Mara von Kroge, 20. November 2017
+# Author: Emilie Schuller, Mara von Kroge
 # TeamChallenger
+# 20.11.2017
+# Class Part
+
 class Part
   include Enumerable
   
@@ -7,10 +10,10 @@ class Part
   # Initialize
   # Parts ist hierbei immer ein Array und die Masse ein Float.
   def initialize(name, mass, parent = nil)
-    @name = name
-    @parts = []
-    @mass = Float(kg)
-    @parent = parent
+    @name = name.to_h
+    @parts = {}
+    @mass = Float(kg).to_a
+    @parent = parent.to_h
     
     
     # Sofern Masse nil entspricht, ist diese 0 Kg.
@@ -35,7 +38,6 @@ class Part
     if(self.size == 0)
       then return @mass
     end
-  end
     
   # Der Masse wird 0 zugewiesen, auf diese wird die Summierung der einzelnen Massen addiert. 
      mass = 0.0
@@ -72,7 +74,7 @@ class Part
   
   # Hinzufügen eines Teils.
   def add_part
-    @parts.push(part)
+    @parts.add(part)
   end
   
   # Ausgabe aller Teile eines Teils.
@@ -115,16 +117,18 @@ class Part
   # Vergleich
   def == (part)
     if(self.name == part.name && self.mass == part.mass && @parts == part.all_parts)
-      return true
+  return true
     end
     return false
-  end
-
-  # to_s-Methode
-  def to_s
-    myhash = {@name => @mass}
-    myhash.each {|a, b| 
-      printf("|Stück: %s  |  Masse in Kilogramm: %s|\n", sprintf("%15s", a), sprintf("%5s", b))
-    }
-  end
 end
+
+# to_s-Methode
+def to_s
+  myhash = {@name => @mass}
+  myhash.each {|a, b| 
+    printf("|Stück: %s  |  Masse in Kilogramm: %s|\n", sprintf("%15s", a), sprintf("%5s", b))
+  }
+end
+
+end
+end 

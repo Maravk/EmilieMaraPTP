@@ -1,9 +1,13 @@
 ---
 Auto:
   Reifen: {}
+  Scheibe:
+    7000: {}
 Computer:
   CPU: {}
   GPU:
     230.1: {}
   PSU:
     480: {}
+  CD_Laufwerk:
+    850: {}

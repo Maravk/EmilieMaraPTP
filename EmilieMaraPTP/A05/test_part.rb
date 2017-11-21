@@ -1,12 +1,11 @@
-# Author: Mara von Kroge, Emilie Schuller
+# Author: Mara von Kroge, Emilie Schuller, 21. November 2017
 # TeamChallenger
-# 20.11.2017
-# Test for class Part
+# Testklasse zu Teil
 
 require 'test/unit'
-require_relative 'part'
+require_relative 'teil_mara'
 
-class TestPart < Test::Unit::TestCase
+class TestTeilMara < Test::Unit::TestCase
   
   def setup()
     

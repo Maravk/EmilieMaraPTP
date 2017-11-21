@@ -18,7 +18,7 @@ class Teil
     @masse = masse.to_a
   end
 
-#  @myhash = {@ganzes => {{@teil => @masse} => @teile}}
+  @myhash = {@ganzes => {{@teil => @masse} => @teile}}
   
   # Teil zu Teil hinzufügen.
   def add_teil(teil)
@@ -35,7 +35,7 @@ class Teil
     end
   
   # Teil entfernen.
-  def remove_teil(key)
+  def delete(key)
     @teil.delete(key)
   end
   
@@ -81,10 +81,12 @@ class Teil
   
   # Gleich-gleich-Methode
   def == (ganzes, teil)
+    if (@teil == @ganzes && @masse[])
     if(@teil[0] == @ganzes[0] && @masse[0] == @ganzes)
       return true
     else
   return false
     end
   end
-end 
+end
+end

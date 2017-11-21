@@ -29,9 +29,9 @@ puts "Die Teile Kühler, Netzeil sowie SSD werden zu Hardware hinzugefügt."
 puts ''
 
 ## Teil "Software" entfernen.
-#puts "Das Teil Software wird entfernt."
-#@teil.remove_teil("Windows" => "Software")
-#puts ''
+puts "Das Teil Software wird entfernt."
+@teil.delete("Windows")
+puts ''
 
 # Computer als Ganzes hinzufügen.
 puts "Der Computer wird als Ganzes hinzugefügt:"
@@ -50,7 +50,7 @@ end
 # Tastatur mit Maus austauschen.
 if !@ganzes.include?("Maus")
   puts "Die Tastatur wurde mit der Maus als Ganzes ausgetauscht:"
-  puts @ganzes.replace_ganzes({"Maus" => "Kabel"})
+  puts @ganzes.replace("Maus")
 end
 puts ''
 
