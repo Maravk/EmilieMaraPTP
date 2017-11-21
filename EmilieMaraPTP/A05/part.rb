@@ -11,7 +11,7 @@ class Part
   # Parts ist hierbei immer ein Array und die Masse ein Float.
   def initialize(name, mass, parent = nil)
     @name = name
-    @parts = []
+    @parts = {}
     @mass = Float
     @parent = parent
     
@@ -35,13 +35,13 @@ class Part
   
   # Gesamtgewicht in Kg.
   def total_weight
-    if(self.size == 0)
-      then return @mass
+    if(self.size_parts == 0)
+      return @mass
     end
     
   # Der Masse wird 0 zugewiesen, auf diese wird die Summierung der einzelnen Massen addiert. 
-     mass = 0.0
-    @parts.each {|part| mass += part.mass}
+    mass = 0.0
+    @parts.each {|key, value| mass += value}
       return mass
   end
   
@@ -71,10 +71,11 @@ class Part
   # Each-Methode
   def each
     @parts.each {|part| puts part}
+  end
   
   # Hinzufügen eines Teils.
   def add_part(name, mass)
-    @parts.add(name, mass)
+    @parts[name] = mass
   end
   
   # Ausgabe aller Teile eines Teils.
@@ -117,18 +118,17 @@ class Part
   # Vergleich
   def == (part)
     if(self.name == part.name && self.mass == part.mass && @parts == part.all_parts)
-  return true
+      return true
     end
     return false
-end
+  end
 
-# to_s-Methode
-def to_s
-  myhash = {@name => @mass}
-  myhash.each {|a, b| 
-    printf("|Stück: %s  |  Masse in Kilogramm: %s|\n", sprintf("%15s", a), sprintf("%5s", b))
-  }
-end
+  # to_s-Methode
+  def to_s
+    myhash = {@name => @mass}
+    myhash.each {|a, b| 
+      printf("|Stück: %s  |  Masse in Kilogramm: %s|\n", sprintf("%15s", a), sprintf("%5s", b))
+    }
+  end
 
 end
-end 
