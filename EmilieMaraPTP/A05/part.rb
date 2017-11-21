@@ -12,7 +12,7 @@ class Part
   def initialize(name, mass, parent = nil)
     @name = name
     @parts = {}
-    @mass = Float
+    @mass = 0.0
     @parent = parent
     
     
@@ -26,6 +26,35 @@ class Part
       @name = ''
     end
     
+  end
+  
+
+  
+  # Schreibe den Inhalt in eine Datei
+  def write_to_file
+    size = self.size_parts()
+    filename = "A05/" << @name
+    content = @name << "\n" << size.to_s << "\n" << @parts.to_s << "\n" << @mass.to_s
+    File.write(filename, content)
+  end
+  
+  def load_from_file(filename)
+    line = IO.readlines(filename)[0]
+    @name = line
+    line = IO.readlines(filename)[1]
+    number_of_parts = line.to_i
+    line = IO.readlines(filename)[2]
+    words = line.split(/\W+/)
+    puts words
+    i = 0
+    array = 0
+    while (i < number_of_parts)
+      @parts["Reifen"] = words[array+1].to_f
+      i = i+1
+      array = array + 2
+    end
+    puts @parts["Reifen"]
+    puts @parts["Motor"]
   end
   
   # Jeweiliges oberstes Teil
