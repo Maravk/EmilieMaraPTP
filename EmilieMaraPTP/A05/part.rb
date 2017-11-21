@@ -92,14 +92,14 @@ class Part
   end
   
   # Teil entfernen.
-  def remove_part
+  def remove_part(part)
     @parts.delete(part)
     return self
   end
   
   # Teil mit einem neuen Teil ersetzen.
   def replace_new_part(new)
-    @parts.delete(part)
+    @parts.delete(@parts)
     new.parent = self
     @parts.push(new)
     return self
@@ -125,7 +125,7 @@ class Part
 
   # to_s-Methode
   def to_s
-    myhash = {@name => @mass}
+    myhash = {@name => Float}
     myhash.each {|a, b| 
       printf("|Stück: %s  |  Masse in Kilogramm: %s|\n", sprintf("%15s", a), sprintf("%5s", b))
     }
