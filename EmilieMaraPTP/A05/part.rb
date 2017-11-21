@@ -10,10 +10,10 @@ class Part
   # Initialize
   # Parts ist hierbei immer ein Array und die Masse ein Float.
   def initialize(name, mass, parent = nil)
-    @name = name.to_h
-    @parts = {}
-    @mass = Float(kg).to_a
-    @parent = parent.to_h
+    @name = name
+    @parts = []
+    @mass = Float
+    @parent = parent
     
     
     # Sofern Masse nil entspricht, ist diese 0 Kg.
@@ -73,8 +73,8 @@ class Part
     @parts.each {|part| puts part}
   
   # Hinzufügen eines Teils.
-  def add_part
-    @parts.add(part)
+  def add_part(name, mass)
+    @parts.add(name, mass)
   end
   
   # Ausgabe aller Teile eines Teils.

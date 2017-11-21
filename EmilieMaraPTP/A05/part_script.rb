@@ -9,3 +9,6 @@ include Enumerable
 my_list = Part.new("CPU", 0.01, "Computer")
 
 
+my_list.add_part("GPU", 0.02)
+my_list.add_part("Mainboard", 1)
+
