@@ -70,9 +70,15 @@ class Teil_Mara
     end
     return masse
   end
-     
-  def gib_oberes
-    
+
+  # Gibt das Ganze eines Teils zurück
+  def gib_top(teil)
+    @myhash.each { |parent|
+      @myhash.values.any? { |v| 
+      v == teil
+      return parent
+      }
+    }
   end
 
   def schreib_hash()
@@ -85,6 +91,11 @@ class Teil_Mara
     @myhash[ganzes].each { |a|
       list << a
     }
+  end
+  
+  # test return funktion
+  def return_teile_2(ganzes)
+    return @myhash[ganzes].values
   end
 
 end
@@ -114,3 +125,6 @@ my_list.liste_speichern()
 my_list.add_ganzes("Käse")
 my_list.liste_laden()
 my_list.schreib_hash()
+
+puts "Gibt Top Teil: " + my_list.gib_top("Computer").to_s + "\n"
+puts "Test Return Funktion: " + my_list.return_teile_2("Computer").to_s + "\n"
