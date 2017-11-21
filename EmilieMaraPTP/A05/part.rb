@@ -1,8 +1,5 @@
-# Author: Emilie Schuller, Mara von Kroge
+# Author: Emilie Schuller, Mara von Kroge, 20. November 2017
 # TeamChallenger
-# 20.11.2017
-# Class Part
-
 class Part
   include Enumerable
   
@@ -38,6 +35,7 @@ class Part
     if(self.size == 0)
       then return @mass
     end
+  end
     
   # Der Masse wird 0 zugewiesen, auf diese wird die Summierung der einzelnen Massen addiert. 
      mass = 0.0
@@ -117,18 +115,16 @@ class Part
   # Vergleich
   def == (part)
     if(self.name == part.name && self.mass == part.mass && @parts == part.all_parts)
-  return true
+      return true
     end
     return false
-end
+  end
 
-# to_s-Methode
-def to_s
-  myhash = {@name => @mass}
-  myhash.each {|a, b| 
-    printf("|Stück: %s  |  Masse in Kilogramm: %s|\n", sprintf("%15s", a), sprintf("%5s", b))
-  }
+  # to_s-Methode
+  def to_s
+    myhash = {@name => @mass}
+    myhash.each {|a, b| 
+      printf("|Stück: %s  |  Masse in Kilogramm: %s|\n", sprintf("%15s", a), sprintf("%5s", b))
+    }
+  end
 end
-
-end
-end 
