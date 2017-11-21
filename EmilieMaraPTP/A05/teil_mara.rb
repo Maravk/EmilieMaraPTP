@@ -59,7 +59,7 @@ class Teil_Mara
   #  return liste
   end
   
-  # noch nicht fertig
+  
   def gib_masse_vom_ganzen(ganzes)
     masse = 0
      
@@ -100,6 +100,8 @@ class Teil_Mara
 
 end
 
+
+#skript
 my_list = Teil_Mara.new
 my_list.add_ganzes("Auto")
 my_list.add_ganzes("Computer")
