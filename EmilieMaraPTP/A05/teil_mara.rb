@@ -8,12 +8,12 @@ class Teil_Mara
 
  
   
-  # write hash out as a YAML file
+  # schreibt den hash in einer yaml datei
   def liste_speichern
     File.write('A05/liste.yml', @myhash.to_yaml)
   end
   
-  # read back in from file
+  # liest den hash aus einer yaml datei
   def liste_laden
     @myhash = YAML.load_file('A05/liste.yml')
   end
@@ -25,7 +25,7 @@ class Teil_Mara
   
   def add_ganzes(ganzes)
     if !@myhash.include?(ganzes)
-    @myhash[ganzes]
+      @myhash[ganzes]
     end
   end
   
@@ -44,15 +44,19 @@ class Teil_Mara
     # end
    #end
   
-  def gib_teile_vom_ganzen(ganzes)
+  def gib_teile_von_teil(teil)
     liste = []
-     
-    @myhash[ganzes].each do |key, value|
-      value.each do |key2, value2|
-        liste << value2
+
+    @myhash.each do |key, value|
+      if key == teil
+        return value
       end
     end
-    return liste
+ #     value.each do |key2, value2|
+  #      liste << value2
+  #    end
+  #  end
+  #  return liste
   end
   
   # noch nicht fertig
@@ -77,8 +81,9 @@ class Teil_Mara
   
   #fehlerhaft
   def return_teile(ganzes)
+    list = []
     @myhash[ganzes].each { |a|
-      puts a
+      list << a
     }
   end
 
@@ -90,16 +95,17 @@ my_list.add_ganzes("Computer")
 my_list.schreib_hash()
 my_list.add_teil("Computer", "CPU")
 my_list.add_teil("Auto", "Reifen")
+my_list.add_teil_und_masse("Auto", "Scheibe", 7000)
 my_list.add_teil_und_masse("Computer", "GPU", 230.1)
 my_list.add_teil_und_masse("Computer", "PSU", 480)
+my_list.add_teil_und_masse("Computer","CD_Laufwerk", 850)
 
 my_list.schreib_hash
 puts
-my_list.return_teile("Computer")
-puts "returned teile\n"
+puts "returned Teile: " + my_list.return_teile("Computer").to_s
 
-list = my_list.gib_teile_vom_ganzen("Computer")
-puts list.flatten.uniq
+list = my_list.gib_teile_von_teil("Computer")
+puts "Gib Teile von Teil: \n" + list.flatten.uniq.to_s + "\n"
 
 masse = my_list.gib_masse_vom_ganzen("Computer")
 puts "Masse von Computer: " + masse.to_s
