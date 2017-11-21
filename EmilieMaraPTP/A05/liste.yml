@@ -1,0 +1,9 @@
+---
+Auto:
+  Reifen: {}
+Computer:
+  CPU: {}
+  GPU:
+    230.1: {}
+  PSU:
+    480: {}
