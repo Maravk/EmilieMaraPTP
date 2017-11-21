@@ -11,3 +11,12 @@ auto.add_part("Reifen", 45)
 auto.add_part("Motor", 850)
 puts auto.size_parts()
 puts auto.total_weight()
+
+auto.add_part("Sitze", 20)
+
+#auto.write_to_file()
+
+auto.load_from_file("A05/Auto")
+puts auto.name()
+
+puts auto.total_weight()
