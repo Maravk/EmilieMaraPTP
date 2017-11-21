@@ -111,7 +111,7 @@ class Part
   
   # Schaut, ob parts Elemente enthält.
   def empty?
-    retrn @parts.empty?
+    return @parts.empty?
   end
   
   # Vergleich
