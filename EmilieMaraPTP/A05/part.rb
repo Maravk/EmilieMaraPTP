@@ -45,7 +45,6 @@ class Part
     number_of_parts = line.to_i
     line = IO.readlines(filename)[2]
     words = line.split(/\W+/)
-    puts words
     i = 0
     array = 0
     while (i < number_of_parts)
