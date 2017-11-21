@@ -155,7 +155,7 @@ class Part
   # to_s-Methode
   def to_s
     myhash = {@name => @mass}
-    puts "____________________________________________________"
+    puts "___________________________________"
     myhash.each {|a, b| 
       printf("|Stück: %s  |  Masse in Kilogramm: %s|\n", sprintf("%15s", a), sprintf("%5s", b))
     }
