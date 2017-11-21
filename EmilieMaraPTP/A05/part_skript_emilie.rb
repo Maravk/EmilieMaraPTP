@@ -47,5 +47,6 @@ puts hardware.total_size()
 puts hardware.total_weight()
 #hardware.replace_new_part("")
 hardware.remove_part("Mainboard")
+hardware.
 puts hardware.top()
 puts hardware.to_s()
