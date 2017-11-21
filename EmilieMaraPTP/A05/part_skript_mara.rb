@@ -13,10 +13,10 @@ puts auto.size_parts()
 puts auto.total_weight()
 
 auto.add_part("Sitze", 20)
-
-#auto.write_to_file()
+puts ''
+auto.write_to_file()
 
 auto.load_from_file("A05/Auto")
 puts auto.name()
-
+puts ''
 puts auto.total_weight()

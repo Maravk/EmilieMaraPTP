@@ -49,7 +49,7 @@ class Part
     i = 0
     array = 0
     while (i < number_of_parts)
-      @parts[words[array]] = words[array+1].to_f
+      @parts[words[array]] = (@parts[words[array + 1]].to_f)
       i = i+1
       array = array + 2
     end
