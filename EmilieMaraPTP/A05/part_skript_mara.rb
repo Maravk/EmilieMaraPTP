@@ -64,7 +64,7 @@ puts hardware.total_weight()
 hardware.remove_part("Mainboard")
 
 # Oberstes teil von Hardware
-puts hardware.top()
+#puts hardware.top()
 
 # Ausgabe von Hardware
-puts hardware.to_s()
+hardware.to_s
