@@ -9,7 +9,7 @@ class Part
   def initialize(part, parts={})
     @part = part
     @parts = parts
-    @mass = mass
+  #  @mass = mass
   end
   
   
@@ -19,7 +19,8 @@ class Part
     part_s + @parts.map { |parts| " ~ " + parts.to_s(sub_indent + 3)}.join("\n" + ' ' * sub_indent)
   end
   
-  def add_part
+  def add_part ()
+  end
 end
 
 AUTO = Part.new("Auto", %w{ Karosserie Reifen Sitze Spiegel Motor}.map {|str| Part.new(str)})
@@ -59,4 +60,3 @@ PARTS[4].each do |name, gewicht|
   puts "             Beschreibung: #{name}"
   puts "             Gewicht     : #{gewicht} Kilogramm"
 end
-
