@@ -163,6 +163,7 @@ puts "Die Stückliste Auto hat eine Gesamtmasse von #{mass5} Kilogramm."
 puts''
 
 # Oberstes Teil
-puts "Das oberste Einzelteil des Teils Reifen ist: #{@parts[0].first}."
+puts "Das oberste Einzelteil des Teils Reifen ist:"
+@parts[0].first.each {|name, gewicht| puts "#{name}"}
 
-#@parts[0] == @parts[1]
+@parts[0] == @parts[1]
