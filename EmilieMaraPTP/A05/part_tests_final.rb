@@ -3,11 +3,11 @@
 # Testfälle zu Part
 
 require 'test/unit'
-require_relative 'Part'
+require_relative 'part_final'
 
 class TestPart < Test::Unit::TestCase
   
-  # Setup wird initialisiert
+  # Setup wird initialisiert.
   def setup()
     @parts_auto = Part.new("Auto",0,nil)
     
@@ -28,11 +28,13 @@ class TestPart < Test::Unit::TestCase
     assert_equal(nil, new_auto.parent, "Fehler!")
   end
   
-  # Test - Einzelteil hinzufügen
-  def test_teil_hinzufuegen()
+  
+  # Test - Einzelteil hinzufügen.
+  def test_einzelteil_hinzufuegen()
     assert_equal(45, @parts_auto.add_part("Sitze", 45), "Fehler!")
     assert_equal(3, @parts_auto.size_parts, "Fehler!")
   end
+  
   
   # Test - Gesamtgewicht
   def test_total_weight()
@@ -52,6 +54,13 @@ def test_vergleich
   new_auto = Part.new("Stoßstange", 100)
   new_auto1 = Part.new("Lenkrad", 10)
   assert_not_equal(true,(new_auto)==(new_auto1) , "Fehler!")
+end
+
+
+  # Test - Einzelteil entfernen. 
+def remove_einzelteil
+  assert_equal(850, @parts_auto.remove_part("Motor", 850), "Fehler!")
+  assert_equal(2, @parts_auto.size_parts(), "Fehler!")
 end
 end
 

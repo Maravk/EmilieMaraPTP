@@ -28,7 +28,6 @@ class Part
     
   end
   
-
   
   # Schreibe den Inhalt in eine Datei
   def write_to_file
@@ -45,7 +44,6 @@ class Part
     number_of_parts = line.to_i
     line = IO.readlines(filename)[2]
     words = line.split(/\W+/)
-    puts words
     i = 0
     array = 0
     while (i < number_of_parts)
@@ -53,8 +51,6 @@ class Part
       i = i+1
       array = array + 2
     end
-    puts @parts["Reifen"]
-    puts @parts["Motor"]
   end
   
   # Jeweiliges oberstes Teil

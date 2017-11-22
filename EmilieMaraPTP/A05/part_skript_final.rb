@@ -3,7 +3,7 @@
 # 21.11.2017
 # Part Skript
 
-require_relative 'part'
+require_relative 'part_final'
 
 # Neues Objekt wird erstellt und mit Werten initialisiert.
 auto = Part.new("Auto", 0, nil)
