@@ -163,6 +163,6 @@ puts "Die Stückliste Auto hat eine Gesamtmasse von #{mass5} Kilogramm."
 puts''
 
 # Oberstes Teil
-puts "Das oberste Einzelteil des Teils Reifen ist: #{@parts.first}."
+puts "Das oberste Einzelteil des Teils Reifen ist: #{@parts[0].first}."
 
 #@parts[0] == @parts[1]
