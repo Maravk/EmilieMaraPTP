@@ -68,13 +68,16 @@ end
 end
 end 
 
+
+
 # Skript
 AUTO = Part.new("Auto", %w{ Karosserie Reifen Sitze Spiegel Motor}.map {|str| Part.new(str)})
   puts "Darstellung der Stückliste Auto"
   puts AUTO
   puts
-  
-@parts = [karosserie = {"Metall" => 100, "Kotflügel" => 170, "Scharniere" => 20, "Türen" => 200}, reifen = {"Gummi" => 20, "Felgen" => 10}, sitze = {"Leder" => 45}, spiegel = {"Glas" => 2, "Halterung" => 0.5}, motor = {"Schläuche" => 20, "Kolben" => 2, "Aggregatetrieb" => 35, "Kurbelwelle" => 5}]
+
+@mass = [[100, 170, 20, 200], [20, 10], [45], [2, 0.5], [20, 2, 35, 5]] 
+@parts = [karosserie = {"Metall" => @mass[0][0], "Kotflügel" => @mass[0][1], "Scharniere" => @mass[0][2], "Türen" => @mass[0][3]}, reifen = {"Gummi" => @mass[1][0], "Felgen" => @mass[1][1]}, sitze = {"Leder" => @mass[2][0]}, spiegel = {"Glas" => @mass[3][0], "Halterung" => @mass[3][1]}, motor = {"Schläuche" => @mass[4][0], "Kolben" => @mass[4][1], "Aggregatetrieb" => @mass[4][2], "Kurbelwelle" => @mass[2][3]}]
   puts "Einzelteile von Auto"
   puts "--> Karosserie:"
 @parts[0].each do |name, gewicht|
