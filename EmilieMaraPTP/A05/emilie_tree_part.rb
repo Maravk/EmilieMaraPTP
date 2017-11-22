@@ -108,3 +108,15 @@ puts "--> Motor:"
   puts "             Beschreibung: #{name}"
   puts "             Gewicht     : #{gewicht} Kilogramm"
 end
+puts''
+
+
+# Einzelteil hinzufügen.
+@mass.push([1.11, 2.89])
+@parts.push(navigation = {"Technik" => @mass[5][0], "Kabel" => @mass[5][1]})
+
+puts "--> Navigation:"
+@parts[5].each do |name, gewicht|
+  puts "             Beschreibung: #{name}"
+  puts "             Gewicht     : #{gewicht} Kilogramm"
+end
