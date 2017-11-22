@@ -6,7 +6,8 @@
 class Part
   include Enumerable
   attr_accessor :part, :parts
-  def initialize(part, parts={}, mass = nil)
+  def initialize( part, parts={}, mass = nil, parent = nil)
+    @parent = parent
     @part = part
     @parts = parts
     @mass = mass
@@ -18,6 +19,7 @@ class Part
   if (@part == nil)
     @part = ""
   end 
+
   
   def to_s(indent = 0)
       part_s = @part.to_s
@@ -108,8 +110,10 @@ puts "--> Motor:"
   puts "             Beschreibung: #{name}"
   puts "             Gewicht     : #{gewicht} Kilogramm"
 end
+puts ''
 
 # Einzelteil hinzufügen.
+puts "Es wird das neue Teil Navigation hinzugefügt."
 @mass.push([1.11, 2.89])
 @parts.push(navigation = {"Technik" => @mass[5][0], "Kabel" => @mass[5][1]})
 
@@ -120,10 +124,44 @@ puts "--> Navigation:"
 end
 
 # Einzelteil austauschen.
+puts "Das Teil Sitze wird nun mit Fernseher ausgetauscht."
+#@mass.delete([2][0])#[1.4]
+#@mass.delete([2][1])#.pop#[0.2]
+#@mass[2][0] = 1.4
+#@mass[2][1] = 0.2
+# Nächste Zeile will nüscht, määähhh
+# Liegt vllt. daran, dass Sitze nur ein Element im Array @mass 
+# besitzt und man hier zwei Elemente in das Array packen will?
+#@parts[sitze].replace(fernseher = {"Gehäuse" => @mass[2][0], "Kabel" => @mass[2][1]})
+
+
+puts "--> Fernseher:"
+@parts[2].each do |name, gewicht|
+  puts "             Beschreibung: #{name}"
+  puts "             Gewicht     : #{gewicht} Kilogramm"
+end
+puts''
+
 # Einzelteil löschen.
+puts "Das Einzelteil Kurbelwelle in Motor wird gelöscht."
+@parts.each {|h| h.delete("Kurbelwelle")}
+
 # Anzahl an Einzelteilen.
+puts "Die Stückliste Auto besitzt insgesamt #{@parts.length} Teile."
+
 # Gesamtmasse
+mass0 = @mass[0].inject(0,:+)
+mass1 = mass0 + @mass[1].inject(0,:+)
+mass2 = mass1 + @mass[2].inject(0,:+)
+mass3 = mass2 + @mass[3].inject(0,:+)
+mass4 = mass3 + @mass[4].inject(0,:+)
+mass5 = mass4 + @mass[5].inject(0,:+)
+puts "Die Stückliste Auto hat eine Gesamtmasse von #{mass5} Kilogramm."
+puts''
+
 # Oberstes Teil
+puts "Das oberste Einzelteil des Teils Reifen ist: #{@parts.first}."
+  
 
 
 
