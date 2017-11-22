@@ -20,55 +20,54 @@ class Part
     @part = ""
   end 
 
+  # To_s
   def to_s(indent = 0)
       part_s = @part.to_s
       sub_indent = indent + part_s.length
     part_s + @parts.map { |parts| " ~ " + parts.to_s(sub_indent + 3)}.join("\n" + ' ' * sub_indent)
   end
   
-  def add_part (name, gewicht)
-    @part[name] = gewicht
+  # Teile hinzufügen.
+  def add_part (part, mass)
+  AUTO.push %w{part}
   
+  # Einzelteile hinzufügen.
   def add_parts (parent, name, gewicht)
-    @parts[parent, name] = gewicht
-end
+    @mass.push([mass])
+    @part.push(part)
+  end
 
-def each
-  @parts.each {|part| puts part}
-end
+  #Each
+  def each(parts_index)
+  @parts[parts_index].each do |name, gewicht|
+    puts "             Beschreibung: #{name}"
+    puts "             Gewicht     : #{gewicht} Kilogramm"
+  end
 
-def replace_new_part(new)
-  @parts.delete(@parts[x])
-  new.parent = self
-  @parts.push(new)
-  return self
-end
+  # Altes Teil mit neuem Teil ersetzen.
+  def replace_new_part(deleted_part, new_mass, new_part, description)
+    @parts.delete_at(deleted_part)
+    @mass.push([new_mass])
+    @parts.push(new_part = {description => @mass[new_mass][new_mass], description => @mass[new_mass][new_mass]})
 
-def empty?
+  
+  # Empty?
+  def empty?
   return @parts.empty?
-end
-
-def == (part)
-  if(self.name == part.name && self.mass == part.mass && @parts == part.all_parts)
-    return true
   end
-  return false
-end
 
-def remove_part(part)
-  @part.delete(part)
-end
-
-def top(part)
-  if @part == nil
-    return @parts
-  else
-    return @part
+  # Einzelteil entfernen.
+  def remove_part(deleted_parts)
+    @parts.each {|h| h.delete(deleted_parts)}
   end
-end 
 
-# Vergleich
-def == (part)
+  # Oberstes Einzelteil.
+  def top(part)
+  @parts[0].first.each {|name, gewicht| puts "#{name}"}
+  end 
+
+  # Vergleich
+  def == (part)
     if(self.part() == part.part() && self.mass() == part.mass() && @parts == part.all_parts())
       return true
     end
@@ -77,7 +76,6 @@ def == (part)
 end
 end 
  
-
 
 
 # Skript
@@ -133,7 +131,6 @@ end
 
 # Einzelteil austauschen.
 puts "Das Teil Sitze wird nun mit Fernseher ausgetauscht."
-#@parts.each {|h| h.delete(sitze = {"Leder" => @mass[2][0]})}
 @parts.delete_at(2)
 @mass.push([1.4, 0.2])
 @parts.push(fernseher = {"Gehäuse" => @mass[6][0], "Kabel" => @mass[6][1]})
@@ -165,5 +162,7 @@ puts''
 # Oberstes Teil
 puts "Das oberste Einzelteil des Teils Reifen ist:"
 @parts[0].first.each {|name, gewicht| puts "#{name}"}
+puts ''
 
-@parts[0] == @parts[1]
+puts "Sind Karosserie und Reifen identisch?"
+puts @parts[0] == @parts[1]
