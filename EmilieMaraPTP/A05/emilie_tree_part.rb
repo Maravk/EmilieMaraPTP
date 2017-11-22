@@ -108,8 +108,6 @@ puts "--> Motor:"
   puts "             Beschreibung: #{name}"
   puts "             Gewicht     : #{gewicht} Kilogramm"
 end
-puts''
-
 
 # Einzelteil hinzufügen.
 @mass.push([1.11, 2.89])
@@ -120,3 +118,13 @@ puts "--> Navigation:"
   puts "             Beschreibung: #{name}"
   puts "             Gewicht     : #{gewicht} Kilogramm"
 end
+
+# Einzelteil austauschen.
+# Einzelteil löschen.
+# Anzahl an Einzelteilen.
+# Gesamtmasse
+# Oberstes Teil
+
+
+
+
