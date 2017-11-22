@@ -133,12 +133,13 @@ end
 
 # Einzelteil austauschen.
 puts "Das Teil Sitze wird nun mit Fernseher ausgetauscht."
-@parts.each {|h| h.delete(sitze)}
+#@parts.each {|h| h.delete(sitze = {"Leder" => @mass[2][0]})}
+@parts.delete_at(2)
 @mass.push([1.4, 0.2])
 @parts.push(fernseher = {"Gehäuse" => @mass[6][0], "Kabel" => @mass[6][1]})
 
 puts "--> Fernseher:"
-@parts[6].each do |name, gewicht|
+@parts[5].each do |name, gewicht|
   puts "             Beschreibung: #{name}"
   puts "             Gewicht     : #{gewicht} Kilogramm"
 end
