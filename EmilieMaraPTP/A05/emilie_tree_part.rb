@@ -68,7 +68,8 @@ class Part
 
   # Oberstes Einzelteil.
   def top(part)
-  @parts[0].first.each {|name, gewicht| puts "#{name}"}
+    return @parent
+ # @parts[0].first.each {|name, gewicht| puts "#{name}"}
   end 
 
   # Vergleich
