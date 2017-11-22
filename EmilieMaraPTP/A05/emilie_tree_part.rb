@@ -19,6 +19,10 @@ class Part
   if (@part == nil)
     @part = ""
   end 
+  if(@parent == nil)
+    @parent = Object.new
+  else @parent = @part
+  end
 
   # To_s
   def to_s(indent = 0)
@@ -30,6 +34,7 @@ class Part
   # Teile hinzufügen.
   def add_part (part, mass)
   AUTO.push %w{part}
+  end 
   
   # Einzelteile hinzufügen.
   def add_parts (parent, name, gewicht)
@@ -49,7 +54,7 @@ class Part
     @parts.delete_at(deleted_part)
     @mass.push([new_mass])
     @parts.push(new_part = {description => @mass[new_mass][new_mass], description => @mass[new_mass][new_mass]})
-
+  end 
   
   # Empty?
   def empty?
