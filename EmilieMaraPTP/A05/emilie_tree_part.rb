@@ -20,7 +20,6 @@ class Part
     @part = ""
   end 
 
-  
   def to_s(indent = 0)
       part_s = @part.to_s
       sub_indent = indent + part_s.length
@@ -67,8 +66,17 @@ def top(part)
     return @part
   end
 end 
+
+# Vergleich
+def == (part)
+    if(self.part() == part.part() && self.mass() == part.mass() && @parts == part.all_parts())
+      return true
+    end
+    return false
+  end
 end
 end 
+ 
 
 
 
@@ -125,18 +133,12 @@ end
 
 # Einzelteil austauschen.
 puts "Das Teil Sitze wird nun mit Fernseher ausgetauscht."
-#@mass.delete([2][0])#[1.4]
-#@mass.delete([2][1])#.pop#[0.2]
-#@mass[2][0] = 1.4
-#@mass[2][1] = 0.2
-# Nächste Zeile will nüscht, määähhh
-# Liegt vllt. daran, dass Sitze nur ein Element im Array @mass 
-# besitzt und man hier zwei Elemente in das Array packen will?
-#@parts[sitze].replace(fernseher = {"Gehäuse" => @mass[2][0], "Kabel" => @mass[2][1]})
-
+@parts.each {|h| h.delete(sitze)}
+@mass.push([1.4, 0.2])
+@parts.push(fernseher = {"Gehäuse" => @mass[6][0], "Kabel" => @mass[6][1]})
 
 puts "--> Fernseher:"
-@parts[2].each do |name, gewicht|
+@parts[6].each do |name, gewicht|
   puts "             Beschreibung: #{name}"
   puts "             Gewicht     : #{gewicht} Kilogramm"
 end
@@ -161,8 +163,5 @@ puts''
 
 # Oberstes Teil
 puts "Das oberste Einzelteil des Teils Reifen ist: #{@parts.first}."
-  
 
-
-
-
+#@parts[0] == @parts[1]
