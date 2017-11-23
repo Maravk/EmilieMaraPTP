@@ -11,31 +11,32 @@ class Part
     @part = part
     @parts = parts
     @mass = mass
-  end
+
   
-  if (@mass == nil)
-    @mass = 0.0
-  end
-  if (@part == nil)
-    @part = ""
-  end 
-  if(@parent == nil)
-    @parent = Object.new
-    @parent = @part[0]
+    if (@mass == nil)
+      @mass = 0.0
+    end
+    if (@part == nil)
+      @part = ""
+    end
+    if (@parent == nil)
+      @parent = Object.new
+      @parent = @part[0]
+    end
   end
 
   # To_s
   def to_s(indent = 0)
-      part_s = @part.to_s
-      sub_indent = indent + part_s.length
+    part_s = @part.to_s
+    sub_indent = indent + part_s.length
     part_s + @parts.map { |parts| " ~ " + parts.to_s(sub_indent + 3)}.join("\n" + ' ' * sub_indent)
   end
   
   # Teile hinzufügen.
   def add_part (part, mass)
-  AUTO.push %w{part}
-  @mass.push[(mass)]
-  end 
+    AUTO.push %w{part}
+    @mass.push[(mass)]
+  end
   
   # Einzelteile hinzufügen.
   def add_parts (index, name, gewicht)
@@ -45,9 +46,10 @@ class Part
 
   #Each
   def each(parts_index0, parts_index1)
-  @parts[parts_index0][pars_index1].each do |name, gewicht|
-    puts "             Beschreibung: #{name}"
-    puts "             Gewicht     : #{gewicht} Kilogramm"
+    @parts[parts_index0][pars_index1].each do |name, gewicht|
+      puts "             Beschreibung: #{name}"
+      puts "             Gewicht     : #{gewicht} Kilogramm"
+    end
   end
 
   # Altes Teil mit neuem Teil ersetzen.
@@ -55,11 +57,11 @@ class Part
     @parts.delete_at(deleted_part)
     @mass.push([new_mass])
     @parts.push(new_part = {description => @mass[new_mass][new_mass], description => @mass[new_mass][new_mass]})
-  end 
+  end
   
   # Empty?
   def empty?
-  return @parts.empty?
+    return @parts.empty?
   end
 
   # Einzelteil entfernen.
@@ -70,8 +72,8 @@ class Part
   # Oberstes Einzelteil.
   def top
  #   return @parent
- @parts[0].first.each {|name, gewicht| puts "#{name}"}
-  end 
+    @parts[0].first.each {|name, gewicht| puts "#{name}"}
+  end
 
   # Vergleich
   def == (part)
@@ -81,7 +83,6 @@ class Part
     return false
   end
 end
-end 
  
 
 
