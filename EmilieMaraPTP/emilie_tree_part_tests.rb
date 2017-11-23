@@ -41,4 +41,12 @@ def test_gesamtmasse
   mass1 = mass0 + @mass[1].inject(0,:+)
   assert_equal(332, mass1, "Fehler!")
 end
+
+def test_top
+assert_equal(["Metall", 100], @parts[0].first.each {|name, gewicht| puts "#{name}"}, "Fehler!")
+end 
+
+def test_vergleich
+  assert_not_equal(true, @parts[0] == @parts[1], "Fehler!")
+end
 end
