@@ -5,7 +5,7 @@
 
 # Dateien werden angefordert.
 require 'test/unit'
-require_relative "./A05/emilie_tree_part"
+require_relative "emilie_tree_part"
 
 # Neue Testklasse
 class TestEmilieTreePart < Test::Unit::TestCase

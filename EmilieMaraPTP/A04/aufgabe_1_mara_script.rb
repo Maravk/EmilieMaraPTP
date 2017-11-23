@@ -2,7 +2,7 @@
 # Script zur Queue
 
 # Date wird angefordert.
-require_relative "aufgabe_1"
+require_relative "./A04/aufgabe_1"
 
 # Neues Objekt der Klasse Queue wird erstellt.
 queue=Queue.new

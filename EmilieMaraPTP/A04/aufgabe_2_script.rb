@@ -33,7 +33,7 @@ puts stack.length
 puts''
 
 puts "Ist das folgende Array leer?"
-puts stack.empty
+puts stack.empty?
 puts ''
 
 puts "Das fertige Array sieht folgendermaßen aus:"

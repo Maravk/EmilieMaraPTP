@@ -42,4 +42,4 @@ end
 puts ''
 
 puts "Das Einzelteil Teppich wurde zum Teil Wohnzimmer hinzugefügt:"
-#puts @parts.add_parts(0, "Teppich", 20)
+puts @parts.add_parts(0, "Teppich", 20)

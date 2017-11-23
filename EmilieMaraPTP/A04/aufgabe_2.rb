@@ -11,15 +11,27 @@ class Stack
   
   # Methode für das Hinzufügen am Ende.
   def push(karte)
-    @stack.push(karte)
+    raise ArgumentError, "You aren't allowed to add the Card nil, sorry!" unless karte != nil
+    
+    begin
+      push(nil)
+    rescue ArgumentError => push
+    #  puts push.backtrace
+      puts push.message
+    ensure
     return self
   end
-  
+  end 
+    
   # Methode für das Entfernen am Anfang.
   def pop
-    if @stack.empty?
-      puts "Fehler, der Stack ist leer"
-    else
+    raise ArgumentError, "This Stack is already empty!" if @stack.include?(nil)
+    @stack.pop
+    begin
+      @stack.include?(nil)
+    rescue ArgumentError => pop
+ #     puts pop.backtrace
+     puts pop.message
       @stack.pop  
     end 
     return self
@@ -27,10 +39,14 @@ class Stack
   
   # Methode für das Ausgeben des obersten Elementes.
   def peek
-    if @stack.empty?
-      puts "Fehler, der Stack ist leer"
-    else
+raise ArgumentError, "This Stack is already empty!" if @stack.include?(nil)
       @stack.last
+      begin
+        @stack.empty?(true)
+      rescue ArgumentError => peek
+   #     puts peek.backtrace
+        puts peek.backtrace
+      ensure
     end
   end
   
@@ -41,8 +57,16 @@ class Stack
   
   # Methode für das Ausgeben des Arrays.
   def to_s
+    raise ArgumentError, "This Stack already is empty!" if @stack.include?(nil)
     @stack.to_s
+    begin
+      @stack.empty?(true)
+    rescue ArgumentError => to_s
+  #    puts to_s.backtrace
+      puts to_s.message
+    ensure
   end
+  end 
   
   # Methode für Empty
   def empty?
@@ -53,5 +77,5 @@ class Stack
       puts "Dieses Array ist nicht leer!"
       return false
     end
-  end
-end  
+  end 
+  end  

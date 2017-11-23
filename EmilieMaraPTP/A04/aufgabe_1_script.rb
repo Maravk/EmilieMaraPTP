@@ -33,7 +33,7 @@ puts queue.size
 puts ''
 
 puts "Ist das folgende Array leer?"
-puts queue.empty
+puts queue.empty?
 puts ''
 
 puts "Das fertige Array sieht folgendermaßen aus:"
