@@ -82,14 +82,39 @@ class Part
     end
     return false
   end
+  
+  def write_to_file
+    filename = "A05/" << @part.to_s
+    content = @part << "\n" << @parts.length.to_s << "\n" << @parts.to_s << "\n" << @mass.to_s << "\nParent: " + @parent.to_s
+    File.write(filename, content)
+  end
+  
+  def load_from_file(filename)
+    line = IO.readlines(filename)[0]
+    @name = line
+    line = IO.readlines(filename)[1]
+    number_of_parts = line.to_i
+    line = IO.readlines(filename)[2]
+    words = line.split(/\W+/)
+    i = 0
+    array = 0
+    while (i < number_of_parts)
+      @parts[words[array]] = (@parts[words[array + 1]].to_f)
+      i = i+1
+      array = array + 2
+    end
+    puts @parts["Reifen"]
+    puts @parts["Motor"]
+  end
+  
 end
  
 
 
 # Skript
-AUTO = Part.new("Auto", %w{ Karosserie Reifen Sitze Spiegel Motor}.map {|str| Part.new(str)})
+auto = Part.new("Auto", %w{ Karosserie Reifen Sitze Spiegel Motor}.map {|str| Part.new(str)})
   puts "Darstellung der Stückliste Auto"
-  puts AUTO
+  puts auto
     
 
 @mass = [[100, 170, 20, 200], [20, 10], [45], [2, 0.5], [20, 2, 35, 5]] 
@@ -177,3 +202,5 @@ puts @parts[0] == @parts[1]
 puts ''
 puts "Sind Karosserie und Karosserie identisch?"
 puts @parts[0] == @parts[0]
+
+auto.write_to_file()
