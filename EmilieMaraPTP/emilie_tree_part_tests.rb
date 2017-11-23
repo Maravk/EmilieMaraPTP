@@ -3,6 +3,15 @@
 # TeamChallenger
 # Testklasse zu emilie_tree_part
 
-class TestEmilieTreePart
+# Dateien werden angefordert.
+require 'test/unit'
+require_relative 'emilie_tree_part'
+
+# Neue Testklasse
+class TestEmilieTreePart < Test::Unit::TestCase
+  
+  # Set-Up wird erstellt.
+  def setup()
+  auto=Part.new
   
 end
