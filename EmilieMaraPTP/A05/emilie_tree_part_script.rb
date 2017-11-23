@@ -40,3 +40,6 @@ puts "--> Schlafzimmer:"
   puts "             Gewicht     : #{gewicht} Kilogramm"
 end
 puts ''
+
+puts "Das Einzelteil Teppich wurde zum Teil Wohnzimmer hinzugefügt:"
+#puts @parts.add_parts(0, "Teppich", 20)
