@@ -34,8 +34,7 @@ class Part
   
   # Teile hinzufügen.
   def add_part (part, mass)
-    AUTO.push %w{part}
-    @mass.push[(mass)]
+    @parts[part] = mass
   end
   
   # Einzelteile hinzufügen.
@@ -85,7 +84,7 @@ class Part
   
   def write_to_file
     filename = "A05/" << @part.to_s
-    content = @part << "\n" << @parts.length.to_s << "\n" << @parts.to_s << "\n" << @mass.to_s << "\nParent: " + @parent.to_s
+    content = @part << "\n" << @parts.length.to_s << "\n" << @parts.flatten.to_s << "\n" << @mass.to_s << "\nParent: " + @parent.to_s
     File.write(filename, content)
   end
   
