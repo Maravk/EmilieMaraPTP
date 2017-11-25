@@ -23,7 +23,7 @@ class Part
       @parent = Object.new
       @parent = @part[0]
     end
-
+    endlol
 
   # To_s
   def to_s(indent = 0)
@@ -33,15 +33,14 @@ class Part
   end
   
   # Teile hinzufügen.
-  def add_part(part, mass)
-    AUTO.push %w{part}
-    @mass.push[(mass)]
+  def add_part (part, mass)
+    @parts[part] = mass
   end
   
   # Einzelteile hinzufügen.
-  def add_parts(index, index1, name, gewicht)
+  def add_parts (index, name, gewicht)
     @mass.push([gewicht])
-    @part[index][index1].push(name)
+    @part[index].push(name)
   end
 
   #Each
@@ -77,20 +76,48 @@ class Part
 
   # Vergleich
   def == (part)
-     (self.part() == part.part() && self.mass() == part.mass() && @parts == part.all_parts())
+    if(self.part() == part.part() && self.mass() == part.mass() && @parts == part.all_parts())
+      return true
+    end
+    return false
   end
+  
+  def write_to_file
+    filename = "A05/" << @part.to_s
+    content = @part << "\n" << @parts.length.to_s << "\n" << @parts.flatten.to_s << "\n" << @mass.to_s << "\nParent: " + @parent.to_s
+    File.write(filename, content)
+  end
+  
+  def load_from_file(filename)
+    line = IO.readlines(filename)[0]
+    @name = line
+    line = IO.readlines(filename)[1]
+    number_of_parts = line.to_i
+    line = IO.readlines(filename)[2]
+    words = line.split(/\W+/)
+    i = 0
+    array = 0
+    while (i < number_of_parts)
+      @parts[words[array]] = (@parts[words[array + 1]].to_f)
+      i = i+1
+      array = array + 2
+    end
+    puts @parts["Reifen"]
+    puts @parts["Motor"]
+  end
+  
 end
-end  
+ 
 
 
 # Skript
-AUTO = Part.new("Auto", %w{ Karosserie Reifen Sitze Spiegel Motor}.map {|str| Part.new(str)})
+auto = Part.new("Auto", %w{ Karosserie Reifen Sitze Spiegel Motor}.map {|str| Part.new(str)})
   puts "Darstellung der Stückliste Auto"
-  puts AUTO
+  puts auto
     
 
 @mass = [[100, 170, 20, 200], [20, 10], [45], [2, 0.5], [20, 2, 35, 5]] 
-@parts = [karosserie = {"Metall" => @mass[0][0], "Kotflügel" => @mass[0][1], "Scharniere" => @mass[0][2], "Türen" => @mass[0][3]}, reifen = {"Gummi" => @mass[1][0], "Felgen" => @mass[1][1]}, sitze = {"Leder" => @mass[2][0]}, spiegel = {"Glas" => @mass[3][0], "Halterung" => @mass[3][1]}, motor = {"Schläuche" => @mass[4][0], "Kolben" => @mass[4][1], "Aggregatetrieb" => @mass[4][2], "Kurbelwelle" => @mass[4][3]}]
+@parts = [karosserie = {"Metall" => @mass[0][0], "Kotflügel" => @mass[0][1], "Scharniere" => @mass[0][2], "Türen" => @mass[0][3]}, reifen = {"Gummi" => @mass[1][0], "Felgen" => @mass[1][1]}, sitze = {"Leder" => @mass[2][0]}, spiegel = {"Glas" => @mass[3][0], "Halterung" => @mass[3][1]}, motor = {"Schläuche" => @mass[4][0], "Kolben" => @mass[4][1], "Aggregatetrieb" => @mass[4][2], "Kurbelwelle" => @mass[2][3]}]
   puts "Einzelteile von Auto"
   puts "--> Karosserie:"
 @parts[0].each do |name, gewicht|
@@ -174,3 +201,5 @@ puts @parts[0] == @parts[1]
 puts ''
 puts "Sind Karosserie und Karosserie identisch?"
 puts @parts[0] == @parts[0]
+
+auto.write_to_file()
