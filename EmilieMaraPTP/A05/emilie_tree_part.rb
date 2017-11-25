@@ -23,7 +23,7 @@ class Part
       @parent = Object.new
       @parent = @part[0]
     end
-  end
+
 
   # To_s
   def to_s(indent = 0)
@@ -33,15 +33,15 @@ class Part
   end
   
   # Teile hinzufügen.
-  def add_part (part, mass)
+  def add_part(part, mass)
     AUTO.push %w{part}
     @mass.push[(mass)]
   end
   
   # Einzelteile hinzufügen.
-  def add_parts (index, name, gewicht)
+  def add_parts(index, index1, name, gewicht)
     @mass.push([gewicht])
-    @part[index].push(name)
+    @part[index][index1].push(name)
   end
 
   #Each
@@ -77,13 +77,10 @@ class Part
 
   # Vergleich
   def == (part)
-    if(self.part() == part.part() && self.mass() == part.mass() && @parts == part.all_parts())
-      return true
-    end
-    return false
+     (self.part() == part.part() && self.mass() == part.mass() && @parts == part.all_parts())
   end
 end
- 
+end  
 
 
 # Skript
@@ -93,7 +90,7 @@ AUTO = Part.new("Auto", %w{ Karosserie Reifen Sitze Spiegel Motor}.map {|str| Pa
     
 
 @mass = [[100, 170, 20, 200], [20, 10], [45], [2, 0.5], [20, 2, 35, 5]] 
-@parts = [karosserie = {"Metall" => @mass[0][0], "Kotflügel" => @mass[0][1], "Scharniere" => @mass[0][2], "Türen" => @mass[0][3]}, reifen = {"Gummi" => @mass[1][0], "Felgen" => @mass[1][1]}, sitze = {"Leder" => @mass[2][0]}, spiegel = {"Glas" => @mass[3][0], "Halterung" => @mass[3][1]}, motor = {"Schläuche" => @mass[4][0], "Kolben" => @mass[4][1], "Aggregatetrieb" => @mass[4][2], "Kurbelwelle" => @mass[2][3]}]
+@parts = [karosserie = {"Metall" => @mass[0][0], "Kotflügel" => @mass[0][1], "Scharniere" => @mass[0][2], "Türen" => @mass[0][3]}, reifen = {"Gummi" => @mass[1][0], "Felgen" => @mass[1][1]}, sitze = {"Leder" => @mass[2][0]}, spiegel = {"Glas" => @mass[3][0], "Halterung" => @mass[3][1]}, motor = {"Schläuche" => @mass[4][0], "Kolben" => @mass[4][1], "Aggregatetrieb" => @mass[4][2], "Kurbelwelle" => @mass[4][3]}]
   puts "Einzelteile von Auto"
   puts "--> Karosserie:"
 @parts[0].each do |name, gewicht|

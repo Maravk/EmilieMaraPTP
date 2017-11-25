@@ -11,8 +11,7 @@ class Queue
   
   # Methode für das Hinzufügen am Ende.
   def enqueue(element)
-    raise ArgumentError, "You aren't allowed to add the Element nil, sorry!" unless element != nil
-   
+    raise ArgumentError, "You aren't allowed to add the Element nil, sorry!" unless element != nil 
     begin
       enqueue(nil)
     rescue ArgumentError => enqueue
@@ -21,7 +20,7 @@ class Queue
     ensure
     # Return self: Referenz des Objektes wird zurückgegeben, damit niemand 
     # die Queue kaputt machen kann.
-    return self
+  #  return self
   end
   end
   
@@ -64,7 +63,7 @@ class Queue
     begin
       @queue.empty?(true)
     rescue ArgumentError => to_s
-  #    puts to_s.backtrace
+   #   puts to_s.backtrace
       puts to_s.message
     ensure
     end
