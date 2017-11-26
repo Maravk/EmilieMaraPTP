@@ -41,5 +41,21 @@ puts "--> Schlafzimmer:"
 end
 puts ''
 
-puts "Das Einzelteil Teppich wurde zum Teil Wohnzimmer hinzugefügt:"
-puts @parts.add_parts(0,4, "Teppich", 20)
+#puts "Das Einzelteil Teppich wurde zum Teil Wohnzimmer hinzugefügt:"
+#puts HAUS.add_parts(0,4, "Teppich", 20)
+
+puts "Das Teil Wohnzimmer wird nun mit Arbeitszimmer ausgetauscht:"
+#puts HAUS.replace_new_part(0, [200, 300], arbeitszimmer => {"PC" => @mass[0][0], "Sessel" => @mass[0][1]})
+
+puts "Die Gesamtmasse aller Einzelteile und Teile summiert sind #{HAUS.mass} Kilogramm."
+
+puts "Sind Küche und Schlafzimmer identisch?"
+puts @parts[1] == @parts[3]
+puts''
+
+puts "Das oberste Einzelteil des Teils Wohnzimmer ist:"
+puts HAUS.top(0,0)
+puts ''
+
+puts "Ist das gesamte Teil Haus leer?"
+puts HAUS.empty?

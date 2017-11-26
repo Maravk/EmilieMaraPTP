@@ -33,90 +33,60 @@ class Part
   end
   
   # Teile hinzufügen.
-  def add_part(part, mass)
-    @parts[part] = mass
+  def add_part (part, mass)
+    AUTO.push %w{part}
+    @mass.push[(mass)]
   end
-#  
-#  # Einzelteile hinzufügen.
-#  def add_parts(index, index1, name, gewicht)
-#    @mass.push([gewicht])
-#    @part[index][index1].push(name)
-#  end
-
-# Oberstes Einzelteil.
-def top
-#   return @parent
-  @parts[0].first.each {|name, gewicht| puts "#{name}"}
-end
   
+  # Einzelteile hinzufügen.
+  def add_parts(index, index1, name, gewicht)
+    @mass.push([gewicht])
+    @part[index][index1].push(name)
+  end
+
   #Each
   def each(parts_index0, parts_index1)
-    @parts[parts_index0][parts_index1].each do |name, gewicht|
+    @parts[parts_index0][pars_index1].each do |name, gewicht|
       puts "             Beschreibung: #{name}"
       puts "             Gewicht     : #{gewicht} Kilogramm"
     end
   end
 
   # Altes Teil mit neuem Teil ersetzen.
-  def replace_new_part(deleted_part, new_mass, new_mass1, 
-    new_part, description, description1)
+  def replace_new_part(deleted_part, new_mass, new_part, description)
     @parts.delete_at(deleted_part)
-    @mass.push([new_mass, new_mass1])
-@parts.push(new_part = {description => @mass[4][0], description1 => @mass[4][1]})
+    @mass.push([new_mass])
+    @parts.push(new_part = {description => @mass[new_mass][new_mass], description => @mass[new_mass][new_mass]})
   end
   
   # Empty?
   def empty?
     return @parts.empty?
   end
-  
-  # Gesamtmasse
-  def mass
-    mass0 = @mass[0].reduce(0,:+)
-    mass1 = mass0 + @mass[1].reduce(0,:+)
-    mass2 = mass1 + @mass[2].reduce(0,:+)
-    mass3 = mass2 + @mass[3].reduce(0,:+)
- #   mass4 = mass3 + @mass[4].reduce(0,:+)
- #   mass5 = mass4 + @mass[5].reduce(0,:+)
-    puts mass2
-end
 
   # Einzelteil entfernen.
-#  def remove_part(deleted_parts)
-#    @parts.each {|h| h.delete(deleted_parts)}
-#  end
+  def remove_part(deleted_parts)
+    @parts.each {|h| h.delete(deleted_parts)}
+  end
+
+  # Oberstes Einzelteil.
+  def top
+ #   return @parent
+    @parts[0].first.each {|name, gewicht| puts "#{name}"}
+  end
 
   # Vergleich
   def == (part)
      (self.part() == part.part() && self.mass() == part.mass() && @parts == part.all_parts())
   end
-  
-  def load_from_file(filename)
-    line = IO.readlines(filename)[0]
-    @name = line
-    line = IO.readlines(filename)[1]
-    number_of_parts = line.to_i
-    line = IO.readlines(filename)[2]
-    words = line.split(/\W+/)
-    i = 0
-    array = 0
-    while (i < number_of_parts)
-      @parts[words[array]] = (@parts[words[array + 1]].to_f)
-      i = i+1
-      array = array + 2
-    end
-    puts @parts["Reifen"]
-    puts @parts["Motor"]
-  end
-  
 end
  
 
 
 # Skript
-auto = Part.new("Auto", %w{ Karosserie Reifen Sitze Spiegel Motor}.map {|str| Part.new(str)})
+AUTO = Part.new("Auto", %w{ Karosserie Reifen Sitze Spiegel Motor}.map {|str| Part.new(str)})
   puts "Darstellung der Stückliste Auto"
-  puts auto
+  puts AUTO
     
 
 @mass = [[100, 170, 20, 200], [20, 10], [45], [2, 0.5], [20, 2, 35, 5]] 
