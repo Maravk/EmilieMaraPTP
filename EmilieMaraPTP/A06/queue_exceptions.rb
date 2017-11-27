@@ -27,7 +27,7 @@
         # Erstes Element
     def peek
       if @queue.length == 0
-        raise IOError("Sorry, this Queue is empty!")
+        raise IndexError("Sorry, this Queue is empty!")
     end
     @queue.first
       end

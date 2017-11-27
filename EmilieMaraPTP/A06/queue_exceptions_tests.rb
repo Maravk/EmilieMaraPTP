@@ -5,8 +5,9 @@
 
 require 'test/unit'
 require_relative 'queue_exceptions'
+require StandardError
 
-class TestQueue < Test::Unit::TestCase
+class TestQueue < Test::Unit::TestCase < StandardError
   
   # Neues Array wird erstellt.
 def setup()
@@ -18,11 +19,18 @@ def test_initialize
   assert_not_equal(nil, @queue, "Dies ist kein leeres Array!")
 end
 
-# Test - Raise IOError
-def test_raise_message_IOError
-  assert_raise_message(IOError, "Please add a valid value!")
-      raise "Please add a valid value!"
+# Test - Raise
+def test_assert_raise
+  @queue.enqueue(nil)
+  assert_raise(IOError, @queue , "Fehler!")
 end
+
+# Test - Raise IndexError
+#def test_raise_IOError
+#  @queue.enqueue(nil)
+#  exception = assert_raise(IOError) 
+#  assert_equal("Please add a valid value!", exception.message)
+#end
 
 # Test - Element hinzufügen
 def test_enqueue
@@ -42,11 +50,14 @@ end
 
 # Test - Erstes Element ausgeben
 def test_peek
-  assert_equal(nil, @queue.peek, "Diese Eissorte ist falsch!")
+  @queue.enqueue("Cookie Dough")
+  assert_equal("Cookie Dough", @queue.peek, "Diese Eissorte ist falsch!")
 end
 
 # Test - Empty
 def test_empty
   assert_equal(true, @queue.empty?, "Fehler!")
 end
+
+
 end
