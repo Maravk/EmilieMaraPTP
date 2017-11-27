@@ -6,7 +6,7 @@
 
 # Dateien werden angefordert.
 require 'test/unit'
-require_relative 'aufgabe_2'
+require_relative 'stack_exceptions'
 
 # Testklasse wird erstellt.
 class TestStack < Test::Unit::TestCase
@@ -25,6 +25,8 @@ end
 def test_push
   @stack.push("Dame")
   assert_equal("Dame", @stack.peek, "Diese Karte ist falsch!")
+  assert_raise do IndexEror @stack.push
+  end
 end
 
 # Test - Länge
@@ -34,16 +36,27 @@ end
 
 # Test - Letztes Element wird entfernt
 def test_pop
-  assert_equal(@stack, @stack.pop, "Diese Karte ist falsch!")
+  assert_equal(0, @stack.length, "Diese Karte ist falsch!")
+  assert_raise do IndexError @stack.pop
+  end
 end
 
 # Test - Oberstes Element wird ausgegeben
 def test_peek
-  assert_equal(nil, @stack.peek, "Diese Karte ist falsch!")
+  assert_equal(0, @stack.length, "Diese Karte ist falsch!")
+  assert_raise do IndexError @stack.peek
+  end
 end
 
 # Test - Empty
 def test_empty
   assert_equal(true, @stack.empty?, "Fehler!")
+end
+
+def test_to_s
+  @stack.push("Dame")
+  assert_equal("Dame", @stack.peek, "Fehler!")
+  assert_raise do IndexError @stack.to_s
+  end
 end
 end

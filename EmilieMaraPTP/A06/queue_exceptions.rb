@@ -11,7 +11,7 @@
         # Element hinzufügen
     def enqueue(element)
       if element == nil 
-        raise IOError("Please add a valid value!")
+        raise IndexError.new("Please add a valid value!")
       end
       @queue.push(element)
       end
@@ -19,7 +19,7 @@
         # Element am Ende entfernen.
     def dequeue
       if @queue.length == 0
-        raise IndexError("Sorry, this Queue is already empty, you can't remove any elements!")
+        raise IndexError.new("Sorry, this Queue is already empty, you can't remove any elements!")
       end
       @queue.shift
     end
@@ -27,7 +27,7 @@
         # Erstes Element
     def peek
       if @queue.length == 0
-        raise IndexError("Sorry, this Queue is empty!")
+        raise IndexError.new("Sorry, this Queue is empty!")
     end
     @queue.first
       end
@@ -40,7 +40,7 @@
       # To_s
   def to_s
     if @queue.length == 0
-      raise IndexError("Sorry, this Queue is empty!")
+      raise IndexError.new("Sorry, this Queue is empty!")
     end
      @queue.first
   end
