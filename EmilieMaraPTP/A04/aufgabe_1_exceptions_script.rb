@@ -4,10 +4,10 @@
 # SKript zur Klasse Queue inklusive Exceptions
 
 # Datei wird angefordert.
-require_relative "aufgabe_1_exceptions"
+require_relative "queue_exception"
 
 # Neues Objekt der Klasse Queue wird erstellt.
-queue=Queue.new
+queue=QueueException.new
 
 # Methoden werden angewendet.
 puts "Das erste Element wird hinzugefügt:" 
