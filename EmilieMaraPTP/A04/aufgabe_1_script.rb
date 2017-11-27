@@ -21,7 +21,7 @@ puts queue.enqueue("Half Baked")
 puts''
 
 puts "Das erste Element wird entfernt:" 
-puts queue.dequeue
+puts queue.dequeue("Cookie Dough")
 puts ''
 
 puts "Das neue erste Element wird ausgegeben:" 

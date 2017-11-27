@@ -4,7 +4,7 @@
 # Script zum Stack inklusie Exceptions
 
 # Datei wird angefordert.
-require_relative "aufgabe_2_exceptions"
+require_relative "stack_exceptions"
 
 # Neues Objekt der Klasse Stack wird erstellt.
 stack=Stack.new

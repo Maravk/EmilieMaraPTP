@@ -4,14 +4,14 @@
 # SKript zur Klasse Queue inklusive Exceptions
 
 # Datei wird angefordert.
-require_relative "queue_exception"
+require_relative "queue_exceptions"
 
 # Neues Objekt der Klasse Queue wird erstellt.
-queue=QueueException.new
+queue=Queue.new
 
 # Methoden werden angewendet.
 puts "Das erste Element wird hinzugefügt:" 
-puts queue.enqueue("Cookie Dough")
+puts queue.enqueue("Dame")
 puts ''
 
 puts "Das zweite Element wird hinzugefügt:"
@@ -31,7 +31,7 @@ puts queue.peek
 puts ''
 
 puts "Die Länge des Arrays lautet:"
-puts queue.size
+puts queue.length
 puts ''
 
 puts "Ist das folgende Array leer?"
