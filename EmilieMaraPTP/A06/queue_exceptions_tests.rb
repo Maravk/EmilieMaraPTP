@@ -18,9 +18,10 @@ def test_initialize
   assert_not_equal(nil, @queue, "Dies ist kein leeres Array!")
 end
 
-# Test - Raise  
-def test_raise
-  assert_raise(LocalJumperror, "Sorry, this Queue is empty!")
+# Test - Raise IOError
+def test_raise_message_IOError
+  assert_raise_message(IOError, "Please add a valid value!")
+      raise "Please add a valid value!"
 end
 
 # Test - Element hinzufügen
@@ -31,12 +32,12 @@ end
 
 # Test - Länge
 def test_size
-  assert_equal(0, @queue.size, "Die Länge ist falsch!")
+  assert_equal(0, @queue.length, "Die Länge ist falsch!")
 end
 
 # Test - Element entfernen
 def test_dequeue
-  assert_equal(@queue, @queue.dequeue, "Diese Eissorte ist falsch!")
+  assert_equal(0, @queue.length, "Diese Eissorte ist falsch!")
 end
 
 # Test - Erstes Element ausgeben
