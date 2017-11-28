@@ -59,7 +59,15 @@ class Part
     @parts.each{|part| amount += part.total_parts_amount() }
     return amount
   end
-
+  
+  #Wenn dieses Teil kein Gewicht hat, wird das Gesamtgewicht der Teile aus dem dieses besteht zurück gegeben.
+  def mass()
+    if(@mass == 0)
+      return self.mass_of_all()
+    end
+    return @mass
+  end
+  
   #Gibt die Masse des Ganzen zurück, falls es nicht noch aus anderen Teilen besteht
   #Sonst wird die Masse aller Teile und des Ganzen zurück gegeben
   def mass_of_all()
@@ -72,15 +80,6 @@ class Part
     }
     mass += @mass
     return mass
-  end
-  
-  
-  #Wenn dieses Teil kein Gewicht hat, wird das Gesamtgewicht der Teile aus dem dieses besteht zurück gegeben.
-  def mass()
-    if(@mass == 0)
-      return self.mass_of_all()
-    end
-    return @mass
   end
   
   # Definierung der each Methode
