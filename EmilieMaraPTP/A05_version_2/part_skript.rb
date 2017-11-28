@@ -30,8 +30,10 @@ puts auto.parts_and_mass
 
 puts auto_motor.parts_and_mass
 
-
 puts auto.part_table
+
+some_file = PartToFile.new()
+#some_file.write_to_file(auto, "auto")
 
 puts "Zylinder ist Einzelteil vom Ganzen: " + auto_zylinder.top.name
 puts "Masse des ganzen Autos in Kilogramm: " + auto.mass_of_all.to_s
@@ -43,10 +45,7 @@ puts auto.part_table
 
 puts "Masse des ganzen Autos in Kilogramm: " + auto.mass_of_all.to_s
 
-#Skript
-
-some_file = PartToFile.new()
-some_file.write_to_file(auto, "auto")
-
+puts "test"
+puts auto.name
 
 
