@@ -1,52 +1,58 @@
-  # Author:: Mara von Kroge, Emilie Schuller
-  # 25. November 2017
-  # TeamChallenger
-  # Klasse Queue inklusive Exception
+# Author:: Mara von Kroge, Emilie Schuller
+# 25. November 2017
+# TeamChallenger
+# Klasse Queue inklusive Exception
+
+class Queue
+  def initialize
+    @queue=Array.new
+  end 
   
-  class Queue
-    def initialize
-      @queue=Array.new
-    end 
-    
-        # Element hinzufügen
-    def enqueue(element)
-      if element == nil 
-        raise IndexError.new("Please add a valid value!")
-      end
-      @queue.push(element)
-      end
-  
-        # Element am Ende entfernen.
-    def dequeue
-      if @queue.length == 0
-        raise IndexError.new("Sorry, this Queue is already empty, you can't remove any elements!")
-      end
-      @queue.shift
+      # Element hinzufügen
+  def enqueue(element)
+    if element == nil 
+      raise IndexError("Please add a valid value!")
+    else
+    @queue.push(element)
+    return self
     end
-  
-        # Erstes Element
-    def peek
-      if @queue.length == 0
-        raise IndexError.new("Sorry, this Queue is empty!")
     end
-    @queue.first
-      end
-  
-      # Länge der Queue
-  def length
-    @queue.length
-  end
-  
-      # To_s
-  def to_s
+
+      # Element am Ende entfernen.
+  def dequeue
     if @queue.length == 0
-      raise IndexError.new("Sorry, this Queue is empty!")
+      raise IndexError("Sorry, this Queue is already empty, you can't remove any elements!")
+    else
+    @queue.shift
+    return self
     end
-     @queue.to_s
   end
-  
-      # Empty? 
-  def empty?
-    return @queue.empty?
+
+      # Erstes Element
+  def peek
+    if @queue.length == 0
+      raise IndexError("Sorry, this Queue is empty!")
+    else
+  @queue.first
+    end
+    end
+
+    # Länge der Queue
+def length
+  @queue.length
+end
+
+    # To_s
+def to_s
+  if @queue.length == 0
+    raise IndexError("Sorry, this Queue is empty!")
+  else
+   @queue.to_s
   end
+end
+
+    # Empty? 
+def empty?
+  return @queue.empty?
+end
 end 

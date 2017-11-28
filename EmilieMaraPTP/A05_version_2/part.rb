@@ -107,7 +107,7 @@ class Part
       list << value.name << ": " << value.mass_of_all.to_s << "\n"
     }
     return list
-  end
+    end
   
   # Oerstes Teil
   def top()
@@ -136,7 +136,7 @@ class Part
   
   def remove(part)
     if part == nil
-      raise IOError("Please remove a valid part!")
+      raise TypeError("Please remove a valid part!")
     end
       @parts.delete(part)
   end
@@ -144,7 +144,7 @@ class Part
   # Ersetzt ein Teil aus der Liste
   def replace(part, new)
     if part == nil || new == nil
-      raise IOError("Please replace a valid part!")
+      raise TypeError("Please replace a valid part!")
     end
     @parts.delete(part)
     new.parent = self
@@ -153,7 +153,7 @@ class Part
   
     def replace(part, new)
     if part == nil || new == nil
-      raise IOError("Please replace a valid part!")
+      raise TypeError("Please replace a valid part!")
     end
     @parts.delete(part)
     new.set_parent(self)

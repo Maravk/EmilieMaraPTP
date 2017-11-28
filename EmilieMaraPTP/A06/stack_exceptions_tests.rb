@@ -25,7 +25,7 @@ end
 def test_push
   @stack.push("Dame")
   assert_equal("Dame", @stack.peek, "Diese Karte ist falsch!")
-  assert_raise do IndexEror @stack.push
+  assert_raise TypeError do @stack.push(nil)
   end
 end
 
@@ -37,14 +37,14 @@ end
 # Test - Letztes Element wird entfernt
 def test_pop
   assert_equal(0, @stack.length, "Diese Karte ist falsch!")
-  assert_raise do IndexError @stack.pop
+  assert_raise IndexError do @stack.pop
   end
 end
 
 # Test - Oberstes Element wird ausgegeben
 def test_peek
   assert_equal(0, @stack.length, "Diese Karte ist falsch!")
-  assert_raise do IndexError @stack.peek
+  assert_raise IndexError do @stack.peek
   end
 end
 
@@ -53,10 +53,10 @@ def test_empty
   assert_equal(true, @stack.empty?, "Fehler!")
 end
 
+# Test - To_s
 def test_to_s
-  @stack.push("Dame")
-  assert_equal("Dame", @stack.peek, "Fehler!")
-  assert_raise do IndexError @stack.to_s
+  assert_equal(0, @stack.length, "Fehler!")
+  assert_raise IndexError do @stack.to_s
   end
 end
 end

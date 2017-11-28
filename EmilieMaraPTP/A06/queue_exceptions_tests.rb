@@ -22,7 +22,7 @@ end
 def test_enqueue
   @queue.enqueue("Cookie Dough")
   assert_equal("Cookie Dough", @queue.peek, "Fehler!")
-  assert_raise do IndexError @queue.enqueue
+  assert_raise TypeError do @queue.enqueue(nil)
   end 
 end
 
@@ -34,15 +34,14 @@ end
 # Test - Element entfernen
 def test_dequeue
   assert_equal(0, @queue.length, "Fehler")
-  assert_raise do IndexError @queue.dequeue
+  assert_raise IndexError do @queue.dequeue
   end
 end
 
 # Test - Erstes Element ausgeben
 def test_peek
-  @queue.enqueue("Cookie Dough")
-  assert_equal("Cookie Dough", @queue.peek, "Fehler!")
-  assert_raise do IndexError @queue.peek
+  assert_equal(0, @queue.length, "Fehler!")
+  assert_raise IndexError do @queue.peek
   end
 end
 
@@ -51,10 +50,10 @@ def test_empty
   assert_equal(true, @queue.empty?, "Fehler!")
 end
 
+# Test - To_s
 def test_to_s
-  @queue.enqueue("Karamel Sutra")
-  assert_equal("Karamel Sutra", @queue.peek, "Fehler!")
-  assert_raise do IndexError @queue.to_s
+  assert_equal(0, @queue.length, "Fehler!")
+  assert_raise IndexError do @queue.to_s
   end
   end
-end
+end 

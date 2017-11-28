@@ -11,7 +11,7 @@ class Stack
   # Methode für das Hinzufügen am Ende.
   def push(karte)
     if karte == nil
-    raise IOError, "You aren't allowed to add the Card nil, sorry!"
+    raise TypeError, "You aren't allowed to add the Card nil, sorry!"
   end
   @stack.push(karte) 
   return self
@@ -21,17 +21,19 @@ end
   def pop
     if @stack.length == 0
     raise IndexError, "This Stack is already empty!" 
-  end
+    else
   @stack.pop
   return self
+    end
 end
 
   # Methode für das Ausgeben des obersten Elementes.
   def peek
     if @stack.length == 0
-       raise IOError, "This Stack is already empty!" 
-    end
+       raise IndexError, "This Stack is already empty!" 
+    else
     @stack.last
+    end
   end
   
   # Methode für die Länge des Arrays.
@@ -43,8 +45,9 @@ end
   def to_s
     if @stack.length == 0
     raise IndexError, "This Stack already is empty!"
-      end
+    else
     @stack.to_s
+    end
   end
   
   # Empty?

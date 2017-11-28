@@ -35,8 +35,8 @@ class TestPart < Test::Unit::TestCase
     @auto.add_part(new_part)
     assert_equal(new_part.parent(), @auto)
     assert_equal(5,@auto.total_parts_amount())
-      assert_raise do TypeError @auto.add_part("Car Seats", 100)
-  end 
+    assert_raise TypeError do @auto_reifen.part_add(nil)
+    end
   end
  
  # Test - Geamtgewicht
@@ -62,7 +62,7 @@ class TestPart < Test::Unit::TestCase
     assert_equal(4,@auto.total_parts_amount())
     @auto.remove(@auto_bremse)
     assert_equal(3,@auto.total_parts_amount)
-    assert_raise do IndexError @auto.remove(@autbremse)
+    assert_raise TypeError do @parts.remove(nil)
    end
   end
   
@@ -77,7 +77,7 @@ class TestPart < Test::Unit::TestCase
     @auto.replace(@auto_reifen, @auto_leichte_reifen)
     
     assert_equal(new_weight, @auto.mass_of_all)
-    assert_raise do IOError @auto.replace(@auto_reifen, @auto_leichte_reifen)
+    assert_raise TypeError do @auto.replace
     end
   end  
 end
