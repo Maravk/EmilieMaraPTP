@@ -30,12 +30,12 @@ class TestPart < Test::Unit::TestCase
   end
   
   # Test - Hinzufügen eines Teils und Instanzvariable parent
-  def test_part_add()
+  def test_add_part()
     new_part = Part.new("Car Seats",100)
     @auto.add_part(new_part)
     assert_equal(new_part.parent(), @auto)
     assert_equal(5,@auto.total_parts_amount())
-    assert_raise TypeError do @auto_reifen.part_add(nil)
+    assert_raise TypeError do @auto.add_part(nil)
     end
   end
  
@@ -62,10 +62,10 @@ class TestPart < Test::Unit::TestCase
     assert_equal(4,@auto.total_parts_amount())
     @auto.remove(@auto_bremse)
     assert_equal(3,@auto.total_parts_amount)
-    assert_raise TypeError do @parts.remove(nil)
+    assert_raise TypeError do @auto.remove(nil)
    end
   end
-  
+ 
   
   # Reifen werden durch leichtere Ersetzt
   def test_replace()
@@ -77,7 +77,7 @@ class TestPart < Test::Unit::TestCase
     @auto.replace(@auto_reifen, @auto_leichte_reifen)
     
     assert_equal(new_weight, @auto.mass_of_all)
-    assert_raise TypeError do @auto.replace
+    assert_raise TypeError do @auto.replace(nil, nil)
     end
   end  
 end

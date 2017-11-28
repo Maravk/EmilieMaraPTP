@@ -43,7 +43,7 @@ class Part
   # Entfernt ein Teil aus der Liste
   def remove(part)
     if part == nil
-      raise IOError("Please remove a valid part!")
+      raise IOError.new("Please remove a valid part!")
     end
     @parts.delete(part)
     return self
@@ -92,7 +92,7 @@ class Part
   #trägt ein Objekt in den Array dieses Teils ein, in dem die Teile stehen aus dem dieses Teil besteht
   def add_part(part)
     if part == nil
-      raise TypeError("Please add a valid name!")
+      raise TypeError.new("Please add a valid name!")
     end
     part.set_parent(self)
     @parts.push(part)
@@ -135,7 +135,7 @@ class Part
   
   def remove(part)
     if part == nil
-      raise TypeError("Please remove a valid part!")
+      raise TypeError.new("Please remove a valid part!")
     end
       @parts.delete(part)
   end
@@ -152,7 +152,7 @@ class Part
   
     def replace(part, new)
     if part == nil || new == nil
-      raise TypeError("Please replace a valid part!")
+      raise TypeError.new("Please replace a valid part!")
     end
     @parts.delete(part)
     new.set_parent(self)
