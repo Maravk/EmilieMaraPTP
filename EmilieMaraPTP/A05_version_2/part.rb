@@ -43,7 +43,7 @@ class Part
   # Entfernt ein Teil aus der Liste
   def remove(part)
     if part == nil
-      raise IOError("Pleas remove a valid part!")
+      raise IOError("Please remove a valid part!")
     end
     @parts.delete(part)
     return self
@@ -51,16 +51,10 @@ class Part
   
   #Gibt die Anzahl der Teile, aus denen ein Ganzes besteht, zurück, aber nicht mit der Anzahl Teile von Teilen
   def parts_amount()
-    if @parts.size == 0
-      raise IndexError("Sorry, there are no parts included!")
-    end
     return @parts.size()
   end
   
   def total_parts_amount()
-    if @parts.size == 0
-      raise IndexError("Sorry, there are no parts included!")
-    end
     amount = self.parts_amount()
     @parts.each{|part| amount += part.total_parts_amount() }
     return amount
@@ -99,13 +93,14 @@ class Part
   #trägt ein Objekt in den Array dieses Teils ein, in dem die Teile stehen aus dem dieses Teil besteht
   def add_part(part)
     if part == nil
-      raise IOError("Please add a valid name!")
+      raise TypeError("Please add a valid name!")
     end
     part.set_parent(self)
     @parts.push(part)
     return self
   end
   
+  # Jedes Einzelteil wird mit seiner jeweiigen Masse darstgestellt 
   def parts_and_mass()
     list = ""
     @parts.each { |value|
@@ -114,6 +109,7 @@ class Part
     return list
   end
   
+  # Oerstes Teil
   def top()
     if(@parent.nil?)
       return self
@@ -151,11 +147,11 @@ class Part
       raise IOError("Please replace a valid part!")
     end
     @parts.delete(part)
-    new.parent=self
+    new.parent = self
     @parts.push(new)
   end
   
-  def replace(part, new)
+    def replace(part, new)
     if part == nil || new == nil
       raise IOError("Please replace a valid part!")
     end
