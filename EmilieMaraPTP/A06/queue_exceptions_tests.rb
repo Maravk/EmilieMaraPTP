@@ -41,7 +41,7 @@ end
 # Test - Erstes Element ausgeben
 def test_peek
   assert_equal(0, @queue.length, "Fehler!")
-  assert_raise IndexError do @queue.peek
+  assert_raise TypeError do @queue.peek
   end
 end
 
