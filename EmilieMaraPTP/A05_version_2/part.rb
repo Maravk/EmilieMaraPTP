@@ -189,5 +189,3 @@ class Part
     end
   end
 end
-
-

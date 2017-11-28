@@ -3,6 +3,7 @@
 # Skript zur Klasse Part
 
 require_relative 'part.rb'
+require_relative 'part_to_file'
 
 auto = Part.new("Auto", 1380)
 
@@ -41,3 +42,11 @@ puts "Auto besteht nun aus folgenden Einzelteilen: " + auto.total_parts_amount.t
 puts auto.part_table
 
 puts "Masse des ganzen Autos in Kilogramm: " + auto.mass_of_all.to_s
+
+#Skript
+
+some_file = PartToFile.new()
+some_file.write_to_file(auto, "auto")
+
+
+
