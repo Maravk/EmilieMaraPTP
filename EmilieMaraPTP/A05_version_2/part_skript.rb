@@ -7,11 +7,16 @@ require_relative 'part_to_file'
 
 auto = Part.new("Auto", 1380)
 
+puts "Es wird eine Stückliste Auto erstellt."
 auto_reifen = Part.new("Reifen", 120, auto)
+puts "Das übergeordnete Teil lautet: "
 puts auto_reifen.parent.name
+puts "Das Teil Reifen wird hinzugefügt: "
 auto.add_part(auto_reifen)
-puts auto.parts_amount
+puts auto.parts_amount 
+puts "Kilogramm"
 puts auto.parts_and_mass
+puts 
 
 auto_bremse = Part.new("Bremsen", 40, auto)
 auto.add_part(auto_bremse)
