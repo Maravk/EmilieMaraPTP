@@ -82,13 +82,6 @@ class Part
     return mass
   end
   
-  # Definierung der each Methode
-  def each(&block)
-      @parts.each{ |part|
-        block.call(part)
-      }
-  end
-  
   #trägt ein Objekt in den Array dieses Teils ein, in dem die Teile stehen aus dem dieses Teil besteht
   def add_part(part)
     if part == nil

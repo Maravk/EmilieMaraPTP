@@ -9,10 +9,10 @@ class PartToFile
   def write_to_file(teil, filename)
     puts filename
     content = teil.name.to_s << "\n" << teil.parts_amount.to_s << "\n"
-    teil.all_parts.each { |part|
-      content << part.name.to_s << "\n"
-      content << part.mass.to_s << "\n"
-      content << part.parent.name.to_s << "\n"
+    teil.all_parts.each { |a|
+      content << a.name.to_s << "\n"
+      content << a.mass.to_s << "\n"
+      content << a.parent.name.to_s << "\n"
     }
     IO.write(filename, content)
   end
