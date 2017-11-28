@@ -1,4 +1,5 @@
 Auto
-3
-{"Reifen"=>45, "Motor"=>850, "Sitze"=>20}
+5
+[#<Part:0x0000000000339280 @parent="K", @part="Karosserie", @parts={}, @mass=0.0>, #<Part:0x0000000000338e20 @parent="R", @part="Reifen", @parts={}, @mass=0.0>, #<Part:0x0000000000338920 @parent="S", @part="Sitze", @parts={}, @mass=0.0>, #<Part:0x0000000000338808 @parent="S", @part="Spiegel", @parts={}, @mass=0.0>, #<Part:0x00000000003386f0 @parent="M", @part="Motor", @parts={}, @mass=0.0>]
 0.0
+Parent: A
