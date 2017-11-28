@@ -37,10 +37,13 @@ some_file = PartToFile.new()
 
 puts "Zylinder ist Einzelteil vom Ganzen: " + auto_zylinder.top.name
 puts "Masse des ganzen Autos in Kilogramm: " + auto.mass_of_all.to_s
-puts "Das Auto besteht aus folgenden Einzelteilen: " + auto.total_parts_amount.to_s
+puts "Das Auto besteht aus insgesamt #{auto.total_parts_amount.to_s} Einzelteilen."
 puts "Bremse wird entfernt."
 auto.remove(auto_bremse)
-puts "Auto besteht nun aus folgenden Einzelteilen: " + auto.total_parts_amount.to_s
+puts "Auto besteht nun aus insgesamt #{auto.total_parts_amount.to_s} Einzelteilen."
+puts''
+puts "Darstellung der Stückliste Auto als Tabelle:"
+puts ''
 puts auto.part_table
 
 puts "Masse des ganzen Autos in Kilogramm: " + auto.mass_of_all.to_s
