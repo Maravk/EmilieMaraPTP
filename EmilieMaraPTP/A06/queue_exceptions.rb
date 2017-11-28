@@ -42,7 +42,7 @@
     if @queue.length == 0
       raise IndexError.new("Sorry, this Queue is empty!")
     end
-     @queue.first
+     @queue.to_s
   end
   
       # Empty? 
