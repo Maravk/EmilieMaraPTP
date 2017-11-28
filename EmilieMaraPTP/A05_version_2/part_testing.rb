@@ -35,7 +35,7 @@ class TestPart < Test::Unit::TestCase
     @auto.add_part(new_part)
     assert_equal(new_part.parent(), @auto)
     assert_equal(5,@auto.total_parts_amount())
-      assert_raise do TypeError "Please add a valid name!"
+      assert_raise do TypeError @auto.add_part("Car Seats", 100)
   end 
   end
  
@@ -62,8 +62,8 @@ class TestPart < Test::Unit::TestCase
     assert_equal(4,@auto.total_parts_amount())
     @auto.remove(@auto_bremse)
     assert_equal(3,@auto.total_parts_amount)
-    assert_raise do IndexError "Please remove a valid value!"
-    end
+    assert_raise do IndexError @auto.remove(@autbremse)
+   end
   end
   
   
@@ -77,7 +77,7 @@ class TestPart < Test::Unit::TestCase
     @auto.replace(@auto_reifen, @auto_leichte_reifen)
     
     assert_equal(new_weight, @auto.mass_of_all)
-    assert_raise do IOError "Please replace a valid part!"
+    assert_raise do IOError @auto.replace(@auto_reifen, @auto_leichte_reifen)
     end
   end  
 end
