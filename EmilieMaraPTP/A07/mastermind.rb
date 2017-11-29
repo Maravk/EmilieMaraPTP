@@ -12,41 +12,43 @@ class MasterMind
     @length = [0,1,2,3]
   end
   
-  
+  # Kombination des Computers wird zufällig generiert.
   def kombination_computer
  kombination_computer = []
  
-   while kombination_computer.length < 5 do
+   while kombination_computer.length < 4 do
    kombination_computer1 = rand(1..6) 
-
+#p kombination_computer
    if kombination_computer1 == 1
    kombination_computer << (@elements[0])   
    end 
-   
+ #    p kombination_computer
    if  kombination_computer1 == 2
    kombination_computer << (@elements[1])
    end
-   
+#    p kombination_computer
    if kombination_computer1 == 3
    kombination_computer << (@elements[2])
    end
- 
+#p kombination_computer
    if kombination_computer1 == 4
    kombination_computer << (@elements[3])
    end
-   
+#p kombination_computer
    if kombination_computer1 == 5
    kombination_computer << (@elements[4])
    end
- 
+#p kombination_computer
    if kombination_computer1 == 6
    kombination_computer << (@elements[5])
    end
+p kombination_computer
+end 
 
+def 
 end 
-end 
-end 
+end
+end  
 
 emi=MasterMind.new
-puts emi.kombination_computer
- 
+emi.kombination_computer
