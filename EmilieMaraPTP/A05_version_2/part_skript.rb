@@ -47,11 +47,11 @@ puts "Zylinder ist Teil vom ganzen: " + auto_zylinder.top.name.to_s
 puts "Der Motor besteht aus diesen Teilen: "
 puts auto_motor.parts_and_mass
 puts "\n"
-puts "Hier die Stückliste \"Auto\" als Tabelle"
+puts "Hier die Stückliste \"Auto\" als Tabelle:"
 puts
 puts auto.part_table
 
-puts
+puts''
 puts "Zylinder ist Einzelteil vom Ganzen: " + auto_zylinder.top.name
 puts "Masse des ganzen Autos in Kilogramm: " + auto.mass_of_all.to_s
 puts "Das Auto besteht aus insgesamt #{auto.total_parts_amount.to_s} Einzelteilen."
@@ -59,7 +59,7 @@ puts "Bremse wird entfernt."
 auto.remove(auto_bremse)
 puts "Auto besteht nun aus insgesamt #{auto.total_parts_amount.to_s} Einzelteilen."
 puts''
-puts "Darstellung der Stückliste Auto als Tabelle:"
+puts "Hier ist die Stückliste \"Auto\" als Tabelle:"
 puts ''
 puts auto.part_table
 
