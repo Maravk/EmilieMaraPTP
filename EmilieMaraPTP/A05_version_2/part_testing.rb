@@ -99,6 +99,10 @@ class TestPart < Test::Unit::TestCase
   # Test - Equal
   def test_eql
     assert_equal(true, @auto.eql?(@auto))
-      assert_equal(false, @auto.eql?(@auto_zylinder))
+  end
+  
+  # Test - Gleichgleich
+  def test_gleichheit
+    assert_equal(false, @auto_zylinder == @auto_bremse)
   end  
 end
