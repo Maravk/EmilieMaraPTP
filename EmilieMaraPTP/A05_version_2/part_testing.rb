@@ -18,6 +18,7 @@ class TestPart < Test::Unit::TestCase
     @auto.add_part(@auto_motor)
     @auto_zylinder = Part.new("Zylinder", 18, @auto_motor)
     @auto_motor.add_part(@auto_zylinder)
+    @ferrari = Part.new("Ferrari", 2200)
         
   end
   
@@ -59,6 +60,10 @@ class TestPart < Test::Unit::TestCase
     @auto.all_parts.each { |part|
       assert_equal(part.parent, @auto)
     }
+  end
+  
+  def test_set_parent
+    #assert_equal(   , motor.set_parent(@ferrari))
   end
   
   # Test - Empty
