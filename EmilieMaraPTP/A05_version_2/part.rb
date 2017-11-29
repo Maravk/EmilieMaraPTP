@@ -166,4 +166,17 @@ class Part
     return [@name, @mass, @parent, @parts] == [part.name, part.mass_of_this, part.parent, part.all_parts]
   end
   
+  def eql?(part)
+    if part.nil?
+      return false
+    end
+    if self.equal?(part)
+      return true
+    end
+    if self.class != part.class
+      return false
+    end
+    return [@name, @mass, @parent, @parts].eql?(part.name, part.mass_of_this, part.parent, part.all_parts)
+  end
+  
 end
