@@ -4,15 +4,12 @@
 
 class Part
   include Enumerable
-  def initialize(name, mass, parent = nil)
+  def initialize(name, mass = 0.0, parent = nil)
     @name = name
-    #    @mass = 0.0
     @mass = mass
     @parts = []
     @parent = parent
   end
-
-  # each
   
   def name()
     return @name
@@ -146,6 +143,7 @@ class Part
     @parts.push(new)
   end
 
+  # Part mit einem neuen ersetzen
   def replace(part, new)
     if part == nil || new == nil
       raise TypeError.new("Please replace a valid part!")
@@ -156,6 +154,7 @@ class Part
     return self
   end
 
+  # Gleichgleich
   def ==(part)
     if part.nil?
       return false
@@ -169,6 +168,7 @@ class Part
     return [@name, @mass, @parent, @parts] == [part.name, part.mass_of_this, part.parent, part.all_parts]
   end
 
+  # Eql?
   def eql?(part)
     if part.nil?
       return false
@@ -180,6 +180,11 @@ class Part
       return false
     end
     return [@name, @mass, @parent, @parts].eql?(part.name, part.mass_of_this, part.parent, part.all_parts)
+  end
+  
+  # Each-Methode
+  def each
+    
   end
 
 end
