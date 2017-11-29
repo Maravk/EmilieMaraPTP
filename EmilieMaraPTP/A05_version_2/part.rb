@@ -153,18 +153,17 @@ class Part
     return self
   end
   
-  def ==(other)
-    if other.nil?
+  def ==(part)
+    if part.nil?
       return false
     end
-    if self.equal?(other)
+    if self.equal?(part)
       return true
     end
-    if self.class != other.class
+    if self.class != part.class
       return false
     end
-    
-    
+    return [@name, @mass, @parent, @parts] == [part.name, part.mass_of_this, part.parent, part.all_parts]
   end
   
 end
