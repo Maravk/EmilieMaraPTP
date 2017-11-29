@@ -38,7 +38,18 @@ class TestPart < Test::Unit::TestCase
     assert_raise TypeError do @auto.add_part(nil)
     end
   end
+  
+  # Test - Name
+  def test_name()
+    assert_equal("Auto", @auto.name)
+  end
  
+  # Test - Masse
+  def mass_of_this()
+    assert_equal(1380, @auto.mass_of_this())
+  end
+  
+  
  # Test - Geamtgewicht
   def test_total_weight()
     assert_equal(@auto.mass_of_all, 2038)
@@ -49,6 +60,11 @@ class TestPart < Test::Unit::TestCase
     @auto.all_parts.each { |part|
       assert_equal(part.parent, @auto)
     }
+  end
+  
+  # Test - Empty
+  def test_empty?()
+    assert_equal(true, @auto_reifen.empty?())
   end
   
   # Test - oberstes Teil

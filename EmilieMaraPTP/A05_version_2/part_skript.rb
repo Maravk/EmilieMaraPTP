@@ -51,7 +51,7 @@ puts "Hier die Stückliste \"Auto\" als Tabelle:"
 puts
 puts auto.part_table
 
-puts''
+puts
 puts "Zylinder ist Einzelteil vom Ganzen: " + auto_zylinder.top.name
 puts "Masse des ganzen Autos in Kilogramm: " + auto.mass_of_all.to_s
 puts "Das Auto besteht aus insgesamt #{auto.total_parts_amount.to_s} Einzelteilen."
