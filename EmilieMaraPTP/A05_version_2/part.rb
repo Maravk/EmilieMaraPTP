@@ -183,8 +183,8 @@ class Part
   end
   
   # Each-Methode
-  def each
-    
+  def each(&block)
+    @parts.each{|part| block.call(part)}
   end
 
 end
