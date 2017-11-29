@@ -39,16 +39,15 @@ class TestPart < Test::Unit::TestCase
     end
   end
   
-  # Test - Name
+  # Test - Instanzvariable name
   def test_name()
     assert_equal("Auto", @auto.name)
   end
  
-  # Test - Masse
+  # Test - Instanzvariable mass
   def mass_of_this()
     assert_equal(1380, @auto.mass_of_this())
-  end
-  
+  end 
   
  # Test - Geamtgewicht
   def test_total_weight()
