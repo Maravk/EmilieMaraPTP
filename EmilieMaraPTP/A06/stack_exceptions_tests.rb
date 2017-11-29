@@ -36,6 +36,9 @@ end
 
 # Test - Letztes Element wird entfernt
 def test_pop
+  @stack.push("König")
+  assert_equal("König", @stack.peek, "Diese Karte ist falsch!")
+  @stack.pop
   assert_equal(0, @stack.length, "Diese Karte ist falsch!")
   assert_raise IndexError do @stack.pop
   end
@@ -43,6 +46,9 @@ end
 
 # Test - Oberstes Element wird ausgegeben
 def test_peek
+  @stack.push("Ass")
+  assert_equal("Ass", @stack.peek, "Diese Karte ist falsch!")
+  @stack.pop
   assert_equal(0, @stack.length, "Diese Karte ist falsch!")
   assert_raise IndexError do @stack.peek
   end
@@ -55,7 +61,10 @@ end
 
 # Test - To_s
 def test_to_s
-  assert_equal(0, @stack.length, "Fehler!")
+  @stack.push("Sieben")
+  assert_equal("Sieben", @stack.peek, "Diese Karte ist falsch!")
+  @stack.pop
+  assert_equal(0, @stack.length, "Diese Karte ist falsch!!")
   assert_raise IndexError do @stack.to_s
   end
 end

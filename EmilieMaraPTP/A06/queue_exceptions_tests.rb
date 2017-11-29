@@ -33,6 +33,9 @@ end
 
 # Test - Element entfernen
 def test_dequeue
+  @queue.enqueue("Karamel Sutra")
+  assert_equal("Karamel Sutra", @queue.peek, "Fehler")
+  @queue.dequeue
   assert_equal(0, @queue.length, "Fehler")
   assert_raise IndexError do @queue.dequeue
   end
@@ -40,6 +43,9 @@ end
 
 # Test - Erstes Element ausgeben
 def test_peek
+  @queue.enqueue("Half Baked")
+   assert_equal("Half Baked", @queue.peek, "Fehler")
+   @queue.dequeue
   assert_equal(0, @queue.length, "Fehler!")
   assert_raise TypeError do @queue.peek
   end
@@ -52,6 +58,9 @@ end
 
 # Test - To_s
 def test_to_s
+  @queue.enqueue("What-A-Lotta-Chocoalte")
+  assert_equal("What-A-Lotta-Chocoalte", @queue.peek, "Fehler!")
+  @queue.dequeue
   assert_equal(0, @queue.length, "Fehler!")
   assert_raise IndexError do @queue.to_s
   end
