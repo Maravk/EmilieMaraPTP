@@ -152,4 +152,19 @@ class Part
     @parts.push(new)
     return self
   end
+  
+  def ==(other)
+    if other.nil?
+      return false
+    end
+    if self.equal?(other)
+      return true
+    end
+    if self.class != other.class
+      return false
+    end
+    
+    
+  end
+  
 end
