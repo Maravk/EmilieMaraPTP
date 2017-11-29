@@ -80,7 +80,7 @@ class TestPart < Test::Unit::TestCase
     assert_raise TypeError do @auto.remove(nil)
    end
   end
- 
+
   
   # Reifen werden durch leichtere Ersetzt
   def test_replace()
