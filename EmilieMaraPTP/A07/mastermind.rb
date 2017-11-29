@@ -16,10 +16,9 @@ class MasterMind
   def kombination_computer
  kombination_computer = []
  
-   while kombination_computer.length == 4 do
+   while kombination_computer.length < 5 do
    kombination_computer1 = rand(1..6) 
-     
-     p kombination_computer1
+
    if kombination_computer1 == 1
    kombination_computer << (@elements[0])   
    end 
