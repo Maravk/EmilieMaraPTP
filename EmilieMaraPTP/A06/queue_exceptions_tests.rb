@@ -64,5 +64,5 @@ def test_to_s
   assert_equal(0, @queue.length, "Fehler!")
   assert_raise IndexError do @queue.to_s
   end
-  end
+end
 end 

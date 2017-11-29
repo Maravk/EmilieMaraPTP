@@ -94,5 +94,11 @@ class TestPart < Test::Unit::TestCase
     assert_equal(new_weight, @auto.mass_of_all)
     assert_raise TypeError do @auto.replace(nil, nil)
     end
+  end
+  
+  # Test - Gleichgleich
+  def test_gleichgleich
+    assert_equal(true, @auto.eql?(@auto))
+      assert_equal(false, @auto.eql?(@auto_zylinder))
   end  
 end
