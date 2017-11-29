@@ -97,7 +97,7 @@ class TestPart < Test::Unit::TestCase
   end
   
   # Test - Gleichgleich
-  def test_gleichgleich
+  def test_eql
     assert_equal(true, @auto.eql?(@auto))
       assert_equal(false, @auto.eql?(@auto_zylinder))
   end  
