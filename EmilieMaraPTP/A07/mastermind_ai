@@ -1,7 +1,10 @@
 # Author:: Emilie Schuller, Mara von Kroge, Ralf Herrmann
-# TeamNilClas
+# TeamNilClas && TeamChallenger
 # 29. November 2017
 # Künstliche Intelligenz - MasterMind - Mensch ist Codemaker
+  
+class MasterMindAI
+  
   
   puts "Bitte geben sie Ihre Vierer-Kombination an Farben an:"
  kombination_mensch = gets.chomp.to_s
@@ -12,3 +15,4 @@ if kombination_mensch.include?(farbe != @elements.each)
    puts "Bitte gib eine Farbenkombination aus den zur Verfügung stehenden Farben aus!"
  end 
  
+end
