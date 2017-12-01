@@ -19,12 +19,14 @@ class MasterMindAi
   kombination_mensch_konsole = gets.chomp.to_s
   kombination_mensch = []
   kombination_mensch = kombination_mensch_konsole.split(" ")
+  # Dies funktioniert gerade noch nicht
     if kombination_mensch.include?("yellow" || "blue" || "red" || "green" || "pink" || "grey")
       puts ""
     else
       puts "Bitte gib eine der gültigen Farben ein!"
-  end 
-    p kombination_mensch
-    
+    end 
 end
+
+
+  # Computer versucht, die Kombination zu erraten.
 end 
