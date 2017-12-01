@@ -45,8 +45,8 @@ class MasterMind
 
   # Kombination des Computers wird versucht zu erraten
   def ermitte_kombination_computer
-    i = 1
-    while i <= 9 do
+    i = 0
+    while i < 10 do
       
       eingabe_mensch_konsole = gets.chomp.to_s
       eingabe_mensch = []
@@ -84,12 +84,12 @@ class MasterMind
            
       if eingabe_mensch ==(@kombination_computer)
         puts "Yeha! Sie haben die Kombination des Computers in #{i} Versuchen erraten!"
-        end 
+      end 
       
-        i += 1
-        if i == 10
-          puts "Mist! In 10 Versuchen hast du den Code des Computers nicht knacken können! NOOOOOOB, hehehe!"
+      i += 1
+      if i == 10
+        puts "Mist! In 10 Versuchen hast du den Code des Computers nicht knacken können! NOOOOOOB, hehehe!"
       end
     end
-end   
+  end   
 end 
