@@ -8,7 +8,7 @@ class MasterMindAi
   include Enumerable
   include Comparable
   
-  def initialize(elemts = 6, length = 4)
+  def initialize(elements = 6, length = 4)
     
     @elements = ["yellow", "blue", "red", "green", "pink", "grey"]
     @length = [0,1,2,3]
@@ -29,4 +29,7 @@ end
 
 
   # Computer versucht, die Kombination zu erraten.
+def ermittle_mensch_kombination
+  alle_moeglichkeiten = [#1269 möglichkeiten]
+end 
 end 
