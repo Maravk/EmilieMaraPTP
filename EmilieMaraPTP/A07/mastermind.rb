@@ -1,7 +1,7 @@
 # Author:: Mara von Kroge
 # Author:: Emilie Schuller
 # 29.11.2017
-# TeamNilClass && TeamChallenger
+# TeamChallenger
 # Klasse zu MasterMind - Computer ist Codemaker
 
 class MasterMind
@@ -20,46 +20,37 @@ class MasterMind
  
     while @kombination_computer.length < 4 do
       kombination_computer1 = rand(1..6) 
-      #p kombination_computer
       if kombination_computer1 == 1
         @kombination_computer << (@elements[0])
       end
-     #    p kombination_computer
       if kombination_computer1 == 2
         @kombination_computer << (@elements[1])
       end
-    #   p kombination_computer
       if kombination_computer1 == 3
         @kombination_computer << (@elements[2])
       end
-    #p kombination_computer
       if kombination_computer1 == 4
         @kombination_computer << (@elements[3])
       end
-    #p kombination_computer
       if kombination_computer1 == 5
         @kombination_computer << (@elements[4])
       end
-    #p kombination_computer
+      
       if kombination_computer1 == 6
         @kombination_computer << (@elements[5])
       end
-      p @kombination_computer
     end
   end
 
-#def ==(array)
-#end 
 
   # Kombination des Computers wird versucht zu erraten
   def ermitte_kombination_computer
-    i = 0
+    i = 1
     while i <= 9 do
       
       eingabe_mensch_konsole = gets.chomp.to_s
       eingabe_mensch = []
       eingabe_mensch = eingabe_mensch_konsole.split(" ")
-      p eingabe_mensch
       
       # Wie viele Farben wurden richtig erraten (Diese Methode können wir so nicht für das Spiel benutzen,
       # aber funktioniert schon mal gut
@@ -75,34 +66,30 @@ class MasterMind
       # zwei Zustände haben: Farbe richtig oder Farbe und Position richtig (weiß und schwarz)
       # 4 mal schwarz heißt das Spiel ist gewonnen
       
-      #Versuch einer Methode die alle Positionen durchgeht und sie auf Farbe und Position überprüft
+      #Versuch einer Methode die alle Positionen durchgeht und sie auf Farbe und Position überprüft.
       
       @white = 0  # Farbe ist richtig
       @black = 0  # Farbe und Position ist richtig
-      i = 0 
-      while (i < 4)
-        if eingabe_mensch[i] == @kombination_computer[i]
+      n = 0 
+      while (n < 4)
+        if eingabe_mensch[n] == @kombination_computer[n]
           @black += 1
-        elsif @kombination_computer.include?(eingabe_mensch[i])
+        elsif @kombination_computer.include?(eingabe_mensch[n])
           @white += 1
         end
-        i += 1
+        n += 1
       end
-      puts @white.to_s + " mal Weiß (die richtige Farbe)"
-      puts @black.to_s + " mal Schwarz (richtige Farbe und Position)"
-      
+      puts "Sie haben #{@white.to_s}-mal einen indirekten Treffer - also war die Farbe #{@white.to_s}-mal richtig!\n"
+      puts "Sie haben #{@black.to_s}-mal einen direkten Treffer - also war sowohl die Farbe als auch die Position #{@black.to_s}-mal richtig!\n"
+           
       if eingabe_mensch ==(@kombination_computer)
-        puts "Yeha! Sie haben die Kombination des Computers erraten!! Möchten Sie noch eine Runde spielen?(J/N)"
-    #    eingabe = gets.chomp
-    #    if eingabe == "J"
-    #      return #Anfang
-    #    else 
-    #      # Ende 
-    #    end
-    #    end 
-    #  
+        puts "Yeha! Sie haben die Kombination des Computers in #{i} Versuchen erraten!"
+        end 
+      
         i += 1
+        if i == 10
+          puts "Mist! In 10 Versuchen hast du den Code des Computers nicht knacken können! NOOOOOOB, hehehe!"
       end
     end
-  end
-end
+end   
+end 
