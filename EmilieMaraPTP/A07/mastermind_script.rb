@@ -1,4 +1,5 @@
-# Author:: Ralf Herrmann, Mara von Kroge, Emilie Schuller
+# Author:: Mara von Kroge
+# Author:: Emilie Schuller
 # TeamNilClass && TeamChallenger
 # 29. November 2017
 # Benutzereingaben über die Konsole für das Spiel MasterMind
