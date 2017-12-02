@@ -17,19 +17,48 @@ class MasterMindAi
   # Kombination wird vom Menschen ausgewählt.
   def kombination_mensch
   kombination_mensch_konsole = gets.chomp.to_s
-  kombination_mensch = []
-  kombination_mensch = kombination_mensch_konsole.split(" ")
-  # Dies funktioniert gerade noch nicht
-    if kombination_mensch.include?("yellow" || "blue" || "red" || "green" || "pink" || "grey")
-      puts ""
-    else
-      puts "Bitte gib eine der gültigen Farben ein!"
-    end 
-end
-
+  @kombination_mensch = []
+  @kombination_mensch = kombination_mensch_konsole.split(" ")
+  end 
 
   # Computer versucht, die Kombination zu erraten.
+  # Läuft bisher, aber wir müssen ja noch die Methode adden,
+  # dass wenn es einen indirekten Treffer gab, die Farbe beim nächsten
+  # Durchlauf an einer anderen Stelle steht und das bei einem
+  # direkten Treffer die Farbe im nächsten Durchlauf wieder an
+  # der gleichen Stelle steht 
 def ermittle_mensch_kombination
-  alle_moeglichkeiten = [#1269 möglichkeiten]
+  i = 1
+  while i < 10 do
+  
+    erratene_kombination_computer = []
+    erratene_kombination_computer.push(@kombination_mensch.sample, @kombination_mensch.sample, @kombination_mensch.sample, @kombination_mensch.sample)
+   
+      @white = 0
+      @black = 0
+      
+      n = 0
+      while (n < 4)
+        if erratene_kombination_computer[n] == @kombination_mensch[n]
+          @black +=1
+      elsif erratene_kombination_computer.include?(@kombination_mensch[n])
+        @white += 1
+      end  
+      n += 1
 end 
-end 
+      puts "Runde #{i}"
+      puts "    Der Computer hat #{@white.to_s}-mal einen indirekten Treffer!\n"
+      puts "    Der Computer hat #{@black.to_s}-mal einen direkten Treffer!\n\n" 
+      
+      if erratene_kombination_computer == @kombination_mensch
+        puts "Yea! Der Computer hat Ihren Code erraten!"
+        exit
+      end 
+     
+      i += 1
+      if i == 10
+        puts "Mist! In 10 Versuchen hat der Computer es nicht geschafft, deine Kombination zu erraten!"
+       end
+      end
+     end
+  end   
