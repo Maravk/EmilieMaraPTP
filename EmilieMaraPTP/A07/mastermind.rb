@@ -79,8 +79,9 @@ class MasterMind
         end
         n += 1
       end
-      puts "Sie haben #{@white.to_s}-mal einen indirekten Treffer - also war die Farbe #{@white.to_s}-mal richtig!\n"
-      puts "Sie haben #{@black.to_s}-mal einen direkten Treffer - also war sowohl die Farbe als auch die Position #{@black.to_s}-mal richtig!\n"
+      puts "Runde #{i}:"
+      puts "    Sie haben #{@white.to_s}-mal einen indirekten Treffer!\n"
+      puts "    Sie haben #{@black.to_s}-mal einen direkten Treffer!\n\n"
            
       if eingabe_mensch ==(@kombination_computer)
         puts "Yeha! Sie haben die Kombination des Computers in #{i} Versuchen erraten!"

@@ -12,10 +12,9 @@ puts " #########################################################################
   mara=MasterMind.new
   mara.kombination_computer
 
-  puts "# Der Computer hat sich nun seinen vierstelligen Code ausgedacht."
-  puts "# Nun dürfen Sie versuchen, die Kombination zu erraten!"
+  puts "# Der Computer hat sich nun seinen vierstelligen Code ausgedacht.mara Nun dürfen Sie versuchen, die Kombination zu erraten!"
   puts "# Geben Sie hierfür vier Farben hintereinander sein, stets durch ein Leerzeichen getrennt!"
   puts "# Die zur Verfügung stehenden Farben lauten: yellow, blue, red, green, pink und grey!"
-  puts "# Sofern eine Ihrer geratenen Farben richtig ist, sich aber an der falschen Stelle befindet,\n# erscheint die Ausgabe Indirekter Treffer und sofern die Farbe an der richtigen Stelle steht,\n# erscheint Direketer Treffer!\n"
-  
+  puts "# Sofern eine Ihrer geratenen Farben richtig ist, sich aber an der falschen Stelle befindet,\n# erscheint die Ausgabe Indirekter Treffer und sofern die Farbe an der richtigen Stelle steht, erscheint Direketer Treffer!\n"
+  puts "# Ihre Eingabe:\n\n"
   mara.ermitte_kombination_computer
