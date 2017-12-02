@@ -110,4 +110,9 @@ class TestPart < Test::Unit::TestCase
   def test_gleichheit
     assert_equal(false, @auto_zylinder == @auto_bremse)
   end  
+  
+  # Test - Each
+  def test_each
+    assert_equal()
+  end
 end

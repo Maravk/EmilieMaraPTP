@@ -51,7 +51,11 @@ class MasterMind
       eingabe_mensch_konsole = gets.chomp.to_s
       eingabe_mensch = []
       eingabe_mensch = eingabe_mensch_konsole.split(" ")
-      
+      if @kombination_computer.include?(eingabe_mensch)
+        puts ""
+      else
+        puts "Bitte gib eine gültige Farbenkombination ein"
+      end 
       # Wie viele Farben wurden richtig erraten (Diese Methode können wir so nicht für das Spiel benutzen,
       # aber funktioniert schon mal gut
       #colors_guessed_right = 0
@@ -81,8 +85,8 @@ class MasterMind
       end
       puts "Runde #{i}:"
       puts "    Sie haben #{@white.to_s}-mal einen indirekten Treffer!\n"
-      puts "    Sie haben #{@black.to_s}-mal einen direkten Treffer!\n\n"
-           
+      puts "    Sie haben #{@black.to_s}-mal einen direkten Treffer!\n\n" 
+  
       if eingabe_mensch ==(@kombination_computer)
         puts "Yeha! Sie haben die Kombination des Computers in #{i} Versuchen erraten!"
       end 

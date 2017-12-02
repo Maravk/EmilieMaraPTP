@@ -126,6 +126,8 @@ class Part
     puts "|_________________________________________________|"
   end
 
+  
+  # Teil entfernen
   def remove(part)
     if part == nil
       raise TypeError.new("Please remove a valid part!")
