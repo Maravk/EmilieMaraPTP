@@ -40,12 +40,12 @@ def ermittle_mensch_kombination
       n = 0
       while (n < 4)
         if erratene_kombination_computer[n] == @kombination_mensch[n]
-          @black +=1
+          @black +=1 #&& erratene_kombination_computer = (erratene_kombination_computer[n] == @kombination_mensch[n])
       elsif erratene_kombination_computer.include?(@kombination_mensch[n])
-        @white += 1
-      end  
-      n += 1
-end 
+        @white += 1 #&&  erratene_kombination_computer = erratene_kombination_computer + (@kombination_mensch[n])
+      end 
+        n+=1    
+      end 
       puts "Runde #{i}"
       puts "    Der Computer hat #{@white.to_s}-mal einen indirekten Treffer!\n"
       puts "    Der Computer hat #{@black.to_s}-mal einen direkten Treffer!\n\n" 
@@ -59,6 +59,6 @@ end
       if i == 10
         puts "Mist! In 10 Versuchen hat der Computer es nicht geschafft, deine Kombination zu erraten!"
        end
-      end
      end
-  end   
+  end 
+end

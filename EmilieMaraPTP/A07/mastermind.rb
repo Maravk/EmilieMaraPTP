@@ -84,6 +84,7 @@ class MasterMind
   
       if eingabe_mensch == @kombination_computer
         puts "Yeha! Sie haben die Kombination des Computers in #{i} Versuchen erraten!"
+      exit 
       end 
       
       i += 1

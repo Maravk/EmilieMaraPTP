@@ -36,8 +36,11 @@ class Part
   end
 
   def set_parent(parent)
-    parent.add_part.self
-    @parent = parent
+    if !@parent.equal?(@parent)
+      @parent = parent
+    parent.add_part(self)
+    end
+    return self
   end
 
   # Entfernt ein Teil aus der Liste
@@ -87,9 +90,13 @@ class Part
     if part == nil
       raise TypeError.new("Please add a valid name!")
     end
-    part.set_parent(self)
-    @parts.push(part)
-    return self
+    if !@parts.any?{|n| n.equal?(part)}
+      part.set_parent(self)
+      @parts.push(part)
+    else 
+      puts "Das Part ist bereits enthalten!"
+    end
+      return self
   end
 
   # Jedes Einzelteil wird mit seiner jeweiigen Masse darstgestellt

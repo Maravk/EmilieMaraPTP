@@ -64,6 +64,3 @@ puts ''
 puts auto.part_table
 
 puts "Masse des ganzen Autos in Kilogramm: " + auto.mass_of_all.to_s
-
-
-
