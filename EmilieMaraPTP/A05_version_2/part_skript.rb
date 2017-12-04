@@ -42,14 +42,14 @@ printf "Nun besteht das Auto aus so vielen Teilen: "
 puts auto.total_parts_amount
 puts
 puts "Zylinder ist ein Teil von: " + auto_zylinder.parent.name.to_s
-puts "Zylinder ist Teil vom ganzen: " + auto_zylinder.top.name.to_s
+puts "Zylinder ist Teil vom Ganzen: " + auto_zylinder.top.name.to_s
 
 puts "Der Motor besteht aus diesen Teilen: "
 puts auto_motor.parts_and_mass
 puts "\n"
 puts "Hier die Stückliste \"Auto\" als Tabelle:"
 puts
-puts auto.part_table
+puts auto.parts_table
 
 puts
 puts "Zylinder ist Einzelteil vom Ganzen: " + auto_zylinder.top.name
@@ -61,6 +61,11 @@ puts "Auto besteht nun aus insgesamt #{auto.total_parts_amount.to_s} Einzelteile
 puts''
 puts "Hier ist die Stückliste \"Auto\" als Tabelle:"
 puts ''
-puts auto.part_table
+puts auto.parts_table
 
 puts "Masse des ganzen Autos in Kilogramm: " + auto.mass_of_all.to_s
+
+
+puts "\n\nDarstellung der Each-Methode\n"
+puts auto.each
+

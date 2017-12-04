@@ -30,11 +30,10 @@ class TestPart < Test::Unit::TestCase
     assert_equal(nil, new_part.parent())
   end
   
-  # Test - Hinzufügen eines Teils und Instanzvariable parent
+  # Test - Hinzufügen eines Teils
   def test_add_part()
     new_part = Part.new("Car Seats",100)
     @auto.add_part(new_part)
-    assert_equal(new_part.parent(), @auto)
     assert_equal(5,@auto.total_parts_amount())
     assert_raise TypeError do @auto.add_part(nil)
     end
@@ -63,7 +62,7 @@ class TestPart < Test::Unit::TestCase
   end
   
   def test_set_parent
-    #assert_equal(   , motor.set_parent(@ferrari))
+    assert_equal(@ferrari, @auto.set_parent(@ferrari))
   end
   
   # Test - Empty
@@ -73,7 +72,7 @@ class TestPart < Test::Unit::TestCase
   
   # Test - oberstes Teil
   def test_top()
-    assert_equal(@auto_zylinder.top, @auto)
+    assert_equal(@auto_zylinder, @auto.top)
   end
   
 
@@ -113,6 +112,6 @@ class TestPart < Test::Unit::TestCase
   
   # Test - Each
   def test_each
-    assert_equal()
+    assert_not_equal(@auto, @auto.each)
   end
 end

@@ -3,6 +3,7 @@
 # Klasse Part
 
 class Part
+  include Comparable
   include Enumerable
   def initialize(name, mass = 0.0, parent = nil)
     @name = name
@@ -122,7 +123,7 @@ class Part
   end
 
   #Gibt Eigenschaften und Teile eines Ganzen in einer Tabelle aus
-  def part_table()
+  def parts_table()
     printf("Teil: %s     Masse: %s   |\n", sprintf("%-18s", @name), sprintf("%8d", self.mass))
     puts " _________________________________________________"
     puts "|          Teil          |    Masse in Kilogramm  |"
@@ -191,9 +192,12 @@ class Part
     return [@name, @mass, @parent, @parts].eql?(part.name, part.mass_of_this, part.parent, part.all_parts)
   end
   
-  # Each-Methode
-  def each(&block)
-    @parts.each{|part| block.call(part)}
+  
+  # Each
+  def each
+      puts "Die Oberklasse Auto beinhaltet folgende Teile: "
+    @parts.each {|part| puts part.name.to_s && part.mass()}
+      puts "\nDie Oberklasse Auto enthält #{@parts.length} Teile!"
   end
-
+  
 end
