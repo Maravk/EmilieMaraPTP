@@ -69,3 +69,6 @@ puts "Masse des ganzen Autos in Kilogramm: " + auto.mass_of_all.to_s
 puts "\n\nDarstellung der Each-Methode\n"
 puts auto.each
 
+auto.create_dump
+puts self.write_in_file(auto, auto_list)
+puts slef.load_from_file(auto_list)

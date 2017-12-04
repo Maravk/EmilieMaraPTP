@@ -57,7 +57,7 @@ class TestPart < Test::Unit::TestCase
   # Test - Parent
   def test_parent()
     @auto.all_parts.each { |part|
-      assert_equal(part.parent, @auto)
+      assert_equal(@auto, part.parent)
     }
   end
   

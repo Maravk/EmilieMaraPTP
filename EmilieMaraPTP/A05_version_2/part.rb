@@ -193,11 +193,57 @@ class Part
   end
   
   
-  # Each
+  # Rico 2
   def each
-      puts "Die Oberklasse Auto beinhaltet folgende Teile: "
-    @parts.each {|part| puts part.name.to_s && part.mass()}
-      puts "\nDie Oberklasse Auto enthält #{@parts.length} Teile!"
+    if block_given?
+    @parts.each do |value|
+      yield value
+      value.each do |inner_value|
+        yield inner_value
+      end
+    end
+  end     
+ end
+ 
+
+# Array besteht aus Hashes, in welchem die Infos für die Part-Liste stehen
+  def create_dump
+    dump = []
+    dump.push( { id: object_id, name: @name, mass: @mass, parent: @parent.nil? ? 0 : @parent.object_id } )
+    each do |part|
+      part.create_dump.each do |child|
+        dump.push(child)
+      end
+    end
+    return dump
   end
-  
+
+  # Serializes the object in the passed file
+  def self.write_in_file(part, path)
+    File.open(path, 'w') do |file|
+      part.create_dump.each do |part|
+        file << sprintf("[id=%d,name=%s,mass=%f,parent=%d]\n", part[:id], part[:name], part[:mass], part[:parent])
+      end
+    end
+  end
+
+  # Deserializes the part object from the passed file
+  def self.load_from_file(path)
+    raise Exception.new('Passed file does not exist') unless File.file?(path)
+    dump = {}
+    root = nil
+    File.open(path, 'r') do |file|
+      while (line = file.gets)
+        id = line.split('id=')[1].split(',')[0].to_i
+        name = line.split('description=')[1].split(',')[0]
+        mass = line.split('mass=')[1].split(',')[0].to_f
+        parent = line.split('parent=')[1].split(']')[0].to_i
+        part = Part.new(name, mass)
+        parent > 0 ? part.parent=dump[parent] : root = part
+        dump[id] = part
+      end
+    end
+    root
+  end 
+    
 end
