@@ -14,7 +14,7 @@ class TestPart < Test::Unit::TestCase
     @auto.add_part(@auto_reifen)
     @auto_bremse = Part.new("Bremsen", 40, @auto)
     @auto.add_part(@auto_bremse)
-    @auto_motor = Part.new("Motor", 480)
+    @auto_motor = Part.new("Motor", 480, @auto)
     @auto.add_part(@auto_motor)
     @auto_zylinder = Part.new("Zylinder", 18, @auto_motor)
     @auto_motor.add_part(@auto_zylinder)
