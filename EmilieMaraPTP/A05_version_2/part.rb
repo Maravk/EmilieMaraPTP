@@ -195,10 +195,12 @@ class Part
   
   # Each
  def each
-   @parts.each {|part| puts part.name
-     puts part.mass_of_all
-   part.all_parts.each {|inner_part| puts inner_part.name
-   puts inner_part.mass_of_all}}
+   @parts.each {|part| 
+     puts "Alle Teile von Auto: #{part.name}."
+     puts "Die dazugehörigen Gewichte in Kg: #{part.mass_of_all}.\n\n"
+   part.all_parts.each {|inner_part| 
+     puts "Alle Einzelteile von Auto: #{inner_part.name}."
+     puts "Die dazugehörigen Gewichte in Kg: #{inner_part.mass_of_all}."}}
    end
    
    
