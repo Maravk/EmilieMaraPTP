@@ -191,20 +191,9 @@ class Part
     end
     return [@name, @mass, @parent, @parts].eql?(part.name, part.mass_of_this, part.parent, part.all_parts)
   end
+
   
-  
-  # Rico 2
-#    def each
-#    if block_given?
-#    @parts.each { |value|
-#      yield value
-#      value.each { |inner_value|
-#        yield inner_value
-#      }
-#    }
-#  end     
-# end
- 
+  # Each
  def each
    @parts.each {|part| puts part.name
      puts part.mass_of_all
