@@ -196,11 +196,11 @@ class Part
   # Each
  def each
    @parts.each {|part| 
-     puts "Alle Teile von Auto: #{part.name}."
-     puts "Die dazugehörigen Gewichte in Kg: #{part.mass_of_all}.\n\n"
+     puts "Teil von Auto: #{part.name}."
+     puts "Das dazugehörige Gewicht in Kg: #{part.mass_of_all}.\n\n"
    part.all_parts.each {|inner_part| 
-     puts "Alle Einzelteile von Auto: #{inner_part.name}."
-     puts "Die dazugehörigen Gewichte in Kg: #{inner_part.mass_of_all}."}}
+     puts "Einzelteil von Auto: #{inner_part.name}."
+     puts "Das dazugehörige Gewicht in Kg: #{inner_part.mass_of_all}."}}
    end
    
    
