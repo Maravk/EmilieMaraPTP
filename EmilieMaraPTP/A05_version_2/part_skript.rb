@@ -68,7 +68,7 @@ puts "Masse des ganzen Autos in Kilogramm: " + auto.mass_of_all.to_s
 puts "\n\n---------------------------------"
 
 puts "\nDarstellung der Each-Methode\n"
-puts (auto.each) 
+(auto.each) 
 puts "Die Stückliste Auto besitzt insgesamt #{auto.each.length} Teile!"
 
 
