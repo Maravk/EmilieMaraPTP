@@ -69,7 +69,6 @@ puts "\n\n---------------------------------"
 
 puts "\nDarstellung der Each-Methode\n"
 puts (auto.each) 
-puts auto.mass.inject(0, :+)
 puts "Die Stückliste Auto besitzt insgesamt #{auto.each.length} Teile!"
 
 

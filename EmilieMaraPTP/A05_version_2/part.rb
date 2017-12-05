@@ -207,7 +207,9 @@ class Part
  
  def each
    @parts.each {|part| puts part.name
-   part.all_parts.each {|inner_part| puts inner_part.name}}
+     puts part.mass_of_all
+   part.all_parts.each {|inner_part| puts inner_part.name
+   puts inner_part.mass_of_all}}
    end
    
    
