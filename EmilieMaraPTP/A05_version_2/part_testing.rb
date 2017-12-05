@@ -18,7 +18,7 @@ class TestPart < Test::Unit::TestCase
     @auto.add_part(@auto_motor)
     @auto_zylinder = Part.new("Zylinder", 18, @auto_motor)
     @auto_motor.add_part(@auto_zylinder)
-    @ferrari = Part.new("Ferrari", 2200)
+    @ferrari = Part.new("Ferrari", 2200, "Ferrari")
         
   end
   
@@ -62,7 +62,7 @@ class TestPart < Test::Unit::TestCase
   end
   
   def test_set_parent
-    assert_equal(@ferrari, @auto.set_parent(@ferrari))
+    assert_equal("Ferrari", @ferrari.set_parent("Ferrari"))
   end
   
   # Test - Empty
@@ -70,9 +70,9 @@ class TestPart < Test::Unit::TestCase
     assert_equal(true, @auto_reifen.empty?())
   end
   
-  # Test - oberstes Teil
+  # Test - Oberstes Teil
   def test_top()
-    assert_equal(@auto_zylinder, @auto.top)
+    assert_equal(@auto_reifen, @auto.top)
   end
   
 
