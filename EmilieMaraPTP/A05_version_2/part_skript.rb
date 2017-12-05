@@ -12,14 +12,14 @@ auto_reifen = Part.new("Reifen", 120, auto)
 puts "Das übergeordnete Teil lautet: "
 puts auto_reifen.parent.name
 puts
-puts "Das Teil Reifen wird hinzugefügt "
+puts "Das Teil Reifen wird hinzugefügt."
 auto.add_part(auto_reifen)
 printf "Nun besteht das Auto aus so vielen Teilen: "
 puts auto.parts_amount
 puts "Diese Teile und deren Gewicht in Kilogramm sind:"
 puts auto.parts_and_mass.to_s
 puts
-puts "Nun fügen wir noch ein Teil \"Bremsen\" hinzu"
+puts "Nun fügen wir noch ein Teil \"Bremsen\" hinzu."
 auto_bremse = Part.new("Bremsen", 40, auto)
 auto.add_part(auto_bremse)
 printf "Nun besteht das Auto aus so vielen Teilen: "
@@ -27,7 +27,7 @@ puts auto.parts_amount
 puts "Diese Teile und deren Gewicht in Kilogramm sind:"
 puts auto.parts_and_mass
 puts
-puts "Das Teil Motor wird hinzugefügt "
+puts "Das Teil Motor wird hinzugefügt."
 auto_motor = Part.new("Motor", 480)
 auto.add_part(auto_motor)
 printf "Nun besteht das Auto aus so vielen Teilen: "
@@ -35,7 +35,7 @@ puts auto.parts_amount
 puts "Diese Teile und deren Gewicht in Kilogramm sind:"
 puts auto.parts_and_mass
 puts
-puts "Das Teil Zylinder wird hinzugefügt "
+puts "Das Teil Zylinder wird hinzugefügt."
 auto_zylinder = Part.new("Zylinder", 18, auto_motor)
 auto_motor.add_part(auto_zylinder)
 printf "Nun besteht das Auto aus so vielen Teilen: "
@@ -65,10 +65,15 @@ puts auto.parts_table
 
 puts "Masse des ganzen Autos in Kilogramm: " + auto.mass_of_all.to_s
 
+puts "\n\n---------------------------------"
 
-puts "\n\nDarstellung der Each-Methode\n"
-puts auto.each
+puts "\nDarstellung der Each-Methode\n"
+puts (auto.each) 
+puts auto.mass.inject(0, :+)
+puts "Die Stückliste Auto besitzt insgesamt #{auto.each.length} Teile!"
 
-auto.create_dump
-puts self.write_in_file(auto, auto_list)
-puts slef.load_from_file(auto_list)
+
+#write_to_file(auto, "auto_list")
+#auto.create_dump
+#äputs self.write_in_file(auto, auto_list)
+#puts slef.load_from_file(auto_list)

@@ -194,18 +194,23 @@ class Part
   
   
   # Rico 2
-  def each
-    if block_given?
-    @parts.each do |value|
-      yield value
-      value.each do |inner_value|
-        yield inner_value
-      end
-    end
-  end     
- end
+#    def each
+#    if block_given?
+#    @parts.each { |value|
+#      yield value
+#      value.each { |inner_value|
+#        yield inner_value
+#      }
+#    }
+#  end     
+# end
  
-
+ def each
+   @parts.each {|part| puts part.name
+   part.all_parts.each {|inner_part| puts inner_part.name}}
+   end
+   
+   
 # Array besteht aus Hashes, in welchem die Infos für die Part-Liste stehen
   def create_dump
     dump = []
