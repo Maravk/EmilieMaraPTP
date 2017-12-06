@@ -153,7 +153,7 @@ class Part
     @parts.push(new)
   end
 
-  # Part mit einem neuen ersetzen
+  # Part mit einem Neuen ersetzen
   def replace(part, new)
     if part == nil || new == nil
       raise TypeError.new("Please replace a valid part!")
@@ -200,8 +200,12 @@ class Part
      puts "Das dazugehörige Gewicht in Kg: #{part.mass_of_all}.\n\n"
    part.all_parts.each {|inner_part| 
      puts "Einzelteil von Auto: #{inner_part.name}."
-     puts "Das dazugehörige Gewicht in Kg: #{inner_part.mass_of_all}."}}
-   end
+     puts "Das dazugehörige Gewicht in Kg: #{inner_part.mass_of_all}.\n\n"
+     
+     # Er zählt weder bei Anzahl noch bei Gewicht jeweils Reifen mit
+     puts "Die Stückliste hat ein Gewicht von #{part.mass_of_all + inner_part.mass_of_all} Kilogramm."
+     puts "Die Stückliste hat insgesamt #{part.name.to_s.split.length + inner_part.name.to_s.split.length} Teile."}}
+  end
    
    
 # Array besteht aus Hashes, in welchem die Infos für die Part-Liste stehen
