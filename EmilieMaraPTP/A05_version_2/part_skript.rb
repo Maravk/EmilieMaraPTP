@@ -68,7 +68,19 @@ puts "Masse des ganzen Autos in Kilogramm: " + auto.mass_of_all.to_s
 
 puts "Darstellung der Each-Ausgabe:"
 puts auto.to_s
+puts''
 # Beim Debuggen ist hier kein Fehler, aber beim Script kommt noch zusätzlich einmal der Gümmelmotor
 puts auto.print_complete
 
-#write_to_file(auto, "auto_list")
+puts "\n\n\n##################################################"
+puts "Speichern der Informationen über die Stückliste Auto."
+auto.save("auto_liste")
+geladen = Part.new("Auto", 1380)
+geladen.load("auto_liste")
+
+puts "Erneute Ausgabe mittels Each:"
+puts "Ausgabe aller enthaltenen Teile:"
+puts geladen.print_complete
+puts "Gewicht von der Stückliste Auto: #{geladen.mass_of_all.to_s}."
+
+puts "Anzahl der Teile in der Stückliste: #{geladen.total_parts_amount.to_s}."

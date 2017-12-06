@@ -187,6 +187,7 @@ class Part
     sprintf('Name: %-15s Gewicht in Kilogramm: %s', @name, @mass.to_s)
   end
   
+  
   # Vollständige Ausgabe
   def print_complete(deepth = 0)
     puts(("\t\t" * deepth) + to_s)
@@ -194,4 +195,16 @@ class Part
       part.print_complete(deepth + 1)
     end
   end
+  
+  
+  # Speichern des Objektes
+  def save(file_name)
+    File.open("#{file_name}", "w") {|file_name| Marshal.dump(@parts,file_name)}
+  end
+  
+  
+  # Laden von Objekten
+  def load(file_name)
+    File.open("#{file_name}","r") {|file_name| @parts = Marshal.load(file_name)}
+  end 
 end
