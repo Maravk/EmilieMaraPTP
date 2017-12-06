@@ -74,7 +74,7 @@ puts auto.print_complete
 
 
 
-puts "\n\n\n##################################################"
+puts "\n\n\n#############################################################"
 puts "Speichern der Informationen über die neue Stückliste Computer."
 computer = Part.new("Computer",12)
 
@@ -99,7 +99,7 @@ computer.save("computer_liste")
 geladen = Part.new("PC", 20)
 geladen.load("computer_liste")
 
-puts "Erneute Ausgabe mittels Each:"
+puts "Erneute Ausgabe mittels Each."
 puts "Ausgabe aller enthaltenen Teile:"
 puts geladen.print_complete
 puts "Gewicht von der Stückliste Computer: #{geladen.mass_of_all}."
