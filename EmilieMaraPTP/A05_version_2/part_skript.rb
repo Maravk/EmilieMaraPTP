@@ -72,15 +72,36 @@ puts''
 # Beim Debuggen ist hier kein Fehler, aber beim Script kommt noch zusätzlich einmal der Gümmelmotor
 puts auto.print_complete
 
+
+
 puts "\n\n\n##################################################"
-puts "Speichern der Informationen über die Stückliste Auto."
-auto.save("auto_liste")
-geladen = Part.new("Auto", 1380)
-geladen.load("auto_liste")
+puts "Speichern der Informationen über die neue Stückliste Computer."
+computer = Part.new("Computer",12)
+
+hardware = Part.new("Hardware", 7, computer)
+cpu = Part.new("CPU", 1, hardware)
+grafikkarte = Part.new("Grafikkarte", 2, hardware)
+kühler = Part.new("Kühler", 4, hardware)
+hardware.add_part(cpu)
+hardware.add_part(grafikkarte)
+hardware.add_part(kühler)
+computer.add_part(hardware)
+
+extern = Part.new("Extern", 4, computer)
+tastatur = Part.new("Tastatur", 2, hardware)
+maus = Part.new("Maus", 1, hardware)
+extern.add_part(tastatur)
+extern.add_part(maus)
+computer.add_part(extern)
+
+
+computer.save("computer_liste")
+geladen = Part.new("PC", 20)
+geladen.load("computer_liste")
 
 puts "Erneute Ausgabe mittels Each:"
 puts "Ausgabe aller enthaltenen Teile:"
 puts geladen.print_complete
-puts "Gewicht von der Stückliste Auto: #{geladen.mass_of_all.to_s}."
+puts "Gewicht von der Stückliste Computer: #{geladen.mass_of_all}."
 
 puts "Anzahl der Teile in der Stückliste: #{geladen.total_parts_amount.to_s}."
