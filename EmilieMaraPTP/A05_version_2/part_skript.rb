@@ -41,6 +41,7 @@ auto_motor.add_part(auto_zylinder)
 printf "Nun besteht das Auto aus so vielen Teilen: "
 puts auto.total_parts_amount
 puts
+
 puts "Zylinder ist ein Teil von: " + auto_zylinder.parent.name.to_s
 puts "Zylinder ist Teil vom Ganzen: " + auto_zylinder.top.name.to_s
 
