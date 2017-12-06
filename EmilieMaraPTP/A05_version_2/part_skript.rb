@@ -66,13 +66,9 @@ puts auto.parts_table
 
 puts "Masse des ganzen Autos in Kilogramm: " + auto.mass_of_all.to_s
 
-puts "\n\n---------------------------------"
-
-puts "Darstellung der Each-Methode\n\n"
-(auto.each)
-
+puts "Darstellung der Each-Ausgabe:"
+puts auto.to_s
+# Beim Debuggen ist hier kein Fehler, aber beim Script kommt noch zusätzlich einmal der Gümmelmotor
+puts auto.print_complete
 
 #write_to_file(auto, "auto_list")
-#auto.create_dump
-#äputs self.write_in_file(auto, auto_list)
-#puts slef.load_from_file(auto_list)

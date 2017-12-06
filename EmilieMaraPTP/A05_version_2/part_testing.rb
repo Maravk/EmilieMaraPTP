@@ -62,7 +62,7 @@ class TestPart < Test::Unit::TestCase
   end
   
   def test_set_parent
-    assert_equal("Ferrari", @ferrari.set_parent("Ferrari"))
+    assert_equal("Ferrari", @ferrari.parent=("Ferrari"))
   end
   
   # Test - Empty
@@ -72,7 +72,7 @@ class TestPart < Test::Unit::TestCase
   
   # Test - Oberstes Teil
   def test_top()
-    assert_equal(@auto_reifen, @auto.top)
+    assert_equal(@auto, @auto_reifen.top)
   end
   
 
@@ -81,7 +81,7 @@ class TestPart < Test::Unit::TestCase
     assert_equal(4,@auto.total_parts_amount())
     @auto.remove(@auto_bremse)
     assert_equal(3,@auto.total_parts_amount)
-    assert_raise TypeError do @auto.remove(nil)
+    assert_raise IOError do @auto.remove(nil)
    end
   end
 
@@ -96,7 +96,7 @@ class TestPart < Test::Unit::TestCase
     @auto.replace(@auto_reifen, @auto_leichte_reifen)
     
     assert_equal(new_weight, @auto.mass_of_all)
-    assert_raise TypeError do @auto.replace(nil, nil)
+    assert_raise IOError do @auto.replace(nil, nil)
     end
   end
   

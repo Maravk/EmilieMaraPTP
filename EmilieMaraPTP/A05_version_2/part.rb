@@ -4,7 +4,6 @@
 
 class Part
   include Comparable
-  include Enumerable
   def initialize(name, mass = 0.0, parent = nil)
     @name = name
     @mass = mass
@@ -36,7 +35,7 @@ class Part
     @mass = Float(mass)
   end
 
-  def set_parent(parent)
+  def parent=(parent)
     if !@parent.equal?(@parent)
       @parent = parent
     parent.add_part(self)
@@ -46,9 +45,10 @@ class Part
 
   # Entfernt ein Teil aus der Liste
   def remove(part)
-    if part.nil?
+    if part.class!=Part
       raise IOError.new("Please remove a valid part!")
     end
+    part.parent=nil
     @parts.delete(part)
     return self
   end
@@ -92,10 +92,8 @@ class Part
       raise TypeError.new("Please add a valid name!")
     end
     if !@parts.any?{|n| n.equal?(part)}
-      part.set_parent(self)
+      part.parent=(self)
       @parts.push(part)
-    else 
-      puts "Das Part ist bereits enthalten!"
     end
       return self
   end
@@ -122,7 +120,7 @@ class Part
     return @parts.empty?()
   end
 
-  #Gibt Eigenschaften und Teile eines Ganzen in einer Tabelle aus
+  #Gibt Eigenschaften und Teile eines Ganzen in einer Tabelle aus, aber ohne Einzelteile
   def parts_table()
     printf("Teil: %s     Masse: %s   |\n", sprintf("%-18s", @name), sprintf("%8d", self.mass))
     puts " _________________________________________________"
@@ -134,33 +132,13 @@ class Part
     puts "|_________________________________________________|"
   end
 
-  
-  # Teil entfernen
-  def remove(part)
-    if part == nil
-      raise TypeError.new("Please remove a valid part!")
-    end
-    @parts.delete(part)
-  end
-
-  # Ersetzt ein Teil aus der Liste
-  def replace(part, new)
-    if part == nil || new == nil
-      raise TypeError("Please replace a valid part!")
-    end
-    @parts.delete(part)
-    new.parent = self
-    @parts.push(new)
-  end
-
   # Part mit einem Neuen ersetzen
   def replace(part, new)
-    if part == nil || new == nil
-      raise TypeError.new("Please replace a valid part!")
-    end
-    @parts.delete(part)
-    new.set_parent(self)
-    @parts.push(new)
+      if part.class!=Part
+        raise IOError.new("Please remove a valid part!")
+      end
+    self.remove(part)
+    self.add_part(new)
     return self
   end
 
@@ -191,61 +169,29 @@ class Part
     end
     return [@name, @mass, @parent, @parts].eql?(part.name, part.mass_of_this, part.parent, part.all_parts)
   end
-
   
   # Each
- def each
-   @parts.each {|part| 
-     puts "Teil von Auto: #{part.name}."
-     puts "Das dazugehörige Gewicht in Kg: #{part.mass_of_all}.\n\n"
-   part.all_parts.each {|inner_part| 
-     puts "Einzelteil von Auto: #{inner_part.name}."
-     puts "Das dazugehörige Gewicht in Kg: #{inner_part.mass_of_all}.\n\n"
-     
-     # Er zählt weder bei Anzahl noch bei Gewicht jeweils Reifen mit
-     puts "Die Stückliste hat ein Gewicht von #{part.mass_of_all + inner_part.mass_of_all} Kilogramm."
-     puts "Die Stückliste hat insgesamt #{part.name.to_s.split.length + inner_part.name.to_s.split.length} Teile."}}
-  end
-   
-   
-# Array besteht aus Hashes, in welchem die Infos für die Part-Liste stehen
-  def create_dump
-    dump = []
-    dump.push( { id: object_id, name: @name, mass: @mass, parent: @parent.nil? ? 0 : @parent.object_id } )
-    each do |part|
-      part.create_dump.each do |child|
-        dump.push(child)
-      end
-    end
-    return dump
-  end
-
-  # Serializes the object in the passed file
-  def self.write_in_file(part, path)
-    File.open(path, 'w') do |file|
-      part.create_dump.each do |part|
-        file << sprintf("[id=%d,name=%s,mass=%f,parent=%d]\n", part[:id], part[:name], part[:mass], part[:parent])
+  def each
+    if block_given?
+      @parts.each do |part|
+        yield(part)
+        value.each do |inner_part|
+          yield(inner_part)
+        end
       end
     end
   end
 
-  # Deserializes the part object from the passed file
-  def self.load_from_file(path)
-    raise Exception.new('Passed file does not exist') unless File.file?(path)
-    dump = {}
-    root = nil
-    File.open(path, 'r') do |file|
-      while (line = file.gets)
-        id = line.split('id=')[1].split(',')[0].to_i
-        name = line.split('description=')[1].split(',')[0]
-        mass = line.split('mass=')[1].split(',')[0].to_f
-        parent = line.split('parent=')[1].split(']')[0].to_i
-        part = Part.new(name, mass)
-        parent > 0 ? part.parent=dump[parent] : root = part
-        dump[id] = part
-      end
+  # To_s
+  def to_s
+    sprintf('Name: %-15s Gewicht in Kilogramm: %s', @name, @mass.to_s)
+  end
+  
+  # Vollständige Ausgabe
+  def print_complete(deepth = 0)
+    puts(("\t\t" * deepth) + to_s)
+    @parts.each do |part|
+      part.print_complete(deepth + 1)
     end
-    root
-  end 
-    
+  end
 end
