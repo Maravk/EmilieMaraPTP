@@ -51,19 +51,7 @@ class MasterMind
       eingabe_mensch_konsole = gets.chomp.to_s
       eingabe_mensch = []
       eingabe_mensch = eingabe_mensch_konsole.split(" ")
-      # Wie viele Farben wurden richtig erraten (Diese Methode können wir so nicht für das Spiel benutzen,
-      # aber funktioniert schon mal gut
-      #colors_guessed_right = 0
-      #eingabe_mensch.each{|a| 
-      #  if @kombination_computer.include?(a)
-      #    colors_guessed_right += 1
-      #  end
-      #}
-      #puts colors_guessed_right.to_s + " mal stimmt die Farbe"
-        
-      # Was hier noch fehlt: Die Rückgabe von Mastermind sind bis zu 4 Informationen, diese Informationen können
-      # zwei Zustände haben: Farbe richtig oder Farbe und Position richtig (weiß und schwarz)
-      # 4 mal schwarz heißt das Spiel ist gewonnen
+   
       
       #Versuch einer Methode die alle Positionen durchgeht und sie auf Farbe und Position überprüft.
       

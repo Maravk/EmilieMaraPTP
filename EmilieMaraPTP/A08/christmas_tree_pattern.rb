@@ -31,7 +31,7 @@ class ChristmasTreePattern
        
       # Ist die Arraylänge kleiner zwei, wird an die erste Arraystelle eine 0 und an die zweite Arraystelle eine 1 rangehängt
       if array[0].size < 2 && array[1].size < 2
-        array[0] << "0" && array[1] << "1"
+       new_array = [array] && (new_array[0] << "0" && new_array[1]<< "1")
       end 
       
       # Ist die Arraylänge größer zwei, werden zwei neue Zeilen erstellt.
@@ -45,6 +45,8 @@ class ChristmasTreePattern
           array[0] << "1" && array[0] << "1" && array[1] << "1"
       end 
       
+      
+      array+=new_array
       puts array
       
       # Zähler für die n-te Ordnung

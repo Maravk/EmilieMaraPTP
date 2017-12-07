@@ -59,17 +59,17 @@ def ermittle_mensch_kombination
           (@black = @black + 1) && @erratene_kombination_computer = @kombination_mensch[n]
           
             until @erratene_kombination_computer.length == 4
-              @erratene_kombination_mensch.push(@kombination_mensch.sample, @kombination_mensch.sample, @kombination_mensch.sample, @kombination_mensch.sample)
+              @erratene_kombination_computer.add(@kombination_mensch.sample, @kombination_mensch.sample, @kombination_mensch.sample, @kombination_mensch.sample)
             end 
             
       elsif @erratene_kombination_computer.include?(@kombination_mensch[n])
-        (@white += 1) && @erratene_kombination_computer = @erratene_kombination_computer << [@kombination_mensch[n]] 
+        (@white += 1) && @erratene_kombination_computer = @erratene_kombination_computer.clear << [@kombination_mensch[n]] 
          
         else 
         @erratene_kombination_computer.clear
-        until 
-        @erratene_kombination_computer.length == 4
-        @erratene_kombination_computer.push(@kombination_mensch.sample, @kombination_mensch.sample, @kombination_mensch.sample, @kombination_mensch.sample)
+        
+        until @erratene_kombination_computer.length == 4
+       p @erratene_kombination_computer.push(@kombination_mensch.sample, @kombination_mensch.sample, @kombination_mensch.sample, @kombination_mensch.sample)
         end
         end
 
@@ -103,7 +103,7 @@ def ermittle_mensch_kombination
               @black +=1
               @erratene_kombination_computer = @kombination_mensch[n]
                 until @erratene_kombination_computer.length == 4
-                  @erratene_kombination_mensch.push(@kombination_mensch.sample, @kombination_mensch.sample, @kombination_mensch.sample, @kombination_mensch.sample)
+                  @erratene_kombination_computer.push(@kombination_mensch.sample, @kombination_mensch.sample, @kombination_mensch.sample, @kombination_mensch.sample)
                 end 
                 
           elsif @erratene_kombination_computer.include?(@kombination_mensch[n])
