@@ -21,7 +21,7 @@ class ChristmasTreePattern
   # Algorithmus
   def pattern
     eingabe = gets.chomp.to_i
-    n = 1
+    n = 0
     until n == eingabe do
       
     # Leeres Array, mit 0 und 1
@@ -39,11 +39,13 @@ class ChristmasTreePattern
       if array.size > 2 
        
           array[1].unshift("1")
-          puts
+          puts "YAA"
           
           # In der neuen Zeile wird an das erste Element eine 1 rangehängt, an das Erste dann in der nächsten Zahl quasi eine 1 und dann an das letzte Element eine 1
           array[0] << "1" && array[0] << "1" && array[1] << "1"
       end 
+      
+      puts array
       
       # Zähler für die n-te Ordnung
         n += 1

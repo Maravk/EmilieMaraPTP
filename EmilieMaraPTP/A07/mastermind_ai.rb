@@ -56,33 +56,35 @@ def ermittle_mensch_kombination
       n = 0
       while (n < 4)
         if @erratene_kombination_computer[n] == @kombination_mensch[n]
-          @black +=1
-          @erratene_kombination_computer = @kombination_mensch[n]
+          (@black = @black + 1) && @erratene_kombination_computer = @kombination_mensch[n]
+          
             until @erratene_kombination_computer.length == 4
               @erratene_kombination_mensch.push(@kombination_mensch.sample, @kombination_mensch.sample, @kombination_mensch.sample, @kombination_mensch.sample)
             end 
             
       elsif @erratene_kombination_computer.include?(@kombination_mensch[n])
-        @white += 1
-        @erratene_kombination_computer = @erratene_kombination_computer << [@kombination_mensch[n]]
-
-          
-        else @erratene_kombination_computer == @kombination_mensch
-        puts "Der Computer hat Ihren Code geknackt!"
-        exit
-        end 
-      
-        n+=1   
-        
+        (@white += 1) && @erratene_kombination_computer = @erratene_kombination_computer << [@kombination_mensch[n]] 
          
+        else 
+        @erratene_kombination_computer.clear
+        until 
+        @erratene_kombination_computer.length == 4
+        @erratene_kombination_computer.push(@kombination_mensch.sample, @kombination_mensch.sample, @kombination_mensch.sample, @kombination_mensch.sample)
+        end
+        end
+
+          if @erratene_kombination_computer == @kombination_mensch
+          puts "Der Computer hat Ihren Code geknackt!"
+          exit
+          end   
+         
+        n+=1    
+          
+          
       end 
       puts "Runde #{i}"
       puts "    Der Computer hat #{@white.to_s}-mal einen indirekten Treffer!\n"
-      puts "    Der Computer hat #{@black.to_s}-mal einen direkten Treffer!\n\n" 
-     
-      until erratene_kombination_computer.length == 4
-      @erratene_kombination_computer.add(@kombination_mensch.sample, @kombination_mensch.sample, @kombination_mensch.sample, @kombination_mensch.sample)
-      end
+      puts "    Der Computer hat #{@black.to_s}-mal einen direkten Treffer!\n\n"
         
         i+=1
      end
