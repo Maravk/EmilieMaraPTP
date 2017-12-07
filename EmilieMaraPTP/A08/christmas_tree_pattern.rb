@@ -16,19 +16,22 @@ class ChristmasTreePattern
     @length=(1+@input-(@input/2)..@input).inject(:*)/(1..(@input/2)).inject(:*) + 1
   end
   
+  
+  
   # Algorithmus
   def pattern
-    eingabe = gets.chomp
-    eingabe.times do
+    eingabe = gets.chomp.to_i
+    n = 1
+    until n == eingabe do
       
     # Leeres Array, mit 0 und 1
       array=[]
       array[0]="0"
       array[1]="1"
-      
+       
       # Ist die Arraylänge kleiner zwei, wird an die erste Arraystelle eine 0 und an die zweite Arraystelle eine 1 rangehängt
       if array[0].size < 2 && array[1].size < 2
-        array[0].push("0") && array[1].push("1")
+        array[0] << "0" && array[1] << "1"
       end 
       
       # Ist die Arraylänge größer zwei, werden zwei neue Zeilen erstellt.
@@ -39,17 +42,13 @@ class ChristmasTreePattern
           puts
           
           # In der neuen Zeile wird an das erste Element eine 1 rangehängt, an das Erste dann in der nächsten Zahl quasi eine 1 und dann an das letzte Element eine 1
-          array[0].push("1") && array[0].push("1") && array[1].push("1")
+          array[0] << "1" && array[0] << "1" && array[1] << "1"
       end 
       
-      # End von der eingabe.times do
+      # Zähler für die n-te Ordnung
+        n += 1
         end 
-        
+          
    # End von der Methode
    end
 end
-  
-  
-
-emi=ChristmasTreePattern.new
-emi.pattern
