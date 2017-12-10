@@ -2,55 +2,102 @@
 # Author:: Mara von Kroge
 # Author:: Emilie Schuller
 # TeamChallenger
-# Christmas Tree Pattern Klasse
+# Christmas Tree Pattern
 
-class ChristmasTreePattern
   
-  
-  # getting the input concerning the length of the pattern from the user
-  def input
-    @input = gets.chomp.to_i
+  # Methode für den Algorithmus
+  def tree(array_1)
+    array = array_1
+    zeile1 = 0
+    array2 = []
+    zeile2 = 0
     
-    # evaluating the length of the combination through the binomial coefficient
-    # n C (n-2)
-    @length=(1+@input-(@input/2)..@input).inject(:*)/(1..(@input/2)).inject(:*) + 1
-  end
-  
-  
-  
-  # Algorithmus
-  def pattern
-    eingabe = gets.chomp.to_i
-    n = 0
-    until n == eingabe do
-      
-    # Leeres Array, mit 0 und 1
-      array=[]
-      array[0]="0"
-      array[1]="1"
-       
-      # Ist die Arraylänge kleiner zwei, wird an die erste Arraystelle eine 0 und an die zweite Arraystelle eine 1 rangehängt
-      if array[0].size < 2 && array[1].size < 2
-       array = array[0] << "0" && array[1] << "1"
-      end 
-      
-      # Ist die Arraylänge größer zwei, werden zwei neue Zeilen erstellt.
-      # Für die erste Zeile wird das letzte Element genommen und eine 1 wird rangehängt
-      if array.size > 2 
-       
-          array[1].unshift("1")
-          puts "YAA"
+    while (zeile1 < array.size)
+      array2[zeile2] = []
+        if (array[zeile1].size > 1)
+          i = 1
           
-          # In der neuen Zeile wird an das erste Element eine 1 rangehängt, an das Erste dann in der nächsten Zahl quasi eine 1 und dann an das letzte Element eine 1
-          array[0] << "1" && array[0] << "1" && array[1] << "1"
-      end 
-      
-      return array.itself.to_s
-      
-      # Zähler für die n-te Ordnung
-        n += 1
-        end 
           
-   # End von der Methode
-   end
+          # Sofern die Länge der ersten Arrayzeile kleiner als i ist, wird eine 0 rangehängt - dies geschieht in der zweiten Arrayzeile
+          while (i < array[zeile1].size)
+            s = "" << array[zeile1][i].to_s << "0"
+            array2[zeile2] << s
+            
+            # Der Zähle für die n-te Ordnung wird stets hochgezählt
+            i += 1
+            end
+            
+            # Die zweite Zeile 
+            zeile2 += 1 
+            
+            # Sofern die Länge der ersten Arrayzeile nicht kleiner als 1 ist, soll sich die zweite Zeile nicht verändern
+            else
+              zeile2 = zeile2 
+          end 
+          
+          
+      #  if (array[zeile1][0] != "")
+          array2[zeile2] = []
+            s = "" << array[zeile1][0].to_s << "0"
+            array2[zeile2][0] = s
+            
+            i = 0
+            
+            while (i < array[zeile1].size)
+              s = "" << array[zeile1][i].to_s << "1"
+              array2[zeile2] << s
+              
+              i += 1
+              end
+              
+              
+             # zeile2 += 2
+              
+              
+              #else 
+                zeile2 += 1
+               # end 
+                zeile1 += 1
+                end
+               
+                return array2 
+                end
+                
+                
+# Startwerte für die 1. Ordnung
+pattern_1 = Array.new
+ #pattern_1 << Array.new()
+   pattern_1[0] = "0"
+   pattern_1[1] = "1"
+   
+   
+   pattern_2 = tree(pattern_1)
+   pattern_3 = tree(pattern_2)
+   pattern_4 = tree(pattern_3)
+   pattern_5 = tree(pattern_4)
+   pattern_6 = tree(pattern_5)
+   pattern_7 = tree(pattern_6)
+   pattern_8 = tree(pattern_7)
+
+   
+   
+   
+# Methode für die formatierte Ausgabe      
+  def output(array)
+    word_size = array[1][0].to_s.length
+    space = " "*(word_length + 1) 
+    
+    array.each do |first_array|
+      size = first_array.length
+      size = (word_length + 1 - size) / 2
+      printf(space * size)
+      first_array.each do |element|
+        printf element.to_s
+      printf (" ")end 
+      
+      puts 
+    end
 end
+    
+    print(pattern_8) 
+  
