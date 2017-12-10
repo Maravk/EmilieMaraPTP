@@ -85,7 +85,7 @@ pattern_1 = Array.new
                 
    
 # Methode für die formatierte Ausgabe      
-  def output(array)
+  def print(array)
     word_size = array[1][0].to_s.length
     space = " "*(word_length + 1) 
     
