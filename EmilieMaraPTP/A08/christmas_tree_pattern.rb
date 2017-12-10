@@ -9,11 +9,11 @@
   def tree(array_1)
     array = array_1
     zeile1 = 0
-    array2 = []
+    array2 = Array.new
     zeile2 = 0
     
-    while (zeile1 < array.size)
-      array2[zeile2] = []
+   
+      array2[zeile2] = Array.new
         if (array[zeile1].size > 1)
           i = 1
           
@@ -36,8 +36,8 @@
           end 
           
           
-      #  if (array[zeile1][0] != "")
-          array2[zeile2] = []
+       # if (array[zeile1][0] != "")
+          array2[zeile2] = Array.new
             s = "" << array[zeile1][0].to_s << "0"
             array2[zeile2][0] = s
             
@@ -58,18 +58,20 @@
                 zeile2 += 1
                # end 
                 zeile1 += 1
-                end
-               
+           #     end
+                end 
+
                 return array2 
-                end
+   
+                
+                
                 
                 
 # Startwerte für die 1. Ordnung
 pattern_1 = Array.new
- #pattern_1 << Array.new()
+ pattern_1 << Array.new()
    pattern_1[0] = "0"
    pattern_1[1] = "1"
-   
    
    pattern_2 = tree(pattern_1)
    pattern_3 = tree(pattern_2)
@@ -79,8 +81,8 @@ pattern_1 = Array.new
    pattern_7 = tree(pattern_6)
    pattern_8 = tree(pattern_7)
 
-   
-   
+  
+                
    
 # Methode für die formatierte Ausgabe      
   def output(array)
@@ -96,8 +98,9 @@ pattern_1 = Array.new
       printf (" ")end 
       
       puts 
-    end
-end
+      
+    end 
+end 
+      print (pattern_8) 
     
-    print(pattern_8) 
   
