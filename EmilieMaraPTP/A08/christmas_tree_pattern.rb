@@ -13,6 +13,7 @@
     zeile2 = 0
     
    
+    while(zeile1 < array.size)
       array2[zeile2] = Array.new
         if (array[zeile1].size > 1)
           i = 1
@@ -51,17 +52,16 @@
               end
               
               
-             # zeile2 += 2
-              
+             # zeile2 += 2 
               
               #else 
                 zeile2 += 1
                # end 
-                zeile1 += 1
-           #     end
+                zeile1 += 1     
                 end 
 
                 return array2 
+end 
    
                 
                 
@@ -87,11 +87,11 @@ pattern_1 = Array.new
 # Methode für die formatierte Ausgabe      
   def print(array)
     word_size = array[1][0].to_s.length
-    space = " "*(word_length + 1) 
+    space = " "*(word_size + 1) 
     
     array.each do |first_array|
       size = first_array.length
-      size = (word_length + 1 - size) / 2
+      size = (word_size + 1 - size) / 2
       printf(space * size)
       first_array.each do |element|
         printf element.to_s
@@ -101,6 +101,7 @@ pattern_1 = Array.new
       
     end 
 end 
-      print (pattern_8) 
-    
+
+      print(pattern_8) 
+
   
