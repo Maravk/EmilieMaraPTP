@@ -3,7 +3,6 @@
 # Skript zur Klasse Part
 
 require_relative 'part.rb'
-require_relative 'part_to_file'
 
 auto = Part.new("Auto", 1380)
 
@@ -67,11 +66,13 @@ puts auto.parts_table
 puts "Masse des ganzen Autos in Kilogramm: " + auto.mass_of_all.to_s
 
 puts "Darstellung der Each-Ausgabe:"
-puts auto.to_s
+puts auto.each
 puts''
 # Beim Debuggen ist hier kein Fehler, aber beim Script kommt noch zusätzlich einmal der Gümmelmotor
-puts auto.print_complete
+puts auto.print_complete    
 
+puts "Darstellung der Stückliste als Baumstruktur:"
+puts auto.build_tree
 
 
 puts "\n\n\n#############################################################"

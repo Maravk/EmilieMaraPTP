@@ -4,7 +4,13 @@
 
 class Part
   include Comparable
+  include Enumerable
   def initialize(name, mass = 0.0, parent = nil)
+    if(name.nil?)
+      raise ArgumentError, "Bitte geben Sie einen gütligen Namen ein."
+    elsif (name.class!=String)
+      raise ArgumentError, "Dieser Name ist nicht verfügbar."
+    end
     @name = name
     @mass = mass
     @parts = []
@@ -170,23 +176,28 @@ class Part
     return [@name, @mass, @parent, @parts].eql?(part.name, part.mass_of_this, part.parent, part.all_parts)
   end
   
+# Baumstruktur
+  def build_tree
+   result = []
+   result << self
+      if !@parts.empty?
+      @parts.each {|parts|
+      result << parts.build_tree}
+      return result.flatten
+    end 
+  end
+  
   # Each
   def each
-    if block_given?
-      @parts.each do |part|
-        yield(part)
-        value.each do |inner_part|
-          yield(inner_part)
-        end
-      end
+    build_tree.each do |part|
+      yield(part)
+    end 
     end
-  end
 
   # To_s
   def to_s
     sprintf('Name: %-15s Gewicht in Kilogramm: %s', @name, @mass.to_s)
   end
-  
   
   # Vollständige Ausgabe
   def print_complete(deepth = 0)
@@ -196,12 +207,10 @@ class Part
     end
   end
   
-  
   # Speichern des Objektes
   def save(file_name)
     File.open("#{file_name}", "w") {|file_name| Marshal.dump(@parts,file_name)}
   end
-  
   
   # Laden von Objekten
   def load(file_name)

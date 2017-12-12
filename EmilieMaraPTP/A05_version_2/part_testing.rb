@@ -28,6 +28,8 @@ class TestPart < Test::Unit::TestCase
     assert_equal("PART",new_part.name())
     assert_equal(100.0,new_part.mass())
     assert_equal(nil, new_part.parent())
+    assert_raise ArgumentError do new_part.name(10)
+    end
   end
   
   # Test - Hinzufügen eines Teils

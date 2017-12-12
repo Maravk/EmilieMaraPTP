@@ -10,7 +10,7 @@ class MasterMind
     
   def initialize(elements = 6, length = 4)
 
-    @elements = ["yellow", "blue", "red", "green", "pink", "grey"]
+    @elements = [1,2,3,4,5,6]
     @length = [0,1,2,3]
   end
   
@@ -48,15 +48,20 @@ class MasterMind
     i = 0
     while i < 10 do
       
-      eingabe_mensch_konsole = gets.chomp.to_s
+      eingabe_mensch_konsole = gets.chomp.to_i
+      if eingabe_mensch_konsole != Integer || eingabe_mensch_konsole.length < 4
+        raise TypeError do "Bitte geben Sie eine gültige Zahl ein!"
+        end 
+      end 
       eingabe_mensch = []
-      eingabe_mensch = eingabe_mensch_konsole.split(" ")
+      eingabe_mensch << eingabe_mensch_konsole
    
       
-      #Versuch einer Methode die alle Positionen durchgeht und sie auf Farbe und Position überprüft.
+      # Methode, die alle Positionen durchgeht und sie auf Farbe und Position überprüft.
       
       @white = 0  # Farbe ist richtig
       @black = 0  # Farbe und Position ist richtig
+      
       n = 0 
       while (n < 4)
         if eingabe_mensch[n] == @kombination_computer[n]
@@ -66,6 +71,7 @@ class MasterMind
         end
         n += 1
       end
+      
       puts "Runde #{i}:"
       puts "    Sie haben #{@white.to_s}-mal einen indirekten Treffer!\n"
       puts "    Sie haben #{@black.to_s}-mal einen direkten Treffer!\n\n" 
@@ -77,7 +83,7 @@ class MasterMind
       
       i += 1
       if i == 10
-        puts "Mist! In 10 Versuchen hast du den Code des Computers nicht knacken können! NOOOOOOB, hehehe!"
+        puts "DU bist dumm und kannst nichts"
       end
     end
   end   
