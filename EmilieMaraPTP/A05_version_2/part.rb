@@ -181,8 +181,9 @@ class Part
    result = []
    result << self
       if !@parts.empty?
-      @parts.each {|parts|
-      result << parts.build_tree}
+      @parts.each do |part|
+      result << part.build_tree
+      end 
       return result.flatten
     end 
   end
@@ -190,8 +191,8 @@ class Part
   # Each
   def each
     build_tree.each do |part|
-      yield(part)
-    end 
+    yield(part)
+    end
     end
 
   # To_s

@@ -19,6 +19,7 @@ class TestPart < Test::Unit::TestCase
     @auto_zylinder = Part.new("Zylinder", 18, @auto_motor)
     @auto_motor.add_part(@auto_zylinder)
     @ferrari = Part.new("Ferrari", 2200, "Ferrari")
+    @count_parts = 5
         
   end
   
@@ -39,6 +40,11 @@ class TestPart < Test::Unit::TestCase
     assert_equal(5,@auto.total_parts_amount())
     assert_raise TypeError do @auto.add_part(nil)
     end
+  end
+  
+  # Test - Enumerable
+  def test_enumerable()
+    assert_true(@auto.class.include?(Enumerable))
   end
   
   # Test - Instanzvariable name
@@ -63,6 +69,7 @@ class TestPart < Test::Unit::TestCase
     }
   end
   
+  # Test - Set Parent
   def test_set_parent
     assert_equal("Ferrari", @ferrari.parent=("Ferrari"))
   end
@@ -114,6 +121,10 @@ class TestPart < Test::Unit::TestCase
   
   # Test - Each
   def test_each
-    assert_not_equal(@auto, @auto.each)
+    count = 0
+    @auto.each do |part|
+      count+=1
+    end
+    assert_equal(5, @count_parts)
   end
 end

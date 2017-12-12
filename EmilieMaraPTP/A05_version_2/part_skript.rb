@@ -65,13 +65,14 @@ puts auto.parts_table
 
 puts "Masse des ganzen Autos in Kilogramm: " + auto.mass_of_all.to_s
 
-puts "Darstellung der Each-Ausgabe:"
-puts auto.each
+#puts "Darstellung der Each-Ausgabe:"
+#puts auto.each
 puts''
 # Beim Debuggen ist hier kein Fehler, aber beim Script kommt noch zusätzlich einmal der Gümmelmotor
+puts "Komplette Darstellung der Stückliste:"
 puts auto.print_complete    
 
-puts "Darstellung der Stückliste als Baumstruktur:"
+puts "\n\nDarstellung der Stückliste als Baumstruktur:"
 puts auto.build_tree
 
 
