@@ -175,31 +175,22 @@ class Part
     end
     return [@name, @mass, @parent, @parts].eql?(part.name, part.mass_of_this, part.parent, part.all_parts)
   end
-  
-# Baumstruktur
-  def build_tree
-   result = []
-   result << self
-      if !@parts.empty?
-        @parts.each do |part|
-        result << part.build_tree
-      end 
-      return result.flatten
-    end 
+
+  # Each - Kahlbrandt
+  def each2
+    if(block_given?)
+      yield(self)
+      @parts.each(){|p| yield(p)}
+    else
+      #return Enumerator
+    end
   end
   
   # Each
-  def each
-    build_tree.each do |part|
-    yield(part)
-    end
-  end
-
-  # Each - Kahlbrandt
-  def each_khb(&block)#???
+  def each(&block)
     if(block_given?)
       block.call(self)
-      @parts.each{|p| p.each_khb{block.call(p)}}
+      @parts.each{|p| p.each{block.call(p)}}
     end
   end
     
