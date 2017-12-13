@@ -194,7 +194,14 @@ class Part
 #    yield(part)
 #    end
 #  end
-
+  def each2
+    if(block_given?)
+      yield(self)
+      @parts.each(){|p| yield(p)}
+    else
+      #return Enumerator
+    end
+  end
   # Each
   def each(&block)
     if(block_given?)
