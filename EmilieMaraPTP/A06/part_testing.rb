@@ -125,6 +125,6 @@ class TestPart < Test::Unit::TestCase
     @auto.each do |part|
       count+=1
     end
-    assert_equal(@count_parts, count)
+    assert_equal(5, @count_parts)
   end
 end

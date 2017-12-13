@@ -72,6 +72,10 @@ puts''
 puts "Komplette Darstellung der Stückliste:"
 puts auto.print_complete    
 
+puts "\n\nDarstellung der Stückliste als Baumstruktur:"
+puts auto.build_tree
+
+
 puts "\n\n\n#############################################################"
 puts "Speichern der Informationen über die neue Stückliste Computer."
 computer = Part.new("Computer",12)
