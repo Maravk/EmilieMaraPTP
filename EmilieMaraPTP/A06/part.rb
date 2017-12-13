@@ -196,7 +196,7 @@ class Part
   end
 
   # Each - Kahlbrandt
-  def each_khb(&block)#????
+  def each_khb(&block)#???
     if(block_given?)
       block.call(self)
       @parts.each{|p| p.each_khb{block.call(p)}}

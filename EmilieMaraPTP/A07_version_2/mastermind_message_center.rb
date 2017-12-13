@@ -20,4 +20,5 @@ class MessageCenter
   def player_one_wins_message
     "Yay! Player 1 is the winner!"
   end
+  
 end
