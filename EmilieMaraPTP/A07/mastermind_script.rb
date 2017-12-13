@@ -7,14 +7,14 @@
 require_relative "mastermind"
 
 puts " #####################################################################################################################"
-  puts "\n# Guten Tag bei MasterMind!\n# Mittels diesen Programms können sie Ihr logischen Denken sowie Ihre Fähigkeiten im Sektor der Stochastik austesten!\n\n"
+puts "\n# Guten Tag bei MasterMind!\n# Mittels diesen Programms können sie Ihr logischen Denken sowie Ihre Fähigkeiten im Sektor der Stochastik austesten!\n\n"
 
-  mara=MasterMind.new
-  mara.kombination_computer
+mara=MasterMind.new
+mara.kombination_computer
 
-  puts "# Der Computer hat sich nun seinen vierstelligen Code ausgedacht. Nun dürfen Sie versuchen, die Kombination zu erraten!"
-  puts "# Geben Sie hierfür vier Zahlen hintereinander ein, stets durch ein Leerzeichen getrennt!"
-  puts "# Die zur Verfügung stehenden Zahlen lauten: 1, 2, 3, 4, 5, 6!"
-  puts "# Sofern eine Ihrer geratenen Zahlen richtig ist, sich aber an der falschen Stelle befindet,\n# erscheint die Ausgabe Indirekter Treffer und sofern die Zahl an der richtigen Stelle steht, erscheint Direketer Treffer!\n"
-  puts "# Ihre Eingabe: \n\n"
-  mara.ermitte_kombination_computer
+puts "# Der Computer hat sich nun seinen vierstelligen Code ausgedacht. Nun dürfen Sie versuchen, die Kombination zu erraten!"
+puts "# Geben Sie hierfür vier Zahlen hintereinander ein, stets durch ein Leerzeichen getrennt!"
+puts "# Die zur Verfügung stehenden Zahlen lauten: 1, 2, 3, 4, 5, 6!"
+puts "# Sofern eine Ihrer geratenen Zahlen richtig ist, sich aber an der falschen Stelle befindet,\n# erscheint die Ausgabe Indirekter Treffer und sofern die Zahl an der richtigen Stelle steht, erscheint Direketer Treffer!\n"
+puts "# Ihre Eingabe: \n\n"
+mara.ermitte_kombination_computer
