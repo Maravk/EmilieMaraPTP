@@ -84,13 +84,15 @@ pattern_8 = tree(pattern_7)
 
               
  
-# Methode für die formatierte Ausgabe      
+# Methode für die formatierte Ausgabe
 def print(array)
   word_size = array[1][0].to_s.length
   space = " "*(word_size + 1) 
   
   array.each do |first_array|
     size = first_array.length
+    
+    # Binomialkoeffizient mit (n C (n-2))
     size = (word_size + 1 - size) / 2
     printf(space * size)
     first_array.each do |element|
