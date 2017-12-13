@@ -188,18 +188,18 @@ class Part
     end 
   end
   
-  # Each
-  def each
-    build_tree.each do |part|
-    yield(part)
-    end
-  end
+#  # Each
+#  def each
+#    build_tree.each do |part|
+#    yield(part)
+#    end
+#  end
 
-  # Each - Kahlbrandt
-  def each_khb(&block)#????
+  # Each
+  def each(&block)
     if(block_given?)
       block.call(self)
-      @parts.each{|p| p.each_khb{block.call(p)}}
+      @parts.each{|p| p.each{block.call(p)}}
     end
   end
     

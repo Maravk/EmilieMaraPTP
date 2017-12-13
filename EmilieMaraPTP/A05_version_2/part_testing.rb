@@ -127,6 +127,6 @@ class TestPart < Test::Unit::TestCase
     end
     assert_equal(5, @count_parts)
     assert_equal(5,@auto.count)
-    @auto.each_khb(){|p| puts p}
+    @auto.each(){|p| puts p}
   end
 end
