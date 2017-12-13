@@ -195,6 +195,7 @@ class Part
     end
   end
 
+  # Each - Kahlbrandt
   def each_khb(&block)#????
     if(block_given?)
       block.call(self)

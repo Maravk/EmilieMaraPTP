@@ -101,6 +101,6 @@ def print(array)
   end
 end
 
-print(pattern_4) 
+print(pattern_2) 
 
   
