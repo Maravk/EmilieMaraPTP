@@ -181,8 +181,8 @@ class Part
    result = []
    result << self
       if !@parts.empty?
-      @parts.each do |part|
-      result << part.build_tree
+        @parts.each do |part|
+        result << part.build_tree
       end 
       return result.flatten
     end 
@@ -193,8 +193,15 @@ class Part
     build_tree.each do |part|
     yield(part)
     end
-    end
+  end
 
+  def each_khb(&block)#????
+    if(block_given?)
+      block.call(self)
+      @parts.each{|p| p.each_khb{block.call(p)}}
+    end
+  end
+    
   # To_s
   def to_s
     sprintf('Name: %-15s Gewicht in Kilogramm: %s', @name, @mass.to_s)
