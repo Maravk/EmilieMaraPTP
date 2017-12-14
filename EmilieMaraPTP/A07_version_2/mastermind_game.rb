@@ -64,7 +64,6 @@ class Game
     false
   end
 
-
   #
   def secret_code_message
     MessageCenter.secret_code_message

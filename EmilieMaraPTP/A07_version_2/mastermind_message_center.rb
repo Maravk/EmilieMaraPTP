@@ -6,11 +6,7 @@
 class MessageCenter
   
   def secret_code_message
-    "Secret code!"
-  end
-  
-  def invalid_selection_message
-    "Invalid selection!"
+    "The Computer has generated its secret code!"
   end
   
   def player_two_wins_message
