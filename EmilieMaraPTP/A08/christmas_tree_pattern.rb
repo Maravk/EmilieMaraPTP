@@ -83,10 +83,10 @@ class Tree
     
     # @rows enthaelt arrays (z.B.: [["100", "101"], ["010", "110"], ["000", "001", "011", "111"]]  )
     # @rows[0] ist das erste Array (z.B.: ["100", "101"] )
-    # @rows[0][0] ist das erste element des ersten Arrays (z.B.: "100")
+    # @rows[0][0] ist das erste Element des ersten Arrays (z.B.: "100")
     value_length = @rows[0][0].length
     
-    # Maximale Anzahl an Elementen suchen, damit korrekt Zentriert werden kann
+    # Maximale Anzahl an Elementen suchen, damit korrekt zentriert werden kann
     max_values = 0
     @rows.each() do | row |
       max_values = row.size() if row.size() > max_values
