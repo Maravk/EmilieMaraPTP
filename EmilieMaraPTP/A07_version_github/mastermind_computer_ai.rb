@@ -2,9 +2,9 @@
 # 13. Dezember 2017
 # MasterMind - Main
 
-require_relative "mastermind_codes"
-require_relative "mastermind_computer_player"
-require_relative "mastermind_evaluation"
+require_relative "mastermind_codes.rb"
+require_relative "mastermind_computer_ai.rb"
+require_relative "mastermind_evaluation.rb"
 
 class ComputerAI
   def initialize (code_list, colors)

@@ -7,7 +7,7 @@ require_relative "mastermind_evaluation"
 
 class MastermindCodes
   
-  attr_accesssor :combinations, :colors
+  attr_accessor :combinations, :colors
   
   def initialize(colors)
     @colors = colors

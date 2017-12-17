@@ -1,108 +1,116 @@
-# Author:: Anastasiya Vladimirova
-# Author:: Mara von Kroge
-# Author:: Emilie Schuller
-# TeamChallenger
+# Author:: Dominik Tobaben, Emilie Schuller, Ralf Herrmann
+# 17. Dezember 2017
 # Christmas Tree Pattern
 
-  
-  # Methode für den Algorithmus
-def tree(array_1)
-  array = array_1
-  zeile1 = 0
-  array2 = Array.new
-  zeile2 = 0
-  
-  
-  # Sofern zeile1 kleiner als die Größe der Variablen Array ist, soll stets für die 2. Zeile ein neues Array erstellt werden.
-  while(zeile1 < array.size)
-    array2[zeile2] = Array.new
-    
-    # Ist das Array von zeile1 größer als 1...
-    if (array[zeile1].size > 1)
-        
-      # Zähler für die n-te Ordnung
-      i = 1
-      
-      # Sofern die Länge der ersten Arrayzeile kleiner als i ist, wird eine 0 rangehängt - dies geschieht in der zweiten Arrayzeile
-      while (i < array[zeile1].size)
-        s = "" << array[zeile1][i].to_s << "0"
-        array2[zeile2] << s
-        
-        # Der Zähler für die n-te Ordnung wird stets hochgezählt
-        i += 1
-      end
-        
-      # Die zweite Zeile 
-      zeile2 += 1 
-        
-    # Sofern die Länge der ersten Arrayzeile nicht kleiner als 1 ist, soll sich die zweite Zeile nicht verändern.
-    else
-      zeile2 = zeile2
-    end
-      
-    # Neues Array der zweiten Zeile
-    array2[zeile2] = Array.new
-      
-    # Vor das 1. Element der zweiten Zeile wird das erste Element der ersten Zeile  inkl. einer 0 gestellt.
-    s = "" << array[zeile1][0].to_s << "0"
-    array2[zeile2][0] = s
-        
-    i = 0
-        
-    # während i kleiner als die Länge der 1. Zeile ist, soll an die i-te Stelle in der ersten Zeile eine 1 platziert werden und dieses Element kommt in die 2. Zeile
-    while (i < array[zeile1].size)
-      s = "" << array[zeile1][i].to_s << "1"
-      array2[zeile2] << s
-          
-      i += 1
-    end
-          
-          
-    zeile2 += 1
-    zeile1 += 1     
-  end 
-  return array2 
-end
- 
-              
-              
-              
-              
-# Startwerte für die 1. Ordnung
-pattern_1 = Array.new
-pattern_1[0] = "0"
-pattern_1[1] = "1"
- 
-# Die nächsten n-ten Ordnungen setzen sich jeweils aus den vorherigen Ordnungen zusammen
-pattern_2 = tree(pattern_1)
-pattern_3 = tree(pattern_2)
-pattern_4 = tree(pattern_3)
-pattern_5 = tree(pattern_4)
-pattern_6 = tree(pattern_5)
-pattern_7 = tree(pattern_6)
-pattern_8 = tree(pattern_7)
 
-              
- 
-# Methode für die formatierte Ausgabe
-def print(array)
-  word_size = array[1][0].to_s.length
-  space = " "*(word_size + 1) 
+class Tree
   
-  array.each do |first_array|
-    size = first_array.length
+  def initialize(n = 1)
+    @rows = []
+    @target_n = n
+    @current_n = 1
     
-    # Binomialkoeffizient mit (n C (n-2))
-    size = (word_size + 1 - size) / 2
-    printf(space * size)
-    first_array.each do |element|
-      printf element.to_s
-      printf (" ")
-    end 
-    puts
+    # Erste Ordnung ist festgelegt
+    r = []
+    r.push("0").push("1")
+    @rows.push(r)
+    
+    # Bis zur n-ten Eingabe aufbauen
+    until @current_n == @target_n
+      build()
+      @current_n += 1
+    end
   end
+  
+  # Bauen der naechsten Ordnung
+  # Baut einen neuen Baum aus dem Aktuellen
+  private
+  def build()
+    
+    # Aktuellen Baum klonen, die Kopie wird verarbeitet und ersetzt am Ende die aktuellen Zeilen
+    new_rowset = @rows.clone()
+    
+    # Jede Zeile des Baums verarbeiten
+    @rows.each() do | values |
+      # Jede Zeile wird durch ein oder zwei Zeilen ersetzt      
+      new_row1 = []
+      new_row2 = []
+      
+      # Bauen von Zeile 1 (s20...sr0)
+      # Für (row) r = 1 entfällt die erste Zeile.
+      if(values.length > 1)
+        # Bei 1 anfangen, weil die zweite Zahl fuer new_row1 genutzt wird
+        # -1 um den index nicht zu ueberschreiten
+        for i in 1..values.size()-1
+          # Neuen Wert in neue Zeile 1 schreiben
+          new_row1.push(values[i]+"0")
+        end
+      end
+      
+      # Bauen von Zeile 2 (s10 s11...sr−11 sr1)
+      # Hier bei null anfangen, da alle Zahlen verarbeitet werden
+      # -1 um den index nicht zu ueberschreiten
+      for i in 0..values.size()-1
+        # die Erste Zahl (hier index=0 im array) zusaetzlich mit der 0 erweitern
+        if i == 0
+          new_row2.push(values[i]+"0")
+        end
+        # Alle zahlen mit der 1 erweitern und der neuen Zeile 2 hinzufuegen 
+        new_row2.push(values[i]+"1")
+      end
+      
+      # Ersetzen der Zeilen
+      # dafuer den aktuellen Index raussuchen
+      index = new_rowset.find_index(values)
+      new_rowset[index] = new_row2
+      
+      # Für row.values = 1 entfällt die erste Zeile.
+      if !new_row1.empty?()
+        # Inserts the given values before the element with the given index.
+        new_rowset.insert(index, new_row1)
+      end
+
+    end
+    
+    @rows = new_rowset
+    
+    return self
+  end
+  
+  # gibt den Baum in der Konsole aus
+  public
+  def print()
+    
+    # @rows enthaelt arrays (z.B.: [["100", "101"], ["010", "110"], ["000", "001", "011", "111"]]  )
+    # @rows[0] ist das erste Array (z.B.: ["100", "101"] )
+    # @rows[0][0] ist das erste element des ersten Arrays (z.B.: "100")
+    value_length = @rows[0][0].length
+    
+    # Maximale Anzahl an Elementen suchen, damit korrekt Zentriert werden kann
+    max_values = 0
+    @rows.each() do | row |
+      max_values = row.size() if row.size() > max_values
+    end 
+    
+    # Maximale Breite = (Elementgroesse * Elemente) + Anzahl an Leerzeichen 
+    max_width = (value_length * max_values) + (max_values - 1)
+    
+    # Zeilenweise ausgeben
+    @rows.each() do | row |
+      
+      # Anzahl der Leerzeichen links = die haelfte von (maximallaenge - ((wortgroesse * woerter) + leerzeichen)) 
+      left_spaces = (max_width - (( value_length * row.size() ) + row.size() - 1)) / 2
+      
+      # Leerzeichen vorweg
+      row_string = " " * left_spaces
+      # Jeden Wert der Zeile mit Leerzeichen getrennt dranhaengen und ausgeben
+      row_string += row.join(" ")
+      puts row_string
+    end
+  end
+  
 end
 
-print(pattern_2) 
 
-  
+t = Tree.new(4)
+t.print()

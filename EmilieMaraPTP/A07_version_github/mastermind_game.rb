@@ -2,15 +2,13 @@
 # 12. Dezember 2017
 # Mastermind - Computer spielt
 
-require_relative 'message_center'
-require_relative 'mastermind_computer_ai'
-require_relative 'mastermind_evaluation'
-require_relative 'validity'
+require_relative 'mastermind_message_center.rb'
+require_relative 'mastermind_computer_ai.rb'
+require_relative 'mastermind_evaluation.rb'
 
 
 # Game-Klasse
 class Game
-  include Validity
 
   COLORS = ["pink", "blue", "yellow", "green", "grey", "red"]
 
