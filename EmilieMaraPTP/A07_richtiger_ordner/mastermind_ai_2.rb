@@ -29,17 +29,21 @@ class MasterMindAI
   def kombination_computer
     @kombination_computer = Array.new
     @kombination_computer.push(@codes.sample)
-      p @kombination_computer
+    
+    # Kein Integer 
+    p @kombination_computer.to_i
       puts
     end 
   end
   
   # Knuth-Algorithmus
+  public
   def knuth
+    
     # Knuth's Erstwahl
     knuth = Array.new
     knuth << @elements[0] << @elements[1] << @elements[2] << @elements[3]
-    
+    p knuth
     if knuth == @kombination_mensch
       puts "Der Computer hat Ihren Code geknackt."
       self.bewertung
@@ -48,6 +52,7 @@ class MasterMindAI
     
     if knuth != @kombination_mensch
       @codes.delete(knuth)
+      p @codes
     end  
   end 
   
@@ -87,13 +92,12 @@ class MasterMindAI
  
   
   
-  
   # Rundenausgabe
   def runden
     i = 0
     while i < 10
     # Ausgabe auf die Konsole
-    puts "Runde #{i}"
+    puts "Runde #{i+1}"
       puts "    Der Computer hat #{@white.to_s}-mal einen indirekten Treffer!\n"
       puts "    Der Computer hat #{@black.to_s}-mal einen direkten Treffer!\n\n"
      i+=1

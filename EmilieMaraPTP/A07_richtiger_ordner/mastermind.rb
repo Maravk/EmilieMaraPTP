@@ -12,7 +12,10 @@ class MasterMind
   include Enumerable
   include Comparable
 
+    # Die zur Verfügung stehenden Farben
     @elements = ["pink","green", "grey", "red", "blue", "yellow"]
+      
+    # Die festgelegte Länge einer Ratekombination
     @length = 4
 
   
@@ -70,12 +73,15 @@ class MasterMind
       end
       
       
-      # Methode, die alle Positionen durchgeht und sie auf Farbe und Position überprüft
-      @white = 0  # Farbe ist richtig
-      @black = 0  # Farbe und Position ist richtig
+      # Instanzvariablen für Direkte und Indirekte Treffer
+      # Farbe ist richtig (Indirekter Treffer)
+      @white = 0  
+      
+      # Farbe und Position ist richtig (Direkter Treffer)
+      @black = 0  
       
       
-      # Direkte und Indirekte Treffern
+      # Zähler für Direkte und Indirekte Treffer
       n = 0 
       while (n < 4)
         if eingabe_mensch[n] == @kombination_computer[n]
@@ -100,7 +106,7 @@ class MasterMind
         exit 
       end
       
-      # 10 Runden sind vorbei
+      # 10 Runden sind vorbei.
       i += 1
       if i == 10
         puts "Vielleicht klappt es nächste Runde!"

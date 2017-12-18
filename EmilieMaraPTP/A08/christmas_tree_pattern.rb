@@ -22,88 +22,97 @@ class Tree
     end
   end
   
-  # Bauen der naechsten Ordnung
+  # private Methode
   # Baut einen neuen Baum aus dem Aktuellen
   private
   def build()
     
-    # Aktuellen Baum klonen, die Kopie wird verarbeitet und ersetzt am Ende die aktuellen Zeilen
+    # Aktueller Baum wird geklont, die Kopie wird verarbeitet und ersetzt am Ende den richtigen Baum
     new_rowset = @rows.clone()
     
-    # Jede Zeile des Baums verarbeiten
-    @rows.each() do | values |
-      # Jede Zeile wird durch ein oder zwei Zeilen ersetzt      
-      new_row1 = []
-      new_row2 = []
+    # Jede Zeile des Baums wird verarbeitet.
+    @rows.each() do |line|
       
-      # Bauen von Zeile 1 (s20...sr0)
-      # Für (row) r = 1 entfällt die erste Zeile.
-      if(values.length > 1)
-        # Bei 1 anfangen, weil die zweite Zahl fuer new_row1 genutzt wird
-        # -1 um den index nicht zu ueberschreiten
-        for i in 1..values.size()-1
-          # Neuen Wert in neue Zeile 1 schreiben
-          new_row1.push(values[i]+"0")
+      # Jede Zeile wird durch ein oder zwei Zeilen ersetzt.    
+      new_line1 = Array.new
+      new_line2 = Array-new
+      
+      # Algorithmus beginnt
+      # Zeile 1: s20..sr0
+      
+      # Ist in der ersten Zeile nur eine Zahl vorhanden, entfällt der Algorithmus für diese Zeile.
+      if(line.length > 1)
+        
+        # Man beginnt bei der zweiten Zahl und hängt eine 0 hinten ran.
+        # -1 um den Index nicht zu überschreiten.
+        for i in 1..line.size-1
+          # Neuen Wert in neue Zeile 1 schreiben.
+          new_line1.push(line[i]+"0")
         end
       end
       
-      # Bauen von Zeile 2 (s10 s11...sr−11 sr1)
-      # Hier bei null anfangen, da alle Zahlen verarbeitet werden
-      # -1 um den index nicht zu ueberschreiten
-      for i in 0..values.size()-1
-        # die Erste Zahl (hier index=0 im array) zusaetzlich mit der 0 erweitern
+      # Zeile 2 (s10 s11...sr−11 sr1)
+      # Man beginnt bei der ersten Zahl und hängt eine 0 hinten ran.
+      # -1 um den Index nicht zu überschreiten.
+      for i in 0..line.size()-1
+        
+        # Man hängt ab der ersten Zahl immer eine 1 hinten ran.
         if i == 0
-          new_row2.push(values[i]+"0")
+          new_line2.push(lines[i]+"0")
         end
-        # Alle zahlen mit der 1 erweitern und der neuen Zeile 2 hinzufuegen 
-        new_row2.push(values[i]+"1")
+        
+        # Alle Zahlen mit der 1 erweitern und der neuen Zeile 2 hinzufügen.
+        new_line2.push(lines[i]+"1")
       end
       
-      # Ersetzen der Zeilen
-      # dafuer den aktuellen Index raussuchen
-      index = new_rowset.find_index(values)
-      new_rowset[index] = new_row2
+      # Ersetzen der Zeilen.
+      index = new_lineset.find_index(line)
+      new_lineset[index] = new_line2
       
-      # Für row.values = 1 entfällt die erste Zeile.
-      if !new_row1.empty?()
+      # Sofern die erste Zeile nicht leer ist, sollen 
+      if !new_line1.empty?()
         # Inserts the given values before the element with the given index.
-        new_rowset.insert(index, new_row1)
+        new_lineset.insert(index, new_line1)
       end
 
     end
     
-    @rows = new_rowset
+    # Überschreiben der Instanzvariable mit dem fertigen Inhalt.
+    @rows = new_lineset
     
     return self
   end
   
-  # gibt den Baum in der Konsole aus
+  # Ausgabe der baumartigen Struktur
   public
   def print()
     
-    # @rows enthaelt arrays (z.B.: [["100", "101"], ["010", "110"], ["000", "001", "011", "111"]]  )
-    # @rows[0] ist das erste Array (z.B.: ["100", "101"] )
-    # @rows[0][0] ist das erste Element des ersten Arrays (z.B.: "100")
+    # Instanzvariable beinhaltet Arrays in einem großen Array.
+    # Beispiel: @rows = [["100", "101"], ["010", "110"], ["000", "001", "011", "111"]]
+    # @rows[0][0] == "100"
     value_length = @rows[0][0].length
     
-    # Maximale Anzahl an Elementen suchen, damit korrekt zentriert werden kann
+    # Die maximale Anzahl an Elementen wird gesucht, damit der Inhalt sich perfekt zentriert befindet.
     max_values = 0
-    @rows.each() do | row |
-      max_values = row.size() if row.size() > max_values
+    @rows.each() do |row|
+    if row.size() > max_values
+      max_values = row.size() 
+    end 
     end 
     
     # Maximale Breite = (Elementgroesse * Elemente) + Anzahl an Leerzeichen 
     max_width = (value_length * max_values) + (max_values - 1)
     
-    # Zeilenweise ausgeben
-    @rows.each() do | row |
+    # Zeilenweise wird der Inhalt ausgegeben.
+    @rows.each() do |row|
       
-      # Anzahl der Leerzeichen links = die haelfte von (maximallaenge - ((wortgroesse * woerter) + leerzeichen)) 
+      # Anzahl der Leerzeichen links = Hälfte von (Maximallänge - ((Wortgröße * Wörter) + Leerzeichen)) 
       left_spaces = (max_width - (( value_length * row.size() ) + row.size() - 1)) / 2
       
-      # Leerzeichen vorweg
+      # Leerzeichen vorweg.
       row_string = " " * left_spaces
-      # Jeden Wert der Zeile mit Leerzeichen getrennt dranhaengen und ausgeben
+      
+      # Jeden Wert der Zeile mit Leerzeichen getrennt dranhängen und ausgeben.
       row_string += row.join(" ")
       puts row_string
     end
@@ -111,6 +120,6 @@ class Tree
   
 end
 
-
-t = Tree.new(4)
+# Neues Objekt wird erstellt und ausgegeben.
+t = Tree.new(8)
 t.print()
