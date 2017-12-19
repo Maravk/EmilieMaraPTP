@@ -4,7 +4,7 @@
 # 29. November 2017
 # Benutzereingaben über die Konsole für das Spiel MasterMind
 
-require_relative "mastermind"
+require_relative "mastermind.rb"
 
 puts " #####################################################################################################################"
 puts "\n# Guten Tag bei MasterMind!\n# Mittels diesen Programms können sie Ihr logischen Denken sowie Ihre Fähigkeiten im Sektor der Stochastik austesten!\n\n"

@@ -35,7 +35,7 @@ class Tree
       
       # Jede Zeile wird durch ein oder zwei Zeilen ersetzt.    
       new_line1 = Array.new
-      new_line2 = Array-new
+      new_line2 = Array.new
       
       # Algorithmus beginnt
       # Zeile 1: s20..sr0
@@ -58,27 +58,26 @@ class Tree
         
         # Man hängt ab der ersten Zahl immer eine 1 hinten ran.
         if i == 0
-          new_line2.push(lines[i]+"0")
+          new_line2.push(line[i]+"0")
         end
         
         # Alle Zahlen mit der 1 erweitern und der neuen Zeile 2 hinzufügen.
-        new_line2.push(lines[i]+"1")
+        new_line2.push(line[i]+"1")
       end
       
       # Ersetzen der Zeilen.
-      index = new_lineset.find_index(line)
-      new_lineset[index] = new_line2
+      index = new_rowset.find_index(line)
+      new_rowset[index] = new_line2
       
-      # Sofern die erste Zeile nicht leer ist, sollen 
+      # Sofern die erste Zeile nicht leer ist, sollen index und new_line1 vorangestellt werden.
       if !new_line1.empty?()
-        # Inserts the given values before the element with the given index.
-        new_lineset.insert(index, new_line1)
+        new_rowset.insert(index, new_line1)
       end
 
     end
     
     # Überschreiben der Instanzvariable mit dem fertigen Inhalt.
-    @rows = new_lineset
+    @rows = new_rowset
     
     return self
   end
@@ -119,7 +118,3 @@ class Tree
   end
   
 end
-
-# Neues Objekt wird erstellt und ausgegeben.
-t = Tree.new(8)
-t.print()
