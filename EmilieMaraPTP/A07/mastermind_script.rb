@@ -14,7 +14,8 @@ mara.kombination_computer
 
 puts "# Der Computer hat sich nun seinen vierstelligen Code ausgedacht. Nun dürfen Sie versuchen, die Kombination zu erraten!"
 puts "# Geben Sie hierfür vier Zahlen hintereinander ein, stets durch ein Leerzeichen getrennt!"
-puts "# Die zur Verfügung stehenden Zahlen lauten: pink, green, grey, red, blue, yellow!"
+puts "# Die zur Verfügung stehenden Zahlen lauten: 1, 2, 3, 4, 5 und 6!"
 puts "# Sofern eine Ihrer geratenen Zahlen richtig ist, sich aber an der falschen Stelle befindet,\n# erscheint die Ausgabe Indirekter Treffer und sofern die Zahl an der richtigen Stelle steht, erscheint Direketer Treffer!\n"
+puts "# Möchten Sie einen Tipp erhalten, geben Sie t ein."
 puts "# Ihre Eingabe: \n\n"
 mara.ermitte_kombination_computer

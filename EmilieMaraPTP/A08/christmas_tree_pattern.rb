@@ -10,12 +10,12 @@ class Tree
     @target_n = n
     @current_n = 1
     
-    # Erste Ordnung ist festgelegt
+    # Erste Ordnung ist festgelegt.
     r = []
     r.push("0").push("1")
     @rows.push(r)
     
-    # Bis zur n-ten Eingabe aufbauen
+    # Bis zur n-ten Eingabe aufbauen.
     until @current_n == @target_n
       build()
       @current_n += 1
@@ -23,11 +23,11 @@ class Tree
   end
   
   # private Methode
-  # Baut einen neuen Baum aus dem Aktuellen
+  # Baut einen neuen Baum aus dem Aktuellen.
   private
   def build()
     
-    # Aktueller Baum wird geklont, die Kopie wird verarbeitet und ersetzt am Ende den richtigen Baum
+    # Aktueller Baum wird geklont, die Kopie wird verarbeitet und ersetzt am Ende den richtigen Baum.
     new_rowset = @rows.clone()
     
     # Jede Zeile des Baums wird verarbeitet.
@@ -51,7 +51,7 @@ class Tree
         end
       end
       
-      # Zeile 2 (s10 s11...sr−11 sr1)
+      # Zeile 2: s10 s11...sr−11 sr1
       # Man beginnt bei der ersten Zahl und hängt eine 0 hinten ran.
       # -1 um den Index nicht zu überschreiten.
       for i in 0..line.size()-1

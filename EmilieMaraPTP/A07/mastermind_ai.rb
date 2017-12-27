@@ -8,12 +8,12 @@ class MasterMindAI
   
   def initialize()
     # Die zur Verfügung stehenden Farben.
-    @elements = [1, 2, 3, 4, 5, 6]
+    @elements = ["pink", "blue", "yellow", "green", "grey", "red"]
     
     # Set aus allen möglichen 4-er Farbkombinationen
     @codes = @elements.repeated_permutation(4).to_a
     
-    # 10 Runden
+    # 10 Runden insgesamt
     @rounds_left = 10
     
     # Initialguess
@@ -22,37 +22,50 @@ class MasterMindAI
 
   # Kombination wird vom Menschen ausgewählt.
   def kombination_mensch
-    @kombination_mensch_konsole = []
-    eingabe = gets.chomp.split(" ")
-    eingabe.each { |zahl|
-     @kombination_mensch_konsole << zahl.to_i
-    }
-    @kombination_mensch_konsole.each { |zahl|
-      raise TypeError, 'Bitte geben Sie eine gültige Zahl ein' if !@elements.include?(zahl) 
-    }
+    @kombination_mensch_konsole = gets.chomp.split(" ")
 
+    
+    # TypeError, falls die Eingabe ungültig ist.
+    @kombination_mensch_konsole.each { |farbe|
+      raise TypeError, 'Bitte geben Sie eine gültige Farbe ein' if !@elements.include?(farbe) 
+    }
+    
    return @kombination_mensch_konsole
 
   end
   
   def durchgang
-    # black und white hits zurücksetzen für neuen versuch
+    # Für jeden neuen Durchgang werden die Zähler für die Direkten und Indirekten Treffer auf null gesetzt.
     @black_hits = 0
     @white_hits = 0
+    
+    
+    # Initialguess vom Knuth Algorithmus' (1122)
     knuth_guess = knuth
-    puts "Knuth-Versuch: #{knuth_guess}"
+    
+    # Stets werden zwei Codes miteinander verglichen. 
     hits = compare_codes(knuth_guess, @kombination_mensch_konsole)
     @black_hits = hits[0]
     @white_hits = hits[1]
+    
+    
+    # Spiel gewonnen, sobal vier Direkte Treffer erzielt wurden.
     if @black_hits == 4
       puts 'Der Computer hat gewonnen.'
       exit
     else
-      puts "Runde #{@rounds_left}:"
+      
+      # Ausgabe auf die Konsole bezüglich der Anzahl der Direkten und Indirekten Treffer.
+      puts "Runden übrig: #{@rounds_left}"
       puts "    Direkte Treffer:   #{@black_hits}"
       puts "    Indirekte Treffer: #{@white_hits}\n\n"
     end
     @rounds_left -= 1
+
+    # Bis alle Runden vorbei sind oder der Computer vier Direkte Treffer hat.
+  until @rounds_left == 0 || @black_hits == 4
+  durchgang
+  end
   end
   
 
@@ -63,31 +76,31 @@ class MasterMindAI
     if @rounds_left == 10
       
       # Initialguess von Knuth nur beim ersten Versuch 
-      @last_guess = [1, 1, 2, 2]
+      @last_guess = ["pink", "pink", "blue", "blue"]
       return @last_guess
-    end
+    end 
     
     # Bewertung des Versuchs
     @codes.each_index { |index|
       
       # Werte aus compare_codes werden übertragen
       # Es wird überprüft, ob jeder Code aus der Permutation das selbe Ergebnis an Direkten und Indirekten Treffern erzielt.
-      # Wenn nicht, wird der jeweilige Codeindex mittels nil rausgelöscht.
+      # Wenn nicht, wird der jeweilige Codeindex rausgelöscht.
       hits = compare_codes(@last_guess, @codes[index])
       black_hits = hits[0]
       white_hits = hits[1]
-      if black_hits != @black_hits || white_hits != @white_hits
-        @codes[index] = nil 
+      if black_hits != @black_hits && white_hits != @white_hits
+        @codes.delete(index)
         end 
     }
     
-    # Alle Nil's werden aus der Permutation rausgelöscht.
     # Nächster Rateversuch des Computers wird aus der Permutation generiert.
-    @codes = @codes.compact
-    @last_guess = @codes.sampe
+      @codes.compact!
+      next_guess = @codes.sample
+      @last_guess = next_guess
   end
   
-  # Vergleicht zwei Codes und gibt die Anzahl der Direkten und Indirekten Treffer zurück
+  # Vergleicht zwei Codes und gibt die Anzahl der Direkten und Indirekten Treffer zurück.
   def compare_codes(code_one, code_two)
     
     # Klone werden erstellt, damit der originale Inhalt nicht verändert wird.

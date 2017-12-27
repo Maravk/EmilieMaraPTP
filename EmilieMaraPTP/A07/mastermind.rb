@@ -7,7 +7,7 @@ class MasterMind
   
   def initialize()
     # Die zur Verfügung stehenden Farben
-    @elements = ["pink", "green", "grey", "red", "blue", "yellow"]
+    @elements = ["pink", "blue", "yellow", "green", "grey", "red"]
       
     # Die festgelegte Länge einer Ratekombination.
     @length = 4
@@ -36,7 +36,7 @@ class MasterMind
       end
       
       if kombination_computer1 == 5
-     p   @kombination_computer.push(@elements[4])
+        @kombination_computer.push(@elements[4])
       end
       
       if kombination_computer1 == 6
@@ -45,29 +45,21 @@ class MasterMind
     end
   end
 
-
+  
   # Kombination des Computers wird versucht zu erraten.
   def ermitte_kombination_computer
     
     # 10 Runden
     i = 0
     while i < 10 do
-      
+      p @kombination_computer
       # Eingabe des Menschen
       @eingabe_mensch_konsole = gets.chomp.split(" ")
- 
-        
-      # Überprüfung der Eingabe - Länge
-      if @eingabe_mensch_konsole.length != 4
-        raise TypeError do "Bitte geben Sie 4 Farben ein."
-        end
-      end
-      
-      # Überprüfung der Eingabe - Farben
-#        if !@eingabe_mensch_konsole.include?("pink" || "yellow" || "green" || "blue" || "grey" || "red")
-#          raise TypeError do "Bitte geben Sie Farben ein."
-#          end
-#      end
+
+      # Überprüfung der Eingabe
+      @eingabe_mensch_konsole.each {|farbe|
+          raise TypeError, "Bitte geben Sie Farben ein." if !@elements.include?(farbe)
+      }
       
       
       # Instanzvariablen für Direkte und Indirekte Treffer
@@ -83,9 +75,10 @@ class MasterMind
       while (n < 4)
         if @eingabe_mensch_konsole[n] == @kombination_computer[n]
           @black += 1
-          
-        elsif @kombination_computer.include?(@eingabe_mensch_konsole[n])
-          @white += 1
+              
+          # Fehler - Direkte Zähler werden doppelt gezählt
+      elsif @eingabe_mensch_konsole.include?(@kombination_computer[n])
+          @white += 1 
         end
         n += 1
       end
@@ -102,9 +95,8 @@ class MasterMind
       puts "Die Farbe #{@kombination_computer.sample} ist enthalten."
       end 
   
-      
       # Richtige Lösung
-      if @eingabe_mensch_konsole == @kombination_computer
+      if @kombination_computer == @eingabe_mensch_konsole
         puts "Yeha! Sie haben die Kombination des Computers in #{i+1} Versuchen erraten!"
         exit 
       end
