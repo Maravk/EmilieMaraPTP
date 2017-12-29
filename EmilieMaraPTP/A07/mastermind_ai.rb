@@ -1,4 +1,4 @@
-# Author:: Rico Helmboldt
+# Author:: Mara von Kroge, Emilie Schuller
 # 18. Dezember 2017
 # Klasse zu Mastermind - Computer ist Codebreaker
 
@@ -10,14 +10,14 @@ class MasterMindAI
     # Die zur Verfügung stehenden Farben.
     @elements = ["pink", "blue", "yellow", "green", "grey", "red"]
     
-    # Set aus allen möglichen 4-er Farbkombinationen
+    # Array aus allen möglichen 4-er Farbkombinationen
     @codes = @elements.repeated_permutation(4).to_a
     
     # 10 Runden insgesamt
     @rounds_left = 10
     
     # Initialguess
-    @last_guess = [1, 1, 2, 2]
+    @last_guess = ["pink", "pink", "blue", "blue"]
   end
 
   # Kombination wird vom Menschen ausgewählt.
@@ -40,7 +40,7 @@ class MasterMindAI
     @white_hits = 0
     
     
-    # Initialguess vom Knuth Algorithmus' (1122)
+    # Initialguess vom Knuth Algorithmus' (1122/pink pink blue blue)
     knuth_guess = knuth
     
     # Stets werden zwei Codes miteinander verglichen. 
@@ -62,8 +62,8 @@ class MasterMindAI
     end
     @rounds_left -= 1
 
-    # Bis alle Runden vorbei sind oder der Computer vier Direkte Treffer hat.
-  until @rounds_left == 0 || @black_hits == 4
+    # Bis alle Runden vorbei sind.
+  until @rounds_left == 0
   durchgang
   end
   end
@@ -90,14 +90,36 @@ class MasterMindAI
       black_hits = hits[0]
       white_hits = hits[1]
       if black_hits != @black_hits && white_hits != @white_hits
-        @codes.delete(index)
+        @codes[index] = nil
         end 
     }
     
     # Nächster Rateversuch des Computers wird aus der Permutation generiert.
+    # Alle Nil's werden aus dem Array mit allen Varianten rausgelöscht.
       @codes.compact!
-      next_guess = @codes.sample
+      
+      codes_copy = @codes.clone
+      @hits = compare_codes(codes_copy.sample, codes_copy.sample)
+      @array_codes = []
+      @array_codes << codes_copy
+      p array_ergebnis_black_hits = [] << @hits[0]
+      p array_ergebnis_white_hits_list = [] << @hits[1]
+      
+      next_guess = codes_copy.sample
       @last_guess = next_guess
+      
+      puts @codes
+#hash {ergebnisse zählen}
+#        array << hash
+#      ergebnis-array[625]
+#      hash {11 -> value+1}
+#      jeden Code mit jedem Code ausprobieren -- Liste mit black und white hits
+#      aus der liste die größte Zahl raussuchen
+#      von all diesen zahlen gucken, welche die kleinste ist
+#      
+#      1112 mit 1111: 3 black hits und 0 white hits
+#      1111 mit allen kombis inclusive sich selbst
+      
   end
   
   # Vergleicht zwei Codes und gibt die Anzahl der Direkten und Indirekten Treffer zurück.

@@ -272,6 +272,6 @@ end
 
 
 
-game = Mastermind::Mastermind.new(Mastermind::Combination.from_symbols, Mastermind::KnuthAlgorithm)
+game = Mastermind::Mastermind.new(Mastermind::Combination.from_symbols(ARGV.first.split('')), Mastermind::KnuthAlgorithm)
 
 game.play

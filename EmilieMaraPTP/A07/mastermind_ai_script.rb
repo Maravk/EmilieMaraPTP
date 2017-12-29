@@ -9,5 +9,5 @@ puts "Kombination-Mensch eingeben, welche der Computer erraten soll:"
 puts rico.kombination_mensch
 
 puts "Nun beginnt der Computer, die Kombination zu erraten."
-puts rico.knuth
+rico.knuth
 puts rico.durchgang
