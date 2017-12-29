@@ -49,12 +49,11 @@ class MasterMind
   end
 
   
-  # Mensch gibt seinen Rateversuch ein
+  # Mensch gibt seinen Rateversuch ein.
   def kombination_mensch
     
       # Eingabe des Menschen
       @eingabe_mensch_konsole = gets.chomp.split(" ")
-      return @eingabe_mensch_konsole
       
       # Tipp für den User
       if @eingabe_mensch_konsole == ["t"]
@@ -62,6 +61,7 @@ class MasterMind
       end 
       
       if @eingabe_mensch_konsole != "t"
+        
       # Überprüfung der Eingabe
       @eingabe_mensch_konsole.each {|farbe|
           raise TypeError, "Bitte geben Sie Farben ein." if !@elements.include?(farbe)

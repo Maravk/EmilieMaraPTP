@@ -109,7 +109,7 @@ class MasterMindAI
       @last_guess = next_guess
       
       puts @codes
-#hash {ergebnisse zählen}
+#     hash {ergebnisse zählen}
 #        array << hash
 #      ergebnis-array[625]
 #      hash {11 -> value+1}
