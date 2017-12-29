@@ -51,8 +51,10 @@ class MasterMind
   
   # Mensch gibt seinen Rateversuch ein.
   def kombination_mensch
-    
+    a = 1
+    while(a==1) do
       # Eingabe des Menschen
+      puts "Ihr Farbcode:"
       @eingabe_mensch_konsole = gets.chomp.split(" ")
       
       # Tipp für den User
@@ -60,15 +62,18 @@ class MasterMind
         puts "Die Farbe #{@kombination_computer.sample} ist enthalten."
       end 
       
-      if @eingabe_mensch_konsole != "t"
         
       # Überprüfung der Eingabe
       @eingabe_mensch_konsole.each {|farbe|
-          raise TypeError, "Bitte geben Sie Farben ein." if !@elements.include?(farbe)
+        if !@elements.include?(farbe)
+          puts "Bitte geben Sie Farben ein.(pink, blue, yellow, green, grey, red)"
+        else
+          a=0
+        end
       }
-      end
+    end
       
-      return @eingabe_mensch_konsole
+    return @eingabe_mensch_konsole
   end 
   
   
@@ -85,7 +90,7 @@ class MasterMind
   
   # Spiel gewonnen, sobal vier Direkte Treffer erzielt wurden.
   if @black_hits == 4
-    puts 'Der Computer hat gewonnen.'
+    puts "Der Code wurde erraten!"
     exit
   else
     
