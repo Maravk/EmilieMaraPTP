@@ -35,15 +35,19 @@ class MasterMind
       @input = []
       @input = gets.chomp.split(" ")
       
-      # Tipp für den User
+      # Tipp/Cheat für den User
       if @input == ["t"]
         puts "Die Farbe #{@code.sample} ist enthalten."
       elsif @input == ["cheat"]
         puts "Solution: " + @code.to_s
+        
+      # Neues Game
       elsif @input == ["new"]
         puts "\n\n-----NEW-GAME-----"
         generate_code
-        game_loop      
+        game_loop    
+        
+      # Aufhören  
       elsif @input == ["exit"]
         exit
       else
@@ -64,10 +68,18 @@ class MasterMind
   
   
   def game_loop
+    
+    # Eingabe des Users
     protocol = []
+    
+    # Direkte Treffer
     black_hits = []
+      
+    # Indirekte Treffern  
     white_hits = []
     while (true) do
+      
+      # Eingabe des Menschen.
       input_code
       # Für jeden neuen Durchgang werden die Zähler für die Direkten und Indirekten Treffer auf null gesetzt.
       @black_hits = 0
@@ -78,6 +90,7 @@ class MasterMind
       @black_hits = hits[0]
       @white_hits = hits[1]
       
+      # Jeweils pro Runde neuer Input, neue Anzahl an Black und White Hits.
       protocol[@round] = @input
       black_hits[@round] = @black_hits
       white_hits[@round] = @white_hits
@@ -89,6 +102,8 @@ class MasterMind
       i = 0
       while(i < @round+1)
         protocol_string = ""
+        
+        # Jede neue Runde wird als eine Art Tabelle auf die Konsole ausgegeben.
         protocol[i].each_index { |index|
           protocol_string << protocol[i][index].to_s << "  "
         }
@@ -100,6 +115,8 @@ class MasterMind
       if @black_hits == 4
         puts 'THE CODE HAS BEEN SOLVED!!!'
         while(1) do
+          
+          # Neues Game.
            puts "Do you want to play another game? (y/n)"
            a = gets.chomp
            if a == "y"
