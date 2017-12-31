@@ -1,4 +1,4 @@
-# Author:: Ralf Herrmann
+# Author:: Mara von Kroge
 # Author:: Emilie Schuller
 # 18. Dezember 2017
 # Klasse zu MasterMind - Computer ist Codemaker
@@ -96,16 +96,19 @@ class MasterMind
         i+=1
       end
       
-      # Spiel gewonnen, sobal vier Direkte Treffer erzielt wurden.
+      # Spiel gewonnen, sobald vier Direkte Treffer erzielt wurden.
       if @black_hits == 4
         puts 'THE CODE HAS BEEN SOLVED!!!'
         while(1) do
-           puts "another game? (y/n)"
+           puts "Do you want to play another game? (y/n)"
            a = gets.chomp
            if a == "y"
              puts "\n\n-----NEW-GAME-----"
-             generate_code
-             game_loop
+             you=MasterMind.new
+             you.generate_code
+             you.game_loop
+             self.generate_code
+             self.game_loop
            elsif a == "n"
              exit
            end
@@ -121,12 +124,13 @@ class MasterMind
       end
     end
     while(1) do
-      puts "another game? (y/n)"
+      puts "Do you wanna play another game? (y/n)"
       a = gets.chomp
       if a == "y"
         puts "\n\n-----NEW-GAME-----"
-        generate_code
-        game_loop
+        emi=MasterMind.new
+        emi.generate_code
+        emi.game_loop
       elsif a == "n"
         exit
       end
@@ -153,13 +157,10 @@ class MasterMind
         white_hits += 1
       end
     }
+    
+    # Um doppelte White-Hits zu vermeiden.
     white_hits = white_hits - black_hits
-    
-    a = 5
-    b = 7
-    a-=b
-    puts a
-    
+
     return [black_hits, white_hits]
   end
 end

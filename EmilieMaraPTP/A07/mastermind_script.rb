@@ -6,16 +6,12 @@
 
 require_relative "mastermind.rb"
 
-puts " #####################################################################################################################"
-puts "\n# Guten Tag bei MasterMind!\n# Mittels diesen Programms können sie Ihr logischen Denken sowie Ihre Fähigkeiten im Sektor der Stochastik austesten!\n\n"
-
+puts "Welcome to MasterMind, Buddy!"
 mara=MasterMind.new
 mara.generate_code
+puts "Now it's your chance to divine the secret coode the computer has generated!"
+puts "Just enter four of the first six numbers (1,2,3,4,5,6) into the console, seperated by a commata!"
+puts "If you wanna cheat, you can choose between wether you get to see a tip by typing a t\nor if you wanna get to see the complete code, write cheat!"
+puts "GL HF!"
 
-puts "# Der Computer hat sich nun seinen vierstelligen Code ausgedacht. Nun dürfen Sie versuchen, die Kombination zu erraten!"
-puts "# Geben Sie hierfür vier Zahlen hintereinander ein, stets durch ein Leerzeichen getrennt!"
-puts "# Die zur Verfügung stehenden Zahlen lauten: pink, red, yellow, green, grey oder blue!"
-puts "# Sofern eine Ihrer geratenen Zahlen richtig ist, sich aber an der falschen Stelle befindet,\n# erscheint die Ausgabe Indirekter Treffer und sofern die Zahl an der richtigen Stelle steht, erscheint Direketer Treffer!\n"
-puts "# Möchten Sie einen Tipp erhalten, geben Sie t ein."
-puts "# Ihre Eingabe: \n\n"
 mara.game_loop
