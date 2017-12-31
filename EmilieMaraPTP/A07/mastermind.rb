@@ -121,11 +121,8 @@ class MasterMind
            a = gets.chomp
            if a == "y"
              puts "\n\n-----NEW-GAME-----"
-             you=MasterMind.new
-             you.generate_code
-             you.game_loop
-             self.generate_code
-             self.game_loop
+             generate_code
+             game_loop
            elsif a == "n"
              exit
            end
@@ -145,9 +142,9 @@ class MasterMind
       a = gets.chomp
       if a == "y"
         puts "\n\n-----NEW-GAME-----"
-        emi=MasterMind.new
-        emi.generate_code
-        emi.game_loop
+
+        generate_code
+        game_loop
       elsif a == "n"
         exit
       end
