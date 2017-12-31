@@ -85,17 +85,31 @@ class MasterMind
         
       # Ausgabe auf die Konsole bezüglich der Anzahl der Direkten und Indirekten Treffer.
       puts "Round: " + (@round+1).to_s
-      puts "|    Your Codes        | Black | White |"
+      puts "|  Your Codes  | Black | White |"
       i = 0
       while(i < @round+1)
-        puts "| " + protocol[i].to_s + " |   " + black_hits[i].to_s + "   |   " + white_hits[i].to_s + "   |"
+        protocol_string = ""
+        protocol[i].each_index { |index|
+          protocol_string << protocol[i][index].to_s << "  "
+        }
+        puts "|  " + protocol_string.to_s + "|   " + black_hits[i].to_s + "   |   " + white_hits[i].to_s + "   |"
         i+=1
       end
       
       # Spiel gewonnen, sobal vier Direkte Treffer erzielt wurden.
       if @black_hits == 4
         puts 'THE CODE HAS BEEN SOLVED!!!'
-        exit
+        while(1) do
+           puts "another game? (y/n)"
+           a = gets.chomp
+           if a == "y"
+             puts "\n\n-----NEW-GAME-----"
+             generate_code
+             game_loop
+           elsif a == "n"
+             exit
+           end
+        end
       end
       @round += 1
       
