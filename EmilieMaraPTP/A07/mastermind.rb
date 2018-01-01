@@ -13,7 +13,15 @@ class MasterMind
     @amount_of_rounds = 10
     # Die festgelegte Länge einer Ratekombination.
     @length = 4
-  end 
+  end
+  
+  def new_game
+    puts "\n\n-----NEW-GAME-----"
+    @round = 0
+    generate_code
+    game_loop
+  end
+  
   
   # Vierstellige Kombination des Computers wird zufällig generiert.
   def generate_code
@@ -43,16 +51,14 @@ class MasterMind
         
       # Neues Game
       elsif @input == ["new"]
-        puts "\n\n-----NEW-GAME-----"
-        generate_code
-        game_loop    
+        new_game  
         
       # Aufhören  
       elsif @input == ["exit"]
         exit
       else
         
-      # Überprüfung der Eingabe
+        # Überprüfung der Eingabe
         @input.each { |input|
           if !@elements.to_s.include?(input)
             puts "Error! (pink = 1, blue = 2, yellow = 3, green = 4, grey = 5, red = 6)"
@@ -71,14 +77,12 @@ class MasterMind
     
     # Eingabe des Users
     protocol = []
-    
     # Direkte Treffer
     black_hits = []
-      
     # Indirekte Treffern  
     white_hits = []
+    
     while (true) do
-      
       # Eingabe des Menschen.
       input_code
       # Für jeden neuen Durchgang werden die Zähler für die Direkten und Indirekten Treffer auf null gesetzt.
@@ -141,10 +145,7 @@ class MasterMind
       puts "Do you wanna play another game? (y/n)"
       a = gets.chomp
       if a == "y"
-        puts "\n\n-----NEW-GAME-----"
-
-        generate_code
-        game_loop
+        new_game
       elsif a == "n"
         exit
       end

@@ -5,13 +5,21 @@
 # Benutzereingaben über die Konsole für das Spiel MasterMind
 
 require_relative "mastermind.rb"
-
+puts "___  ___             _                           _             _" 
+puts "|  \\/  |            | |                         (_)           | |"
+puts "| .  . |  __ _  ___ | |_   ___  _ __  _ __ ___   _  _ __    __| |"
+puts "| |\\/| | / _` |/ __|| __| / _ \\| '__|| '_ ` _ \\ | || '_ \\  / _` |"
+puts "| |  | || (_| |\\__ \\| |_ |  __/| |   | | | | | || || | | || (_| |"
+puts "\\_|  |_/ \\__,_||___/ \\__| \\___||_|   |_| |_| |_||_||_| |_| \\__,_|"
+puts "_________________________________________________________________\n\n"
 puts "Welcome to MasterMind, Buddy!"
-mara=MasterMind.new
-mara.generate_code
-puts "Now it's your chance to divine the secret coode the computer has generated!"
-puts "Just enter four of the first six numbers (1,2,3,4,5,6) into the console, seperated by a commata!"
-puts "If you wanna cheat, you can choose between wether you get to see a tip by typing a t\nor if you wanna get to see the complete code, write cheat!"
+puts "Now it's your chance to solve the secret code the computer has generated!"
+puts "The code consists of four colours/numbers out of 6"
+puts "Type your guess into the console, seperated by a commata!"
+puts "If you wanna cheat, you can choose whether you get to see a tip by typing a \"t\","
+puts "or if you wanna get to see the complete code, write \"cheat\"!"
 puts "GL HF!"
 
-mara.game_loop
+mastermind=MasterMind.new
+mastermind.generate_code
+mastermind.game_loop
