@@ -85,7 +85,8 @@ class MasterMind
     while (true) do
       # Eingabe des Menschen.
       input_code
-      # Für jeden neuen Durchgang werden die Zähler für die Direkten und Indirekten Treffer auf null gesetzt.
+      # Für jeden neuen Durchgang werden die Zähler für die Direkten und 
+      # indirekten Treffer auf null gesetzt.
       @black_hits = 0
       @white_hits = 0
       
@@ -111,7 +112,8 @@ class MasterMind
         protocol[i].each_index { |index|
           protocol_string << protocol[i][index].to_s << "  "
         }
-        puts "|  " + protocol_string.to_s + "|   " + black_hits[i].to_s + "   |   " + white_hits[i].to_s + "   |"
+        puts "|  " + protocol_string.to_s + "|   "\
+        + black_hits[i].to_s + "   |   " + white_hits[i].to_s + "   |"
         i+=1
       end
       
@@ -158,23 +160,25 @@ class MasterMind
 
     black_hits = 0
     white_hits = 0
-
+    temp_code = @code.clone
+    temp_input = @input.clone
     # Direkte Treffer
-    @input.each_index { |index|
-      if @input[index] == @code[index]
+    temp_code.each_index { |index|
+      if temp_input[index] == temp_code[index]
+        temp_code[index] = -2
         black_hits += 1
       end
     }
 
     # Indirekte Treffer
-    @input.each { |value|
-      if @code.include?(value)
-        white_hits += 1
-      end
+    temp_code.each_index { |index|
+      temp_input.each_index { |index2|
+        if temp_code[index] == temp_input[index2]
+          temp_code[index] = -1
+          white_hits += 1
+        end
+      }
     }
-    
-    # Um doppelte White-Hits zu vermeiden.
-    white_hits = white_hits - black_hits
 
     return [black_hits, white_hits]
   end
