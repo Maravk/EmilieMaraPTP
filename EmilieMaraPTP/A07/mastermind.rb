@@ -164,22 +164,18 @@ class MasterMind
     temp_input = @input.clone
     # Direkte Treffer
     temp_code.each_index { |index|
-      if temp_input[index] == temp_code[index]
-        temp_code[index] = -2
+      if temp_code[index] == temp_input[index]
         black_hits += 1
+        temp_input[index] = -1
+      else
+        temp_input.each_index { |index2|
+          if temp_input[index2] == temp_code[index]
+            white_hits += 1
+            temp_input[index2] = -1
+          end
+        }
       end
     }
-
-    # Indirekte Treffer
-    temp_code.each_index { |index|
-      temp_input.each_index { |index2|
-        if temp_code[index] == temp_input[index2]
-          temp_code[index] = -1
-          white_hits += 1
-        end
-      }
-    }
-
     return [black_hits, white_hits]
   end
 end
