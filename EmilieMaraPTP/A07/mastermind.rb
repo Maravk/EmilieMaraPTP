@@ -168,14 +168,17 @@ class MasterMind
         black_hits += 1
         temp_input[index] = -1
         temp_code[index] = -2
-      else
-        temp_input.each_index { |index2|
-          if temp_input[index2] == temp_code[index]
-            white_hits += 1
-            temp_input[index2] = -1
-          end
-        }
       end
+    }
+    temp_code.each_index { |index|
+      temp_input.each_index { |index2|
+        
+        if temp_input[index2] == temp_code[index]
+          white_hits += 1
+          temp_input[index2] = -1
+          temp_code[index] = -2
+        end
+      }
     }
     return [black_hits, white_hits]
   end
