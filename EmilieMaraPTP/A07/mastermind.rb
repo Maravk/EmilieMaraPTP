@@ -162,6 +162,7 @@ class MasterMind
     white_hits = 0
     temp_code = @code.clone
     temp_input = @input.clone
+    
     # Direkte Treffer
     temp_code.each_index { |index|
       if temp_code[index] == temp_input[index]
@@ -170,6 +171,8 @@ class MasterMind
         temp_code[index] = -2
       end
     }
+    
+    # Indirekte Treffer
     temp_code.each_index { |index|
       temp_input.each_index { |index2|
         
