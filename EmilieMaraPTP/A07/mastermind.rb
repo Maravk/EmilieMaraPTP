@@ -31,7 +31,7 @@ class MasterMind
       @code[a]= rand(1..6).to_s
       a += 1
     end
-      return @codes
+      return @code
   end
 
   
