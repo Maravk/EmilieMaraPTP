@@ -109,19 +109,20 @@ class MasterMindAI
     remaining_possibilities = @codes.dup
     remaining_possibilities2 = @codes.dup
     ergebnis = []
+      puts ergebnis
    
-    # So 
+    # So viele Hashes in das Ergebnis-Array, wie lang das Array ist
     ergebnis_length = ergebnis.length()
     ergebnis_length.times do 
       ergebnis.push(Hash.new)
     end
       
-    # Jedes 
+    # Jede Kombination wird mit jeder Kombination verglichen.
     remaining_possibilities.each_index {|index| 
       remaining_possibilities2.each_index {|index2| 
         compare_codes(remaining_possibilities[index], remaining_possibilities2[index2])
       
-        #
+        # Der Hash wird stets hochgezählt.
         vergleich = compare_codes(remaining_possibilities[index], remaining_possibilities2[index2])
         if ergebnis[index].has_key?(vergleich)
           ergebnis[index] += 1
@@ -131,6 +132,7 @@ class MasterMindAI
       }
     }
     
+    # Minimax-Strategie
     ergebnis.each_index {|index|
     ergebnis[index] = ergebnis[index].max} 
      
@@ -138,10 +140,16 @@ class MasterMindAI
     
     # index der niedrigsten Zahl suchen (find)
     # an dem index steht das richtige Ergebnis --> als rateversuch ausgeben 
+    
      
-    return knuth until @black_hits == 4
-  end
-  
+    # Bis es vier Direkte Treffer gibt
+    until @black_hits == 4 do
+      knuth 
+      end
+  return knuth
+    end 
+    
+    
   # Vergleicht zwei Codes und gibt die Anzahl der Direkten und Indirekten Treffer zurück.
   def compare_codes(code_one, code_two)
     
