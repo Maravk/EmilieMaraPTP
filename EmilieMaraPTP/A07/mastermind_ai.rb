@@ -13,6 +13,9 @@ class MasterMindAI
     # Array aus allen möglichen 4-er Farbkombinationen
     @codes = @elements.repeated_permutation(4).to_a
     
+    # Kopie von allen möglichen Codes
+    @set = @codes.copy
+    
     # 10 Runden insgesamt
     @rounds_left = 10
     
@@ -24,7 +27,6 @@ class MasterMindAI
   def kombination_mensch
     @kombination_mensch_konsole = gets.chomp.split(" ")
 
-    
     # TypeError, falls die Eingabe ungültig ist.
     @kombination_mensch_konsole.each { |farbe|
       raise TypeError, 'Bitte geben Sie eine gültige Farbe ein' if !@elements.include?(farbe) 
