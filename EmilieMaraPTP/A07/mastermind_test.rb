@@ -13,6 +13,7 @@ class TestMasterMind < Test::Unit::TestCase
     @round = 0
     @mara = MasterMind.new
     @elements = ["pink", "blue", "yellow", "green", "grey", "red",1,2,3,4,5,6]
+    @code = ["pink", "grey", "red", "yellow"]
     @length = 4
   end
   
