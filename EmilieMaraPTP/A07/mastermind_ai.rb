@@ -14,7 +14,7 @@ class MasterMindAI
     @codes = @elements.repeated_permutation(4).to_a
     
     # Kopie von allen möglichen Varianten
-    @set = @codes.copy
+    @set = @codes.dup
     
     # 10 Runden insgesamt
     @rounds_left = 10
@@ -64,9 +64,9 @@ class MasterMindAI
     @rounds_left -= 1
 
     # Bis alle Runden vorbei sind.
-  until @rounds_left == 0
-  durchgang
-  end
+    until @rounds_left == 0
+      durchgang
+    end
   end
   
 
@@ -79,7 +79,7 @@ class MasterMindAI
       # Initialguess von Knuth nur beim ersten Versuch 
       @last_guess = ["pink", "pink", "blue", "blue"]
       return @last_guess
-    end 
+    end
     
     # Bewertung des Versuchs
     @codes.each_index { |index|
@@ -92,54 +92,53 @@ class MasterMindAI
       white_hits = hits[1]
       if black_hits != @black_hits && white_hits != @white_hits
         @codes[index] = nil
-        end 
+      end
         
-        return next_guess
+      return next_guess
     }
+  end
     
     
-    # Stets der nächste Rateversuch
-    def next_guess
+  # Stets der nächste Rateversuch
+  def next_guess
     
     # Nächster Rateversuch des Computers wird aus der Permutation generiert.
     # Alle Nil's werden aus dem Array mit allen Varianten rausgelöscht.
     @codes.compact!
-    @kombination_mensch_konsole = human_combination
-    remaining_possibilitys = @codes.copy
-    remaining_possibilitys2 = @codes.copy
+    @kombination_mensch_konsole = kombination_mensch
+    remaining_possibilities = @codes.dup
+    remaining_possibilities2 = @codes.dup
     ergebnis = []
-     
-      # So 
-           ergebnis_length = ergebnis.length()
-           ergebnis_length.times do ergebnis.push(Hash.new)
-           end 
-        
-      # Jedes 
-      remaining_possibilitys.each_index {|index| 
-      remaining_possibilitys2.each_index {|index2| 
-        compare_codes(remaining_possibilitys[index], remaining_possibilitys2[index2])
+   
+    # So 
+    ergebnis_length = ergebnis.length()
+    ergebnis_length.times do 
+      ergebnis.push(Hash.new)
+    end
+      
+    # Jedes 
+    remaining_possibilities.each_index {|index| 
+      remaining_possibilities2.each_index {|index2| 
+        compare_codes(remaining_possibilities[index], remaining_possibilities2[index2])
       
         #
-      vergleich = compare_codes(remaining_possibilitys[index], remaining_possibilitys2[index2])
-      if ergebnis[index].has_key?(vergleich)
-        ergebnis[index] += 1
+        vergleich = compare_codes(remaining_possibilities[index], remaining_possibilities2[index2])
+        if ergebnis[index].has_key?(vergleich)
+          ergebnis[index] += 1
         else 
           ergebnis[index] = 1
-          end     
+        end     
       }
-      }
-      
-      ergebnis.each_index {|index|
-       ergebnis[index] = ergebnis[index].max} 
-       
-       ergebnis_min = ergebnis.min
-       # index der niedrigsten Zahl suchen (find)
-       # an dem index steht das richtige Ergebnis --> als rateversuch ausgeben 
-       
-       
-      return knuth until @black_hits == 4
-    end
+    }
     
+    ergebnis.each_index {|index|
+    ergebnis[index] = ergebnis[index].max} 
+     
+    ergebnis_min = ergebnis.min
+    # index der niedrigsten Zahl suchen (find)
+    # an dem index steht das richtige Ergebnis --> als rateversuch ausgeben 
+     
+    return knuth until @black_hits == 4
   end
   
   # Vergleicht zwei Codes und gibt die Anzahl der Direkten und Indirekten Treffer zurück.
@@ -178,7 +177,6 @@ class MasterMindAI
     # Indirekte Treffer stehen beim 1. Index
    return [black_hits, white_hits]
   end
-
 end  
 
 
