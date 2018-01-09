@@ -13,7 +13,7 @@ class MasterMindAI
     # Array aus allen möglichen 4-er Farbkombinationen
     @codes = @elements.repeated_permutation(4).to_a
     
-    # Kopie von allen möglichen Codes
+    # Kopie von allen möglichen Varianten
     @set = @codes.copy
     
     # 10 Runden insgesamt
@@ -26,12 +26,11 @@ class MasterMindAI
   # Kombination wird vom Menschen ausgewählt.
   def kombination_mensch
     @kombination_mensch_konsole = gets.chomp.split(" ")
-
+    
     # TypeError, falls die Eingabe ungültig ist.
     @kombination_mensch_konsole.each { |farbe|
       raise TypeError, 'Bitte geben Sie eine gültige Farbe ein' if !@elements.include?(farbe) 
     }
-    
    return @kombination_mensch_konsole
 
   end
@@ -87,41 +86,60 @@ class MasterMindAI
       
       # Werte aus compare_codes werden übertragen
       # Es wird überprüft, ob jeder Code aus der Permutation das selbe Ergebnis an Direkten und Indirekten Treffern erzielt.
-      # Wenn nicht, wird der jeweilige Codeindex rausgelöscht.
+      # Wenn nicht, wird der jeweilige Codeindex rausgelöscht, indem er mit nil überschrieben wird.
       hits = compare_codes(@last_guess, @codes[index])
       black_hits = hits[0]
       white_hits = hits[1]
       if black_hits != @black_hits && white_hits != @white_hits
         @codes[index] = nil
         end 
+        
+        return next_guess
     }
+    
+    
+    # Stets der nächste Rateversuch
+    def next_guess
     
     # Nächster Rateversuch des Computers wird aus der Permutation generiert.
     # Alle Nil's werden aus dem Array mit allen Varianten rausgelöscht.
-      @codes.compact!
+    @codes.compact!
+    @kombination_mensch_konsole = human_combination
+    remaining_possibilitys = @codes.copy
+    remaining_possibilitys2 = @codes.copy
+    ergebnis = []
+     
+      # So 
+           ergebnis_length = ergebnis.length()
+           ergebnis_length.times do ergebnis.push(Hash.new)
+           end 
+        
+      # Jedes 
+      remaining_possibilitys.each_index {|index| 
+      remaining_possibilitys2.each_index {|index2| 
+        compare_codes(remaining_possibilitys[index], remaining_possibilitys2[index2])
       
-      codes_copy = @codes.clone
-      @hits = compare_codes(codes_copy.sample, codes_copy.sample)
-      @array_codes = []
-      @array_codes << codes_copy
-      p array_ergebnis_black_hits = [] << @hits[0]
-      p array_ergebnis_white_hits_list = [] << @hits[1]
+        #
+      vergleich = compare_codes(remaining_possibilitys[index], remaining_possibilitys2[index2])
+      if ergebnis[index].has_key?(vergleich)
+        ergebnis[index] += 1
+        else 
+          ergebnis[index] = 1
+          end     
+      }
+      }
       
-      next_guess = codes_copy.sample
-      @last_guess = next_guess
-      
-      puts @codes
-#     hash {ergebnisse zählen}
-#        array << hash
-#      ergebnis-array[625]
-#      hash {11 -> value+1}
-#      jeden Code mit jedem Code ausprobieren -- Liste mit black und white hits
-#      aus der liste die größte Zahl raussuchen
-#      von all diesen zahlen gucken, welche die kleinste ist
-#      
-#      1112 mit 1111: 3 black hits und 0 white hits
-#      1111 mit allen kombis inclusive sich selbst
-      
+      ergebnis.each_index {|index|
+       ergebnis[index] = ergebnis[index].max} 
+       
+       ergebnis_min = ergebnis.min
+       # index der niedrigsten Zahl suchen (find)
+       # an dem index steht das richtige Ergebnis --> als rateversuch ausgeben 
+       
+       
+      return knuth until @black_hits == 4
+    end
+    
   end
   
   # Vergleicht zwei Codes und gibt die Anzahl der Direkten und Indirekten Treffer zurück.
@@ -162,3 +180,19 @@ class MasterMindAI
   end
 
 end  
+
+
+
+# Author:: Emilie Schuller
+# Author:: Mara von Kroge
+# Mastermind - KI  - Script
+require_relative "mastermind_ai.rb"
+
+emi=MasterMindAI.new
+
+puts "Kombination-Mensch eingeben, welche der Computer erraten soll:"
+puts emi.kombination_mensch
+
+puts "Nun beginnt der Computer, die Kombination zu erraten."
+emi.knuth
+puts emi.durchgang
