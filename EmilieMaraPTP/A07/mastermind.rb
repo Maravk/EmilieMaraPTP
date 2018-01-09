@@ -7,7 +7,7 @@ class MasterMind
   
   def initialize()
     # Die zur Verfügung stehenden Farben
-    @elements = ["pink", "blue", "yellow", "green", "grey", "red",1,2,2,3,4,5,6]
+    @elements = ["pink", "blue", "yellow", "green", "grey", "red",1,2,3,4,5,6]
     @round = 0
     # 10 Runden insgesamt
     @amount_of_rounds = 10
@@ -195,8 +195,7 @@ class MasterMind
       i+=1
     end
     puts solutions
-     
-     
+
      
   end
 end

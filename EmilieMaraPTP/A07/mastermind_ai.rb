@@ -135,6 +135,7 @@ class MasterMindAI
     ergebnis[index] = ergebnis[index].max} 
      
     ergebnis_min = ergebnis.min
+    
     # index der niedrigsten Zahl suchen (find)
     # an dem index steht das richtige Ergebnis --> als rateversuch ausgeben 
      

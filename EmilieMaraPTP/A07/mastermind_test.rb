@@ -5,32 +5,39 @@
 
 require "test/unit"
 require_relative "mastermind.rb"
-require_relative "mastermind_ai.rb"
 
 class TestMastermind < Test::Unit::TestCase
 
 def setup()
   @rounds_left = 10
+  @round = 0
   @mara = MasterMind.new
-  @emi = MasterMindAI.new
-  @elements = ["pink", "blue", "yellow", "green", "grey", "red"]
-  @kombination_computer = @mara.kombination_mensch
+  @elements = ["pink", "blue", "yellow", "green", "grey", "red",1,2,3,4,5,6]
   @length = 4
+end
+
+
+# Test - Neues Spiel
+def test_new_game
+  assert_equal(0, @round)
+end
+
+# Länge der zufälligen Kombination
+def test_generate_code
+  @code = @mara.generate_code
+  assert_equal(@length, @code.length)
 end
 
 # Test - 10 Runden
 def test_rounds
   assert_equal(10, @rounds_left)
-  assert_equal(0, @rounds_left - 10)
 end
 
-# Test - Zufällige Kombination des Computers 
-def test_kombination_computer
-  permutation = @elements.repeated_permutation(4)
-  assert_equal(@kombination_computer.include?(permutation.sample))
+# Korrektes Erkennen der Black und White Hits
+def test_black_white_hits
+  @input = ["pink", "blue", "yellow", "yellow"]
+  @code = ["pink", "blue", "grey", "yellow"]
+  assert_equal([3,0],@mara.compare_codes)
 end
-
-
-
 
 end
