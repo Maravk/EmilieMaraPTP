@@ -6,7 +6,7 @@
 require "test/unit"
 require_relative "mastermind.rb"
 
-class TestMastermind < Test::Unit::TestCase
+class TestMasterMind < Test::Unit::TestCase
 
 def setup()
   @rounds_left = 10
@@ -15,7 +15,6 @@ def setup()
   @elements = ["pink", "blue", "yellow", "green", "grey", "red",1,2,3,4,5,6]
   @length = 4
 end
-
 
 # Test - Neues Spiel
 def test_new_game
@@ -35,8 +34,8 @@ end
 
 # Korrektes Erkennen der Black und White Hits
 def test_black_white_hits
-  @input = ["pink", "blue", "yellow", "yellow"]
-  @code = ["pink", "blue", "grey", "yellow"]
+  change_input["pink", "blue", "yellow", "yellow"]
+  change_code["pink", "blue", "grey", "yellow"]
   assert_equal([3,0],@mara.compare_codes)
 end
 
