@@ -195,15 +195,16 @@ class MasterMind
       i+=1
     end
     puts solutions
-    end
-    
-    def change_input(input)
-      @input = input
-    end
-    
-    def change_code(code)
-      @code = code
-    end 
+  end
+  
+  def change_input(input)
+    @input = input
+  end
+  
+  def change_code(code)
+    @code = code
+  end 
+  
 end
 
 
