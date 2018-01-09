@@ -139,8 +139,10 @@ class MasterMindAI
     # index der niedrigsten Zahl suchen (find)
     # an dem index steht das richtige Ergebnis --> als rateversuch ausgeben 
      
-    return knuth until @black_hits == 4
-  end
+    until @black_hits == 4 do
+      knuth 
+      end
+  return knuth
   
   # Vergleicht zwei Codes und gibt die Anzahl der Direkten und Indirekten Treffer zurück.
   def compare_codes(code_one, code_two)
