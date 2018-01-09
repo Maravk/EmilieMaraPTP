@@ -2,7 +2,7 @@
 # 18. Dezember 2017
 # Klasse zu Mastermind - Computer ist Codebreaker
 
-class MasterMindAI
+class MastermindAI
   
   attr_reader :rounds_left
   

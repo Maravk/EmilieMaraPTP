@@ -3,7 +3,7 @@
 # 18. Dezember 2017
 # Klasse zu MasterMind - Computer ist Codemaker
 
-class MasterMind
+class Mastermind
   
   def initialize()
     # Die zur Verfügung stehenden Farben
@@ -62,7 +62,7 @@ class MasterMind
         # Überprüfung der Eingabe
         @input.each { |input|
           if !@elements.to_s.include?(input)
-            puts "Error! (pink = 1, blue = 2, yellow = 3, green = 4, grey = 5, red = 6)"
+            puts "Error! Please put numbers (1,2,3,4,5.6)"
             a=1
             break
           else
@@ -127,9 +127,7 @@ class MasterMind
            puts "Do you want to play another game? (y/n)"
            a = gets.chomp
            if a == "y"
-             puts "\n\n-----NEW-GAME-----"
-             generate_code
-             game_loop
+             new_game
            elsif a == "n"
              exit
            end
@@ -185,17 +183,6 @@ class MasterMind
       }
     }
     return [black_hits, white_hits]
-  end
-  
-  def code_solver
-    # Ein Array mit allen möglichen Lösungen (1111..6666)
-    solutions = Array.new
-    i = 0
-    while(i<6**4)
-      solutions[i] = (i.to_s(6)).to_i+1111
-      i+=1
-    end
-    puts solutions
   end
   
   # Für die Tests

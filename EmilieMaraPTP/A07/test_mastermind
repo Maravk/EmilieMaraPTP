@@ -6,7 +6,7 @@
 require "test/unit"
 require_relative "mastermind.rb"
 
-class TestMasterMind < Test::Unit::TestCase
+class TestMastermind < Test::Unit::TestCase
 
   def setup()
     @rounds_left = 10
