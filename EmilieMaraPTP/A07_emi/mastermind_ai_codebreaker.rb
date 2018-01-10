@@ -4,4 +4,6 @@
 # Mastermind - AI - Codebreaker
 
 class MasterMindAICodebreaker
+  def initialize()
+  end
 end

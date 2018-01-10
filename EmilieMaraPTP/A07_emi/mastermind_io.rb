@@ -22,25 +22,17 @@ class MasterMindIO
     puts "Good Luck and have fun!"
   end
   
-  def input_user_codemaker
-    @input = gets.chomp.split(" ")
-  end
   
-  def input_computer_codemaker
-    @code_computer = []
-      i = 0
-      while (i < @length) do
-        @code_computer.push(rand(1..6))
-        i += 1
-      end
-      return @code_computer
-      end
+  def input_human_codemaker
+    @input = gets.chomp.split(" ")
+    check_combination_human_codemaker
   end
   
   def new_game
     puts "\n\n-----New Game-----"
     # methoden wieder durchgehen
   end
+  
   
   def cheat
     if @input == ["tipp"]
@@ -60,6 +52,7 @@ class MasterMindIO
     end
   end
   
+  
   def check_combination_human_codemaker
     @input.each {|number|
       if !@elements.to_s().include?(number)
@@ -67,6 +60,7 @@ class MasterMindIO
       end
     }
   end
+  
   
   def table
     puts "Round: " + (@round+1).to_s
@@ -84,12 +78,13 @@ class MasterMindIO
       i+=1
     end
     end
-  
+    
   def won
     if @black_hits == 4
       puts "The Code has been solved!"
     end
   end 
+  
   
   def lost
     if @rounds_left == 0
