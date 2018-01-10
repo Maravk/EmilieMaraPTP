@@ -44,5 +44,4 @@ class MastermindCompare
       # Indirekte Treffer stehen beim 1. Index
      return [black_hits, white_hits]
     end
-  end  
-end
+end  
