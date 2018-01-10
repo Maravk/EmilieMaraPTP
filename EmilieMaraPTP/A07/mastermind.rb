@@ -47,7 +47,7 @@ class Mastermind
       # Tipp/Cheat für den User
       if @input == ["tipp"]
         puts "For real...?"
-        puts "You can find the color #{@code.sample}in the code."
+        puts "You can find the color #{@code.sample} in the code."
       elsif @input == ["cheat"]
         puts "Weakness disgusts me...!"
         puts "Solution: " + @code.to_s
@@ -64,7 +64,7 @@ class Mastermind
         # Überprüfung der Eingabe
         @input.each { |input|
           if !@elements.to_s.include?(input)
-            puts "Error! Please put numbers (1,2,3,4,5.6)"
+            puts "Error! Please put numbers (1,2,3,4,5,6)."
             a=1
             break
           else

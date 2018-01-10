@@ -7,7 +7,7 @@ class MastermindCompare
   
   # Vergleicht zwei Codes 
   # Rückgabe der Anzahl der Direkten und Indirekten Treffer
-    def compare_codes(code_one, code_two)
+    def self.compare_codes(code_one, code_two)
       
       # Klone werden erstellt, damit der originale Inhalt nicht verändert wird.
       code1 = code_one.clone
