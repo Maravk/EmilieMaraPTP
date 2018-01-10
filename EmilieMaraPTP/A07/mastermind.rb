@@ -46,8 +46,10 @@ class Mastermind
       
       # Tipp/Cheat für den User
       if @input == ["tipp"]
+        puts "For real...?"
         puts "You can find the color #{@code.sample}in the code."
       elsif @input == ["cheat"]
+        puts "Weakness disgusts me...!"
         puts "Solution: " + @code.to_s
         
       # Neues Game
