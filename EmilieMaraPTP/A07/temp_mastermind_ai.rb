@@ -2,7 +2,7 @@
 # 18. Dezember 2017
 # Klasse zu Mastermind - Computer ist Codebreaker
 
-class MasterMindAI
+class MastermindAI
   
   attr_reader :rounds_left
   
@@ -43,6 +43,7 @@ class MasterMindAI
     
     # Initialguess vom Knuth Algorithmus' (1122/pink pink blue blue)
     knuth_guess = knuth
+    puts "Guess by the Codebreaker:" + knuth_guess.to_s
     
     # Stets werden zwei Codes miteinander verglichen. 
     hits = compare_codes(knuth_guess, @kombination_mensch_konsole)
@@ -82,6 +83,7 @@ class MasterMindAI
     end
     
     # Bewertung des Versuchs
+    puts "lenght of @codes before knuth: " + @codes.compact.length.to_s
     @codes.each_index { |index|
       
       # Werte aus compare_codes werden übertragen
@@ -90,9 +92,11 @@ class MasterMindAI
       hits = compare_codes(@last_guess, @codes[index])
       black_hits = hits[0]
       white_hits = hits[1]
-      if black_hits != @black_hits && white_hits != @white_hits
+      if black_hits != @black_hits || white_hits != @white_hits
         @codes[index] = nil
-      end
+        end
+      puts "lenght of @codes after knuth: " + @codes.compact.length.to_s
+      puts @codes.to_s
         
       return next_guess
     }
@@ -108,21 +112,21 @@ class MasterMindAI
     @kombination_mensch_konsole = kombination_mensch
     remaining_possibilities = @codes.dup
     remaining_possibilities2 = @codes.dup
-    code_dup = @codes.dup
-    ergebnis = Hash.new
+    ergebnis = []
+      puts ergebnis
    
-    # So 
-
-    code_dup.each_index { |index|
-      ergebnis[index] = ([0, code_dup[index]])
-    }
+    # So viele Hashes in das Ergebnis-Array, wie lang das Array ist
+    ergebnis_length = ergebnis.length()
+    ergebnis_length.times do 
+      ergebnis.push(Hash.new)
+    end
       
-    # Jedes 
+    # Jede Kombination wird mit jeder Kombination verglichen.
     remaining_possibilities.each_index {|index| 
       remaining_possibilities2.each_index {|index2| 
         compare_codes(remaining_possibilities[index], remaining_possibilities2[index2])
       
-        #
+        # Der Hash wird stets hochgezählt.
         vergleich = compare_codes(remaining_possibilities[index], remaining_possibilities2[index2])
         if ergebnis[index].has_key?(vergleich)
           ergebnis[index] += 1
@@ -132,6 +136,7 @@ class MasterMindAI
       }
     }
     
+    # Minimax-Strategie
     ergebnis.each_index {|index|
     ergebnis[index] = ergebnis[index].max} 
      
@@ -139,15 +144,16 @@ class MasterMindAI
     
     # index der niedrigsten Zahl suchen (find)
     # an dem index steht das richtige Ergebnis --> als rateversuch ausgeben 
-    best_guess_index = ergebnis.select {|min| 
-      min == ergebnis_min 
-    }
-    puts @code[best_guess_index[0]]
-    puts ergebnis
+    
      
-    return knuth until @black_hits == 4
-  end
-  
+    # Bis es vier Direkte Treffer gibt
+    until @black_hits == 4 do
+      knuth 
+      end
+  return knuth
+    end 
+    
+    
   # Vergleicht zwei Codes und gibt die Anzahl der Direkten und Indirekten Treffer zurück.
   def compare_codes(code_one, code_two)
     
@@ -193,10 +199,10 @@ end
 # Mastermind - KI  - Script
 require_relative "mastermind_ai.rb"
 
-emi=MasterMindAI.new
+emi=MastermindAI.new
 
 puts "Kombination-Mensch eingeben, welche der Computer erraten soll:"
 puts emi.kombination_mensch
 
 puts "Nun beginnt der Computer, die Kombination zu erraten."
-emi.durchgang
+puts emi.durchgang
