@@ -11,7 +11,7 @@ class TestMastermind < Test::Unit::TestCase
   def setup()
     @rounds_left = 10
     @round = 0
-    @mara = MasterMind.new
+    @mara = Mastermind.new
     @elements = ["pink", "blue", "yellow", "green", "grey", "red",1,2,3,4,5,6]
     @code = ["pink", "grey", "red", "yellow"]
     @length = 4
