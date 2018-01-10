@@ -11,7 +11,9 @@ require_relative "mastermind_rules"
 class MasterMindHumanCodemaker
   
   self.input_human_codemaker
+  self.check_combinaiton_human_codemaker
   
+  # 
   def input_computer_codemaker
     @code_computer = []
       i = 0

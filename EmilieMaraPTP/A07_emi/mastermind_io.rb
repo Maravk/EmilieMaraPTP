@@ -77,7 +77,7 @@ class MasterMindIO
       + black_hits[i].to_s + "   |   " + white_hits[i].to_s + "   |"
       i+=1
     end
-    end
+    end 
     
   def won
     if @black_hits == 4
@@ -92,5 +92,6 @@ class MasterMindIO
       puts "The code was: #{code.to_s}!"
       exit
     end
- 
+  end
+  
 end
