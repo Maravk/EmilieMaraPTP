@@ -45,8 +45,8 @@ class Mastermind
       @input = gets.chomp.split(" ")
       
       # Tipp/Cheat für den User
-      if @input == ["t"]
-        puts "Die Farbe #{@code.sample} ist enthalten."
+      if @input == ["tipp"]
+        puts "You can find the color #{@code.sample}in the code."
       elsif @input == ["cheat"]
         puts "Solution: " + @code.to_s
         

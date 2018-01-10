@@ -112,7 +112,7 @@ class MastermindAI
       puts ergebnis
    
     # So viele Hashes in das Ergebnis-Array, wie lang das Array ist
-    ergebnis_length = ergebnis.length()
+    ergebnis_length = remaining_possibilites.length()
     ergebnis_length.times do 
       ergebnis.push(Hash.new)
     end
