@@ -94,4 +94,8 @@ class MasterMindIO
     end
   end
   
+  def result
+    hits = compare_codes  
+  end
+    
 end

@@ -42,6 +42,6 @@ class MastermindCompare
       # Rückgabe eines Arrays
       # Direkte Treffer stehen beim 0. Index
       # Indirekte Treffer stehen beim 1. Index
-     return [black_hits, white_hits]
+      return [black_hits, white_hits]
     end
 end  

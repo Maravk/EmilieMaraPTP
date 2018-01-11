@@ -8,7 +8,37 @@ require_relative "mastermind_compare.rb"
 require_relative "mastermind_human_codemaker.rb"
 
 class MasterMindAICodebreaker
+  def initialize()
+    @rounds_left = 10
+    @knuth_guess = [1,1,2,2]
+  end
 
+  # Nur beim ersten Rateversuch
+  def knuth
+     return @knuth_guess.clone if @rounds_left == 10
+      
+    # Bewertung des Versuchs
+    @codes.each_index { |index|
+
+      # Werte aus compare_codes werden übertragen
+      # Es wird überprüft, ob jeder Code aus der Permutation das selbe Ergebnis an Direkten und Indirekten Treffern erzielt.
+      # Wenn nicht, wird der jeweilige Codeindex rausgelöscht, indem er mit nil überschrieben wird.
+      emi = MasterMindCompare.new
+      hits = compare_codes(@last_guess, @codes[index])
+      black_hits = hits[0]
+      white_hits = hits[1]
+      if black_hits != @black_hits && white_hits != @white_hits
+        @codes[index] = nil
+        puts "Hat etwas rausgeloescht."
+      end
+    }
+    p @codes.compact!
+  end
+  
+  def comparing 
+  end
+  
+       
     def self.next_guess
       remaining_possibilities = @codes.dup
       remaining_possibilities2 = @codes.dup
@@ -44,7 +74,7 @@ class MasterMindAICodebreaker
   
       # Nächster Rateversuch (Klone, damit man kann so keine Referenz auf das originale Objekt erhält)
       @last_guess = @codes[next_guess_index]
-      @codes[next_guess_index].clone
+    return @codes[next_guess_index].clone
     end
     
 end
