@@ -23,7 +23,7 @@ class Mastermind
   end
   
   def new_game
-    puts "\n\n-----NEW-GAME-----"
+    mmio.print_new_game
     @round = 0
     generate_code
     game_loop
@@ -58,7 +58,7 @@ class Mastermind
     while (true) do
       # Eingabe des Menschen.
       
-      input_code
+      mmio.input_code(@code)
       # Für jeden neuen Durchgang werden die Zähler für die Direkten und 
       # indirekten Treffer auf null gesetzt.
       @black_hits = 0
