@@ -8,22 +8,22 @@ require_relative 'mastermind_io.rb'
 class Mastermind
   
   def initialize(code_length, amount_of_numbers, rounds)
-    # Die zur Verfügung stehenden Farben
+    # Die zur Verfügung stehenden Zahlen
     @elements = [*1..amount_of_numbers]
-    puts @elements
+    puts "elements: #{@elements}"
     # Die Anzahl der Runden
     @amount_of_rounds = rounds
-    puts @amount_of_rounds
+    puts "Amount of rounds: #{@amount_of_rounds}"
     @amount_of_numbers = amount_of_numbers
     # Die festgelegte Länge einer Ratekombination.
     @length = code_length
-    puts @length
+    puts "code length #{@length}"
     @round = 0
-    mmio = MastermindIO.new
+    @@mmio = MastermindIO.new
   end
   
   def new_game
-    mmio.print_new_game
+    @mmio.print_new_game
     @round = 0
     generate_code
     game_loop
@@ -58,7 +58,7 @@ class Mastermind
     while (true) do
       # Eingabe des Menschen.
       
-      mmio.input_code(@code)
+      @mmio.input_code(@code)
       # Für jeden neuen Durchgang werden die Zähler für die Direkten und 
       # indirekten Treffer auf null gesetzt.
       @black_hits = 0
