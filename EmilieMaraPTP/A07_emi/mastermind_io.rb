@@ -62,7 +62,7 @@ class MastermindIO
             puts "Length of code:" + length_of_code.to_s
             break
           else
-            puts "Error: Please choose a length from 1 to 10"
+            puts "Error: Please choose a length from 1 to 10."
           end
         end
         while(true) do
@@ -72,7 +72,7 @@ class MastermindIO
             puts "Amount of numbers: #{amount_of_numbers}"
             break
           else
-            puts "Error: Please choose a length from 1 to 10"
+            puts "Error: Please choose a length from 1 to 10."
           end
         end
         while(true) do
@@ -82,7 +82,7 @@ class MastermindIO
             puts "Amount of rounds: #{amount_of_rounds}"
             break
           else
-            puts "Error: Please choose a length from 1 to 100"
+            puts "Error: Please choose a length from 1 to 100."
           end
         end
         
