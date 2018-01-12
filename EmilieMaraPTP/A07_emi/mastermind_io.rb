@@ -60,7 +60,7 @@ class MastermindIO
       end
       if (rules == "2")
         while(true) do
-          puts "Length of code?(standard is 4)"
+          puts "Length of code? (Standard is 4)"
           length_of_code = gets.chomp
           if ((1..10).include?(length_of_code.to_i))
             puts "Length of code:" + length_of_code.to_s
@@ -70,7 +70,7 @@ class MastermindIO
           end
         end
         while(true) do
-          puts "How many numbers?(standard is 6)"
+          puts "How many numbers? (Standard is 6)"
           amount_of_numbers = gets.chomp
           if ((1..10).include?(amount_of_numbers.to_i))
             puts "Amount of numbers: #{amount_of_numbers}"
@@ -80,7 +80,7 @@ class MastermindIO
           end
         end
         while(true) do
-          puts "How many rounds?(Standard is 10)"
+          puts "How many rounds? (Standard is 10)"
           amount_of_rounds = gets.chomp
           if ((1..100).include?(amount_of_rounds.to_i))
             puts "Amount of rounds: #{amount_of_rounds}"
@@ -114,7 +114,7 @@ class MastermindIO
     puts "Amount of rounds: #{amount_of_rounds.to_i}"
 
     
-    @@mm = Mastermind.new(length_of_code.to_i, amount_of_numbers.to_i, amount_of_rounds.to_i)
+    @@mm = Mastermind.new(length_of_code, amount_of_numbers, amount_of_rounds)
     @@mm.generate_code
     @@mm.game_loop
   end

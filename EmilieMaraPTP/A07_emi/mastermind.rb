@@ -7,18 +7,20 @@ require_relative 'mastermind_io.rb'
 
 class Mastermind
   
-  def initialize(code_length, amount_of_numbers, rounds)
+  def initialize(length_of_code, amount_of_numbers, amount_of_rounds)
     # Die zur Verfügung stehenden Zahlen
     @elements = [*1..amount_of_numbers]
-    puts "elements: #{@elements}"
+    puts "Valid Elements: #{@elements}"
+    
     # Die Anzahl der Runden
     @amount_of_rounds = rounds
     puts "Amount of rounds: #{@amount_of_rounds}"
     @amount_of_numbers = amount_of_numbers
+    
     # Die festgelegte Länge einer Ratekombination.
-    @length = code_length
+    @length = length_of_code
     puts "code length #{@length}"
-    @round = 0
+    @amount_of_rouds = amount_of_rounds
     @@mmio = MastermindIO.new
   end
   
