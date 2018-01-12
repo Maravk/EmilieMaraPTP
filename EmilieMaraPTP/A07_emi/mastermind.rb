@@ -19,7 +19,7 @@ class Mastermind
     
     # Die festgelegte Länge einer Ratekombination.
     @length = length_of_code
-    puts "code length #{@length}"
+    puts "Code length: #{@length}"
     @amount_of_rouds = amount_of_rounds
     @@mmio = MastermindIO.new
   end
@@ -42,11 +42,6 @@ class Mastermind
     end
       return @code
   end
-
-  
-  # Mensch gibt seinen Rateversuch ein.
-
-  
   
   def game_loop
     
@@ -78,10 +73,10 @@ class Mastermind
 
         
       # Ausgabe auf die Konsole bezüglich der Anzahl der Direkten und Indirekten Treffer.
-      puts "Round: " + (@round+1).to_s
+      puts "Round: " + (@amount_of_rounds).to_s
       puts "|  Your Codes  | Black | White |"
       i = 0
-      while(i < @round+1)
+      while(i < @amount_of_rounds)
         protocol_string = ""
         
         # Jede neue Runde wird als eine Art Tabelle auf die Konsole ausgegeben.
@@ -95,7 +90,7 @@ class Mastermind
       
       # Spiel gewonnen, sobald vier Direkte Treffer erzielt wurden.
       if @black_hits == 4
-        puts 'THE CODE HAS BEEN SOLVED!!!'
+        puts "THE CODE HAS BEEN SOLVED!!!"
         while(1) do
           
           # Neues Game.
@@ -112,11 +107,12 @@ class Mastermind
       
       # Bis alle Runden vorbei sind.
       if @round == @amount_of_rounds
-        puts "#{@round} out of #{amount_of_rounds} rounds. You lost! ^_^"
+        puts "#{@amount_of_rounds} out of #{@amount_of_rounds} rounds. You lost! ^_^"
         puts "The code was: " + @code.to_s
         break
       end
     end
+    
     while(1) do
       puts "Do you wanna play another game? (y/n)"
       a = gets.chomp

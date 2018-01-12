@@ -108,15 +108,15 @@ class MastermindIO
   
   # Neues Game je nach gewählten Regeln
   def player_solves(length_of_code, amount_of_numbers, amount_of_rounds)
-    puts "Player is ging to solve!"
+    puts "Player is going to solve the code!"
     puts "Length of code: #{length_of_code.to_i}"
     puts "Amount of numbers: #{amount_of_numbers.to_i}"
     puts "Amount of rounds: #{amount_of_rounds.to_i}"
 
     
-    @@mm = Mastermind.new(length_of_code, amount_of_numbers, amount_of_rounds)
-    @@mm.generate_code
-    @@mm.game_loop
+    @mm = Mastermind.new(length_of_code.to_i, amount_of_numbers.to_i, amount_of_rounds.to_i)
+    @mm.generate_code
+    @mm.game_loop
   end
   
   def computer_solves()
