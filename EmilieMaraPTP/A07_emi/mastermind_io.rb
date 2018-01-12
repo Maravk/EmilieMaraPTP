@@ -46,7 +46,7 @@ class MastermindIO
         rules = gets.chomp
         if rules == "1"
           puts "We will play with normal rules(4 fields, 6 numbers, 10 rounds)."
-          start_game(who_solves, 4, 6)
+          player_solves(4,6,10)
         elsif rules == "2"
           puts "Ok, we will let you change the rules."
           break

@@ -13,7 +13,7 @@ class Mastermind
     puts "Valid Elements: #{@elements}"
     
     # Die Anzahl der Runden
-    @amount_of_rounds = rounds
+    @amount_of_rounds = amount_of_rounds
     puts "Amount of rounds: #{@amount_of_rounds}"
     @amount_of_numbers = amount_of_numbers
     
