@@ -21,7 +21,7 @@ class Mastermind
     @length = length_of_code
     puts "Code length: #{@length}"
     @amount_of_rouds = amount_of_rounds
-    @@mmio = MastermindIO.new
+    @mmio = MastermindIO.new
   end
   
   def new_game
@@ -54,7 +54,7 @@ class Mastermind
     while (true) do
       # Eingabe des Menschen.
       
-      @mmio.input_code(@code)
+      @mmio.input_code(@code, @elements)
       # Für jeden neuen Durchgang werden die Zähler für die Direkten und 
       # indirekten Treffer auf null gesetzt.
       @black_hits = 0

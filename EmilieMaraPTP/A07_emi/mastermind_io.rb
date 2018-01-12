@@ -129,7 +129,7 @@ class MastermindIO
   
   # Mensch ist Codebreaker
   # Eingabe des Menschen
-  def input_code(code)
+  def input_code(code, elements)
     a = 1
     while(a==1) do
       # Eingabe des Menschen
@@ -156,7 +156,7 @@ class MastermindIO
         
         # Überprüfung der Eingabe
         @input.each { |input|
-          if !@elements.to_s.include?(input)
+          if !elements.to_s.include?(input)
             puts "Error! Please put numbers (1,2,3,4,5,6)."
             a=1
             break
@@ -172,7 +172,7 @@ class MastermindIO
   # Überprüfung der Eingabe des Menschen
   def check_combination_human_codemaker
     @input.each {|number|
-      if !@elements.to_s().include?(number)
+      if !elements.to_s().include?(number)
         puts "Error, please enter a valid number!"
       end
     }
