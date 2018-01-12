@@ -98,7 +98,10 @@ class MastermindIO
     
     # Computer ist Codebreaker
     if (who_solves == "2")
-      computer_solves
+      puts "The Computer solves"
+      @mm = Mastermind.new(4, 6, 10)
+      @mm.generate_code
+      @mm.game_loop
     end
   end
   
@@ -113,10 +116,6 @@ class MastermindIO
     @mm = Mastermind.new(length_of_code.to_i, amount_of_numbers.to_i, amount_of_rounds.to_i)
     @mm.generate_code
     @mm.game_loop
-  end
-  
-  def computer_solves()
-    puts "Computer solves!"
   end
   
   def new_game

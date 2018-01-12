@@ -156,7 +156,6 @@ def change_code(code)
   @code = code
 end 
 
-end
 
 # Author:: Emilie Schuller
 # Author:: Mara von Kroge
