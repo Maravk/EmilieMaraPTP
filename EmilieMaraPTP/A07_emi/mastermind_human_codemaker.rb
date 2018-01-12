@@ -23,4 +23,4 @@ class MasterMindHumanCodemaker
       end
       return @code_computer
    
-      end 
+      end

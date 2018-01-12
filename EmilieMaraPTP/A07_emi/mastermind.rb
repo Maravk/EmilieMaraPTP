@@ -1,0 +1,179 @@
+# Author:: Emilie Schuller
+# Author:: Mara von Kroge
+# TeamChallenger
+# Mastermind
+
+require_relative 'mastermind_io.rb'
+
+class Mastermind
+  
+  def initialize(code_length, amount_of_numbers, rounds)
+    # Die zur Verfügung stehenden Farben
+    @elements = [*1..amount_of_numbers]
+    puts @elements
+    # Die Anzahl der Runden
+    @amount_of_rounds = rounds
+    puts @amount_of_rounds
+    @amount_of_numbers = amount_of_numbers
+    # Die festgelegte Länge einer Ratekombination.
+    @length = code_length
+    puts @length
+    @round = 0
+    mmio = MastermindIO.new
+  end
+  
+  def new_game
+    puts "\n\n-----NEW-GAME-----"
+    @round = 0
+    generate_code
+    game_loop
+  end
+  
+  
+  # Vierstellige Kombination des Computers wird zufällig generiert.
+  def generate_code
+    @code = Array.new
+    a = 0
+    while(a < @length) do
+      @code[a]= rand(1..@amount_of_numbers).to_s
+      a += 1
+    end
+      return @code
+  end
+
+  
+  # Mensch gibt seinen Rateversuch ein.
+
+  
+  
+  def game_loop
+    
+    # Eingabe des Users
+    protocol = []
+    # Direkte Treffer
+    black_hits = []
+    # Indirekte Treffern  
+    white_hits = []
+    
+    while (true) do
+      # Eingabe des Menschen.
+      
+      input_code
+      # Für jeden neuen Durchgang werden die Zähler für die Direkten und 
+      # indirekten Treffer auf null gesetzt.
+      @black_hits = 0
+      @white_hits = 0
+      
+      # Stets werden zwei Codes miteinander verglichen. 
+      hits = compare_codes(@code, @input)
+      @black_hits = hits[0]
+      @white_hits = hits[1]
+      
+      # Jeweils pro Runde neuer Input, neue Anzahl an Black und White Hits.
+      protocol[@round] = @input
+      black_hits[@round] = @black_hits
+      white_hits[@round] = @white_hits
+
+        
+      # Ausgabe auf die Konsole bezüglich der Anzahl der Direkten und Indirekten Treffer.
+      puts "Round: " + (@round+1).to_s
+      puts "|  Your Codes  | Black | White |"
+      i = 0
+      while(i < @round+1)
+        protocol_string = ""
+        
+        # Jede neue Runde wird als eine Art Tabelle auf die Konsole ausgegeben.
+        protocol[i].each_index { |index|
+          protocol_string << protocol[i][index].to_s << "  "
+        }
+        puts "|  " + protocol_string.to_s + "|   "\
+        + black_hits[i].to_s + "   |   " + white_hits[i].to_s + "   |"
+        i+=1
+      end
+      
+      # Spiel gewonnen, sobald vier Direkte Treffer erzielt wurden.
+      if @black_hits == 4
+        puts 'THE CODE HAS BEEN SOLVED!!!'
+        while(1) do
+          
+          # Neues Game.
+           puts "Do you want to play another game? (y/n)"
+           a = gets.chomp
+           if a == "y"
+             new_game
+           elsif a == "n"
+             exit
+           end
+        end
+      end
+      @round += 1
+      
+      # Bis alle Runden vorbei sind.
+      if @round == @amount_of_rounds
+        puts "10 out of 10 rounds. You lost! ^_^"
+        puts "The code was: " + @code.to_s
+        break
+      end
+    end
+    while(1) do
+      puts "Do you wanna play another game? (y/n)"
+      a = gets.chomp
+      if a == "y"
+        new_game
+      elsif a == "n"
+        exit
+      end
+    end        
+  end
+
+
+  # Vergleicht zwei Codes 
+  # Rückgabe der Anzahl der Direkten und Indirekten Treffer
+  def compare_codes(solution, guess)
+    
+    # Klone werden erstellt, damit der originale Inhalt nicht verändert wird.
+    code1 = solution.clone
+    code2 = guess.clone
+    black_hits = 0
+    white_hits = 0
+
+    # Direkte Treffer
+    # Stellen der Treffer werden mit ungültigen Werten überschrieben, 
+    # um wiederholte Zählung bei Indiekten Treffern zu vermeiden.
+    code1.each_index { |index|
+      if code1[index] == code2[index]
+        code1[index] = 0
+        code2[index] = -1
+        black_hits += 1
+      end
+    }
+
+    # Indirekte Treffer
+    # Stellen der Treffer werden mit ungültigen Werten überschrieben, 
+    # um wiederholte Zählung zu vermeiden.
+    code1.each_index { |index1|
+      code2.each_index { |index2|
+        if code1[index1] == code2[index2]
+          code1[index1] = 0
+          code2[index2] = -1
+          white_hits += 1
+        end
+      }
+    }
+    
+    # Rückgabe eines Arrays
+    # Direkte Treffer stehen beim 0. Index
+    # Indirekte Treffer stehen beim 1. Index
+   return [black_hits, white_hits]
+  end
+  
+  # Für die Tests
+  def change_input(input)
+    @input = input
+  end
+  
+  def change_code(code)
+    @code = code
+  end 
+  
+end

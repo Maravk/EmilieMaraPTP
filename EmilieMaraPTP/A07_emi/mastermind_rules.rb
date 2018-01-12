@@ -15,7 +15,7 @@ class MasterMindRules
   
   def rounds_left
     @rounds_left = 10 
-  end  
+  end
   
   def knuth_guess
     @knuth_guess = [1,1,2,2]
