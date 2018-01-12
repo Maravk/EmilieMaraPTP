@@ -22,6 +22,7 @@ class Mastermind
     puts "Code length: #{@length}"
     @amount_of_rouds = amount_of_rounds
     @mmio = MastermindIO.new
+    @round = 0
   end
   
   def new_game
@@ -54,7 +55,7 @@ class Mastermind
     while (true) do
       # Eingabe des Menschen.
       
-      @mmio.input_code(@code, @elements)
+      @input = @mmio.input_code(@code, @elements)
       # Für jeden neuen Durchgang werden die Zähler für die Direkten und 
       # indirekten Treffer auf null gesetzt.
       @black_hits = 0
@@ -70,22 +71,7 @@ class Mastermind
       black_hits[@round] = @black_hits
       white_hits[@round] = @white_hits
       
-      
-      # Ausgabe auf die Konsole bezüglich der Anzahl der Direkten und Indirekten Treffer.
-      puts "Round: " + (@amount_of_rounds).to_s
-      puts "|  Your Codes  | Black | White |"
-      i = 0
-      while(i < @amount_of_rounds)
-        protocol_string = ""
-        
-        # Jede neue Runde wird als eine Art Tabelle auf die Konsole ausgegeben.
-        protocol[i].each_index { |index|
-          protocol_string << protocol[i][index].to_s << "  "
-        }
-        puts "|  " + protocol_string.to_s + "|   "\
-        + black_hits[i].to_s + "   |   " + white_hits[i].to_s + "   |"
-        i+=1
-      end
+      @mmio.table(@round, protocol, black_hits, white_hits)
       
       # Spiel gewonnen, sobald vier Direkte Treffer erzielt wurden.
       if @black_hits == 4

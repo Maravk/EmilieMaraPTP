@@ -118,11 +118,6 @@ class MastermindIO
     @mm.game_loop
   end
   
-  def new_game
-    puts "\n\n-----New Game-----"
-    # methoden wieder durchgehen
-  end
-  
   def print_new_game
     puts "\n\n-----NEW-GAME-----"
   end
@@ -134,30 +129,31 @@ class MastermindIO
     while(a==1) do
       # Eingabe des Menschen
       puts "Your Code:"
-      @input = []
-      @input = gets.chomp.split(" ")
+      input = []
+      input = gets.chomp.split(" ")
       
       # Tipp/Cheat für den User
-      if @input == ["tipp"]
+      if input == ["tipp"]
         puts "For real...?"
         puts "You can find the color #{code.sample} in the code."
-      elsif @input == ["cheat"]
+      elsif input == ["cheat"]
         puts "Weakness disgusts me...!"
         puts "Solution: " + code.to_s
         
       # Neues Game
-      elsif @input == ["new"]
-        new_game  
-        
+      elsif input == ["restart"]
+        @mm.new_game
+      elsif input == ["new"]
+        start
       # Aufhören  
-      elsif @input == ["exit"]
+      elsif input == ["exit"]
         exit
       else
         
         # Überprüfung der Eingabe
-        @input.each { |input|
-          if !elements.to_s.include?(input)
-            puts "Error! Please put numbers (1,2,3,4,5,6)."
+        input.each { |value|
+          if !elements.to_s.include?(value)
+            puts "Error! Please put numbers #{elements}"
             a=1
             break
           else
@@ -166,24 +162,15 @@ class MastermindIO
         }
       end
     end
-  end
-  
-  
-  # Überprüfung der Eingabe des Menschen
-  def check_combination_human_codemaker
-    @input.each {|number|
-      if !elements.to_s().include?(number)
-        puts "Error, please enter a valid number!"
-      end
-    }
+    return input
   end
   
   # Tabellarische Übersicht über Black und White Hits
-  def table
-    puts "Round: " + (@amount_of_rounds).to_s
+  def table(round, protocol, black_hits, white_hits)
+    puts "Round: " + (round).to_s
     puts "|  Your Codes  | Black | White |"
     i = 0
-    while(i < @amount_of_rounds + 1) do
+    while(i < round + 1) do
       protocol_string = ""
       
       # Jede neue Runde wird als eine Art Tabelle auf die Konsole ausgegeben.
@@ -194,7 +181,7 @@ class MastermindIO
       + black_hits[i].to_s + "   |   " + white_hits[i].to_s + "   |"
       i+=1
     end
-    end 
+  end
     
   # Man hat gewonnen.  
   def won
@@ -206,7 +193,7 @@ class MastermindIO
   # Man hat verloren.
   def lost
     if @rounds_left == 0
-      puts "#{@amount_of_rounds} out of #{@amount_of_rounds} rounds! You lost!"
+      puts "#{amount_of_rounds} out of #{amount_of_rounds} rounds! You lost!"
       puts "The code was: #{code.to_s}!"
       exit
     end
