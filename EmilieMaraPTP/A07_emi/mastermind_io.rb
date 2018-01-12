@@ -32,7 +32,7 @@ class MasterMindIO
     puts "\n\n-----New Game-----"
     # methoden wieder durchgehen
   end
-  
+
   
   def cheat
     if @input == ["tipp"]
@@ -83,7 +83,7 @@ class MasterMindIO
     if @black_hits == 4
       puts "The Code has been solved!"
     end
-  end 
+  end
   
   
   def lost

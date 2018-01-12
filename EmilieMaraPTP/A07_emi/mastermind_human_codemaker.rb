@@ -10,10 +10,11 @@ require_relative "mastermind_rules"
 
 class MasterMindHumanCodemaker
   
+  self.start
   self.input_human_codemaker
   self.check_combinaiton_human_codemaker
   
-  def input_computer_codemaker
+  self.input_computer_codemaker
     @code_computer = []
       i = 0
       while (i < @length) do
@@ -21,6 +22,5 @@ class MasterMindHumanCodemaker
         i += 1
       end
       return @code_computer
-   end
    
-end
+      end 
