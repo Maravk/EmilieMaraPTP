@@ -147,6 +147,16 @@ end
     @last_guess = @codes[next_guess_index]
     @codes[next_guess_index].clone
   end
+  
+# Für die Tests
+def change_input(input)
+  @input = input
+end
+
+def change_code(code)
+  @code = code
+end 
+
 end
 
 # Author:: Emilie Schuller

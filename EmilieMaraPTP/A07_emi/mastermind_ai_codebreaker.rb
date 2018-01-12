@@ -34,12 +34,9 @@ class MasterMindAICodebreaker
     }
     p @codes.compact!
   end
-  
-  def comparing 
-  end
-  
+
        
-    def self.next_guess
+    def next_guess
       remaining_possibilities = @codes.dup
       remaining_possibilities2 = @codes.dup
       ergebnis = []
@@ -68,6 +65,7 @@ class MasterMindAICodebreaker
         }
         ergebnis[index] = max_intern
       }
+      
   
       min = ergebnis.min()
       next_guess_index = ergebnis.index(min)
