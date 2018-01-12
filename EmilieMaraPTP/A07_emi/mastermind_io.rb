@@ -17,10 +17,6 @@ class MastermindIO
     puts "_________________________________________________________________\n\n"
     puts "Welcome to MasterMind, Buddy!"
     puts "Now it's your chance to solve the secret code the computer has generated!"
-#    puts "Type your guess into the console, seperated by a commata!"
-#    puts "If you wanna cheat, you can choose whether you get to see a tip by typing a \"t\","
-#    puts "or if you wanna get to see the complete code, write \"cheat\"!"
-#    puts "Good Luck and have fun!"
     
     
     # Regeln 
@@ -112,7 +108,7 @@ class MastermindIO
     puts "Length of code: #{length_of_code.to_i}"
     puts "Amount of numbers: #{amount_of_numbers.to_i}"
     puts "Amount of rounds: #{amount_of_rounds.to_i}"
-
+    
     
     @mm = Mastermind.new(length_of_code.to_i, amount_of_numbers.to_i, amount_of_rounds.to_i)
     @mm.generate_code
@@ -201,7 +197,6 @@ class MastermindIO
     end
     end 
     
-    
   # Man hat gewonnen.  
   def won
     if @black_hits == 4
@@ -212,7 +207,7 @@ class MastermindIO
   # Man hat verloren.
   def lost
     if @rounds_left == 0
-      puts "#{amount_of_rounds} out of #{amount_of_rounds} rounds! You lost!"
+      puts "#{@amount_of_rounds} out of #{@amount_of_rounds} rounds! You lost!"
       puts "The code was: #{code.to_s}!"
       exit
     end
@@ -221,11 +216,5 @@ class MastermindIO
   # Ergebnis bezüglich Black und White Hits
   def result
     hits = compare_codes  
-  end
-  
-  # initialize(code_length, elements, rounds)
-  #mm = Mastermind.new(4, 6, 10)    
+  end   
 end
-
-mmio = MastermindIO.new
-mmio.start

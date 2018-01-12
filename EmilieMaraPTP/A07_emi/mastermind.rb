@@ -44,7 +44,6 @@ class Mastermind
   end
   
   def game_loop
-    
     # Eingabe des Users
     protocol = []
     # Direkte Treffer
@@ -70,8 +69,8 @@ class Mastermind
       protocol[@round] = @input
       black_hits[@round] = @black_hits
       white_hits[@round] = @white_hits
-
-        
+      
+      
       # Ausgabe auf die Konsole bezüglich der Anzahl der Direkten und Indirekten Treffer.
       puts "Round: " + (@amount_of_rounds).to_s
       puts "|  Your Codes  | Black | White |"
