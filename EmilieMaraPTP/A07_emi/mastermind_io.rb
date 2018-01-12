@@ -60,7 +60,7 @@ class MastermindIO
           length_of_code = gets.chomp
           if ((1..10).include?(length_of_code.to_i))
             puts "Length of code:" + length_of_code.to_s
-            break
+            break 
           else
             puts "Error: Please choose a length from 1 to 10"
           end
