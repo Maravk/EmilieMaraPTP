@@ -110,7 +110,7 @@ class Mastermind
       
       # Bis alle Runden vorbei sind.
       if @round == @amount_of_rounds
-        puts "10 out of 10 rounds. You lost! ^_^"
+        puts "#{@round} out of #{amount_of_rounds} rounds. You lost! ^_^"
         puts "The code was: " + @code.to_s
         break
       end

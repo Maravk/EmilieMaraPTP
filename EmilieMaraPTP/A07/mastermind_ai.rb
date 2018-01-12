@@ -149,7 +149,6 @@ end
   end
   
 # Für die Tests
-def change_input(input)
   @input = input
 end
 

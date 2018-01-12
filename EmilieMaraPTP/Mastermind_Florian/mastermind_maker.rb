@@ -6,7 +6,8 @@ require_relative "mastermind_game.rb"
 
 #Klasse MastermindMaker, repraesentiert bei dem Spiel Mastermind denjenigen, der sich einen Code ausdenkt.
 class MastermindMaker < MastermindGame
-  #Initialisieren der Klasse, benoetigt die Integer fuer die Anzahl der Farben und der Selektionsweite (>0), sonst wird ein MastermindIllegalValueError geworfen.
+  #Initialisieren der Klasse, benoetigt die Integer fuer die Anzahl der Farben und der Selektionsweite (>0),
+  #sonst wird ein MastermindIllegalValueError geworfen.
   def initialize(amount_colors,amount_selection)
     super(amount_colors,amount_selection)
   end

@@ -21,14 +21,18 @@ class MastermindIO
 #    puts "If you wanna cheat, you can choose whether you get to see a tip by typing a \"t\","
 #    puts "or if you wanna get to see the complete code, write \"cheat\"!"
 #    puts "Good Luck and have fun!"
+    
+    
+    # Regeln 
+    # Mensch ist Codemaker und Computer ist Codebreaker oder andersherum
     while(true) do
-      puts "Do you want to solve a code(1), or let your code be solved by the Computer?(2)"
+      puts "Do you want to solve a code (1), or let your code be solved by the Computer? (2)"
       who_solves = gets.chomp
       if who_solves == "1"
         puts "You are the codesolver!"
         break
       elsif who_solves == "2"
-        puts "The Computer is going to solve the code"
+        puts "The Computer is going to solve the code!"
         break
       else
         puts "Error. Please type \"1\" or \"2\" for your choice."
@@ -37,16 +41,18 @@ class MastermindIO
     setup(who_solves)
   end
   
+  # Regeln 
+  # Codeläge, Rundenanzahl sowie wie viele Codeelemente
   def setup(who_solves)
     if (who_solves == "1") #Player solves code
-      puts "Play with normal rules(1) or change rules?(2)"
+      puts "Play with normal rules (1) or change rules? (2)"
       while(true) do
         rules = gets.chomp
         if rules == "1"
-          puts "We will play with normal rules(4 fields, 6 numbers, 10 rounds)"
+          puts "We will play with normal rules(4 fields, 6 numbers, 10 rounds)."
           start_game(who_solves, 4, 6)
         elsif rules == "2"
-          puts "Ok, we will let you change the rules"
+          puts "Ok, we will let you change the rules."
           break
         else
           "Error. Please type \"1\" or \"2\" for your choice."
@@ -87,28 +93,34 @@ class MastermindIO
         player_solves(length_of_code, amount_of_numbers, amount_of_rounds)
         
       end
+      
+      # Mensch ist Codebreaker
       if (rules == 1)
         player_solves( 4, 6, 10)
       end
     end
-    if (who_solves == "2") #Computer
+    
+    # Computer ist Codebreaker
+    if (who_solves == "2")
       computer_solves
     end
   end
   
+  # Neues Game je nach gewählten Regeln
   def player_solves(length_of_code, amount_of_numbers, amount_of_rounds)
-    puts "player solves"
-    puts "length_of_code: #{length_of_code}"
-    puts "amount_of_numbers: #{amount_of_numbers}"
-    puts "amount_of_rounds: #{amount_of_rounds}"
-    # initialize(code_length, elements, rounds)
-    mm = Mastermind.new(length_of_code.to_i, amount_of_numbers.to_i, amount_of_rounds.to_i)
-    mm.generate_code
-    mm.game_loop
+    puts "Player is ging to solve!"
+    puts "Length of code: #{length_of_code.to_i}"
+    puts "Amount of numbers: #{amount_of_numbers.to_i}"
+    puts "Amount of rounds: #{amount_of_rounds.to_i}"
+
+    
+    @@mm = Mastermind.new(length_of_code.to_i, amount_of_numbers.to_i, amount_of_rounds.to_i)
+    @@mm.generate_code
+    @@mm.game_loop
   end
   
   def computer_solves()
-    puts "Computer solves"
+    puts "Computer solves!"
   end
   
   def new_game
@@ -120,6 +132,8 @@ class MastermindIO
     puts "\n\n-----NEW-GAME-----"
   end
   
+  # Mensch ist Codebreaker
+  # Eingabe des Menschen
   def input_code(code)
     a = 1
     while(a==1) do
@@ -160,7 +174,7 @@ class MastermindIO
   end
   
   
-  
+  # Überprüfung der Eingabe des Menschen
   def check_combination_human_codemaker
     @input.each {|number|
       if !@elements.to_s().include?(number)
@@ -169,12 +183,12 @@ class MastermindIO
     }
   end
   
-  
+  # Tabellarische Übersicht über Black und White Hits
   def table
-    puts "Round: " + (@round+1).to_s
+    puts "Round: " + (@amount_of_rounds).to_s
     puts "|  Your Codes  | Black | White |"
     i = 0
-    while(i < @round + 1) do
+    while(i < @amount_of_rounds + 1) do
       protocol_string = ""
       
       # Jede neue Runde wird als eine Art Tabelle auf die Konsole ausgegeben.
@@ -187,21 +201,24 @@ class MastermindIO
     end
     end 
     
+    
+  # Man hat gewonnen.  
   def won
     if @black_hits == 4
       puts "The Code has been solved!"
     end
   end
   
-  
+  # Man hat verloren.
   def lost
     if @rounds_left == 0
-      puts "10 out of 10 rounds! You lost!"
+      puts "#{amount_of_rounds} out of #{amount_of_rounds} rounds! You lost!"
       puts "The code was: #{code.to_s}!"
       exit
     end
   end
   
+  # Ergebnis bezüglich Black und White Hits
   def result
     hits = compare_codes  
   end
