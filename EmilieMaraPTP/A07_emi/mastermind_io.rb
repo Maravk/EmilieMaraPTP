@@ -206,6 +206,7 @@ class MastermindIO
       if a == "y"
         @mm.new_game
       elsif a == "n"
+        puts "See ya!"
         exit
       end
     end

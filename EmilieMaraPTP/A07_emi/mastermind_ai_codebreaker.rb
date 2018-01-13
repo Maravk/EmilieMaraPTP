@@ -4,6 +4,7 @@
 # Mastermind - AI - Codebreaker
 
 require_relative 'mastermind_io.rb'
+require_relative 'mastermind.rb'
 
 class MastermindAICodebreaker
   def initialize
@@ -28,16 +29,17 @@ class MastermindAICodebreaker
   end
 
 def new_game_ai
-  @mm.print_new_game
+  #@mmio.print_new_game
   @round = 0
-  knuth
-  next_guess
+  @mm = Mastermind.new(4,6,10)
+  @mm.knuth
+  @mm.compare_codes
+  @mm.next_guess
 end
 
   # Nur beim ersten Rateversuch
   def knuth
-     @last_guess == @knuth_guess.clone if @rounds_left == 10
-      
+     @last_guess = @knuth_guess.clone if @rounds_left == 10
     # Bewertung des Versuchs
     @codes.each_index { |index|
 
