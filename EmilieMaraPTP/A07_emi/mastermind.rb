@@ -24,6 +24,7 @@ class Mastermind
     # Die festgelegte Länge einer Ratekombination.
     @length = length_of_code
     
+    # Start bei Runde 0
     @round = 0
   end
   
