@@ -86,14 +86,7 @@ class MastermindIO
             puts "Error: Please choose a length from 1 to 100."
           end
         end
-        
         player_solves(length_of_code, amount_of_numbers, amount_of_rounds)
-        
-      end
-      
-      # Mensch ist Codebreaker
-      if (rules == 1)
-        player_solves( 4, 6, 10)
       end
     end
     
