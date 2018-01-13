@@ -5,6 +5,7 @@
 
 require_relative 'mastermind.rb'
 require_relative 'mastermind_ai_codebreaker.rb'
+require_relative 'mastermind_ai_codebreaker.rb'
 
 class MastermindIO
   
@@ -86,26 +87,20 @@ class MastermindIO
             puts "Error: Please choose a length from 1 to 100."
           end
         end
-        
         player_solves(length_of_code, amount_of_numbers, amount_of_rounds)
-        
-      end
-      
-      # Mensch ist Codebreaker
-      if (rules == 1)
-        player_solves( 4, 6, 10)
       end
     end
     
     # Computer ist Codebreaker
     if (who_solves == "2")
-      puts "Now you have to generate your secret code!"
+      puts "Now you have to generate your secret code:"
       @mmai = MastermindAICodebreaker.new
+      @mmai.generate_code_human
       @mmai.new_game_ai
     end
   end
   
-  # Neues Game je nach gewählten Regeln
+  # Mensch ist Codebreaker
   def player_solves(length_of_code, amount_of_numbers, amount_of_rounds)
     puts "Player is going to solve the code!"
     puts "Length of code: #{length_of_code.to_i}"
@@ -123,6 +118,20 @@ class MastermindIO
   
   def print_valid_elements(elements)
     puts "Valid Elements: #{elements}"
+  end
+  
+  
+  # Mensch ist Codemaker
+  # Code des Menschen, welchen Computer versucht zu erraten
+  def generate_code_human
+    puts "Your Code the Computer will guess right:"
+    @input = gets.chomp.split(" ")
+    @input.each {|number| 
+      if !@elements.include?(number)
+        puts "Please enter valid numbers (1,2,3,4,5,6)."
+        generate_code_human        
+      end
+      }
   end
   
   # Mensch ist Codebreaker
@@ -145,7 +154,11 @@ class MastermindIO
         
       # Neues Game
       elsif input == ["restart"]
-        print_new_game
+        
+        ####################
+        #     Missing
+        ####################
+        
       elsif input == ["new"]
         start
         
@@ -205,7 +218,7 @@ class MastermindIO
       puts "Do you wanna play another game? (y/n)"
       a = gets.chomp
       if a == "y"
-        start
+        @mm.new_game()
       elsif a == "n"
         puts "See ya!"
         exit
