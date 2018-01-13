@@ -204,10 +204,14 @@ class MastermindIO
       puts "Do you wanna play another game? (y/n)"
       a = gets.chomp
       if a == "y"
-        @mm.new_game
-      elsif a == "n"
-        puts "See ya!"
-        exit
+        @mm = MastermindIO.new
+        @mm.start
+      elsif a != ("n" || "y")
+        puts "What do you mean?"
+        another_game
+    else a == "n"
+      puts "See ya!"
+      exit
       end
     end
   end
