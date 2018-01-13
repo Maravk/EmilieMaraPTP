@@ -8,8 +8,8 @@ require_relative 'mastermind.rb'
 
 class Mastermind
   
-  def initialize(length_of_code, amount_of_numbers, amount_of_rounds)
-    @mmio = MastermindIO.new
+  def initialize(length_of_code, amount_of_numbers, amount_of_rounds, mmio)
+    @mmio = mmio
     
     # Die zur Verfügung stehenden Zahlen
     @elements = [*1..amount_of_numbers]

@@ -17,8 +17,9 @@ class MastermindIO
     puts "| |  | || (_| |\\__ \\| |_ |  __/| |   | | | | | || || | | || (_| |"
     puts "\\_|  |_/ \\__,_||___/ \\__| \\___||_|   |_| |_| |_||_||_| |_| \\__,_|"
     puts "_________________________________________________________________\n\n"
-    puts "Welcome to MasterMind, Buddy!"
-    puts "Now it's your chance to solve the secret code the computer has generated!"
+    puts "\nWelcome to MasterMind, Buddy!"
+    puts "Please seperate the numbers you are guessing with a space, example:  1 1 2 2"
+    puts "\"cheat\" shows you the solution, \"tipp\" gives you a tip"
     
     
     # Regeln 
@@ -107,7 +108,7 @@ class MastermindIO
     puts "Amount of numbers: #{amount_of_numbers.to_i}"
     puts "Amount of rounds: #{amount_of_rounds.to_i}"
     
-    @mm = Mastermind.new(length_of_code.to_i, amount_of_numbers.to_i, amount_of_rounds.to_i)
+    @mm = Mastermind.new(length_of_code.to_i, amount_of_numbers.to_i, amount_of_rounds.to_i, self)
     @mm.new_game
   end
 
