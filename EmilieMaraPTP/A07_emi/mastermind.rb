@@ -4,7 +4,6 @@
 # Mastermind
 
 require_relative 'mastermind_io.rb'
-require_relative 'mastermind_ai_codebreaker.rb'
 
 class Mastermind
   

@@ -3,9 +3,7 @@
 # TeamChallenger
 # Mastermind - AI - Codebreaker
 
-require_relative "mastermind_rules.rb"
-require_relative "mastermind_compare.rb"
-require_relative "mastermind_human_codemaker.rb"
+require_relative 'mastermind_io.rb'
 
 class MasterMindAICodebreaker
   def initialize()

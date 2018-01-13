@@ -7,7 +7,6 @@ require_relative 'mastermind.rb'
 require_relative 'mastermind_ai_codebreaker.rb'
 
 class MastermindIO
-
   
   def start
     puts "___  ___             _                           _             _" 
