@@ -4,6 +4,7 @@
 # Mastermind - IO
 
 require_relative 'mastermind.rb'
+require_relative 'mastermind_ai_codebreaker.rb'
 
 class MastermindIO
 
@@ -100,7 +101,7 @@ class MastermindIO
     # Computer ist Codebreaker
     if (who_solves == "2")
       puts "The Computer solves"
-      @mm = Mastermind.new(4, 6, 10)
+      @mm = MastermindAICodebreaker.new(4, 6, 10)
       @mm.new_game
     end
   end
@@ -115,6 +116,7 @@ class MastermindIO
     @mm = Mastermind.new(length_of_code.to_i, amount_of_numbers.to_i, amount_of_rounds.to_i)
     @mm.new_game
   end
+
   
   def print_new_game
     puts "\n\n-----NEW-GAME-----"
@@ -136,7 +138,7 @@ class MastermindIO
         puts "You can find the color #{code.sample} in the code."
       elsif input == ["cheat"]
         puts "Weakness disgusts me...!"
-        puts "Solution: " + code.to_s
+        puts "Solution: " + code.each {|number| number.to:i}
         
       # Neues Game
       elsif input == ["restart"]
@@ -201,7 +203,7 @@ class MastermindIO
   # Man hat verloren.
   def lost(code, round, amount_of_rounds)
     puts "#{round} out of #{amount_of_rounds} rounds. You lost! ^_^"
-    puts "The code was: " + code.to_s
+    puts "The code was: #{code}."
   end
   
   def another_game
