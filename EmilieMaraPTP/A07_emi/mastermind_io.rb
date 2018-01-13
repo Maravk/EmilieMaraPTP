@@ -140,10 +140,11 @@ class MastermindIO
         
       # Neues Game
       elsif input == ["restart"]
-        @mm.new_game
+        print_new_game
       elsif input == ["new"]
         start
-      # Aufhören  
+        
+      # Aufhören
       elsif input == ["exit"]
         exit
       else
