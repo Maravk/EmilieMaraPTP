@@ -33,7 +33,8 @@ class MastermindAICodebreaker
   def new_game_ai
     #@mmio.print_new_game
     @round = 0
-    @mm.compare_codes
+    @mm.knuth
+    @mm.compare_codes(@input, @last_guess)
     @mm.next_guess
   end
 
