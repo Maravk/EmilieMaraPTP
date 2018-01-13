@@ -196,6 +196,7 @@ class MastermindIO
   def lost(code, round, amount_of_rounds)
     puts "#{round} out of #{amount_of_rounds} rounds. You lost! ^_^"
     puts "The code was: #{code}."
+    another_game
   end
   
   def another_game
