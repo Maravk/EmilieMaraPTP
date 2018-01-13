@@ -93,21 +93,21 @@ class Mastermind
 
   # Vergleicht zwei Codes 
   # Rückgabe der Anzahl der Direkten und Indirekten Treffer
-  def compare_codes(solution, guess)
+  def compare_codes(solution_, guess_)
     
-    # Klone werden erstellt, damit der originale Inhalt nicht verändert wird.
-    code1 = solution.clone
-    code2 = guess.clone
+    solution = solution_.clone
+    guess = guess_.clone
+    
     black_hits = 0
     white_hits = 0
 
     # Direkte Treffer
     # Stellen der Treffer werden mit ungültigen Werten überschrieben, 
     # um wiederholte Zählung bei Indiekten Treffern zu vermeiden.
-    code1.each_index { |index|
-      if code1[index] == code2[index]
-        code1[index] = 0
-        code2[index] = -1
+    solution.each_index { |index|
+      if solution[index] == guess[index]
+        solution[index] = 0
+        guess[index] = -1
         black_hits += 1
       end
     }
@@ -116,23 +116,25 @@ class Mastermind
     # Stellen der Treffer werden mit ungültigen Werten überschrieben, 
     # um wiederholte Zählung zu vermeiden.
 
-    code1.each_index {|index|
-      if code2.include?(code1[index])
-        white_hits += 1
-        code1[index] = 0
-        code2[index] = -1
-      end
-    }
-    
-#    code1.each_index { |index1|
-#      code2.each_index { |index2|
-#        if code1[index1] == code2[index2]
-#          code1[index1] = 0
-#          code2[index2] = -1
-#          white_hits += 1
-#        end
-#      }
+#    solution.each_index {|index|
+#      if guess.include?(solution[index])
+#        white_hits += 1
+#        solution[index] = 0
+#        guess[index] = -1
+#      end
+#      puts "solution: #{index}: #{solution}"
+#      puts "guess:    #{index}: #{guess}"
 #    }
+#    
+    solution.each_index { |index1|
+      guess.each_index { |index2|
+        if solution[index1] == guess[index2]
+          solution[index1] = 0
+          guess[index2] = -1
+          white_hits += 1
+        end
+      }
+    }
     
     # Rückgabe eines Arrays
     # Direkte Treffer stehen beim 0. Index

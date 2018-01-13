@@ -139,7 +139,7 @@ class MastermindIO
       elsif input == ["restart"]
         
         ####################
-        Missing
+        #     Missing
         ####################
         
       elsif input == ["new"]
