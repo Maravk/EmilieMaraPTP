@@ -121,6 +121,10 @@ class MastermindIO
     puts "\n\n-----NEW-GAME-----"
   end
   
+  def print_valid_elements(elements)
+    puts "Valid Elements: #{elements}"
+  end
+  
   # Mensch ist Codebreaker
   # Eingabe des Menschen
   def input_code(code, elements)
@@ -184,7 +188,7 @@ class MastermindIO
   end
     
   # Man hat gewonnen.  
-  def won
+  def win
     puts "THE CODE HAS BEEN SOLVED!!!"
     while(1) do
       
