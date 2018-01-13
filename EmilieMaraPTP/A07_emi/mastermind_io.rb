@@ -112,7 +112,6 @@ class MastermindIO
     puts "Amount of numbers: #{amount_of_numbers.to_i}"
     puts "Amount of rounds: #{amount_of_rounds.to_i}"
     
-    
     @mm = Mastermind.new(length_of_code.to_i, amount_of_numbers.to_i, amount_of_rounds.to_i)
     @mm.new_game
   end
