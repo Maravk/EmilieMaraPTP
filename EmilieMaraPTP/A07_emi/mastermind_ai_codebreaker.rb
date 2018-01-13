@@ -7,19 +7,20 @@ require_relative 'mastermind_io.rb'
 
 class MastermindAICodebreaker
   def initialize
-    
     # Die zur Verfügung stehenden Zahlen
     @elements = [*1..6]
     @codes = @elements.repeated_permutation(4).to_a
     puts "Valid Elements: #{@elements}"
     
     # Die Anzahl der Runden
-    @amount_of_rounds = amount_of_rounds
+    @amount_of_rounds = 10
     puts "Amount of rounds: #{@amount_of_rounds}"
-    @amount_of_numbers = amount_of_numbers
+    
+    # Gültiger Zahlenbereich
+    @amount_of_numbers = 4
     
     # Die festgelegte Länge einer Ratekombination.
-    @length = length_of_code
+    @length = 6
     puts "Code length: #{@length}"
     @mmio = MastermindIO.new
     @rounds_left = 10
