@@ -145,6 +145,11 @@ class MastermindIO
       # Neues Game
       elsif input == ["restart"]
         print_new_game
+        
+        ####################
+        Missing
+        ####################
+        
       elsif input == ["new"]
         start
         
@@ -170,7 +175,7 @@ class MastermindIO
   
   # Tabellarische Übersicht über Black und White Hits
   def table(round, protocol, black_hits, white_hits)
-    puts "Round: " + (round).to_s
+    puts "Round: " + (round+1).to_s
     puts "|  Your Codes  | Black | White |"
     i = 0
     while(i < round + 1) do

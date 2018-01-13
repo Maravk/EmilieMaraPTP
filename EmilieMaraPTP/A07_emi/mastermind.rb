@@ -124,7 +124,7 @@ class Mastermind
       end
     }
     
-    #    code1.each_index { |index1|
+#    code1.each_index { |index1|
 #      code2.each_index { |index2|
 #        if code1[index1] == code2[index2]
 #          code1[index1] = 0
