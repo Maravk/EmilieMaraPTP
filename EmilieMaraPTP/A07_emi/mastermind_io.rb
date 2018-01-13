@@ -99,8 +99,8 @@ class MastermindIO
     
     # Computer ist Codebreaker
     if (who_solves == "2")
-      @mm = MastermindAICodebreaker.new
-      @mm.new_game_ai
+      @mmai = MastermindAICodebreaker.new
+      @mmai.new_game_ai
     end
   end
   
