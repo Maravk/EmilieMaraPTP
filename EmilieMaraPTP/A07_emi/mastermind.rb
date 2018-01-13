@@ -116,10 +116,10 @@ class Mastermind
     # Stellen der Treffer werden mit ungültigen Werten überschrieben, 
     # um wiederholte Zählung zu vermeiden.
 
-    if code1[n].include?(code2[n])
+    code1.each {|number| if code2.include?(number)
       white_hits += 1
-      end
-      
+    end
+    }    
       white_hits = black_hits - white_hits 
     
     #    code1.each_index { |index1|
