@@ -88,7 +88,6 @@ class Mastermind
         break
       end
     end
-    @mmio.another_game
   end
 
 

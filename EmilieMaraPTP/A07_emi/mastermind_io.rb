@@ -189,23 +189,14 @@ class MastermindIO
   # Man hat gewonnen.  
   def win
     puts "THE CODE HAS BEEN SOLVED!!!"
-    while(1) do
-      
-      # Neues Game.
-      puts "Do you want to play another game? (y/n)"
-      a = gets.chomp
-      if a == "y"
-        @mm.new_game
-      elsif a == "n"
-        exit
-      end
-    end
+    another_game
   end
   
   # Man hat verloren.
   def lost(code, round, amount_of_rounds)
     puts "#{round} out of #{amount_of_rounds} rounds. You lost! ^_^"
     puts "The code was: #{code}."
+    another_game
   end
   
   def another_game
