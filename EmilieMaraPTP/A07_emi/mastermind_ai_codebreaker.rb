@@ -5,15 +5,30 @@
 
 require_relative 'mastermind_io.rb'
 
-class MasterMindAICodebreaker
-  def initialize()
+class MastermindAICodebreaker
+  def initialize(length_of_code, amount_of_numbers, amount_of_rounds)
+    
+    # Die zur Verfügung stehenden Zahlen
+    @elements = [*1..6]
+    @codes = @elements.repeated_permutation(4).to_a
+    puts "Valid Elements: #{@elements}"
+    
+    # Die Anzahl der Runden
+    @amount_of_rounds = amount_of_rounds
+    puts "Amount of rounds: #{@amount_of_rounds}"
+    @amount_of_numbers = amount_of_numbers
+    
+    # Die festgelegte Länge einer Ratekombination.
+    @length = length_of_code
+    puts "Code length: #{@length}"
+    @mmio = MastermindIO.new
     @rounds_left = 10
     @knuth_guess = [1,1,2,2]
   end
 
   # Nur beim ersten Rateversuch
   def knuth
-     return @knuth_guess.clone if @rounds_left == 10
+     @last_guess == @knuth_guess.clone if @rounds_left == 10
       
     # Bewertung des Versuchs
     @codes.each_index { |index|
