@@ -6,7 +6,7 @@
 require_relative 'mastermind_io.rb'
 
 class MastermindAICodebreaker
-  def initialize(length_of_code, amount_of_numbers, amount_of_rounds)
+  def initialize(length_of_code = 4, amount_of_numbers = 6, amount_of_rounds = 10)
     
     # Die zur Verfügung stehenden Zahlen
     @elements = [*1..6]
@@ -32,7 +32,6 @@ def new_game_ai
   knuth
   next_guess
 end
-
 
   # Nur beim ersten Rateversuch
   def knuth
