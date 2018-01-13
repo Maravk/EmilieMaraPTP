@@ -137,7 +137,6 @@ class MastermindIO
         
       # Neues Game
       elsif input == ["restart"]
-        print_new_game
         
         ####################
         Missing
@@ -202,7 +201,7 @@ class MastermindIO
       puts "Do you wanna play another game? (y/n)"
       a = gets.chomp
       if a == "y"
-        start
+        @mm.new_game()
       elsif a == "n"
         puts "See ya!"
         exit
