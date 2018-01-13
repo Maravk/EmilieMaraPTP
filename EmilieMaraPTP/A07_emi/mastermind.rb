@@ -115,15 +115,22 @@ class Mastermind
     # Indirekte Treffer
     # Stellen der Treffer werden mit ungültigen Werten überschrieben, 
     # um wiederholte Zählung zu vermeiden.
-    code1.each_index { |index1|
-      code2.each_index { |index2|
-        if code1[index1] == code2[index2]
-          code1[index1] = 0
-          code2[index2] = -1
-          white_hits += 1
-        end
-      }
-    }
+
+    if code1[n].include?(code2[n])
+      white_hits += 1
+      end
+      
+      white_hits = black_hits - white_hits 
+    
+    #    code1.each_index { |index1|
+#      code2.each_index { |index2|
+#        if code1[index1] == code2[index2]
+#          code1[index1] = 0
+#          code2[index2] = -1
+#          white_hits += 1
+#        end
+#      }
+#    }
     
     # Rückgabe eines Arrays
     # Direkte Treffer stehen beim 0. Index
