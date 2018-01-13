@@ -121,7 +121,13 @@ class Mastermind
     end
 }
 
-      
+     
+    code1.each_index {|index|
+      if code2.include?(code1[index])
+        white_hits += 1
+        code2[index] = -1
+      end
+    }    
       white_hits = black_hits - white_hits 
     
     #    code1.each_index { |index1|
