@@ -6,7 +6,7 @@
 require_relative 'mastermind_io.rb'
 
 class MastermindAICodebreaker
-  def initialize(length_of_code = 4, amount_of_numbers = 6, amount_of_rounds = 10)
+  def initialize
     
     # Die zur Verfügung stehenden Zahlen
     @elements = [*1..6]
@@ -43,7 +43,6 @@ end
       # Werte aus compare_codes werden übertragen
       # Es wird überprüft, ob jeder Code aus der Permutation das selbe Ergebnis an Direkten und Indirekten Treffern erzielt.
       # Wenn nicht, wird der jeweilige Codeindex rausgelöscht, indem er mit nil überschrieben wird.
-      emi = MasterMindCompare.new
       hits = compare_codes(@last_guess, @codes[index])
       black_hits = hits[0]
       white_hits = hits[1]
