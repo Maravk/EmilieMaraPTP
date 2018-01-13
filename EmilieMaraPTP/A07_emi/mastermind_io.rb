@@ -99,7 +99,6 @@ class MastermindIO
     
     # Computer ist Codebreaker
     if (who_solves == "2")
-      puts "The Computer solves"
       @mm = MastermindAICodebreaker.new(4, 6, 10)
       @mm.new_game
     end
