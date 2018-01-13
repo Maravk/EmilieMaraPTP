@@ -5,7 +5,7 @@
 
 require_relative 'mastermind_io.rb'
 
-class MasterMindAICodebreaker
+class MastermindAICodebreaker
   def initialize()
     @rounds_left = 10
     @knuth_guess = [1,1,2,2]
