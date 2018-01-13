@@ -100,7 +100,7 @@ class MastermindIO
     # Computer ist Codebreaker
     if (who_solves == "2")
       @mm = MastermindAICodebreaker.new(4, 6, 10)
-      @mm.new_game
+      @mm.new_game_ai
     end
   end
   

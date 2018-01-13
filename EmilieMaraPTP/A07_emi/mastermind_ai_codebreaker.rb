@@ -26,6 +26,14 @@ class MastermindAICodebreaker
     @knuth_guess = [1,1,2,2]
   end
 
+def new_game_ai
+  @mm.print_new_game
+  @round = 0
+  knuth
+  next_guess
+end
+
+
   # Nur beim ersten Rateversuch
   def knuth
      @last_guess == @knuth_guess.clone if @rounds_left == 10
