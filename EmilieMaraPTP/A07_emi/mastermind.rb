@@ -122,7 +122,7 @@ class Mastermind
         code1[index] = 0
         code2[index] = -1
       end
-    }    
+    }
     
     #    code1.each_index { |index1|
 #      code2.each_index { |index2|
