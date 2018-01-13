@@ -117,7 +117,7 @@ class Mastermind
     # um wiederholte Zählung zu vermeiden.
 
     code1.each_index {|index|
-      if code2.include?(number)
+      if code2.include?(code1[index])
         white_hits += 1
         code2[index] = -1
       end
