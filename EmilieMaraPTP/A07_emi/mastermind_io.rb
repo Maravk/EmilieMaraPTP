@@ -6,6 +6,7 @@
 require_relative 'mastermind.rb'
 
 class MastermindIO
+
   
   def start
     puts "___  ___             _                           _             _" 
@@ -100,8 +101,7 @@ class MastermindIO
     if (who_solves == "2")
       puts "The Computer solves"
       @mm = Mastermind.new(4, 6, 10)
-      @mm.generate_code
-      @mm.game_loop
+      @mm.new_game
     end
   end
   
@@ -114,8 +114,7 @@ class MastermindIO
     
     
     @mm = Mastermind.new(length_of_code.to_i, amount_of_numbers.to_i, amount_of_rounds.to_i)
-    @mm.generate_code
-    @mm.game_loop
+    @mm.new_game
   end
   
   def print_new_game
@@ -185,22 +184,35 @@ class MastermindIO
     
   # Man hat gewonnen.  
   def won
-    if @black_hits == 4
-      puts "The Code has been solved!"
+    puts "THE CODE HAS BEEN SOLVED!!!"
+    while(1) do
+      
+      # Neues Game.
+      puts "Do you want to play another game? (y/n)"
+      a = gets.chomp
+      if a == "y"
+        @mm.new_game
+      elsif a == "n"
+        exit
+      end
     end
   end
   
   # Man hat verloren.
-  def lost
-    if @rounds_left == 0
-      puts "#{amount_of_rounds} out of #{amount_of_rounds} rounds! You lost!"
-      puts "The code was: #{code.to_s}!"
-      exit
-    end
+  def lost(code, round, amount_of_rounds)
+    puts "#{round} out of #{amount_of_rounds} rounds. You lost! ^_^"
+    puts "The code was: " + code.to_s
   end
   
-  # Ergebnis bezüglich Black und White Hits
-  def result
-    hits = compare_codes  
-  end   
+  def another_game
+    while(1) do
+      puts "Do you wanna play another game? (y/n)"
+      a = gets.chomp
+      if a == "y"
+        @mm.new_game
+      elsif a == "n"
+        exit
+      end
+    end
+  end
 end

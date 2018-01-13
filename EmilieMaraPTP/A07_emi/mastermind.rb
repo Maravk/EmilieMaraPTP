@@ -20,7 +20,6 @@ class Mastermind
     # Die festgelegte Länge einer Ratekombination.
     @length = length_of_code
     puts "Code length: #{@length}"
-    @amount_of_rouds = amount_of_rounds
     @mmio = MastermindIO.new
     @round = 0
   end
@@ -75,38 +74,17 @@ class Mastermind
       
       # Spiel gewonnen, sobald vier Direkte Treffer erzielt wurden.
       if @black_hits == 4
-        puts "THE CODE HAS BEEN SOLVED!!!"
-        while(1) do
-          
-          # Neues Game.
-           puts "Do you want to play another game? (y/n)"
-           a = gets.chomp
-           if a == "y"
-             new_game
-           elsif a == "n"
-             exit
-           end
-        end
+        @mmio.win
       end
       @round += 1
       
       # Bis alle Runden vorbei sind.
       if @round == @amount_of_rounds
-        puts "#{@amount_of_rounds} out of #{@amount_of_rounds} rounds. You lost! ^_^"
-        puts "The code was: " + @code.to_s
+        @mmio.lost(@code, @round, @amount_of_rounds)
         break
       end
     end
-    
-    while(1) do
-      puts "Do you wanna play another game? (y/n)"
-      a = gets.chomp
-      if a == "y"
-        new_game
-      elsif a == "n"
-        exit
-      end
-    end        
+    @mmio.another_game
   end
 
 
@@ -149,14 +127,4 @@ class Mastermind
     # Indirekte Treffer stehen beim 1. Index
    return [black_hits, white_hits]
   end
-  
-  # Für die Tests
-  def change_input(input)
-    @input = input
-  end
-  
-  def change_code(code)
-    @code = code
-  end 
-  
 end
