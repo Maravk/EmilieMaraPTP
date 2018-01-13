@@ -140,7 +140,7 @@ class MastermindIO
         puts "You can find the color #{code.sample} in the code."
       elsif input == ["cheat"]
         puts "Weakness disgusts me...!"
-        puts "Solution: " + code.each {|number| number.to:i}
+        puts "Solution: " + code.each {|number| number.to_i}
         
       # Neues Game
       elsif input == ["restart"]

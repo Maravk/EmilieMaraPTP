@@ -13,7 +13,7 @@ class Mastermind
     
     # Die zur Verfügung stehenden Zahlen
     @elements = [*1..amount_of_numbers]
-    print_valid_elements(@elements)
+    @mmio.print_valid_elements(@elements)
     
     # Die Anzahl der Runden
     @amount_of_rounds = amount_of_rounds
