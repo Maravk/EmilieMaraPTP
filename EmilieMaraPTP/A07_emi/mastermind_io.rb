@@ -96,7 +96,6 @@ class MastermindIO
     
     # Computer ist Codebreaker
     if (who_solves == "2")
-      puts "Now you have to generate your secret code:"
       @mmai = MastermindAICodebreaker.new(self)
       @mmai.new_game_ai
     end
@@ -124,7 +123,7 @@ class MastermindIO
   
   
   # Mensch ist Codemaker
-  # Code des Menschen, welchen Computer versucht zu erraten
+  # Code des Menschen, welchen der Computer versucht zu erraten
   def generate_code_human
     @elements = [1,2,3,4,5,6]
     puts "Your Code the Computer will guess right:"
@@ -135,7 +134,8 @@ class MastermindIO
         puts "Please enter valid numbers (1,2,3,4,5,6)."
         generate_code_human        
       end
-      }
+    }
+    return @input      
   end
   
   # Mensch ist Codebreaker

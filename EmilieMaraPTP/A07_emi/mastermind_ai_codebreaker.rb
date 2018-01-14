@@ -10,14 +10,14 @@ class MastermindAICodebreaker
   # mmio: Übergabe des MastermindIO Objekts
   def initialize(mmio)
     @mmio = mmio
-    @mmio.generate_code_human
+    @mm = Mastermind.new(4, 6 , 10, mmio)
     # Die zur Verfügung stehenden Zahlen
     @elements = [*1..6]
     @codes = @elements.repeated_permutation(4).to_a
     puts "Valid Elements: #{@elements}"
     
-    # Die Anzahl der Runden
-    @amount_of_rounds = 10
+    # Die Anzahl der Runden die Knuth erlaubt sind
+    @amount_of_rounds = 100
     puts "Amount of rounds: #{@amount_of_rounds}"
     
     # Gültiger Zahlenbereich
@@ -28,21 +28,44 @@ class MastermindAICodebreaker
     puts "Code length: #{@length}"
     @round = 0
     @knuth_guess = [1,1,2,2]
+    @last_guess = []
+    @code = []
   end
 
   def new_game_ai
     @mmio.print_new_game
     @round = 0
-    @mmio.generate_code_human
-    knuth
-    @mmio.compare_codes(solution, guess)
-    @mmio.next_guess
+    puts "Now you have to generate your secret code:"
+    @code = @mmio.generate_code_human
+    while (true) do
+      if (@round == @amount_of_rounds)
+        puts "Reached round #{@round}"
+        break
+      end
+      
+      knuth
+      next_guess
+      @round += 1
+    end
   end
 
   # Nur beim ersten Rateversuch
   def knuth
-    @last_guess = @knuth_guess.clone if @round == 0
+    if @round == 0
+      @last_guess = @knuth_guess.clone
+    end
     # Bewertung des Versuchs
+    hits = @mm.compare_codes(@code,@last_guess)
+    @black_hits = hits[0]
+    @white_hits = hits[1]
+    puts "round : #{@round}"
+    puts "the code: #{@code}"
+    puts "last guess: #{@last_guess}"
+    if @last_guess == @code
+      puts "The Computer solved the code in round #{@round}" 
+      exit
+    end
+    delete_counter = 0
     @codes.each_index { |index|
 
       # Werte aus compare_codes werden übertragen
@@ -53,9 +76,11 @@ class MastermindAICodebreaker
       white_hits = hits[1]
       if black_hits != @black_hits && white_hits != @white_hits
         @codes[index] = nil
-        puts "Hat etwas rausgeloescht."
+        delete_counter += 1
       end
+      
     }
+    puts "Delete couter: #{delete_counter}"
     p @codes.compact!
   end
 
@@ -73,10 +98,10 @@ class MastermindAICodebreaker
     # Jede Kombination wird mit jeder Kombination verglichen.
     remaining_possibilities.each_index {|index|
       remaining_possibilities2.each_index {|index2|
-        compare_codes(remaining_possibilities[index], remaining_possibilities2[index2])
+        @mm.compare_codes(remaining_possibilities[index], remaining_possibilities2[index2])
 
         # Der Hash wird stets hochgezählt.
-        vergleich = compare_codes(remaining_possibilities[index], remaining_possibilities2[index2])
+        vergleich = @mm.compare_codes(remaining_possibilities[index], remaining_possibilities2[index2])
         if ergebnis[index].has_key?(vergleich)
           ergebnis[index][vergleich] += 1
         else
@@ -94,7 +119,7 @@ class MastermindAICodebreaker
     min = ergebnis.min()
     next_guess_index = ergebnis.index(min)
 
-    # Nächster Rateversuch (Klone, damit man kann so keine Referenz auf das originale Objekt erhält)
+    # Nächster Rateversuch (Klone, damit man so keine Referenz auf das originale Objekt erhält)
     @last_guess = @codes[next_guess_index]
     return @codes[next_guess_index].clone
   end
