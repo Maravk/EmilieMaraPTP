@@ -187,18 +187,30 @@ class MastermindIO
   end
   
   # Tabellarische Übersicht über Black und White Hits
-  def table(round, protocol, black_hits, white_hits)
+  def table(round, protocol, black_hits, white_hits, length)
     puts "Round: " + (round+1).to_s
-    puts "|  Your Codes  | Black | White |"
+    printf "|"
+    (length-2).times do
+      printf "  "
+    end
+    printf "Your Codes"
+    (length-2).times do
+      printf "  "
+    end
+    puts "| Black | White |"
     i = 0
     while(i < round + 1) do
       protocol_string = ""
       
       # Jede neue Runde wird als eine Art Tabelle auf die Konsole ausgegeben.
       protocol[i].each_index { |index|
-        protocol_string << protocol[i][index].to_s << "  "
+        protocol_string << protocol[i][index].to_s << "   "
       }
-      puts "|  " + protocol_string.to_s + "|   "\
+      printf "|  "
+      if length == 1
+        printf "    "
+      end
+      puts protocol_string.to_s + "|   "\
       + black_hits[i].to_s + "   |   " + white_hits[i].to_s + "   |"
       i+=1
     end

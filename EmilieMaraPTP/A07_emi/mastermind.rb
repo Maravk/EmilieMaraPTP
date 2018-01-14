@@ -68,13 +68,13 @@ class Mastermind
       hits = compare_codes(@code, @input)
       @black_hits = hits[0]
       @white_hits = hits[1]
-      
+      puts @input
       # Jeweils pro Runde neuer Input, neue Anzahl an Black und White Hits.
       protocol[@round] = @input
       black_hits[@round] = @black_hits
       white_hits[@round] = @white_hits
       
-      @mmio.table(@round, protocol, black_hits, white_hits)
+      @mmio.table(@round, protocol, black_hits, white_hits, @length)
       
       # Spiel gewonnen, sobald dir input dem geheimen Code entspricht.
       if @input == @code
