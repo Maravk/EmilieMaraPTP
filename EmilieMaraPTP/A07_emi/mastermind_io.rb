@@ -141,7 +141,7 @@ class MastermindIO
   
   # Mensch ist Codebreaker
   # Eingabe des Menschen
-  def input_code(code, elements)
+  def input_code(code, elements, length)
     a = 1
     while(a==1) do
       # Eingabe des Menschen
@@ -159,29 +159,28 @@ class MastermindIO
         
       # Neues Game
       elsif input == ["restart"]
-        
-        ####################
-        #     Missing
-        ####################
-        
+        @mm.new_game
+      #Reset Mastermind
       elsif input == ["new"]
         start
-        
       # Aufhören
       elsif input == ["exit"]
         exit
       else
-        
-        # Überprüfung der Eingabe
-        input.each { |value|
-          if !elements.to_s.include?(value)
-            puts "Error! Please put numbers #{elements}"
-            a=1
-            break
-          else
-            a=0
-          end
-        }
+        if input.length == length
+          # Überprüfung der Eingabe
+          input.each { |value|
+            if !elements.to_s.include?(value)
+              puts "Error! Please put numbers #{elements}"
+              a=1
+              break
+            else
+              a=0
+            end
+          }
+        else
+          puts "Error: no valid input. Allowed length of code: #{length}"
+        end
       end
     end
     return input

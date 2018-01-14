@@ -58,7 +58,7 @@ class Mastermind
     while (true) do
       # Eingabe des Menschen.
       
-      @input = @mmio.input_code(@code, @elements)
+      @input = @mmio.input_code(@code, @elements, @length)
       # Für jeden neuen Durchgang werden die Zähler für die Direkten und 
       # indirekten Treffer auf null gesetzt.
       @black_hits = 0
