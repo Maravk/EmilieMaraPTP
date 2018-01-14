@@ -207,8 +207,10 @@ class MastermindIO
     
   # Man hat gewonnen.  
   def win
+    if
     puts "THE CODE HAS BEEN SOLVED!!!"
     another_game
+    end 
   end
   
   # Man hat verloren.

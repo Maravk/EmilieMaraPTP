@@ -77,7 +77,7 @@ class Mastermind
       @mmio.table(@round, protocol, black_hits, white_hits)
       
       # Spiel gewonnen, sobald vier Direkte Treffer erzielt wurden.
-      if @black_hits == 4
+      if @input == @code
         @mmio.win
       end
       @round += 1
