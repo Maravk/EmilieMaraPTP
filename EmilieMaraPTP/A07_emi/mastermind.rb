@@ -9,6 +9,7 @@ require_relative 'mastermind.rb'
 class Mastermind
   
   def initialize(length_of_code, amount_of_numbers, amount_of_rounds, mmio)
+    # Objekt für den Input/Output
     @mmio = mmio
     
     # Die zur Verfügung stehenden Zahlen
@@ -26,25 +27,26 @@ class Mastermind
     
     # Start bei Runde 0
     @round = 0
+    @code = []
   end
   
   def new_game
     @mmio.print_new_game
     @round = 0
-    generate_code
+    @code = generate_code(@length, @amount_of_numbers)
     game_loop
   end
   
   
   # Vierstellige Kombination des Computers wird zufällig generiert.
-  def generate_code
-    @code = Array.new
+  def generate_code(length, amount_of_numbers)
+    code = []
     a = 0
-    while(a < @length) do
-      @code[a]= rand(1..@amount_of_numbers).to_s
+    while(a < length) do
+      code[a]= rand(1..amount_of_numbers).to_s
       a += 1
     end
-      return @code
+      return code
   end
   
   def game_loop
@@ -111,25 +113,9 @@ class Mastermind
         black_hits += 1
       end
     }
-
-    # Indirekte Treffer
+    
     # Stellen der Treffer werden mit ungültigen Werten überschrieben, 
     # um wiederholte Zählung zu vermeiden.
-#    code1.each_index {|index|
-#      if code2.include?(code1[index])
-#        white_hits += 1
-#        code1[index] = 0
-#        code2[index] = -1
-#      end
-#    solution.each_index {|index|
-#      if guess.include?(solution[index])
-#        white_hits += 1
-#        solution[index] = 0
-#        guess[index] = -1
-#      end
-#      puts "solution: #{index}: #{solution}"
-#      puts "guess:    #{index}: #{guess}"
-#    
     solution.each_index { |index1|
       guess.each_index { |index2|
         if solution[index1] == guess[index2]
@@ -139,20 +125,6 @@ class Mastermind
         end
       }
     }
-    
-#        code1.each_index { |index1|
-#      code2.each_index { |index2|
-#        if code1[index1] == code2[index2]
-#          code1[index1] = 0
-#          code2[index2] = -1
-#          white_hits += 1
-#        end
-#      }
-#    }
-    
-    # Rückgabe eines Arrays
-    # Direkte Treffer stehen beim 0. Index
-    # Indirekte Treffer stehen beim 1. Index
    return [black_hits, white_hits]
   end
 end
