@@ -30,14 +30,14 @@ class MastermindAICodebreaker
     @knuth_guess = [1,1,2,2]
   end
 
-#  def new_game_ai
-#    @mmio.print_new_game
-#    @round = 0
-#    @mm.knuth
-#    @mm.compare_codes(@input, @last_guess)
-#    @mm.generate_code_human
-#    @mm.next_guess
-#  end
+  def new_game_ai
+    @mmio.print_new_game
+    @round = 0
+ #   @mm.knuth
+    @mm.compare_codes(solution, guess)
+    @mm.generate_code_human
+    @mm.next_guess
+  end
 
   # Nur beim ersten Rateversuch
   def knuth
