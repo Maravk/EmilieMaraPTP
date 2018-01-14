@@ -1,7 +1,7 @@
 # Author:: Emilie Schuller
 # Author:: Mara von Kroge
 # TeamChallenger
-# Mastermind
+# Mastermind Logik
 
 require_relative 'mastermind_io.rb'
 require_relative 'mastermind.rb'
@@ -68,7 +68,7 @@ class Mastermind
       hits = compare_codes(@code, @input)
       @black_hits = hits[0]
       @white_hits = hits[1]
-      puts @input
+
       # Jeweils pro Runde neuer Input, neue Anzahl an Black und White Hits.
       protocol[@round] = @input
       black_hits[@round] = @black_hits

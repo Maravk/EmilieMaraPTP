@@ -1,7 +1,7 @@
 # Author:: Emilie Schuller
 # Author:: Mara von Kroge
 # 10.Januar 2018
-# Mastermind - IO
+# Mastermind - Input/Output
 
 require_relative 'mastermind.rb'
 require_relative 'mastermind_ai_codebreaker.rb'
@@ -51,8 +51,7 @@ class MastermindIO
       while(true) do
         rules = gets.chomp
         if rules == "1"
-          puts "We will play with normal rules(4 fields, 6 numbers, 10 rounds)."
-          player_solves(4,6,10)
+          puts "We will play with normal rules"
         elsif rules == "2"
           puts "Ok, we will let you change the rules."
           break
@@ -180,6 +179,7 @@ class MastermindIO
           }
         else
           puts "Error: no valid input. Allowed length of code: #{length}"
+          puts "Allowed Numbers: #{elements}"
         end
       end
     end
@@ -202,7 +202,6 @@ class MastermindIO
     while(i < round + 1) do
       protocol_string = ""
       
-      # Jede neue Runde wird als eine Art Tabelle auf die Konsole ausgegeben.
       protocol[i].each_index { |index|
         protocol_string << protocol[i][index].to_s << "   "
       }
@@ -218,10 +217,8 @@ class MastermindIO
     
   # Man hat gewonnen.  
   def win
-    if
     puts "THE CODE HAS BEEN SOLVED!!!"
     another_game
-    end 
   end
   
   # Man hat verloren.
