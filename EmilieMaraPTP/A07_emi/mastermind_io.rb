@@ -124,18 +124,33 @@ class MastermindIO
   
   # Mensch ist Codemaker
   # Code des Menschen, welchen der Computer versucht zu erraten
-  def generate_code_human
-    @elements = [1,2,3,4,5,6]
-    puts "Your Code the Computer will guess right:"
-    @input = gets.chomp.split(" ")
-    @input.map! {|number| number.to_i}
-    @input.each {|number| 
-      if !@elements.include?(number)
-        puts "Please enter valid numbers (1,2,3,4,5,6)."
-        generate_code_human        
+  def generate_code_human(length, elements)
+    a = 1
+    while(a==1) do
+      # Eingabe des Menschen
+      puts "Your Code:"
+      input = []
+      input = gets.chomp.split(" ")
+      input.each_index{ |index|
+        input[index] = input[index].to_i
+      }
+      if input.length == length
+        # Überprüfung der Eingabe
+        input.each { |value|
+          if !elements.include?(value)
+            puts "Error! Please put numbers #{elements}"
+            a=1
+            break
+          else
+            a=0
+          end
+        }
+      else
+        puts "Error: no valid input. Allowed length of code: #{length}"
+        puts "Allowed Numbers: #{elements}"
       end
-    }
-    return @input      
+    end
+    return input 
   end
   
   # Mensch ist Codebreaker

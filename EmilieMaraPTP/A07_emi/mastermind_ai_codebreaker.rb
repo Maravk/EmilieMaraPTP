@@ -36,7 +36,7 @@ class MastermindAICodebreaker
     @mmio.print_new_game
     @round = 0
     puts "Now you have to generate your secret code:"
-    @code = @mmio.generate_code_human
+    @code = @mmio.generate_code_human(@length, @elements)
     while (true) do
       if (@round == @amount_of_rounds)
         puts "Reached round #{@round}"
