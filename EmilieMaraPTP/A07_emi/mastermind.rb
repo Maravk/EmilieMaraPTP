@@ -7,7 +7,7 @@ require_relative 'mastermind_io.rb'
 require_relative 'mastermind.rb'
 
 class Mastermind
-  
+
   def initialize(length_of_code, amount_of_numbers, amount_of_rounds, mmio)
     # Objekt für den Input/Output
     @mmio = mmio
