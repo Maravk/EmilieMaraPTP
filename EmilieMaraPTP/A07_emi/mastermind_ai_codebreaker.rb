@@ -98,7 +98,7 @@ class MastermindAICodebreaker
     # Jede Kombination wird mit jeder Kombination verglichen.
     remaining_possibilities.each_index {|index|
       remaining_possibilities2.each_index {|index2|
-        @mm.compare_codes(remaining_possibilities[index], remaining_possibilities2[index2])
+        #@mm.compare_codes(remaining_possibilities[index], remaining_possibilities2[index2])
 
         # Der Hash wird stets hochgezählt.
         vergleich = @mm.compare_codes(remaining_possibilities[index], remaining_possibilities2[index2])
