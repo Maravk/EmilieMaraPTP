@@ -18,8 +18,10 @@ class MastermindIO
     puts "\\_|  |_/ \\__,_||___/ \\__| \\___||_|   |_| |_| |_||_||_| |_| \\__,_|"
     puts "_________________________________________________________________\n\n"
     puts "\nWelcome to MasterMind, Buddy!"
-    puts "Please seperate the numbers you are guessing with a space, example:  1 1 2 2"
-    puts "\"cheat\" shows you the solution, \"tipp\" gives you a tip"
+    puts "the concept of this logic game is that the Codemaker generates a secret\ncode the Codebreaker tries to guess right."
+    puts "Please seperate the numbers you are guessing with a space, example:  1 1 2 2."
+    puts "\"cheat\" shows you the solution, \"tipp\" gives you a tip."
+    puts "Good luck, have fun!"
     
     
     # Regeln 
@@ -96,7 +98,7 @@ class MastermindIO
     if (who_solves == "2")
       puts "Now you have to generate your secret code:"
       @mmai = MastermindAICodebreaker.new
-      @mmai.generate_code_human
+
       @mmai.new_game_ai
     end
   end
@@ -125,8 +127,10 @@ class MastermindIO
   # Mensch ist Codemaker
   # Code des Menschen, welchen Computer versucht zu erraten
   def generate_code_human
+    @elements = [1,2,3,4,5,6]
     puts "Your Code the Computer will guess right:"
     @input = gets.chomp.split(" ")
+    @input.map! {|number| number.to_i}
     @input.each {|number| 
       if !@elements.include?(number)
         puts "Please enter valid numbers (1,2,3,4,5,6)."

@@ -8,8 +8,9 @@ require_relative 'mastermind.rb'
 
 class MastermindAICodebreaker
   def initialize
-    @mm = Mastermind.new(4,6,10)
+    #@mm = Mastermind.new(4,6,10)
     @mmio = MastermindIO.new
+    @mmio.generate_code_human
     # Die zur Verfügung stehenden Zahlen
     @elements = [*1..6]
     @codes = @elements.repeated_permutation(4).to_a
@@ -33,10 +34,10 @@ class MastermindAICodebreaker
   def new_game_ai
     @mmio.print_new_game
     @round = 0
- #   @mm.knuth
-    @mm.compare_codes(solution, guess)
-    @mm.generate_code_human
-    @mm.next_guess
+    @mmio.knuth
+    @mmio.compare_codes(solution, guess)
+    @mmio.generate_code_human
+    @mmio.next_guess
   end
 
   # Nur beim ersten Rateversuch
