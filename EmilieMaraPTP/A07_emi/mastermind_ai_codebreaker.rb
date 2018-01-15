@@ -17,7 +17,7 @@ class MastermindAICodebreaker
     puts "Valid Elements: #{@elements}"
     
     # Die Anzahl der Runden die Knuth erlaubt sind
-    @amount_of_rounds = 10
+    @amount_of_rounds = 20
     puts "Amount of rounds: #{@amount_of_rounds}"
     
     # Gültiger Zahlenbereich
@@ -44,7 +44,7 @@ class MastermindAICodebreaker
       end
       
       knuth
-      next_guess
+
       @round += 1
     end
   end
@@ -80,7 +80,7 @@ class MastermindAICodebreaker
       end
       
     }
-    puts "Delete couter: #{delete_counter}"
+    puts "Delete counter: #{delete_counter}"
     p @codes.compact!
     next_guess
   end
