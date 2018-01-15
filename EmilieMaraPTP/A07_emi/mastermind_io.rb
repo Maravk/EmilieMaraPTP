@@ -244,6 +244,7 @@ class MastermindIO
     another_game
   end
   
+  # Noch eine Runde
   def another_game
     while(1) do
       puts "Do you wanna play another game? (y/n)"
