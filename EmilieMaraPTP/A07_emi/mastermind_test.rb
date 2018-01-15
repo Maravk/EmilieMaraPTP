@@ -14,20 +14,21 @@ class MastermindTest < Test::Unit::TestCase
     @mara = Mastermind.new(4,6,10,@mm)
     @m = @mara.compare_codes([6,1,2,1],[3,4,2,6])
     @e = @mara.compare_codes([1,4,4,4],[3,4,4,4])
+    @r = @mara.compare_codes([3,4,5,6],[3,4,5,6])
     @emi = @mara.generate_code(4,6)
-    valid_elements = ["1","2","3","4","5","6"]
+    @valid_elements = ["1","2","3","4","5","6"]
   end
   
   # Code wird vom Computer generiert
   def test_generate_code()
     assert_equal(4, @emi.length)
-    assert_equal(true, @emi.each {|number| number.is_a?(String)})
-    assert_equal(true, @emi.each {|number| valid_elements.include?(number)})
+    assert_equal(true, @emi.include?(@valid_elements.sample))
   end
   
   # Überprüfung der Black und White Hits beim Vergleich zweier Codes
   def test_compare_codes()
     assert_equal([1,1],@m)
     assert_equal([3,0],@e)
+    assert_equal([4,0],@r)
   end
 end
