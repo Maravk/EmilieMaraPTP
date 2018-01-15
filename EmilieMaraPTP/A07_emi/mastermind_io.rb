@@ -52,6 +52,7 @@ class MastermindIO
         rules = gets.chomp
         if rules == "1"
           puts "We will play with normal rules"
+          player_solves(4,6,10)
         elsif rules == "2"
           puts "Ok, we will let you change the rules."
           break
@@ -166,7 +167,7 @@ class MastermindIO
       # Tipp/Cheat für den User
       if input == ["tipp"]
         puts "For real...?"
-        puts "You can find the color #{code.sample} in the code."
+        puts "You can find the number #{code.sample} in the code."
       elsif input == ["cheat"]
         puts "Weakness disgusts me...!"
         puts "Solution: #{code}"
