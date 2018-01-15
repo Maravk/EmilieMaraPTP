@@ -10,8 +10,8 @@ require_relative "mastermind.rb"
 class MastermindTest < Test::Unit::TestCase
   
   def setup()
-    @mm = MastermindIO.new
-    @mara = Mastermind.new(4,6,10,@mm)
+    @mmio = MastermindIO.new
+    @mara = Mastermind.new(4,6,10,@mmio)
     @m = @mara.compare_codes([6,1,2,1],[3,4,2,6])
     @e = @mara.compare_codes([1,4,4,4],[3,4,4,4])
     @r = @mara.compare_codes([3,4,5,6],[3,4,5,6])
