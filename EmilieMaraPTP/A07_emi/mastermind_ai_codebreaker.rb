@@ -36,6 +36,7 @@ class MastermindAICodebreaker
     @hits = [[0,0], [0,1], [0,2], [0,3], [0,4], [1,0], [1,1], [1,2], [1,3], [2,0], [2,1], [2,2], [3,0], [3,1], [4,0]]
   end
 
+  # Neues Spiel als Codemaker
   def new_game_ai
     @remaining_codes = @codes.clone
     @mmio.print_new_game
@@ -89,12 +90,11 @@ class MastermindAICodebreaker
     }
     puts "Delete counter: #{delete_counter}"
     p @remaining_codes.compact!
-    #next_guess
     puts "remaining_codes: #{@remaining_codes.size}"
     simple_guess
-    #next_guess
   end
 
+  # Nächster Rateversuch
   def simple_guess
   guess = rand(0..(@remaining_codes.size-1))
   @guess  = @remaining_codes[guess]
@@ -102,38 +102,38 @@ class MastermindAICodebreaker
   @remaining_codes.compact!
   end
 
-  def next_guess
-    all_codes = @codes.dup
-    remaining_codes = @remaining_codes.dup
-    result = Array.new
-    all_codes.each_index {|index|
-      result[index] = 0
-    }
-    all_codes.each_index {|index|
-      remaining_codes.each_index {|index2|
-
-        hits = @mm.compare_codes(all_codes[index], remaining_codes[index2])
-        black_hits = hits[0]
-        white_hits = hits[1]
-        if black_hits != @black_hits || white_hits != @white_hits
-          result[index] += 1
-        end
-      }
-    }
-    #puts "results: #{result}"
-    most_deletes = 0
-    max_deletes = nil
-    result.each_index  {|index|
-      if result[index] > most_deletes
-        max_deletes = index
-      end
-    }
-
-    @guess = @codes[max_deletes]
-    @codes[max_deletes] = nil
-    @codes.compact!
-    puts "returned by next_guess: #{@guess}"
-    return @guess
-  end
+  # 
+#  def next_guess
+#    all_codes = @codes.dup
+#    remaining_codes = @remaining_codes.dup
+#    result = Array.new
+#    all_codes.each_index {|index|
+#      result[index] = 0
+#    }
+#    all_codes.each_index {|index|
+#      remaining_codes.each_index {|index2|
+#
+#        hits = @mm.compare_codes(all_codes[index], remaining_codes[index2])
+#        black_hits = hits[0]
+#        white_hits = hits[1]
+#        if black_hits != @black_hits || white_hits != @white_hits
+#          result[index] += 1
+#        end
+#      }
+#    }
+#    most_deletes = 0
+#    max_deletes = nil
+#    result.each_index  {|index|
+#      if result[index] > most_deletes
+#        max_deletes = index
+#      end
+#    }
+#
+#    @guess = @codes[max_deletes]
+#    @codes[max_deletes] = nil
+#    @codes.compact!
+#    puts "returned by next_guess: #{@guess}"
+#    return @guess
+#  end
     
 end

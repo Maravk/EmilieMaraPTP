@@ -22,7 +22,7 @@ class MastermindTest < Test::Unit::TestCase
   # Code wird vom Computer generiert
   def test_generate_code()
     assert_equal(4, @emi.length)
-    assert_equal(true, @emi.include?(@valid_elements.sample))
+    assert_equal(true, @valid_elements.include?(@emi.sample))
   end
   
   # Überprüfung der Black und White Hits beim Vergleich zweier Codes
