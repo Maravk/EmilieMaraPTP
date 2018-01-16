@@ -18,7 +18,7 @@ class MastermindIO
     puts "\\_|  |_/ \\__,_||___/ \\__| \\___||_|   |_| |_| |_||_||_| |_| \\__,_|"
     puts "_________________________________________________________________\n\n"
     puts "\nWelcome to MasterMind, Buddy!"
-    puts "the concept of this logic game is that the Codemaker generates a secret"
+    puts "The concept of this logic game is that the Codemaker generates a secret"
     puts "code the Codebreaker tries to guess right."
     puts "Please seperate the numbers you are guessing with a space, example:  1 1 2 2."
     puts "\"cheat\" shows you the solution, \"tipp\" gives you a tip."
