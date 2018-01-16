@@ -48,15 +48,13 @@ class MastermindAICodebreaker
         puts "Reached round #{@round}"
         break
       end
-      
       knuth
-
       @round += 1
     end
     new_game_ai
   end
 
-  # Nur beim ersten Rateversuch (Knuth-Guess)
+  # Knuth-Algorithmus
   def knuth
     if @round == 0
       @guess = @knuth_guess.clone
@@ -70,28 +68,18 @@ class MastermindAICodebreaker
     puts "Round: #{@round + 1}"
     puts "The code: #{@code}"
     puts "Computer's guess: #{@guess}\n\n"
+    
+    # Gewonnen
     if @guess == @code
-      puts "The Computer solved the code in round #{@round + 1}." 
-      puts "
-░░░░░░░░░░░░▄▄▄▄░░░░░░░░░░░░░░░░░░░░░░░▄▄▄▄▄
-░░░█░░░░▄▀█▀▀▄░░▀▀▀▄░░░░▐█░░░░░░░░░▄▀█▀▀▄░░░▀█▄
-░░█░░░░▀░▐▌░░▐▌░░░░░▀░░░▐█░░░░░░░░▀░▐▌░░▐▌░░░░█▀
-░▐▌░░░░░░░▀▄▄▀░░░░░░░░░░▐█▄▄░░░░░░░░░▀▄▄▀░░░░░▐▌
-░█░░░░░░░░░░░░░░░░░░░░░░░░░▀█░░░░░░░░░░░░░░░░░░█
-▐█░░░░░░░░░░░░░░░░░░░░░░░░░░█▌░░░░░░░░░░░░░░░░░█
-▐█░░░░░░░░░░░░░░░░░░░░░░░░░░█▌░░░░░░░░░░░░░░░░░█
-░█░░░░░░░░░░░░░░░░░░░░█▄░░░▄█░░░░░░░░░░░░░░░░░░█
-░▐▌░░░░░░░░░░░░░░░░░░░░▀███▀░░░░░░░░░░░░░░░░░░▐▌
-░░█░░░░░░░░░░░░░░░░░▀▄░░░░░░░░░░▄▀░░░░░░░░░░░░█
-░░░█░░░░░░░░░░░░░░░░░░▀▄▄▄▄▄▄▄▀▀░░░░░░░░░░░░░█"
+      @mmio.computer_win(@round)
       new_game_ai
     end
     delete_counter = 0
     
-    @remaining_codes.each_index { |index|
       # Werte aus compare_codes werden übertragen
       # Es wird überprüft, ob jeder Code aus der Permutation das selbe Ergebnis an Direkten und Indirekten Treffern erzielt.
       # Wenn nicht, wird der jeweilige Codeindex rausgelöscht, indem er mit nil überschrieben wird.
+    @remaining_codes.each_index { |index|
       hits = @mm.compare_codes(@guess, @remaining_codes[index])
       black_hits = hits[0]
       white_hits = hits[1]
@@ -113,5 +101,5 @@ class MastermindAICodebreaker
   @remaining_codes[guess] = nil
   @remaining_codes.compact!
   end
-
-  end
+  
+end
