@@ -7,22 +7,14 @@ class Average
   def average_with_nil
    @input = gets.chomp.split(" ")
     @input.map! {|zahl| zahl.to_i}
-   @input.each do |zahl|
-     if zahl == nil
-       @input.compact
-     if zahl == 0
-     @input.delete(0)
-     end
-     end
-     end
- 
+    @input.delete(0)
     raise TypeError, "Please enter a valid number" if !@input.each {|zahl| zahl.instance_of?(Integer)}
   end 
   
   
   def output
    sum = @input.inject(0, :+)
-   ergebnis = sum/@input.length
+   ergebnis = (sum/@input.length).to_f
    puts ergebnis
  
   end

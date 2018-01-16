@@ -1,83 +1,55 @@
-# Author:: Mara von Kroge
 # Author:: Emilie Schuller
-# 18. Dezember 2017
-# Klasse zu MasterMind - Computer ist Codemaker
+# Author:: Mara von Kroge
+# TeamChallenger
+# Mastermind Logik
+
+require_relative 'mastermind_io.rb'
+require_relative 'mastermind.rb'
 
 class Mastermind
-  
-  def initialize()
-    # Die zur Verfügung stehenden Farben
-    @elements = ["pink", "blue", "yellow", "green", "grey", "red",1,2,3,4,5,6]
+
+  def initialize(length_of_code, amount_of_numbers, amount_of_rounds, mmio)
+    # Objekt für den Input/Output
+    @mmio = mmio
+    
+    # Die zur Verfügung stehenden Zahlen
+    @elements = [*1..amount_of_numbers]
+    @mmio.print_valid_elements(@elements)
+    
+    # Die Anzahl der Runden
+    @amount_of_rounds = amount_of_rounds
+    
+    # Die Anzahl der Nummern
+    @amount_of_numbers = amount_of_numbers
+    
+    # Die festgelegte Länge einer Ratekombination
+    @length = length_of_code
+    
+    # Start bei Runde 0
     @round = 0
-    # 10 Runden insgesamt
-    @amount_of_rounds = 10
-    # Die festgelegte Länge einer Ratekombination.
-    @length = 4
+    @code = []
   end
   
   def new_game
-    puts "\n\n-----NEW-GAME-----"
+    @mmio.print_new_game
     @round = 0
-    generate_code
+    @code = generate_code(@length, @amount_of_numbers)
     game_loop
   end
   
   
   # Vierstellige Kombination des Computers wird zufällig generiert.
-  def generate_code
-    @code = Array.new
+  def generate_code(length, amount_of_numbers)
+    code = []
     a = 0
-    while(a < @length) do
-      @code[a]= rand(1..6).to_s
+    while(a < length) do
+      code[a]= rand(1..amount_of_numbers).to_s
       a += 1
     end
-      return @code
+      return code
   end
-
-  
-  # Mensch gibt seinen Rateversuch ein.
-  def input_code
-    a = 1
-    while(a==1) do
-      # Eingabe des Menschen
-      puts "Your Code:"
-      @input = []
-      @input = gets.chomp.split(" ")
-      
-      # Tipp/Cheat für den User
-      if @input == ["tipp"]
-        puts "For real...?"
-        puts "You can find the color #{@code.sample} in the code."
-      elsif @input == ["cheat"]
-        puts "Weakness disgusts me...!"
-        puts "Solution: " + @code.to_s
-        
-      # Neues Game
-      elsif @input == ["new"]
-        new_game  
-        
-      # Aufhören  
-      elsif @input == ["exit"]
-        exit
-      else
-        
-        # Überprüfung der Eingabe
-        @input.each { |input|
-          if !@elements.to_s.include?(input)
-            puts "Error! Please put numbers (1,2,3,4,5,6)."
-            a=1
-            break
-          else
-            a=0
-          end
-        }
-      end
-    end
-  end 
-  
   
   def game_loop
-    
     # Eingabe des Users
     protocol = []
     # Direkte Treffer
@@ -87,113 +59,73 @@ class Mastermind
     
     while (true) do
       # Eingabe des Menschen.
-      input_code
+      
+      @input = @mmio.input_code(@code, @elements, @length)
       # Für jeden neuen Durchgang werden die Zähler für die Direkten und 
       # indirekten Treffer auf null gesetzt.
       @black_hits = 0
       @white_hits = 0
       
       # Stets werden zwei Codes miteinander verglichen. 
-      hits = compare_codes
+      hits = compare_codes(@code, @input)
       @black_hits = hits[0]
       @white_hits = hits[1]
-      
+
       # Jeweils pro Runde neuer Input, neue Anzahl an Black und White Hits.
       protocol[@round] = @input
       black_hits[@round] = @black_hits
       white_hits[@round] = @white_hits
-
-        
-      # Ausgabe auf die Konsole bezüglich der Anzahl der Direkten und Indirekten Treffer.
-      puts "Round: " + (@round+1).to_s
-      puts "|  Your Codes  | Black | White |"
-      i = 0
-      while(i < @round+1)
-        protocol_string = ""
-        
-        # Jede neue Runde wird als eine Art Tabelle auf die Konsole ausgegeben.
-        protocol[i].each_index { |index|
-          protocol_string << protocol[i][index].to_s << "  "
-        }
-        puts "|  " + protocol_string.to_s + "|   "\
-        + black_hits[i].to_s + "   |   " + white_hits[i].to_s + "   |"
-        i+=1
-      end
       
-      # Spiel gewonnen, sobald vier Direkte Treffer erzielt wurden.
-      if @black_hits == 4
-        puts 'THE CODE HAS BEEN SOLVED!!!'
-        while(1) do
-          
-          # Neues Game.
-           puts "Do you want to play another game? (y/n)"
-           a = gets.chomp
-           if a == "y"
-             new_game
-           elsif a == "n"
-             exit
-           end
-        end
+      @mmio.table(@round, protocol, black_hits, white_hits, @length)
+      
+      # Spiel gewonnen, sobald dir Input dem geheimen Code entspricht.
+      if @input == @code
+        @mmio.win
       end
       @round += 1
       
       # Bis alle Runden vorbei sind.
       if @round == @amount_of_rounds
-        puts "10 out of 10 rounds. You lost! ^_^"
-        puts "The code was: " + @code.to_s
+        @mmio.lost(@code, @round, @amount_of_rounds)
         break
       end
     end
-    while(1) do
-      puts "Do you wanna play another game? (y/n)"
-      a = gets.chomp
-      if a == "y"
-        new_game
-      elsif a == "n"
-        exit
-      end
-    end        
   end
 
 
-  # Vergleicht zwei Codes und gibt die Anzahl der Direkten und Indirekten Treffer zurück.
-  def compare_codes
-
+  # Vergleicht zwei Codes 
+  # Rückgabe der Anzahl der Direkten und Indirekten Treffer
+  def compare_codes(solution_, guess_)
+    
+    solution = solution_.clone
+    guess = guess_.clone
+    
     black_hits = 0
     white_hits = 0
-    temp_code = @code.clone
-    temp_input = @input.clone
-    
+
     # Direkte Treffer
-    temp_code.each_index { |index|
-      if temp_code[index] == temp_input[index]
+    # Stellen der Treffer werden mit ungültigen Werten überschrieben, 
+    # um wiederholte Zählung bei Indiekten Treffern zu vermeiden.
+    solution.each_index { |index|
+      if solution[index] == guess[index]
+        solution[index] = 0
+        guess[index] = -1
         black_hits += 1
-        temp_input[index] = -1
-        temp_code[index] = -2
       end
     }
     
     # Indirekte Treffer
-    temp_code.each_index { |index|
-      temp_input.each_index { |index2|
-        
-        if temp_input[index2] == temp_code[index]
+    # Stellen der Treffer werden mit ungültigen Werten überschrieben, 
+    # um wiederholte Zählung zu vermeiden.
+    solution.each_index { |index1|
+      guess.each_index { |index2|
+        if solution[index1] == guess[index2]
+          solution[index1] = 0
+          guess[index2] = -1
           white_hits += 1
-          temp_input[index2] = -1
-          temp_code[index] = -2
         end
       }
     }
-    return [black_hits, white_hits]
+   return [black_hits, white_hits]
   end
-  
-  # Für die Tests
-  def change_input(input)
-    @input = input
-  end
-  
-  def change_code(code)
-    @code = code
-  end 
-  
 end
