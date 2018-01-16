@@ -7,15 +7,14 @@ require_relative 'mastermind_io.rb'
 require_relative 'mastermind.rb'
 
 class MastermindAICodebreaker
-  # mmio: Übergabe des MastermindIO Objekts
   
+  # mmio: Übergabe des MastermindIO Objekts
   def initialize(mmio)
     @mmio = mmio
     @mm = Mastermind.new(4, 6 , 10, mmio)
     # Die zur Verfügung stehenden Zahlen
     @elements = [*1..6]
     @codes = @elements.repeated_permutation(4).to_a
-    puts "Valid Elements: #{@elements}"
     
     # Die Anzahl der Runden
     @amount_of_rounds = 10
