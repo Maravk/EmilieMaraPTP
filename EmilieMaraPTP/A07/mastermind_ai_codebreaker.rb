@@ -70,7 +70,7 @@ class MastermindAICodebreaker
     @white_hits = hits[1]
     puts "Round : #{@round + 1}"
     puts "The code: #{@code}"
-    puts "Computer's guess: #{@guess}"
+    puts "Computer's guess: #{@guess}\n\n"
     if @guess == @code
       puts "The Computer solved the code in round #{@round + 1}." 
       new_game_ai
@@ -90,8 +90,8 @@ class MastermindAICodebreaker
       end
     }
     puts "Delete counter: #{delete_counter}"
-    p @remaining_codes.compact!
-    puts "remaining_codes: #{@remaining_codes.size}"
+    @remaining_codes.compact!
+    puts "Remaining codes: #{@remaining_codes.size}"
     simple_guess
   end
 
