@@ -28,7 +28,7 @@ class MastermindAICodebreaker
     puts "Code length: #{@length}"
     @round = 0
     @knuth_guess = [1,1,2,2]
-    @last_guess = []
+    @guess = []
     @code = []
     @black_hits = 0
     @white_hits = 0
@@ -58,18 +58,18 @@ class MastermindAICodebreaker
   # Nur beim ersten Rateversuch
   def knuth
     if @round == 0
-      @last_guess = @knuth_guess.clone
+      @guess = @knuth_guess.clone
       @codes[7] = nil
       @codes.compact!
     end
     # Bewertung des Versuchs
-    hits = @mm.compare_codes(@code,@last_guess)
+    hits = @mm.compare_codes(@code,@guess)
     @black_hits = hits[0]
     @white_hits = hits[1]
     puts "Round : #{@round + 1}"
     puts "The code: #{@code}"
-    puts "Last guess: #{@last_guess}"
-    if @last_guess == @code
+    puts "Computer's guess: #{@guess}"
+    if @guess == @code
       puts "The Computer solved the code in round #{@round + 1}." 
       new_game_ai
     end
@@ -79,7 +79,7 @@ class MastermindAICodebreaker
       # Werte aus compare_codes werden übertragen
       # Es wird überprüft, ob jeder Code aus der Permutation das selbe Ergebnis an Direkten und Indirekten Treffern erzielt.
       # Wenn nicht, wird der jeweilige Codeindex rausgelöscht, indem er mit nil überschrieben wird.
-      hits = @mm.compare_codes(@last_guess, @remaining_codes[index])
+      hits = @mm.compare_codes(@guess, @remaining_codes[index])
       black_hits = hits[0]
       white_hits = hits[1]
       if black_hits != @black_hits || white_hits != @white_hits
@@ -97,7 +97,7 @@ class MastermindAICodebreaker
 
   def simple_guess
   guess = rand(0..(@remaining_codes.size-1))
-  @last_guess  = @remaining_codes[guess]
+  @guess  = @remaining_codes[guess]
   @remaining_codes[guess] = nil
   @remaining_codes.compact!
   end
@@ -129,11 +129,11 @@ class MastermindAICodebreaker
       end
     }
 
-    @last_guess = @codes[max_deletes]
+    @guess = @codes[max_deletes]
     @codes[max_deletes] = nil
     @codes.compact!
-    puts "returned by next_guess: #{@last_guess}"
-    return @last_guess
+    puts "returned by next_guess: #{@guess}"
+    return @guess
   end
     
 end
