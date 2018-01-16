@@ -97,7 +97,7 @@ class MastermindAICodebreaker
 
   def simple_guess
   guess = rand(0..(@remaining_codes.size-1))
-  puts "random guess: #{guess}"
+  puts "computer's guess: #{guess}"
   @last_guess  = @remaining_codes[guess]
   @remaining_codes[guess] = nil
   @remaining_codes.compact!
