@@ -90,14 +90,13 @@ class MastermindAICodebreaker
     puts "Delete counter: #{delete_counter}"
     p @remaining_codes.compact!
     #next_guess
-    puts "remaining_codes size: #{@remaining_codes.size}"
+    puts "remaining_codes: #{@remaining_codes.size}"
     simple_guess
     #next_guess
   end
 
   def simple_guess
   guess = rand(0..(@remaining_codes.size-1))
-  puts "computer's guess: #{guess}"
   @last_guess  = @remaining_codes[guess]
   @remaining_codes[guess] = nil
   @remaining_codes.compact!
