@@ -104,6 +104,7 @@ class MastermindAICodebreaker
     @remaining_codes.compact!
     puts "Remaining codes: #{@remaining_codes.size}"
     simple_guess
+    #next_guess
   end
 
   # Nächster Rateversuch
@@ -114,38 +115,46 @@ class MastermindAICodebreaker
   @remaining_codes.compact!
   end
 
-  # 
-#  def next_guess
-#    all_codes = @codes.dup
-#    remaining_codes = @remaining_codes.dup
-#    result = Array.new
-#    all_codes.each_index {|index|
-#      result[index] = 0
-#    }
-#    all_codes.each_index {|index|
-#      remaining_codes.each_index {|index2|
-#
-#        hits = @mm.compare_codes(all_codes[index], remaining_codes[index2])
-#        black_hits = hits[0]
-#        white_hits = hits[1]
-#        if black_hits != @black_hits || white_hits != @white_hits
-#          result[index] += 1
-#        end
-#      }
-#    }
-#    most_deletes = 0
-#    max_deletes = nil
-#    result.each_index  {|index|
-#      if result[index] > most_deletes
-#        max_deletes = index
-#      end
-#    }
-#
-#    @guess = @codes[max_deletes]
-#    @codes[max_deletes] = nil
-#    @codes.compact!
-#    puts "returned by next_guess: #{@guess}"
-#    return @guess
-#  end
+  def next_guess
+    all_codes = @codes.dup
+    remaining_codes = @remaining_codes.dup
+    result = Array.new
+    minimum = Array.new
+    all_codes.each_index {|index|
+      result[index] = 0
+      minimum[index] = 2000
+    }
+    @hits.each { |hitlist|
+      @black_hits = hitlist[1]
+      @white_hits = hitlist[2]
+      all_codes.each_index {|index|
+        remaining_codes.each_index {|index2|
+          hits = @mm.compare_codes(all_codes[index], remaining_codes[index2])
+          black_hits = hits[0]
+          white_hits = hits[1]
+          if black_hits != @black_hits || white_hits != @white_hits
+            result[index] += 1
+          end
+        }
+        if result[index] < minimum[index]
+          minimum[index] = result[index]
+        end
+      }
+    }
+    puts "minimum list: #{minimum}"
+    most_deletes = 0
+    max_deletes = nil
+    minimum.each_index  {|index|
+      if minimum[index] > most_deletes
+        max_deletes = index
+      end
+    }
+
+    @guess = @codes[max_deletes]
+    @codes[max_deletes] = nil
+    @codes.compact!
+    puts "returned by next_guess: #{@guess}"
+    return @guess
+  end
     
 end
