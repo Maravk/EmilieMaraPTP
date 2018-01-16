@@ -19,7 +19,7 @@ class MastermindTest < Test::Unit::TestCase
     @valid_elements = ["1","2","3","4","5","6"]
   end
   
-  # Code wird vom Computer generiert
+  # Code wird vom Computer generiert.
   def test_generate_code()
     assert_equal(4, @emi.length)
     assert_equal(true, @valid_elements.include?(@emi.sample))

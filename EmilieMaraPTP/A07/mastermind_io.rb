@@ -21,8 +21,8 @@ class MastermindIO
     puts "The concept of this logic game is that the Codemaker generates a secret"
     puts "code the Codebreaker tries to guess right."
     puts "Please seperate the numbers you are guessing with a space, example:  1 1 2 2."
-    puts "\"cheat\" shows you the solution, \"tipp\" gives you a tip."
-    puts "Good luck, have fun!"
+    puts "\"cheat\" shows you the solution, \"tipp\" gives you a tip.\n\n"
+    puts "Good luck, have fun!\n"
     
     
     # Regeln 
