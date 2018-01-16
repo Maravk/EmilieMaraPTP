@@ -30,9 +30,14 @@ class MastermindAICodebreaker
     @knuth_guess = [1,1,2,2]
     @last_guess = []
     @code = []
+    @black_hits = 0
+    @white_hits = 0
+    @remaining_codes = []
+    @hits = [[0,0], [0,1], [0,2], [0,3], [0,4], [1,0], [1,1], [1,2], [1,3], [2,0], [2,1], [2,2], [3,0], [3,1], [4,0]]
   end
 
   def new_game_ai
+    @remaining_codes = @codes.clone
     @mmio.print_new_game
     @round = 0
     puts "Now you have to generate your secret code:"
@@ -47,12 +52,15 @@ class MastermindAICodebreaker
 
       @round += 1
     end
+    new_game_ai
   end
 
   # Nur beim ersten Rateversuch
   def knuth
     if @round == 0
       @last_guess = @knuth_guess.clone
+      @codes[7] = nil
+      @codes.compact!
     end
     # Bewertung des Versuchs
     hits = @mm.compare_codes(@code,@last_guess)
@@ -63,66 +71,70 @@ class MastermindAICodebreaker
     puts "Last guess: #{@last_guess}"
     if @last_guess == @code
       puts "The Computer solved the code in round #{@round + 1}." 
-      exit
+      new_game_ai
     end
     delete_counter = 0
-    @codes.each_index { |index|
-
+    
+    @remaining_codes.each_index { |index|
       # Werte aus compare_codes werden übertragen
       # Es wird überprüft, ob jeder Code aus der Permutation das selbe Ergebnis an Direkten und Indirekten Treffern erzielt.
       # Wenn nicht, wird der jeweilige Codeindex rausgelöscht, indem er mit nil überschrieben wird.
-      hits = @mm.compare_codes(@last_guess, @codes[index])
+      hits = @mm.compare_codes(@last_guess, @remaining_codes[index])
       black_hits = hits[0]
       white_hits = hits[1]
-      if black_hits != @black_hits && white_hits != @white_hits
-        @codes[index] = nil
+      if black_hits != @black_hits || white_hits != @white_hits
+        @remaining_codes[index] = nil
         delete_counter += 1
       end
-      
     }
     puts "Delete counter: #{delete_counter}"
-    p @codes.compact!
-    next_guess
+    p @remaining_codes.compact!
+    #next_guess
+    puts "remaining_codes size: #{@remaining_codes.size}"
+    simple_guess
+    #next_guess
   end
 
-       
+  def simple_guess
+  guess = rand(0..(@remaining_codes.size-1))
+  puts "random guess: #{guess}"
+  @last_guess  = @remaining_codes[guess]
+  @remaining_codes[guess] = nil
+  @remaining_codes.compact!
+  end
+
   def next_guess
-    remaining_possibilities = @codes.dup
-    remaining_possibilities2 = @codes.dup
-    ergebnis = []
+    all_codes = @codes.dup
+    remaining_codes = @remaining_codes.dup
+    result = Array.new
+    all_codes.each_index {|index|
+      result[index] = 0
+    }
+    all_codes.each_index {|index|
+      remaining_codes.each_index {|index2|
 
-    # So viele Hashes in das Ergebnis-Array, wie lang das Array ist
-    remaining_possibilities.length().times do
-      ergebnis.push(Hash.new)
-    end
-
-    # Jede Kombination wird mit jeder Kombination verglichen.
-    remaining_possibilities.each_index {|index|
-      remaining_possibilities2.each_index {|index2|
-        #@mm.compare_codes(remaining_possibilities[index], remaining_possibilities2[index2])
-
-        # Der Hash wird stets hochgezählt.
-        vergleich = @mm.compare_codes(remaining_possibilities[index], remaining_possibilities2[index2])
-        if ergebnis[index].has_key?(vergleich)
-          ergebnis[index][vergleich] += 1
-        else
-          ergebnis[index][vergleich] = 1
+        hits = @mm.compare_codes(all_codes[index], remaining_codes[index2])
+        black_hits = hits[0]
+        white_hits = hits[1]
+        if black_hits != @black_hits || white_hits != @white_hits
+          result[index] += 1
         end
       }
-      max_intern = 0
-      ergebnis[index].each_value  {|zahl|
-        max_intern = zahl if zahl > max_intern
-      }
-      ergebnis[index] = max_intern
     }
-    
+    #puts "results: #{result}"
+    most_deletes = 0
+    max_deletes = nil
+    result.each_index  {|index|
+      if result[index] > most_deletes
+        max_deletes = index
+      end
+    }
 
-    min = ergebnis.min()
-    next_guess_index = ergebnis.index(min)
-
-    # Nächster Rateversuch (Klone, damit man so keine Referenz auf das originale Objekt erhält)
-    @last_guess = @codes[next_guess_index]
-    return @codes[next_guess_index].clone
+    @last_guess = @codes[max_deletes]
+    @codes[max_deletes] = nil
+    @codes.compact!
+    puts "returned by next_guess: #{@last_guess}"
+    return @last_guess
   end
     
 end
