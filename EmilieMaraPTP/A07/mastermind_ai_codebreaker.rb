@@ -67,7 +67,7 @@ class MastermindAICodebreaker
     hits = @mm.compare_codes(@code,@guess)
     @black_hits = hits[0]
     @white_hits = hits[1]
-    puts "Round : #{@round + 1}"
+    puts "Round: #{@round + 1}"
     puts "The code: #{@code}"
     puts "Computer's guess: #{@guess}\n\n"
     if @guess == @code
