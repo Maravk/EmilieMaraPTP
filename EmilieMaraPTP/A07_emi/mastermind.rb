@@ -22,7 +22,7 @@ class Mastermind
     # Die Anzahl der Nummern
     @amount_of_numbers = amount_of_numbers
     
-    # Die festgelegte Länge einer Ratekombination.
+    # Die festgelegte Länge einer Ratekombination
     @length = length_of_code
     
     # Start bei Runde 0
@@ -78,7 +78,7 @@ class Mastermind
       
       @mmio.table(@round, protocol, black_hits, white_hits, @length)
       
-      # Spiel gewonnen, sobald dir input dem geheimen Code entspricht.
+      # Spiel gewonnen, sobald dir Input dem geheimen Code entspricht.
       if @input == @code
         @mmio.win
       end
@@ -114,6 +114,7 @@ class Mastermind
       end
     }
     
+    # Indirekte Treffer
     # Stellen der Treffer werden mit ungültigen Werten überschrieben, 
     # um wiederholte Zählung zu vermeiden.
     solution.each_index { |index1|

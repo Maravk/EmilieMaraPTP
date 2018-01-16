@@ -5,10 +5,10 @@
 
 require_relative 'mastermind.rb'
 require_relative 'mastermind_ai_codebreaker.rb'
-require_relative 'mastermind_ai_codebreaker.rb'
 
 class MastermindIO
   
+  # Startmethode - Output auf die Konsole
   def start
     puts "___  ___             _                           _             _" 
     puts "|  \\/  |            | |                         (_)           | |"
@@ -96,6 +96,7 @@ class MastermindIO
     end
     
     # Computer ist Codebreaker
+    # Neues Objekt der AI-Klasse
     if (who_solves == "2")
       @mmai = MastermindAICodebreaker.new(self)
       @mmai.new_game_ai
@@ -103,6 +104,7 @@ class MastermindIO
   end
   
   # Mensch ist Codebreaker
+  # Neues Objekt der "normalen" Mastermindklasse
   def player_solves(length_of_code, amount_of_numbers, amount_of_rounds)
     puts "Player is going to solve the code!"
     puts "Length of code: #{length_of_code.to_i}"
@@ -113,7 +115,6 @@ class MastermindIO
     @mm.new_game
   end
 
-  
   def print_new_game
     puts "\n\n-----NEW-GAME-----"
   end
