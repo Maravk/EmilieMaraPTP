@@ -11,7 +11,6 @@ class Average
     raise TypeError, "Please enter a valid number" if !@input.each {|zahl| zahl.instance_of?(Integer)}
   end 
   
-  
   def output
    sum = @input.inject(0, :+)
    ergebnis = (sum/@input.length).to_f

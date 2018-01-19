@@ -22,11 +22,11 @@ class Summen
   
   # Berechnung und Ausgabe
   def sum
+    input
    sum = @input.sum
    puts "Here's your sum: #{sum}!"
   end
 end
 
 emi = Summen.new
-emi.input
 emi.sum
