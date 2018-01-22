@@ -25,6 +25,7 @@ class Deque
   def remove_last
       raise ArgumentError, "Das Deque ist bereits leer!" if @deque.size == 0 
     @deque.delete_at(@deque.length-1)
+    return self
   end
   
   def size
@@ -36,7 +37,7 @@ class Deque
   end
   
   def to_s
-    return @deque.to_s
+    puts "Das Deque sieht folgendermaßen aus: #{@deque.each {|line| puts line}}."
   end
   
 end
