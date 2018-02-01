@@ -14,6 +14,6 @@ class UngeradeZahl
       raise ArgumentError, "Please enter an odd integer!"
     end
   end
-end
 
+end
 emi = UngeradeZahl.new
