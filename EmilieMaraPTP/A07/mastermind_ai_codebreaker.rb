@@ -45,7 +45,7 @@ class MastermindAICodebreaker
     @code = @mmio.generate_code_human(@length, @elements)
     while (true) do
       if (@round == @amount_of_rounds)
-        puts "Reached round #{@round}"
+        puts "Reached round #{@round}."
         break
       end
       knuth

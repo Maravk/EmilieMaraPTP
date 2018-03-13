@@ -17,12 +17,14 @@ class MastermindTest < Test::Unit::TestCase
     @r = @mara.compare_codes([3,4,5,6],[3,4,5,6])
     @emi = @mara.generate_code(4,6)
     @valid_elements = ["1","2","3","4","5","6"]
+    @lol = "lol"
   end
   
   # Code wird vom Computer generiert.
   def test_generate_code()
     assert_equal(4, @emi.length)
     assert_equal(true, @valid_elements.include?(@emi.sample))
+    assert_equal(false, @valid_elements.include?(@lol))
   end
   
   # Überprüfung der Black und White Hits beim Vergleich zweier Codes
